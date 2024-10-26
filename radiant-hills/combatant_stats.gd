@@ -38,3 +38,42 @@ func apply_item_modifiers(item):
 		health += item.health_bonus
 	if item.has("attack_bonus"):
 		attack_power += item.attack_bonus
+
+func equip(item:Resource):
+	# Check which slot to equip the item based on it's slot type
+	match item.slot_type:
+		"ring":
+			# Equip in Ring1 if empty, otherwise equip in Ring2
+			if Ring1 == null:
+				Ring1 = item
+			elif Ring2 == null:
+				Ring2 = item
+			else:
+				print("Both ring slots are occupied.")
+		"chest":
+			if Chest == null:
+				Chest = item
+			else:
+				print("Chest slot is already occupied.")
+		"hat":
+			if Hat == null:
+				Hat = item
+			else:
+				print("Hat slot is already occupied.")
+		"staff":
+			if Staff == null:
+				Staff = item
+			else:
+				print("Staff slot is already occupied.")
+		"boots":
+			if Boots == null:
+				Boots = item
+			else:
+				print("Boots slot is already occupied.")
+		"spellbook":
+			if Spellbook == null:
+				Spellbook = item
+			else:
+				print("Spellbook slot is already occupied.")
+	# Update stats after equipping the item
+	set_stats()

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://kxnalf3sot6d"]
+
+[ext_resource type="Texture2D" uid="uid://devw0pa6u7jtp" path="res://icon.svg" id="1_f6qxu"]
+[ext_resource type="Script" path="res://combatant_2.gd" id="2_bj1l3"]
+
+[node name="Combatant2" type="Sprite2D"]
+position = Vector2(915, 396)
+scale = Vector2(1.67969, 1.67969)
+texture = ExtResource("1_f6qxu")
+script = ExtResource("2_bj1l3")
+
+[node name="Combatant2HealthLabel" type="Label" parent="."]
+offset_left = -26.1224
+offset_top = 92.2791
+offset_right = 65.8776
+offset_bottom = 115.279
+scale = Vector2(0.651703, 0.651703)
+text = "Placeholder"

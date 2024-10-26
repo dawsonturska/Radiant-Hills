@@ -1,50 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://yqwsplwjgon8"]
+[gd_scene load_steps=6 format=3 uid="uid://yqwsplwjgon8"]
 
 [ext_resource type="Script" path="res://combat_manager.gd" id="1_dqu4w"]
-[ext_resource type="Texture2D" uid="uid://cj4r5frgw1s5l" path="res://Assets/Shop.png" id="1_gwgyu"]
-[ext_resource type="Texture2D" uid="uid://c3p28x3prkfco" path="res://Assets/Test Char.png" id="3_pfbhl"]
-[ext_resource type="Script" path="res://combatant_stats.gd" id="4_2clks"]
-[ext_resource type="Texture2D" uid="uid://devw0pa6u7jtp" path="res://icon.svg" id="4_71iw1"]
-[ext_resource type="Script" path="res://combatant_2.gd" id="6_xq2n3"]
+[ext_resource type="Texture2D" uid="uid://b7qcu78cd0a7i" path="res://Assets/test bg.png" id="2_f7j6w"]
+[ext_resource type="PackedScene" uid="uid://bk7d6knlqr46j" path="res://player_character.tscn" id="3_5faje"]
+[ext_resource type="PackedScene" uid="uid://kxnalf3sot6d" path="res://enemy_combatant.tscn" id="4_vfbf3"]
+[ext_resource type="PackedScene" uid="uid://bufuqgiubmx6b" path="res://equipment_ui.tscn" id="7_gspal"]
 
 [node name="Combat Scene" type="Node2D"]
 script = ExtResource("1_dqu4w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(578, 320)
-scale = Vector2(5.75, 4.28)
-texture = ExtResource("1_gwgyu")
+position = Vector2(576.011, 324)
+scale = Vector2(0.60103, 0.598148)
+texture = ExtResource("2_f7j6w")
 
-[node name="Combatant1" type="Sprite2D" parent="."]
-position = Vector2(281, 350)
-scale = Vector2(0.278704, 0.278704)
-texture = ExtResource("3_pfbhl")
-script = ExtResource("4_2clks")
+[node name="Combatant1" parent="." instance=ExtResource("3_5faje")]
 
-[node name="Combatant1HealthLabel" type="Label" parent="Combatant1"]
-offset_left = -215.282
-offset_top = -721.195
-offset_right = 490.718
-offset_bottom = -483.195
-theme_override_font_sizes/font_size = 72
-text = "Placeholder"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Combatant2" type="Sprite2D" parent="."]
-position = Vector2(887, 360)
-scale = Vector2(2.29688, 2.29688)
-texture = ExtResource("4_71iw1")
-script = ExtResource("6_xq2n3")
-
-[node name="Combatant2HealthLabel" type="Label" parent="Combatant2"]
-offset_left = -26.1224
-offset_top = -84.027
-offset_right = 65.8776
-offset_bottom = -61.027
-scale = Vector2(0.651703, 0.651703)
-text = "Placeholder"
+[node name="Combatant2" parent="." instance=ExtResource("4_vfbf3")]
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="EquipmentUI" parent="." node_paths=PackedStringArray("player_character") instance=ExtResource("7_gspal")]
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 1155.0
+offset_bottom = 639.0
+player_character = NodePath("../Combatant1")
