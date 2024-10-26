@@ -5,5 +5,6 @@
 
 [resource]
 script = ExtResource("1_nwgpj")
-enemies = Array[Resource]([ExtResource("1_etw80")])
+enemies = Array[Resource]([ExtResource("1_etw80"), ExtResource("1_etw80"), ExtResource("1_etw80")])
 items = Array[Resource]([])
+enemies_remaining = 3

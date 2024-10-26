@@ -44,3 +44,7 @@ offset_right = 65.8776
 offset_bottom = -61.027
 scale = Vector2(0.651703, 0.651703)
 text = "Placeholder"
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
