@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://bv68cql35inwa"]
+
+[ext_resource type="Script" path="res://Enemies/EnemyData.gd" id="1_qdqrt"]
+
+[resource]
+script = ExtResource("1_qdqrt")
+name = "Goblin"
+health = 15
+attack_power = 10

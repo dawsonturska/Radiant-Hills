@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://bk737if2o8foa"]
+
+[ext_resource type="Resource" uid="uid://bv68cql35inwa" path="res://Goblin.tres" id="1_etw80"]
+[ext_resource type="Script" path="res://RoomData.gd" id="1_nwgpj"]
+
+[resource]
+script = ExtResource("1_nwgpj")
+enemies = Array[Resource]([ExtResource("1_etw80")])
+items = Array[Resource]([])
