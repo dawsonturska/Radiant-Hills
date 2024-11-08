@@ -1,0 +1,86 @@
+# Ignore all files in the Library folder
+[Ll]ibrary/
+
+# Ignore cache files
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+
+# Ignore auto-generated settings files
+UserSettings/
+
+# Ignore crash reports, logs, and temp files
+*.pidb
+*.booproj
+*.suo
+*.user
+*.userprefs
+*.unityproj
+*.csproj
+*.vscode
+*.sln
+
+# Ignore files created by Unity
+.DS_Store
+*.swp
+*.bak
+*.tmp
+*.idb
+*.wlt
+
+# Ignore Unity build metadata
+/Builds/
+
+# Ignore files generated for specific platforms
+*.apk
+*.aab
+*.xcuserdatad
+*.xcworkspace
+*.lock
+*.skein
+*.gitattributes~
+
+# Ignore Asset Store packages
+/[Aa]ssets/AssetStoreTools*
+
+# Ignore JetBrains Rider project files
+.idea/
+*.idea/
+*.sln.iml
+
+# Ignore Visual Studio Code workspace files
+.vscode/
+
+# Ignore Unity Cloud Build files
+*.cloudbuild
+
+# Ignore the Unity Package Manager
+[Pp]ackages/*
+
+# Except for manifest.json and project packages
+!Packages/manifest.json
+!Packages/packages-lock.json
+
+# Ignore Git LFS configuration files
+.git/lfs/
+
+# Ignore logs and crash reports
+*.log
+*.stackdump
+
+# Ignore large texture files (optional, can specify separately for Git LFS)
+*.tga
+*.psd
+*.png
+*.jpg
+
+# Ignore auto-generated lightmap data
+[Ll]ightmap[Aa]ssets/
+[Aa]dditional[Ll]ightmaps/
+
+# Ignore local configuration files that are user-specific
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
