@@ -1,0 +1,49 @@
+# User-specific files
+UserSettings/
+
+# User-specific settings
+.idea/
+.vscode/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]istro/
+Build/
+Builds/
+ExportedObj/
+
+# Uncomment if you have Unity Cloud Build
+# .build/
+
+# Uncomment if you're working with a Unity 2018 or earlier project
+# .vs/
+
+# Uncomment if you want to ignore Unity-generated files on non-Windows platforms
+# .macos/
+
+# Temporary files
+[Tt]emp/
+[Tt]empCache/
+
+# Asset files
+Library/
+Obj/
+
+# Ignore Logs
+[Ll]ogs/
+
+# Cache
+MemoryCaptures/
+ 
+# VS Code config folder
+.vscode/
+
+# Uncomment the following line if you're using Rider IDE
+.idea/
+
+# Ignore everything from Unity's Cache server
+UnityCache/
+
+# Thumbnails
+.Thumbs/
