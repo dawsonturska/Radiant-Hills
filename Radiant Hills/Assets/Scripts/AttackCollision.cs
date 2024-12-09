@@ -7,13 +7,13 @@ public class AttackCollision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Make sure this collision is only counted once
-        // Check if the object has a Health component
-        Health targetHealth = other.GetComponent<Health>();
+        // Check if the object has a BreakableObject component (instead of Health)
+        BreakableObject targetBreakable = other.GetComponent<BreakableObject>();
 
-        if (targetHealth != null)
+        if (targetBreakable != null)
         {
-            // Deal damage to the object
-            targetHealth.TakeDamage(damage);
+            // Deal damage to the object by calling TakeDamage
+            targetBreakable.TakeDamage(damage);
             Debug.Log($"{other.gameObject.name} took {damage} damage.");
 
             // Disable the collider to prevent further collisions
