@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -10,7 +11,17 @@ public class PlayerAttack : MonoBehaviour
     private Vector2 lastMoveDirection = Vector2.zero; // Last movement direction
     private float attackTimer = 0f;                  // Timer to handle attack cooldown
 
-    private void Update()
+    private bool canAttack = true; // Flag to track whether the player can attack
+
+    // List of scenes where the attack is disabled
+    private readonly string[] attackDisabledScenes = { "Shop", "Scene2", "Scene3" };
+
+    void Start()
+    {
+        CheckSceneForAttack();
+    }
+
+    void Update()
     {
         // Handle cooldown timer
         attackTimer -= Time.deltaTime;
@@ -19,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
         UpdateMoveDirection();
 
         // Attack when the attack key (spacebar) is pressed
-        if (Input.GetKeyDown(KeyCode.Space) && attackTimer <= 0f)
+        if (canAttack && Input.GetKeyDown(KeyCode.Space) && attackTimer <= 0f)
         {
             Attack();
             attackTimer = attackCooldown;
@@ -92,5 +103,36 @@ public class PlayerAttack : MonoBehaviour
         if (direction == (Vector2.up + Vector2.left).normalized) return 45f;      // Up-Left
 
         return 0f; // Default to facing up
+    }
+
+    // Method to check if the player is in a scene where attack should be disabled
+    private void CheckSceneForAttack()
+    {
+        // Get the current scene name
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        // Disable attack if the current scene is in the disabled list
+        canAttack = !System.Array.Exists(attackDisabledScenes, scene => scene == currentScene);
+
+        if (!canAttack)
+        {
+            Debug.Log($"Attack is disabled in the scene: {currentScene}");
+        }
+    }
+
+    // Optional: Update canAttack if the scene changes during runtime
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        CheckSceneForAttack();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
                         inventory.AddMaterial(materialDrop);
                     }
 
-                    Debug.Log($"Dropped {dropQuantity} {materialDrop.materialName} into player's inventory.");
+                    Debug.Log($"Dropped {dropQuantity} {materialDrop.materialName}.");
                 }
                 else
                 {
