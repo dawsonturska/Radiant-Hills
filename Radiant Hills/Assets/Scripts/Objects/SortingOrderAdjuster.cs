@@ -14,7 +14,7 @@ public class SortingOrderAdjuster : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.LogError("Player reference is missing!");
+            //Debug.LogError("Player reference is missing!");
             return;
         }
 

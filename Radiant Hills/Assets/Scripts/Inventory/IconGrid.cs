@@ -1,46 +1,40 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI; // For UI Image
 
 public class IconGrid : MonoBehaviour
 {
-    // These fields need to be public or serialized so they show up in the Inspector
-    public GameObject buttonPrefab; // Prefab for each icon button
-    public Transform gridPanel; // The parent object (GridPanel) where buttons will be added
-    public List<Sprite> iconSprites; // List of icons to be displayed in the grid
+    public GameObject slotPrefab; // The prefab for each inventory slot
+    public Transform gridContainer; // Container for the grid slots
+    public List<InventorySlot> inventorySlots = new List<InventorySlot>(); // Holds all the slots
+    public Inventory inventory; // Reference to the player's inventory
 
     void Start()
     {
         PopulateGrid();
     }
 
+    // This method will be used to update the grid
     public void PopulateGrid()
     {
-        // Clear existing buttons in the grid (optional)
-        foreach (Transform child in gridPanel)
+        // Clear the grid
+        foreach (Transform child in gridContainer)
         {
             Destroy(child.gameObject);
         }
 
-        // Loop through each icon in the iconSprites list and create a button
-        foreach (Sprite icon in iconSprites)
+        // Add the slots
+        foreach (var entry in inventory.materialQuantities)
         {
-            // Instantiate a button from the prefab
-            GameObject button = Instantiate(buttonPrefab, gridPanel);
+            MaterialType materialType = entry.Key;
+            int quantity = entry.Value;
 
-            // Set the icon image
-            button.GetComponentInChildren<Image>().sprite = icon;
-
-            // Add a listener for the button click event
-            Button btn = button.GetComponent<Button>();
-            btn.onClick.AddListener(() => OnIconClick(icon));
+            // Create a new slot for this item
+            GameObject slot = Instantiate(slotPrefab, gridContainer);
+            InventorySlot inventorySlot = slot.GetComponent<InventorySlot>();
+            inventorySlot.materialType = materialType; // Assign the material type
+            inventorySlot.quantity = quantity; // Assign the quantity
+            inventorySlot.UpdateSlot(); // Update the icon and overlay
         }
-    }
-
-    // Method to handle icon click
-    void OnIconClick(Sprite clickedIcon)
-    {
-        Debug.Log("Clicked on icon: " + clickedIcon.name);
-        // You can trigger actions based on the clicked icon here (e.g., show info, add to inventory, etc.)
     }
 }

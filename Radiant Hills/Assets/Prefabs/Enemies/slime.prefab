@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1467323764600555715}
   - component: {fileID: 4511295788237171924}
   - component: {fileID: 6961929652224740792}
+  - component: {fileID: -5237704367254901608}
   m_Layer: 7
   m_Name: slime
   m_TagString: Untagged
@@ -99,11 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6279b059ef4034cb11ddd291fe7a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   health: 20
-  player: {fileID: 1097892556209353668, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+  materialDrop: {fileID: 0}
+  minDropQuantity: 1
+  maxDropQuantity: 5
+  moveSpeed: 3
   minDistance: 0.5
   aggroRange: 20
+  aggroDelay: 1
 --- !u!61 &4511295788237171924
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,3 +180,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-5237704367254901608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2454457660075915286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372ea55e84643ee4b84d09ef1214463f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}

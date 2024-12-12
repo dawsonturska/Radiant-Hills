@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Slime Bits
   m_EditorClassIdentifier: 
   materialName: Slime Bits
-  materialIcon: {fileID: 21300000, guid: 3587d20d60cc76540be77cca882f0a15, type: 3}
+  icon: {fileID: 21300000, guid: 3587d20d60cc76540be77cca882f0a15, type: 3}

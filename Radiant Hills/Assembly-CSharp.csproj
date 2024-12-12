@@ -61,10 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Objects\Portal.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Player\DisplayInstructions.cs" />
     <Compile Include="Assets\Scripts\Inventory\IconGrid.cs" />
     <Compile Include="Assets\Scripts\Player\AttackCollision.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemySorting.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingZone.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />

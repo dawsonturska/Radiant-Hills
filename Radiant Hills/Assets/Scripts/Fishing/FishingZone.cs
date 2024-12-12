@@ -1,9 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FishingZone : MonoBehaviour
 {
     public KeyCode interactKey = KeyCode.E; // Key to press for interaction
     public GameObject indicatorPrefab; // The prefab to display when the player enters the fishing zone
+
+    // Define a list of materials to be caught
+    public List<MaterialType> materialTypes; // Define this list in the inspector for available items to catch
 
     private bool isPlayerInZone = false; // Track if the player is inside the zone
     private GameObject activeIndicator; // Reference to the active indicator instance
@@ -32,11 +36,12 @@ public class FishingZone : MonoBehaviour
 
     void Update()
     {
-        // Only allow interaction if the player is in the zone and presses the interaction key
-        if (isPlayerInZone && Input.GetKeyDown(interactKey))
+        // Only allow interaction if the player is in the zone, not fishing, and presses the interaction key
+        if (isPlayerInZone && !FishingManager.Instance.IsFishing && Input.GetKeyDown(interactKey))
         {
             Debug.Log("Player pressed E to start fishing.");
             FishingManager.Instance.StartFishing();
+            HideIndicator(); // Hide the indicator when the fishing starts
         }
     }
 
