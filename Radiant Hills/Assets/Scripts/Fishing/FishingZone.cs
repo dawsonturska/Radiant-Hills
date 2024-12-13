@@ -31,6 +31,13 @@ public class FishingZone : MonoBehaviour
             isPlayerInZone = false;
             HideIndicator();
             Debug.Log("Player exited the fishing zone.");
+
+            // Stop fishing if the player is currently fishing
+            if (FishingManager.Instance.IsFishing)
+            {
+                FishingManager.Instance.StopFishing();
+                Debug.Log("Player stopped fishing because they exited the fishing zone.");
+            }
         }
     }
 

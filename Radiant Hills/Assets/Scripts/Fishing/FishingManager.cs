@@ -15,6 +15,8 @@ public class FishingManager : MonoBehaviour
     public GameObject player; // Reference to the player
     public FishingZone fishingZone; // Reference to the fishing zone
 
+    private Coroutine fishingCoroutine; // Reference to the active fishing coroutine
+
     public bool IsFishing => isFishing;
 
     void Awake()
@@ -34,8 +36,26 @@ public class FishingManager : MonoBehaviour
         if (!isFishing)
         {
             isFishing = true;
-            StartCoroutine(FishingCycle());
+            fishingCoroutine = StartCoroutine(FishingCycle());
             Debug.Log("Fishing started.");
+        }
+    }
+
+    public void StopFishing()
+    {
+        if (isFishing)
+        {
+            isFishing = false;
+            isWindowOpen = false;
+
+            if (fishingCoroutine != null)
+            {
+                StopCoroutine(fishingCoroutine);
+                fishingCoroutine = null;
+            }
+
+            HideExclamationMark();
+            Debug.Log("Fishing stopped.");
         }
     }
 
@@ -45,6 +65,9 @@ public class FishingManager : MonoBehaviour
         float fishingTime = Random.Range(fishingTimeMin, fishingTimeMax);
         yield return new WaitForSeconds(fishingTime);
 
+        // Check if fishing was stopped
+        if (!isFishing) yield break;
+
         // Show exclamation mark and allow player to catch the fish for 3 seconds
         ShowExclamationMark();
         isWindowOpen = true;
@@ -52,6 +75,12 @@ public class FishingManager : MonoBehaviour
         float catchWindowTimer = 0f;
         while (catchWindowTimer < catchWindowTime)
         {
+            if (!isFishing) // Stop the process if fishing was stopped
+            {
+                HideExclamationMark();
+                yield break;
+            }
+
             if (Input.GetKeyDown(KeyCode.E)) // Player pressed E to catch the fish
             {
                 CatchFish();
@@ -66,6 +95,7 @@ public class FishingManager : MonoBehaviour
         HideExclamationMark();
         isWindowOpen = false;
         isFishing = false;
+
         Debug.Log("Fishing failed. Trying again.");
         StartFishing(); // Restart the fishing cycle
     }
