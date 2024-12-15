@@ -1,22 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player; // The player object
-    public Vector3 offset; // The offset from the player
-    public float smoothSpeed = 0.125f; // How smoothly the camera follows
+    public Transform player; // Reference to the player's transform
+    public Vector3 offset; // Offset distance between the camera and the player
+    public float followSpeed = 10f; // Speed at which the camera follows the player
 
-    void LateUpdate()
+    private Camera mainCamera;
+
+    void Start()
     {
-        // Desired position of the camera based on player position and offset
-        Vector3 desiredPosition = player.position + offset;
+        // Ensure the player is assigned
+        if (player == null)
+        {
+            Debug.LogError("Player reference is missing in CameraFollow.");
+            return;
+        }
 
-        // Smoothly move from current position to desired position
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        // Get the main camera if it's not assigned
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
 
-        // Set the camera's position
-        transform.position = smoothedPosition;
+        if (mainCamera != null)
+        {
+            // Set the camera's initial position relative to the player
+            mainCamera.transform.SetParent(player);
+            mainCamera.transform.localPosition = offset; // Apply the offset in local space
+            mainCamera.transform.localRotation = Quaternion.identity; // Optional: Reset rotation
+        }
+        else
+        {
+            Debug.LogError("No main camera found!");
+        }
+    }
+
+    void Update()
+    {
+        // Make sure the camera follows the player with a smooth transition
+        if (mainCamera != null)
+        {
+            Vector3 targetPosition = player.position + offset; // Calculate target position
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetPosition, followSpeed * Time.deltaTime);
+        }
+    }
+
+    // Method to dynamically change the player target
+    public void SetTarget(Transform newPlayer)
+    {
+        player = newPlayer;
+
+        if (mainCamera != null)
+        {
+            mainCamera.transform.SetParent(player); // Reattach camera to the new player
+            mainCamera.transform.localPosition = offset; // Reset position relative to new player
+        }
     }
 }

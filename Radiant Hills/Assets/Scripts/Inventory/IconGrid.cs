@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // If you use TextMeshPro for text components
-using System.Collections.Generic; // Add this to use Queue<T>
+using TMPro;
+using System.Collections.Generic;
 
 public class IconGrid : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class IconGrid : MonoBehaviour
         // Ensure the inventory reference is set
         if (inventory == null)
         {
-            inventory = GetComponentInParent<Inventory>(); // Find Inventory in parent if not set
+            inventory = FindObjectOfType<Inventory>(); // Find Inventory in the scene if not set
         }
 
         // Initially populate the grid with empty slots
@@ -140,24 +140,16 @@ public class IconGrid : MonoBehaviour
         }
     }
 
-    // Returns an icon back to the pool for reuse
-    public void ReturnIconToPool(GameObject icon)
-    {
-        icon.SetActive(false); // Deactivate the icon
-        iconPool.Enqueue(icon); // Add it back to the pool
-    }
-
-    // Returns an empty slot back to the pool for reuse
-    public void ReturnEmptySlotToPool(GameObject emptySlot)
-    {
-        emptySlot.SetActive(false); // Deactivate the empty slot
-        emptySlotPool.Enqueue(emptySlot); // Add it back to the pool
-    }
-
     // Optional: Handle item button click (if you want to add functionality to clicking an item)
     private void OnItemClicked(MaterialType material)
     {
         // Add custom behavior when an item is clicked, such as using the item
         Debug.Log("Item clicked: " + material.name);
+    }
+
+    // New UpdateUI method to refresh the UI
+    public void UpdateUI()
+    {
+        PopulateGrid(); // Re-populate the grid with updated inventory data
     }
 }

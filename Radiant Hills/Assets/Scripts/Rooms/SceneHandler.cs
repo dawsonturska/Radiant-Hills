@@ -1,60 +1,32 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
-    public static SceneHandler Instance;
-
-    public PickupableObject[] pickupableObjects; // Reference to all pickupable objects in the scene
-    public BreakableObject[] breakableObjects;   // Reference to all breakable objects
-    public FishingManager fishingManager;         // Reference to the FishingManager
-    public FishingZone[] fishingZones;            // Reference to all fishing zones
-    public Inventory playerInventory;             // Reference to the player's inventory
-
-    private void Awake()
+    void OnEnable()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to the sceneLoaded event
     }
 
-    public void UpdatePickupableObject(PickupableObject obj)
+    void OnDisable()
     {
-        // Example: Update material yield or other properties of the object
-        obj.materialYield += 1; // Increase material yield as an example
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe from the event when this object is disabled
     }
 
-    public void UpdateBreakableObject(BreakableObject obj)
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Example: Update health or other properties of the breakable object
-        obj.health -= 5; // Reduce health for example
-    }
-
-    public void StartFishing()
-    {
-        if (fishingManager != null && !fishingManager.IsFishing)
+        if (scene.name == "SecondScene") // Replace with your actual second scene name
         {
-            fishingManager.StartFishing(); // Start fishing
-        }
-    }
-
-    public void StopFishing()
-    {
-        if (fishingManager != null && fishingManager.IsFishing)
-        {
-            fishingManager.StopFishing(); // Stop fishing
-        }
-    }
-
-    public void UpdateInventory(MaterialType material, int quantity)
-    {
-        if (playerInventory != null)
-        {
-            playerInventory.AddMaterial(material, quantity); // Update inventory with new materials
+            Debug.Log("Second scene loaded. Looking for player...");
+            GameObject player = GameObject.FindWithTag("Player"); // Find player in the new scene
+            if (player != null)
+            {
+                Debug.Log("Player found in new scene.");
+            }
+            else
+            {
+                Debug.LogWarning("Player not found in new scene.");
+            }
         }
     }
 }
