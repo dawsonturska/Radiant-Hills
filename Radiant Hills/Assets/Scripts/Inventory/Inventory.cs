@@ -31,24 +31,24 @@ public class Inventory : MonoBehaviour
     }
 
     // Adds a material to the inventory
-    public void AddMaterial(MaterialType materialType)
+    public void AddMaterial(MaterialType materialType, int quantity)
     {
         if (materialQuantities.ContainsKey(materialType))
         {
-            materialQuantities[materialType]++;
+            materialQuantities[materialType] += quantity; // Add the specified quantity
         }
         else
         {
-            materialQuantities[materialType] = 1;
+            materialQuantities[materialType] = quantity; // Initialize with the specified quantity
         }
 
         // Debugging: Log when material is added
-        Debug.Log("Material added: " + materialType.name + ", Quantity: " + materialQuantities[materialType]);
+        Debug.Log($"Material added: {materialType.name}, Quantity: {materialQuantities[materialType]}");
 
         // Ensure that the grid is populated again after adding the material
         if (iconGrid != null)
         {
-            iconGrid.PopulateGrid(); // Update the grid
+            iconGrid.PopulateGrid(); // Update the grid with the new inventory state
         }
         else
         {
@@ -56,6 +56,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // Update method to handle key press for toggling inventory grid visibility
     private void Update()
     {
         // Toggle visibility of the inventory panel and IconGrid on "I" key press
@@ -73,10 +74,14 @@ public class Inventory : MonoBehaviour
             {
                 iconGrid.gameObject.SetActive(isGridOpen); // Show or hide the IconGrid
 
-                // Refresh the grid when it's opened
+                // Only refresh the grid when it's opened and hasn't been refreshed recently
                 if (isGridOpen)
                 {
-                    iconGrid.PopulateGrid(); // Refresh the grid
+                    // To prevent unnecessary refreshing of the grid, ensure PopulateGrid is called only when it's needed
+                    if (!iconGrid.IsGridPopulated)
+                    {
+                        iconGrid.PopulateGrid(); // Refresh the grid
+                    }
                 }
             }
         }

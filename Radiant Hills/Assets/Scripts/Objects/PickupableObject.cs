@@ -1,11 +1,12 @@
 using UnityEngine;
 
+
 public class PickupableObject : MonoBehaviour
 {
-    public MaterialType materialType; // The type of material this object represents
-    public int materialYield = 1; // The amount of material this object yields
-    public GameObject indicatorPrefab; // The prefab to display above the object
-    private GameObject activeIndicator; // Reference to the active indicator instance
+    public MaterialType materialType;
+    public int materialYield = 1;
+    public GameObject indicatorPrefab;
+    private GameObject activeIndicator;
     private bool isInRange = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,26 +42,18 @@ public class PickupableObject : MonoBehaviour
 
         if (inventory != null && materialType != null)
         {
-            for (int i = 0; i < materialYield; i++) // Add the material multiple times based on yield
-            {
-                inventory.AddMaterial(materialType);
-            }
-
+            inventory.AddMaterial(materialType, materialYield);
             Debug.Log($"Picked up {materialYield} x {materialType.materialName}");
-            Destroy(gameObject); // Destroy the pickup object
-        }
-        else
-        {
-            Debug.LogError("Inventory or MaterialType is missing!");
+            Destroy(gameObject);
         }
     }
 
     private void ShowIndicator()
     {
-        if (indicatorPrefab != null && activeIndicator == null) // Ensure no duplicate indicators
+        if (indicatorPrefab != null && activeIndicator == null)
         {
             activeIndicator = Instantiate(indicatorPrefab, transform.position + Vector3.up, Quaternion.identity);
-            activeIndicator.transform.SetParent(transform); // Make the indicator a child of the object
+            activeIndicator.transform.SetParent(transform);
         }
     }
 

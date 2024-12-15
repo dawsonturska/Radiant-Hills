@@ -58,15 +58,13 @@ public class BreakableObject : MonoBehaviour
 
         // Add materials to player's inventory
         GameObject player = GameObject.FindWithTag("Player");
-        Inventory inventory = player.GetComponent<Inventory>();
+        Inventory inventory = player?.GetComponent<Inventory>();
 
         if (inventory != null && materialType != null)
         {
-            for (int i = 0; i < materialYield; i++)
-            {
-                inventory.AddMaterial(materialType);
-            }
-            //Debug.Log($"Collected {materialYield} {materialType.materialName}(s)");
+            // Pass the quantity (materialYield) to the AddMaterial method
+            inventory.AddMaterial(materialType, materialYield);
+            Debug.Log($"Collected {materialYield} {materialType.materialName}(s)");
         }
         else
         {

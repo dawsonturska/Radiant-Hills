@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; // If you use TextMeshPro for text components
+using System.Collections.Generic; // Add this to use Queue<T>
 
 public class IconGrid : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class IconGrid : MonoBehaviour
     public Transform gridContainer; // Parent container for the icons
     public Inventory inventory; // Reference to the Inventory script
     public int maxSlots = 20; // Maximum number of slots
+
+    private Queue<GameObject> iconPool = new Queue<GameObject>(); // Pool for item icons
+    private Queue<GameObject> emptySlotPool = new Queue<GameObject>(); // Pool for empty slots
+    public bool IsGridPopulated { get; private set; } = false; // Track if the grid has been populated
 
     void Start()
     {
@@ -28,11 +33,8 @@ public class IconGrid : MonoBehaviour
         // Debugging: Log the number of materials in the inventory
         Debug.Log("Populating grid with " + inventory.materialQuantities.Count + " materials");
 
-        // Clear any existing icons or empty slots in the grid
-        foreach (Transform child in gridContainer)
-        {
-            Destroy(child.gameObject); // Destroy existing child objects (icons or empty slots)
-        }
+        // Clear existing icons or empty slots
+        ClearGrid();
 
         // Add new item icons based on the inventory materials
         int slotIndex = 0;
@@ -41,8 +43,8 @@ public class IconGrid : MonoBehaviour
             MaterialType material = entry.Key;
             int quantity = entry.Value;
 
-            // Create a new icon for this material (button prefab)
-            GameObject icon = Instantiate(itemIconPrefab, gridContainer);
+            // Create or reuse an icon for this material
+            GameObject icon = GetIconFromPool();
             TextMeshProUGUI textMeshProComponent = icon.GetComponentInChildren<TextMeshProUGUI>();
 
             if (textMeshProComponent != null)
@@ -68,6 +70,9 @@ public class IconGrid : MonoBehaviour
                         Debug.LogWarning("Material icon is missing for " + material.name);
                     }
                 }
+
+                // You can optionally add functionality here, such as:
+                // iconButton.onClick.AddListener(() => OnItemClicked(material)); 
             }
 
             slotIndex++; // Increment the slot index for the next material
@@ -82,8 +87,77 @@ public class IconGrid : MonoBehaviour
         // If there are still empty slots left, add them to the grid
         while (slotIndex < maxSlots)
         {
-            Instantiate(emptySlotPrefab, gridContainer); // Create an empty slot for each remaining slot
+            GameObject emptySlot = GetEmptySlotFromPool();
+            emptySlot.SetActive(true); // Activate the empty slot
             slotIndex++;
         }
+
+        // Set the grid as populated
+        IsGridPopulated = true;
+    }
+
+    private void ClearGrid()
+    {
+        // Disable all existing icons and empty slots before populating the grid
+        foreach (Transform child in gridContainer)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        // Mark the grid as not populated
+        IsGridPopulated = false;
+    }
+
+    // Reuses an icon from the pool, or instantiates one if none are available
+    private GameObject GetIconFromPool()
+    {
+        if (iconPool.Count > 0)
+        {
+            GameObject icon = iconPool.Dequeue();
+            icon.SetActive(true);
+            return icon;
+        }
+        else
+        {
+            // Instantiate a new icon if the pool is empty
+            return Instantiate(itemIconPrefab, gridContainer);
+        }
+    }
+
+    // Reuses an empty slot from the pool, or instantiates one if none are available
+    private GameObject GetEmptySlotFromPool()
+    {
+        if (emptySlotPool.Count > 0)
+        {
+            GameObject emptySlot = emptySlotPool.Dequeue();
+            emptySlot.SetActive(true);
+            return emptySlot;
+        }
+        else
+        {
+            // Instantiate a new empty slot if the pool is empty
+            return Instantiate(emptySlotPrefab, gridContainer);
+        }
+    }
+
+    // Returns an icon back to the pool for reuse
+    public void ReturnIconToPool(GameObject icon)
+    {
+        icon.SetActive(false); // Deactivate the icon
+        iconPool.Enqueue(icon); // Add it back to the pool
+    }
+
+    // Returns an empty slot back to the pool for reuse
+    public void ReturnEmptySlotToPool(GameObject emptySlot)
+    {
+        emptySlot.SetActive(false); // Deactivate the empty slot
+        emptySlotPool.Enqueue(emptySlot); // Add it back to the pool
+    }
+
+    // Optional: Handle item button click (if you want to add functionality to clicking an item)
+    private void OnItemClicked(MaterialType material)
+    {
+        // Add custom behavior when an item is clicked, such as using the item
+        Debug.Log("Item clicked: " + material.name);
     }
 }
