@@ -7,6 +7,7 @@ TagManager:
   - Room
   - ExclamationMark
   - PlayerWeapon
+  - Boss
   layers:
   - Default
   - TransparentFX

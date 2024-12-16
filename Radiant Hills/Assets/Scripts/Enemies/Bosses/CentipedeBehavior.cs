@@ -1,30 +1,60 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class CentipedeBehavior : MonoBehaviour
 {
     public Transform player; // Reference to the player's position
     public float aggroRange = 20f; // Aggro range for the boss
-    public float teleportCooldown = 5f; // Time between teleports (if desired)
-    public float teleportDistance = 10f; // Maximum distance for teleportation
+    public float fireRate = 1f; // Time between projectile shots
+    public float teleportCooldown = 5f; // Time between teleports
+    public float teleportDistance = 10f; // Distance for teleportation (if desired)
     public GameObject projectilePrefab; // The projectile prefab
     public Transform projectileSpawnPoint; // The point where the projectile will spawn
-    public float fireRate = 1f; // Time between projectile shots
 
-    // Trapezoidal room boundaries
-    public float minY = -5f; // Minimum Y position (bottom of the room)
-    public float maxY = 5f;  // Maximum Y position (top of the room)
-    public float minWidth = 2f; // Minimum width at the bottom of the room
-    public float maxWidth = 8f; // Maximum width at the top of the room
+    public List<Transform> teleportPoints; // List of teleport points for the boss to choose from
+    public Transform teleportPoint1; // Reference to TeleportPoint1 (for initial teleport)
 
-    private float teleportTimer = 0f;
-    private float fireRateTimer = 0f;
+    private float fireRateTimer = 0f; // Timer for managing fire rate
     private bool isAggroed = false; // Track if the player is within aggro range
-    private int projectileCount = 0; // Count of projectiles fired
+    private List<GameObject> activeProjectiles = new List<GameObject>(); // List of active projectiles
+    private Collider2D centipedeCollider; // Reference to the centipede's collider
+    private float teleportCooldownTimer = 0f; // Timer for managing teleport cooldowns
+    private Transform lastTeleportPoint; // Track the last teleport point
+
+    void Start()
+    {
+        centipedeCollider = GetComponent<Collider2D>();
+
+        if (player == null)
+        {
+            Debug.LogError("Player reference is not assigned!");
+        }
+
+        if (projectilePrefab == null || projectileSpawnPoint == null)
+        {
+            Debug.LogError("Projectile prefab or spawn point is not assigned!");
+        }
+
+        // Initial teleport to TeleportPoint1 at the start of the game
+        if (teleportPoint1 != null)
+        {
+            transform.position = teleportPoint1.position;
+            lastTeleportPoint = teleportPoint1; // Set last teleport point to TeleportPoint1
+            Debug.Log("Centipede teleported to initial point: " + teleportPoint1.position);
+        }
+        else
+        {
+            Debug.LogError("TeleportPoint1 is not assigned!");
+        }
+    }
 
     void Update()
     {
+        if (player == null) return; // Do nothing if the player is missing
+
         // Check if the player is within aggro range
-        if (Vector3.Distance(transform.position, player.position) <= aggroRange)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer <= aggroRange)
         {
             if (!isAggroed)
             {
@@ -44,87 +74,106 @@ public class CentipedeBehavior : MonoBehaviour
         // Handle teleportation and projectile firing only if the boss is aggroed
         if (isAggroed)
         {
-            fireRateTimer += Time.deltaTime;
-            if (fireRateTimer >= fireRate)
-            {
-                FireProjectileAtPlayer();
-                fireRateTimer = 0f; // Reset the fire rate timer
-            }
+            HandleProjectileFiring();
+            HandleTeleportation();
         }
 
         // Ensure the Z position is locked to its current value during movement
-        Vector3 lockedPosition = transform.position;
-        lockedPosition.z = 0f; // Lock Z to 0 or keep it fixed as needed
-        transform.position = lockedPosition;
+        LockZPosition();
     }
 
-    // Handle boss behavior when the player is in aggro range
     private void OnAggroPlayer()
     {
         Debug.Log("Player entered aggro range. Centipede is now alerted!");
     }
 
-    // Handle boss behavior when the player is no longer in aggro range
     private void OnLoseAggro()
     {
         Debug.Log("Player left aggro range. Centipede is no longer alerted.");
     }
 
-    // Teleport to a random location within the room boundaries
-    void TeleportToRandomLocation()
+    private void HandleProjectileFiring()
     {
-        // Get a random position within the specified teleport distance
-        Vector3 randomDirection = Random.insideUnitSphere * teleportDistance;
-        randomDirection.y = Mathf.Clamp(randomDirection.y, minY, maxY); // Ensure Y is within the room's height
-
-        // Calculate the X position based on Y to ensure it's within the trapezoidal boundaries
-        float widthAtY = GetWidthAtY(randomDirection.y);
-        randomDirection.x = Mathf.Clamp(randomDirection.x, -widthAtY / 2f, widthAtY / 2f); // Ensure X is within the trapezoidal bounds
-
-        // Lock the Z position to its current value (you can change this to a fixed value like 0f if desired)
-        randomDirection.z = transform.position.z;
-
-        // Set the new position
-        transform.position += randomDirection;
-
-        Debug.Log("Centipede Teleported to: " + transform.position);
+        fireRateTimer += Time.deltaTime;
+        if (fireRateTimer >= fireRate)
+        {
+            FireProjectileAtPlayer();
+            fireRateTimer = 0f; // Reset the fire rate timer
+        }
     }
 
-    // Calculate the width of the room at a given Y position
-    float GetWidthAtY(float y)
+    private void HandleTeleportation()
     {
-        // Linear interpolation between min and max width based on Y position
-        float t = Mathf.InverseLerp(minY, maxY, y); // Normalize Y to a 0-1 range
-        return Mathf.Lerp(minWidth, maxWidth, t); // Linearly interpolate between minWidth and maxWidth
+        teleportCooldownTimer += Time.deltaTime;
+        if (teleportCooldownTimer >= teleportCooldown && activeProjectiles.Count >= 3)
+        {
+            TeleportToRandomLocation();
+            teleportCooldownTimer = 0f; // Reset teleport cooldown timer
+        }
     }
 
-    // Fire projectiles at the player
+    private void LockZPosition()
+    {
+        Vector3 lockedPosition = transform.position;
+        lockedPosition.z = 0f; // Lock Z to 0 or keep it fixed as needed
+        transform.position = lockedPosition;
+    }
+
     void FireProjectileAtPlayer()
     {
-        if (player != null && projectilePrefab != null && projectileSpawnPoint != null)
+        if (projectilePrefab == null || projectileSpawnPoint == null) return;
+
+        Vector3 directionToPlayer = (player.position - projectileSpawnPoint.position).normalized;
+        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+
+        // Assign references to the projectile
+        Projectile projScript = projectile.GetComponent<Projectile>();
+        if (projScript != null)
         {
-            // Calculate the direction to the player
-            Vector3 directionToPlayer = (player.position - projectileSpawnPoint.position).normalized;
-
-            // Instantiate the projectile and set its direction
-            GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.velocity = directionToPlayer * 5f; // Adjust speed as needed
-            }
-
-            Debug.Log("Centipede Fired a Projectile!");
-
-            // Increment projectile count
-            projectileCount++;
-
-            // Check if 3 projectiles have been fired and teleport if so
-            if (projectileCount >= 3)
-            {
-                TeleportToRandomLocation();
-                projectileCount = 0; // Reset the projectile counter
-            }
+            projScript.boss = this.transform;
+            projScript.centipedeBehavior = this;
+            projScript.IgnoreBossCollider(centipedeCollider, true); // Ignore boss collider initially
         }
+
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = directionToPlayer * 5f; // Adjust speed as needed
+        }
+
+        activeProjectiles.Add(projectile); // Keep track of active projectiles
+    }
+
+    public void TeleportToRandomLocation()
+    {
+        if (teleportPoints.Count == 0)
+        {
+            Debug.LogWarning("No teleport points assigned!");
+            return;
+        }
+
+        // Exclude the last teleport point to avoid teleporting to the same spot twice
+        List<Transform> availablePoints = new List<Transform>(teleportPoints);
+        availablePoints.Remove(lastTeleportPoint);
+
+        // Choose a random teleport point from the remaining points
+        int randomIndex = Random.Range(0, availablePoints.Count);
+        Transform selectedTeleportPoint = availablePoints[randomIndex];
+
+        if (selectedTeleportPoint != null)
+        {
+            transform.position = selectedTeleportPoint.position;
+            lastTeleportPoint = selectedTeleportPoint; // Update the last teleport point
+            Debug.Log("Centipede teleported to: " + selectedTeleportPoint.position);
+        }
+        else
+        {
+            Debug.LogWarning("Selected teleport point is null!");
+        }
+    }
+
+    public void OnProjectileDestroyed(GameObject projectile)
+    {
+        activeProjectiles.Remove(projectile); // Remove the destroyed projectile from the active list
     }
 }

@@ -2,22 +2,36 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float lifetime = 5f; // Time until the projectile is destroyed if it doesn't hit anything
-    public float damage = 10f; // Amount of damage the projectile does
+    public float lifetime = 5f; // Time until the projectile is destroyed
+    public float damage = 10f; // Damage dealt by the projectile
     public float moveSpeed = 5f; // Speed of the projectile
-    public float hoverDuration = 1f; // Time before projectile starts moving towards player
-    public Transform boss; // The boss that the projectile will return to
+    public float hoverDuration = 1f; // Time before moving towards the player
+    public Transform boss; // Reference to the boss (could also be set via Inspector)
+    public CentipedeBehavior centipedeBehavior; // Reference to CentipedeBehavior
 
-    private Transform player; // Reference to the player's transform
-    private bool isLaunched = false; // Check if the projectile has been launched
-    private bool isReflected = false; // Check if the projectile has been reflected
-    private float hoverTimer = 0f; // Timer to keep track of hover time
-    private Rigidbody2D rb; // Rigidbody of the projectile for movement control
+    private Transform player;
+    private bool isLaunched = false; // If the projectile is moving towards the player
+    private bool isReflected = false; // If the projectile is reflected back to the boss
+    private float hoverTimer = 0f; // Timer for the hover phase
+    private Rigidbody2D rb;
+    private Collider2D projectileCollider;
 
     void Start()
     {
-        // Find the player transform (assuming it is tagged as "Player")
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (boss == null)
+        {
+            // Attempt to get the CentipedeBehavior if not manually assigned
+            boss = transform.root; // Assuming the boss is the parent of the projectile
+            centipedeBehavior = boss.GetComponent<CentipedeBehavior>();
+
+            if (centipedeBehavior == null)
+            {
+                Debug.LogError("CentipedeBehavior not found on the boss.");
+                return;
+            }
+        }
+
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         if (player == null)
         {
@@ -25,80 +39,124 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        // Destroy the projectile after a certain lifetime
-        Destroy(gameObject, lifetime);
-
-        // Get the Rigidbody2D for later velocity adjustments
         rb = GetComponent<Rigidbody2D>();
+        projectileCollider = GetComponent<Collider2D>();
+
+        // Ignore collision with the boss collider immediately
+        if (boss != null)
+        {
+            Collider2D bossCollider = boss.GetComponent<Collider2D>();
+            if (bossCollider != null)
+            {
+                IgnoreBossCollider(bossCollider, true);
+            }
+        }
+
+        // Schedule destruction after the projectile's lifetime
+        Invoke(nameof(DestroyProjectile), lifetime);
     }
 
     void Update()
     {
-        // Hovering for the first 1 second before the projectile launches
         if (!isLaunched)
         {
+            // Hover phase before launching towards the player
             hoverTimer += Time.deltaTime;
 
             if (hoverTimer >= hoverDuration)
             {
-                isLaunched = true; // Start moving the projectile
+                isLaunched = true;
             }
         }
         else if (!isReflected)
         {
-            // Move the projectile toward the player initially
+            // Move towards the player
             Vector3 directionToPlayer = (player.position - transform.position).normalized;
-            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            rb.velocity = directionToPlayer * moveSpeed;
         }
     }
 
-    // Trigger for player's attack (weapon is a trigger collider)
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerWeapon") && !isReflected)
         {
-            // If the player hits the projectile with their weapon, send it back to the boss
-            if (boss != null)
-            {
-                ReflectProjectileBackToBoss();
-            }
+            ReflectProjectileBackToBoss();
         }
     }
 
-    // Handle collisions with the player or other objects (non-trigger collider)
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Handle collision logic with non-trigger projectiles
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Deal damage to the player (optional)
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-            Destroy(gameObject); // Destroy the projectile after it hits the player
+            // Apply damage to the player
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
+
+            DestroyProjectile();
+        }
+        else if (collision.gameObject.CompareTag("Boss") && isReflected)
+        {
+            // Logic for hitting the boss
+            Debug.Log("Reflected projectile hit the boss!");
+
+            // Notify the CentipedeBehavior to teleport
+            CentipedeBehavior centipedeBehavior = collision.gameObject.GetComponent<CentipedeBehavior>();
+            if (centipedeBehavior != null)
+            {
+                centipedeBehavior.TeleportToRandomLocation();
+            }
+
+            DestroyProjectile();
         }
         else
         {
-            Destroy(gameObject); // Destroy the projectile if it hits anything else
+            DestroyProjectile();
         }
     }
 
-    // Reflect the projectile back to the boss
     private void ReflectProjectileBackToBoss()
     {
-        // Set the reflected flag
         isReflected = true;
 
-        // Calculate the direction to the boss (projectile moves directly towards the boss)
+        // Change direction towards the boss
         Vector3 directionToBoss = (boss.position - transform.position).normalized;
-
-        // Speed multiplier for reflection (adjust this to your desired speed)
-        float reflectionSpeedMultiplier = 2f; // 2x the original speed, for example
-
-        // Set velocity to reflect the projectile back to the boss, with increased speed
         if (rb != null)
         {
-            rb.velocity = directionToBoss * moveSpeed * reflectionSpeedMultiplier; // Reflect directly towards the boss
+            rb.velocity = directionToBoss * moveSpeed * 2f; // Reflected speed is doubled
+        }
+
+        // Allow collision with the boss during reflection
+        if (boss != null)
+        {
+            Collider2D bossCollider = boss.GetComponent<Collider2D>();
+            if (bossCollider != null)
+            {
+                IgnoreBossCollider(bossCollider, false);
+            }
         }
 
         Debug.Log("Projectile reflected back to the boss!");
+    }
+
+    public void IgnoreBossCollider(Collider2D bossCollider, bool ignore)
+    {
+        if (projectileCollider != null && bossCollider != null)
+        {
+            Physics2D.IgnoreCollision(projectileCollider, bossCollider, ignore);
+        }
+    }
+
+    private void DestroyProjectile()
+    {
+        // Notify the boss that the projectile was destroyed
+        if (centipedeBehavior != null)
+        {
+            centipedeBehavior.OnProjectileDestroyed(gameObject);
+        }
+
+        Destroy(gameObject);
     }
 }
