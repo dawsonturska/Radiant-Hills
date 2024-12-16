@@ -101,13 +101,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  materialDrop: {fileID: 0}
+  materialDrop: {fileID: 11400000, guid: af4423af402bf1d42a5a4e63768c3618, type: 2}
   minDropQuantity: 1
   maxDropQuantity: 5
   moveSpeed: 3
   minDistance: 0.5
   aggroRange: 20
   aggroDelay: 1
+  damageAmount: 10
+  damageInterval: 2
 --- !u!61 &4511295788237171924
 BoxCollider2D:
   m_ObjectHideFlags: 0

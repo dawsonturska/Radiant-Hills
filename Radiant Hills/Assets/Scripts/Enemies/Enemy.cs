@@ -17,12 +17,19 @@ public class Enemy : MonoBehaviour
     private bool isInAggroRange = false; // Flag to track if the player is in aggro range
     private bool canMove = true; // Flag to track if the enemy can move
 
-    private void Start()
+    // References to player health
+    private PlayerHealth playerHealth;
+
+    void Start()
     {
         player = GameObject.FindWithTag("Player"); // Find player by tag
+        if (player != null)
+        {
+            playerHealth = player.GetComponent<PlayerHealth>(); // Get the PlayerHealth component
+        }
     }
 
-    private void Update()
+    void Update()
     {
         if (player != null)
         {
@@ -95,5 +102,18 @@ public class Enemy : MonoBehaviour
             Debug.LogWarning("MaterialType is not set for this enemy.");
         }
     }
+
+    // Change from OnTriggerEnter2D to OnCollisionEnter2D for non-trigger colliders
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collision is with the player
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player hit by enemy, applying damage.");
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(10f); // Adjust damage as needed
+            }
+        }
+    }
 }
-// test

@@ -61,6 +61,7 @@ public class FishingManager : MonoBehaviour
 
     private IEnumerator FishingCycle()
     {
+        // Randomly select a fishing time
         float fishingTime = Random.Range(fishingTimeMin, fishingTimeMax);
         yield return new WaitForSeconds(fishingTime);
 
@@ -69,6 +70,7 @@ public class FishingManager : MonoBehaviour
         ShowExclamationMark();
         isWindowOpen = true;
 
+        // Start the catch window timer
         float catchWindowTimer = 0f;
         while (catchWindowTimer < catchWindowTime)
         {
@@ -78,7 +80,7 @@ public class FishingManager : MonoBehaviour
                 yield break;
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E)) // Check for key press
             {
                 CatchFish();
                 yield break;
@@ -88,11 +90,13 @@ public class FishingManager : MonoBehaviour
             yield return null;
         }
 
+        // If the player didn't catch the fish, hide the exclamation mark and reset
         HideExclamationMark();
         isWindowOpen = false;
         isFishing = false;
 
         Debug.Log("Fishing failed. Trying again.");
+        // Automatically restart fishing if the fish wasn't caught
         StartFishing();
     }
 
@@ -121,23 +125,30 @@ public class FishingManager : MonoBehaviour
         isFishCaught = true;
         Debug.Log("Fish caught!");
         AddRandomMaterialToPlayer();
+        HideExclamationMark();  // Ensure the exclamation mark disappears
+        RestartFishingCycle();  // Restart the fishing cycle after catching the fish
     }
 
     private void AddRandomMaterialToPlayer()
     {
         if (fishingZone != null && fishingZone.materialTypes.Count > 0)
         {
+            // Select a random material
             MaterialType randomMaterial = fishingZone.materialTypes[Random.Range(0, fishingZone.materialTypes.Count)];
-            int randomQuantity = Random.Range(1, 4);
 
-            Debug.Log($"Player received: {randomQuantity} x {randomMaterial.name}");
+            // Add exactly 1 of that material
+            int quantityToAdd = 1;
+
+            Debug.Log($"Player received: {quantityToAdd} x {randomMaterial.name}");
 
             if (player != null)
             {
+                // Get the player's inventory
                 Inventory playerInventory = player.GetComponent<Inventory>();
                 if (playerInventory != null)
                 {
-                    playerInventory.AddMaterial(randomMaterial, randomQuantity);
+                    // Add the material to the player's inventory
+                    playerInventory.AddMaterial(randomMaterial, quantityToAdd);
                 }
                 else
                 {
@@ -145,5 +156,15 @@ public class FishingManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    // New function to handle restarting the fishing cycle
+    private void RestartFishingCycle()
+    {
+        // Stop the current fishing cycle
+        StopFishing();
+
+        // Start a new fishing cycle immediately
+        StartFishing();
     }
 }
