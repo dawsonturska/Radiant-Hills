@@ -21,6 +21,12 @@ public class CentipedeBehavior : MonoBehaviour
     private float teleportCooldownTimer = 0f; // Timer for managing teleport cooldowns
     private Transform lastTeleportPoint; // Track the last teleport point
 
+    // Reference to the boss's health
+    private BossHealth bossHealth;
+
+    // Reference to the health bar UI script
+    public BossHealthBarUI healthBarUI;
+
     void Start()
     {
         centipedeCollider = GetComponent<Collider2D>();
@@ -33,6 +39,13 @@ public class CentipedeBehavior : MonoBehaviour
         if (projectilePrefab == null || projectileSpawnPoint == null)
         {
             Debug.LogError("Projectile prefab or spawn point is not assigned!");
+        }
+
+        // Get the BossHealth component
+        bossHealth = GetComponent<BossHealth>();
+        if (bossHealth == null)
+        {
+            Debug.LogError("BossHealth component is missing on this boss!");
         }
 
         // Initial teleport to TeleportPoint1 at the start of the game
@@ -85,11 +98,23 @@ public class CentipedeBehavior : MonoBehaviour
     private void OnAggroPlayer()
     {
         Debug.Log("Player entered aggro range. Centipede is now alerted!");
+
+        // Show the health bar when aggroed
+        if (healthBarUI != null)
+        {
+            healthBarUI.ToggleHealthBar(true);
+        }
     }
 
     private void OnLoseAggro()
     {
         Debug.Log("Player left aggro range. Centipede is no longer alerted.");
+
+        // Hide the health bar when no longer aggroed
+        if (healthBarUI != null)
+        {
+            healthBarUI.ToggleHealthBar(false);
+        }
     }
 
     private void HandleProjectileFiring()
@@ -175,5 +200,18 @@ public class CentipedeBehavior : MonoBehaviour
     public void OnProjectileDestroyed(GameObject projectile)
     {
         activeProjectiles.Remove(projectile); // Remove the destroyed projectile from the active list
+    }
+
+    // Add this method to allow external damage interaction
+    public void TakeDamage(float damage)
+    {
+        if (bossHealth != null)
+        {
+            bossHealth.TakeDamage(damage); // Apply damage to the boss's health
+        }
+        else
+        {
+            Debug.LogError("BossHealth is not assigned.");
+        }
     }
 }

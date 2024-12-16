@@ -97,19 +97,31 @@ public class Projectile : MonoBehaviour
 
             DestroyProjectile();
         }
-        else if (collision.gameObject.CompareTag("Boss") && isReflected)
+        else if (collision.gameObject.CompareTag("Boss"))
         {
-            // Logic for hitting the boss
-            Debug.Log("Reflected projectile hit the boss!");
-
-            // Notify the CentipedeBehavior to teleport
-            CentipedeBehavior centipedeBehavior = collision.gameObject.GetComponent<CentipedeBehavior>();
-            if (centipedeBehavior != null)
+            if (isReflected)
             {
-                centipedeBehavior.TeleportToRandomLocation();
-            }
+                // Logic for hitting the boss after reflection
+                Debug.Log("Reflected projectile hit the boss!");
 
-            DestroyProjectile();
+                // Apply damage to the boss after reflection
+                CentipedeBehavior centipedeBehavior = collision.gameObject.GetComponent<CentipedeBehavior>();
+                if (centipedeBehavior != null)
+                {
+                    // Apply the damage to the boss
+                    centipedeBehavior.TakeDamage((int)damage); // Assuming the damage is castable to int
+                }
+
+                // Notify the CentipedeBehavior to teleport
+                centipedeBehavior.TeleportToRandomLocation();
+
+                DestroyProjectile();
+            }
+            else
+            {
+                // If the projectile hasn't been reflected yet, destroy it without damaging the boss
+                DestroyProjectile();
+            }
         }
         else
         {
