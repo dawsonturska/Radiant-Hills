@@ -2,13 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;  // Add this line for LINQ functionality
 
 public class IconGrid : MonoBehaviour
 {
     public GameObject itemIconPrefab; // Prefab for the item icon (button with text)
-    public GameObject emptySlotPrefab; // Prefab for the empty slot (used for empty slots)
+    public GameObject emptySlotPrefab; // Prefab for the empty slot
     public Transform gridContainer; // Parent container for the icons
     public Inventory inventory; // Reference to the Inventory script
+    public DisplayShelf displayShelf; // Reference to the DisplayShelf script
     public int maxSlots = 20; // Maximum number of slots
 
     private Queue<GameObject> iconPool = new Queue<GameObject>(); // Pool for item icons
@@ -21,6 +23,11 @@ public class IconGrid : MonoBehaviour
         if (inventory == null)
         {
             inventory = FindObjectOfType<Inventory>(); // Find Inventory in the scene if not set
+        }
+
+        if (displayShelf == null)
+        {
+            displayShelf = FindObjectOfType<DisplayShelf>(); // Find DisplayShelf in the scene if not set
         }
 
         // Initially populate the grid with empty slots
@@ -71,8 +78,9 @@ public class IconGrid : MonoBehaviour
                     }
                 }
 
-                // You can optionally add functionality here, such as:
-                // iconButton.onClick.AddListener(() => OnItemClicked(material)); 
+                // Add functionality to display the item on the shelf when clicked
+                int capturedIndex = slotIndex; // Capture the current index for the lambda
+                iconButton.onClick.AddListener(() => OnItemClicked(capturedIndex));
             }
 
             slotIndex++; // Increment the slot index for the next material
@@ -140,14 +148,28 @@ public class IconGrid : MonoBehaviour
         }
     }
 
-    // Optional: Handle item button click (if you want to add functionality to clicking an item)
-    private void OnItemClicked(MaterialType material)
+    // Handles item button clicks
+    private void OnItemClicked(int slotIndex)
     {
-        // Add custom behavior when an item is clicked, such as using the item
-        Debug.Log("Item clicked: " + material.name);
+        Debug.Log("Slot clicked: " + slotIndex);
+
+        // Trigger the display on the DisplayShelf
+        if (displayShelf != null)
+        {
+            // Access the correct MaterialType based on the slotIndex
+            // Assuming inventory.materialQuantities is a dictionary of MaterialType and quantities
+            MaterialType material = inventory.materialQuantities.Keys.ElementAt(slotIndex); // Get the MaterialType from the dictionary
+
+            // Now pass the correct MaterialType to the SetItem method
+            displayShelf.SetItem(material);
+        }
+        else
+        {
+            Debug.LogWarning("No DisplayShelf found in the scene.");
+        }
     }
 
-    // New UpdateUI method to refresh the UI
+    // Optional: Refresh the UI
     public void UpdateUI()
     {
         PopulateGrid(); // Re-populate the grid with updated inventory data
