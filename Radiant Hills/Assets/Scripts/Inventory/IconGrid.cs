@@ -1,8 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using System.Collections.Generic;
-using System.Linq;  // Add this line for LINQ functionality
+using TMPro;
+using UnityEngine.UI;
 
 public class IconGrid : MonoBehaviour
 {
@@ -74,7 +73,7 @@ public class IconGrid : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogWarning("Material icon is missing for " + material.name);
+                        Debug.LogWarning("Material icon is missing for " + material.materialName);
                     }
                 }
 
@@ -102,6 +101,13 @@ public class IconGrid : MonoBehaviour
 
         // Set the grid as populated
         IsGridPopulated = true;
+    }
+
+    // Add UpdateUI method for SceneHandler to call
+    public void UpdateUI()
+    {
+        // Call PopulateGrid to refresh the grid
+        PopulateGrid();
     }
 
     private void ClearGrid()
@@ -151,27 +157,15 @@ public class IconGrid : MonoBehaviour
     // Handles item button clicks
     private void OnItemClicked(int slotIndex)
     {
-        Debug.Log("Slot clicked: " + slotIndex);
+        // Debugging: Log which item was clicked
+        Debug.Log("Item clicked at slot: " + slotIndex);
 
-        // Trigger the display on the DisplayShelf
-        if (displayShelf != null)
+        // Retrieve the item by slot index and display it on the shelf
+        MaterialType clickedMaterial = inventory.GetItemBySlotIndex(slotIndex);
+
+        if (clickedMaterial != null)
         {
-            // Access the correct MaterialType based on the slotIndex
-            // Assuming inventory.materialQuantities is a dictionary of MaterialType and quantities
-            MaterialType material = inventory.materialQuantities.Keys.ElementAt(slotIndex); // Get the MaterialType from the dictionary
-
-            // Now pass the correct MaterialType to the SetItem method
-            displayShelf.SetItem(material);
+            displayShelf.SetItem(clickedMaterial); // Update the display shelf with the selected item
         }
-        else
-        {
-            Debug.LogWarning("No DisplayShelf found in the scene.");
-        }
-    }
-
-    // Optional: Refresh the UI
-    public void UpdateUI()
-    {
-        PopulateGrid(); // Re-populate the grid with updated inventory data
     }
 }

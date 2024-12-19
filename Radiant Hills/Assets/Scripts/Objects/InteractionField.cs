@@ -45,40 +45,27 @@ public class InteractionField : MonoBehaviour
         {
             OpenInventory(); // Open the inventory when the player presses E
         }
+
+        // Check if the player presses the I key at any time (independent of interaction)
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            playerInventory.ToggleInventoryVisibility(); // Toggle the inventory visibility
+        }
     }
 
     private void OpenInventory()
     {
-        // Show the inventory UI
+        // Show the inventory UI if not already opened
         if (inventoryPanel != null)
         {
             inventoryPanel.SetActive(true);
         }
 
+        // Open the inventory when the player interacts with the shelf
+        playerInventory.ToggleInventoryVisibility(); // Open or close the inventory as per usual functionality
+
         // Optionally, trigger the onInteract event if needed
         onInteract?.Invoke();
-    }
-
-    // Method called when an item is selected from the inventory
-    public void OnItemSelected(MaterialType selectedItem)
-    {
-        // Ensure we update the sprite only on the slot1 object
-        if (displayShelf != null)
-        {
-            displayShelf.SetItem(selectedItem); // Update the DisplayShelf with the selected item
-        }
-
-        // Decrement the quantity of the item in the inventory
-        if (playerInventory != null)
-        {
-            playerInventory.DecreaseQuantity(selectedItem, 1); // Decrease quantity by 1 (or adjust as needed)
-        }
-
-        // Close the inventory UI after the selection
-        if (inventoryPanel != null)
-        {
-            inventoryPanel.SetActive(false);
-        }
     }
 
     // Detect when the player enters the interaction field (trigger)
@@ -87,7 +74,6 @@ public class InteractionField : MonoBehaviour
         if (other.CompareTag("Player")) // Ensure the interacting object is the player
         {
             isPlayerInRange = true;
-            Debug.Log("Player has entered the interaction field"); // Debug message
         }
     }
 
@@ -97,7 +83,22 @@ public class InteractionField : MonoBehaviour
         if (other.CompareTag("Player")) // Ensure the interacting object is the player
         {
             isPlayerInRange = false;
-            Debug.Log("Player has exited the interaction field"); // Debug message
+            CloseInventory(); // Close the inventory when player exits the interaction field
+        }
+    }
+
+    // Close the inventory window
+    private void CloseInventory()
+    {
+        if (inventoryPanel != null)
+        {
+            inventoryPanel.SetActive(false); // Hide the inventory UI
+        }
+
+        // Close the inventory using the player's inventory script
+        if (playerInventory != null)
+        {
+            playerInventory.ToggleInventoryVisibility(); // Ensure the inventory is closed
         }
     }
 }

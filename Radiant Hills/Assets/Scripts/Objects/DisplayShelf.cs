@@ -1,70 +1,27 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DisplayShelf : MonoBehaviour
 {
-    public SpriteRenderer itemSpriteRenderer; // The SpriteRenderer on the DisplayShelf (child of slot1)
-    public MaterialType selectedItem; // The selected item for the shelf slot
-    public Inventory inventory; // Reference to the inventory manager (set in Inspector)
+    public Image itemDisplayImage; // Reference to the image UI component
+    public Text itemNameText; // Reference to the name text UI component
 
-    private GameObject inventoryPanel; // Panel showing the inventory grid
-
-    void Start()
+    // Set the displayed item on the shelf
+    public void SetItem(MaterialType material)
     {
-        if (itemSpriteRenderer == null)
+        // Set the item's icon
+        if (itemDisplayImage != null && material.icon != null)
         {
-            itemSpriteRenderer = GetComponent<SpriteRenderer>();
+            itemDisplayImage.sprite = material.icon;
         }
 
-        if (inventory != null)
+        // Set the item's name
+        if (itemNameText != null)
         {
-            inventoryPanel = inventory.gameObject; // Assuming Inventory has a GameObject with the panel
-        }
-
-        UpdateItemSprite();
-    }
-
-    // This method updates the sprite of the parent (slot1) based on the selected item
-    public void UpdateItemSprite()
-    {
-        if (selectedItem != null && selectedItem.icon != null)
-        {
-            // Access the slot1 GameObject directly and its SpriteRenderer
-            SpriteRenderer slot1SpriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
-
-            if (slot1SpriteRenderer != null)
-            {
-                // Update the sprite of slot1 (not the parent shelfr1)
-                slot1SpriteRenderer.sprite = selectedItem.icon;
-            }
-            else
-            {
-                Debug.LogError("Slot1 does not have a SpriteRenderer component.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Selected item or its icon is missing.");
+            itemNameText.text = material.materialName;
         }
     }
 
-    // Optional: Update the selected item when an item is placed into this slot
-    public void SetItem(MaterialType item)
-    {
-        selectedItem = item;
-        UpdateItemSprite();  // Update the sprite when the item is set
-    }
-
-    // Display the inventory and listen for slot clicks
-    public void DisplayItemFromSlot(int slotIndex)
-    {
-        // Open the inventory UI
-        if (inventory != null && inventoryPanel != null)
-        {
-            inventoryPanel.SetActive(true); // Show the inventory panel
-        }
-        else
-        {
-            Debug.LogWarning("Inventory or panel is not assigned.");
-        }
-    }
+    // Optionally, you could implement more detailed functionality for setting
+    // other material properties such as descriptions or tooltips here.
 }

@@ -8,8 +8,8 @@ public class Inventory : MonoBehaviour
 
     public Dictionary<MaterialType, int> materialQuantities = new Dictionary<MaterialType, int>();  // Tracks quantities
     public IconGrid iconGrid; // Reference to the IconGrid (set this in the Inspector)
-    private bool isGridOpen = false; // Whether the grid is open or closed
     private GameObject panel; // Reference to the parent panel (where IconGrid is)
+    private bool isGridOpen = false; // Whether the grid is open or closed
 
     void Awake()
     {
@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
         }
 
         // Debugging: Log when material is added
-        Debug.Log($"Material added: {materialType.name}, Quantity: {materialQuantities[materialType]}");
+        Debug.Log($"Material added: {materialType.materialName}, Quantity: {materialQuantities[materialType]}");
 
         // Ensure that the grid is populated again after adding the material
         if (iconGrid != null)
@@ -91,41 +91,31 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Material {materialType.name} not found in inventory.");
+            Debug.LogWarning($"Material {materialType.materialName} not found in inventory.");
         }
     }
 
     // Update method to handle key press for toggling inventory grid visibility
-    private void Update()
+    public void ToggleInventoryVisibility()
     {
         // Toggle visibility of the inventory panel and IconGrid on "I" key press
-        if (Input.GetKeyDown(KeyCode.I))
+        isGridOpen = !isGridOpen;
+
+        // Update grid visibility
+        if (panel != null)
         {
-            isGridOpen = !isGridOpen;
+            panel.SetActive(isGridOpen); // Show or hide the inventory panel
+        }
 
-            // Update grid visibility
-            if (panel != null)
+        if (iconGrid != null)
+        {
+            iconGrid.gameObject.SetActive(isGridOpen); // Show or hide the IconGrid
+
+            // Only refresh the grid when it's opened and hasn't been refreshed recently
+            if (isGridOpen && !iconGrid.IsGridPopulated)
             {
-                panel.SetActive(isGridOpen); // Show or hide the inventory panel
-            }
-
-            if (iconGrid != null)
-            {
-                iconGrid.gameObject.SetActive(isGridOpen); // Show or hide the IconGrid
-
-                // Only refresh the grid when it's opened and hasn't been refreshed recently
-                if (isGridOpen && !iconGrid.IsGridPopulated)
-                {
-                    iconGrid.PopulateGrid(); // Refresh the grid if not already populated
-                }
+                iconGrid.PopulateGrid(); // Refresh the grid if not already populated
             }
         }
-    }
-
-    // Method to trigger the slot click event when a UI slot is clicked
-    public void OnInventorySlotClicked(int slotIndex)
-    {
-        // Invoke the slot click event to notify listeners
-        OnSlotClicked?.Invoke(slotIndex);
     }
 }
