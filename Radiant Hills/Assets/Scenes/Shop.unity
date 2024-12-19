@@ -308,6 +308,17 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 336429443509587900, guid: a8cf9fa981a367f4c996575dc01f61a1, type: 3}
   m_PrefabInstance: {fileID: 8835535645120161157}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &278562686 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2624948881432882022, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+  m_PrefabInstance: {fileID: 348818124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &348818124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -316,6 +327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 939270175841917956, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 278562686}
     - target: {fileID: 1097892556209353668, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -404,6 +419,14 @@ PrefabInstance:
       propertyPath: iconGrid
       value: 
       objectReference: {fileID: 1061713347}
+    - target: {fileID: 2624948881432882022, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945081258076630853, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -317.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3367517372647833797, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -415,6 +438,10 @@ PrefabInstance:
     - target: {fileID: 6655112052483523449, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468166258149053817, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

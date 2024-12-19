@@ -484,6 +484,7 @@ MonoBehaviour:
   emptySlotPrefab: {fileID: 3249440901671368265, guid: 16880a9ae62be2a40aea5c576450a311, type: 3}
   gridContainer: {fileID: 5309525183432887021}
   inventory: {fileID: 0}
+  displayShelf: {fileID: 0}
   maxSlots: 20
 --- !u!1 &7478214298563031157
 GameObject:
@@ -497,6 +498,8 @@ GameObject:
   - component: {fileID: 5979831892938471518}
   - component: {fileID: 6510221477157410386}
   - component: {fileID: 7842521347926264465}
+  - component: {fileID: 5758377672356490271}
+  - component: {fileID: 6405801755592971007}
   m_Layer: 5
   m_Name: InventoryUI
   m_TagString: Untagged
@@ -588,3 +591,31 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5758377672356490271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478214298563031157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a0e1907967aa84386e818f071e508c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 2607348088649759603}
+--- !u!114 &6405801755592971007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478214298563031157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68480935993d19f4a812c3f6d0fab9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  healthSlider: {fileID: 0}
+  bossHealth: {fileID: 0}
