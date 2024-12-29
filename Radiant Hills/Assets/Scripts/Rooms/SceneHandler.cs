@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class SceneHandler : MonoBehaviour
 {
@@ -15,11 +14,17 @@ public class SceneHandler : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); // Keep the scene handler across scenes
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // Prevent duplicate instances
+        }
+
+        // Make sure the player reference is always assigned
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>().transform; // Find player if not set
         }
 
         if (cameraFollow == null)
@@ -29,7 +34,7 @@ public class SceneHandler : MonoBehaviour
 
         if (cameraFollow != null)
         {
-            DontDestroyOnLoad(cameraFollow.gameObject);
+            DontDestroyOnLoad(cameraFollow.gameObject); // Keep the camera follow across scenes
         }
         else
         {
@@ -38,36 +43,39 @@ public class SceneHandler : MonoBehaviour
 
         if (iconGrid == null)
         {
-            iconGrid = FindObjectOfType<IconGrid>();
+            iconGrid = FindObjectOfType<IconGrid>(); // Find the IconGrid object in the scene
         }
 
         if (player != null)
         {
-            DontDestroyOnLoad(player.gameObject); // Ensure player is persistent
+            DontDestroyOnLoad(player.gameObject); // Ensure player is persistent across scenes
         }
         else
         {
             Debug.LogError("Player reference is missing in SceneHandler.");
         }
 
+        // Ensure inventory and icon grid references are set up for player
         if (playerInventory != null && iconGrid != null)
         {
-            playerInventory.iconGrid = iconGrid;
+            playerInventory.iconGrid = iconGrid; // Assign iconGrid to playerInventory
+            playerInventory.SetPlayer(player); // Ensure inventory knows about the player
         }
     }
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to scene load events
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe when the object is destroyed
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Ensure the camera follows the player after the scene is loaded
         if (cameraFollow != null && player != null)
         {
             cameraFollow.SetTarget(player);
@@ -80,7 +88,7 @@ public class SceneHandler : MonoBehaviour
         // Ensure player reference is set after scene load
         if (player == null)
         {
-            player = FindObjectOfType<Player>().transform; // Ensure player is found dynamically if missing
+            player = FindObjectOfType<Player>().transform; // Find player in the scene if missing
             if (player == null)
             {
                 Debug.LogError("Player not found in the scene after loading.");
@@ -90,16 +98,45 @@ public class SceneHandler : MonoBehaviour
         // Reassign the inventory and icon grid if needed
         if (iconGrid != null && playerInventory != null)
         {
-            playerInventory.iconGrid = iconGrid;
+            playerInventory.iconGrid = iconGrid; // Ensure iconGrid is properly linked to playerInventory
+            playerInventory.SetPlayer(player); // Ensure the player's reference is set in Inventory
         }
 
-        // Optionally: Refresh the UI
-        if (iconGrid != null)
+        // Handle the "Shop" scene differently
+        if (scene.name == "Shop")
         {
-            iconGrid.UpdateUI();
+            // Ensure DisplayShelf is only required in the Shop scene
+            DisplayShelf displayShelf = FindObjectOfType<DisplayShelf>();
+
+            if (displayShelf != null)
+            {
+                // Assign the displayShelf to IconGrid for Shop-specific behavior
+                iconGrid.displayShelf = displayShelf;
+            }
+            else
+            {
+                Debug.LogError("DisplayShelf reference is missing in the Shop scene.");
+            }
+
+            // Refresh the inventory UI in the Shop scene
+            if (iconGrid != null)
+            {
+                iconGrid.UpdateUI(); // Update UI in the Shop scene
+            }
+        }
+        else
+        {
+            // For non-Shop scenes, ensure the grid is populated without the DisplayShelf
+            if (iconGrid != null)
+            {
+                iconGrid.UpdateUI(); // Update UI for non-Shop scenes
+            }
+
+            // Remove DisplayShelf functionality in non-Shop scenes
+            iconGrid.displayShelf = null;
         }
 
-        // Update Sorting Orders
+        // Update Sorting Orders for all relevant objects in the scene
         UpdateSortingOrders();
     }
 
@@ -111,7 +148,7 @@ public class SceneHandler : MonoBehaviour
         {
             if (adjuster != null)
             {
-                adjuster.UpdateSortingOrder();
+                adjuster.UpdateSortingOrder(); // Update sorting order for each adjuster
             }
         }
     }

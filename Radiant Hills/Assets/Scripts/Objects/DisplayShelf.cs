@@ -21,7 +21,4 @@ public class DisplayShelf : MonoBehaviour
             itemNameText.text = material.materialName;
         }
     }
-
-    // Optionally, you could implement more detailed functionality for setting
-    // other material properties such as descriptions or tooltips here.
 }
