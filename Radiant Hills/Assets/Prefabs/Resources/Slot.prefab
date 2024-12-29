@@ -145,6 +145,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: DisplayShelf
       objectReference: {fileID: 0}
+    - target: {fileID: 4925851950482420608, guid: e8264f04a7d654941bedbd7840cd2232, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1973314853929811343, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+    - target: {fileID: 4925851950482420608, guid: e8264f04a7d654941bedbd7840cd2232, type: 3}
+      propertyPath: emptySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a87c6f2ef51291f4e9305baa0a6db24a, type: 3}
+    - target: {fileID: 4925851950482420608, guid: e8264f04a7d654941bedbd7840cd2232, type: 3}
+      propertyPath: itemDisplaySpriteRenderer
+      value: 
+      objectReference: {fileID: 336429443509587900}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

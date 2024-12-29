@@ -11,8 +11,18 @@ public class InteractionField : MonoBehaviour
 
     private bool isPlayerInRange = false; // Tracks if the player is in range to interact
 
+    // Reference to the IconGrid for dynamic interaction
+    private IconGrid iconGrid;
+
     void Start()
     {
+        // Initially set the IconGrid reference from SceneHandler if available
+        iconGrid = SceneHandler.Instance.iconGrid;
+        if (iconGrid == null)
+        {
+            Debug.LogWarning("IconGrid not found on Start.");
+        }
+
         // Ensure inventory panel is initially hidden
         if (inventoryPanel != null)
         {
@@ -26,6 +36,20 @@ public class InteractionField : MonoBehaviour
         if (slot1 == null)
         {
             Debug.LogWarning("Slot1 GameObject is not assigned in the Inspector.");
+        }
+    }
+
+    // Method to set the IconGrid dynamically
+    public void SetIconGrid(IconGrid newIconGrid)
+    {
+        if (newIconGrid != null)
+        {
+            iconGrid = newIconGrid;
+            Debug.Log("IconGrid reference has been updated for InteractionField.");
+        }
+        else
+        {
+            Debug.LogWarning("Received null IconGrid reference.");
         }
     }
 

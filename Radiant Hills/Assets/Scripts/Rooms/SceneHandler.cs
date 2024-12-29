@@ -7,15 +7,15 @@ public class SceneHandler : MonoBehaviour
     public Inventory playerInventory;
     public IconGrid iconGrid;
     public CameraFollow cameraFollow;
-    public Transform player; // Reference to the player
-    private PlayerInteractionManager playerInteractionManager; // Reference to PlayerInteractionManager
+    public Transform player;
+    private PlayerInteractionManager playerInteractionManager;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Keep the scene handler across scenes
+            DontDestroyOnLoad(gameObject); // Keep the SceneHandler across scenes
         }
         else
         {
@@ -23,74 +23,10 @@ public class SceneHandler : MonoBehaviour
             return;
         }
 
-        // Initialize essential components
+        // Initialize components
         InitializePlayer();
         InitializeCameraFollow();
         InitializeIconGrid();
-        InitializePlayerInteractionManager();
-    }
-
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to scene load events
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe when the object is destroyed
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Ensure the camera follows the player after the scene is loaded
-        if (cameraFollow != null && player != null)
-        {
-            cameraFollow.SetTarget(player);
-        }
-        else
-        {
-            Debug.LogWarning("CameraFollow or player reference is missing in OnSceneLoaded.");
-        }
-
-        // Ensure player reference is set after scene load
-        if (player == null)
-        {
-            player = FindObjectOfType<Player>()?.transform; // Find player in the scene if missing
-            if (player == null)
-            {
-                Debug.LogError("Player not found in the scene after loading.");
-            }
-        }
-
-        // Reassign the inventory and icon grid if needed
-        if (iconGrid != null && playerInventory != null)
-        {
-            playerInventory.iconGrid = iconGrid; // Ensure iconGrid is properly linked to playerInventory
-            playerInventory.SetPlayer(player); // Ensure the player's reference is set in Inventory
-        }
-
-        // Handle the "Shop" scene differently
-        if (scene.name == "Shop")
-        {
-            // Handle any additional behavior specific to the Shop scene here
-            if (iconGrid != null)
-            {
-                iconGrid.PopulateGrid();
-            }
-        }
-        else
-        {
-            // For non-Shop scenes, ensure the grid is populated
-            if (iconGrid != null)
-            {
-                iconGrid.PopulateGrid();
-            }
-        }
-
-        // Update Sorting Orders for all relevant objects in the scene
-        UpdateSortingOrders();
-
-        // Ensure PlayerInteractionManager is linked and functioning in the new scene
         InitializePlayerInteractionManager();
     }
 
@@ -98,12 +34,12 @@ public class SceneHandler : MonoBehaviour
     {
         if (player == null)
         {
-            player = FindObjectOfType<Player>()?.transform; // Find player if not set
+            player = FindObjectOfType<Player>()?.transform;
         }
 
         if (player != null)
         {
-            DontDestroyOnLoad(player.gameObject); // Ensure player is persistent across scenes
+            DontDestroyOnLoad(player.gameObject);
         }
         else
         {
@@ -120,7 +56,7 @@ public class SceneHandler : MonoBehaviour
 
         if (cameraFollow != null)
         {
-            DontDestroyOnLoad(cameraFollow.gameObject); // Keep the camera follow across scenes
+            DontDestroyOnLoad(cameraFollow.gameObject);
         }
         else
         {
@@ -132,8 +68,17 @@ public class SceneHandler : MonoBehaviour
     {
         if (iconGrid == null)
         {
-            iconGrid = FindObjectOfType<IconGrid>(); // Find the IconGrid object in the scene
+            iconGrid = FindObjectOfType<IconGrid>();
         }
+
+        if (iconGrid == null)
+        {
+            Debug.LogError("IconGrid not found in the scene.");
+        }
+
+        // After IconGrid is initialized, update all InteractionField and DisplayShelf references
+        UpdateInteractionFields();
+        UpdateDisplayShelves();
     }
 
     private void InitializePlayerInteractionManager()
@@ -147,10 +92,9 @@ public class SceneHandler : MonoBehaviour
         {
             GameObject managerObject = new GameObject("PlayerInteractionManager");
             playerInteractionManager = managerObject.AddComponent<PlayerInteractionManager>();
-            DontDestroyOnLoad(managerObject); // Persist the manager across scenes
+            DontDestroyOnLoad(managerObject);
         }
 
-        // Ensure the manager is aware of the current player
         if (player != null)
         {
             playerInteractionManager.SetPlayer(player);
@@ -161,16 +105,30 @@ public class SceneHandler : MonoBehaviour
         }
     }
 
-    private void UpdateSortingOrders()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SortingOrderAdjuster[] allAdjusters = FindObjectsOfType<SortingOrderAdjuster>();
+        // Ensure all InteractionFields and DisplayShelves update their reference to the IconGrid after the scene is loaded
+        UpdateInteractionFields();
+        UpdateDisplayShelves();
+    }
 
-        foreach (SortingOrderAdjuster adjuster in allAdjusters)
+    private void UpdateInteractionFields()
+    {
+        // Find all InteractionField objects in the scene and update their reference to IconGrid
+        InteractionField[] interactionFields = FindObjectsOfType<InteractionField>();
+        foreach (InteractionField field in interactionFields)
         {
-            if (adjuster != null)
-            {
-                adjuster.UpdateSortingOrder(); // Update sorting order for each adjuster
-            }
+            field.SetIconGrid(iconGrid); // This ensures the field has the correct IconGrid reference
+        }
+    }
+
+    private void UpdateDisplayShelves()
+    {
+        // Find all DisplayShelf objects in the scene and update their reference to IconGrid
+        DisplayShelf[] displayShelves = FindObjectsOfType<DisplayShelf>();
+        foreach (DisplayShelf shelf in displayShelves)
+        {
+            shelf.SetIconGrid(iconGrid); // This ensures each DisplayShelf has the correct IconGrid reference
         }
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
@@ -63,6 +62,12 @@ public class Inventory : MonoBehaviour
         {
             ToggleInventoryVisibility(); // Toggle inventory on/off
         }
+
+        // Check for the E key press to pick up an item from the shelf
+        if (Input.GetKeyDown(KeyCode.E) && displayShelf != null)
+        {
+            TryPickupItemFromShelf(); // Attempt to pick up item from the display shelf
+        }
     }
 
     // Toggle visibility of the inventory grid
@@ -112,25 +117,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // Method to handle the item click event from the inventory
-    public void OnInventoryItemClick(MaterialType material)
+    // Attempt to pick up an item from the display shelf
+    private void TryPickupItemFromShelf()
     {
-        // Check if the player is in range of the display shelf
-        if (displayShelf != null && displayShelf.IsPlayerInRange())
+        if (displayShelf.HasItem()) // Check if the shelf has an item
         {
-            // Set the material to the display shelf if player is in range
-            displayShelf.SetItem(material);
-            Debug.Log("Item set to display shelf: " + material.materialName);
+            MaterialType material = displayShelf.GetItem(); // Get the item from the shelf
+
+            // Add the item to the inventory
+            AddMaterial(material, 1);
+
+            // Clear the item from the shelf (so it becomes empty)
+            displayShelf.ClearItem();
+            Debug.Log("Picked up item: " + material.materialName);
         }
         else
         {
-            Debug.Log("Player is not in range to interact with the display shelf.");
+            Debug.Log("No item on the display shelf to pick up.");
         }
-    }
-
-    // Method to handle the event when the player clicks an icon from the inventory grid
-    public void OnIconClicked(MaterialType material)
-    {
-        OnInventoryItemClick(material); // Call the method to handle item click in inventory
     }
 }

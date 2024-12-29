@@ -2,22 +2,47 @@ using UnityEngine;
 
 public class DisplayShelf : MonoBehaviour
 {
-    private SpriteRenderer itemDisplaySpriteRenderer; // Reference to the parent SpriteRenderer component
-    private bool isPlayerInRange = false; // Tracks if the player is within range of the shelf
-    private MaterialType currentMaterial; // Store the current material for the shelf
+    public SpriteRenderer itemDisplaySpriteRenderer;
+    private MaterialType currentMaterial;
+    public Sprite emptySprite;
+    private bool isPlayerInRange = false;
+    private Transform playerTransform;
+    public Inventory inventory; // This will now be assigned dynamically.
+    public IconGrid iconGrid; // Reference to the IconGrid
 
-    void Awake()
+    void Start()
     {
-        // Attempt to get the SpriteRenderer component from the parent
-        itemDisplaySpriteRenderer = GetComponentInParent<SpriteRenderer>();
+        playerTransform = Camera.main.transform;
 
-        if (itemDisplaySpriteRenderer == null)
+        // Dynamically assign the Inventory component
+        inventory = FindObjectOfType<Inventory>();
+        if (inventory == null)
         {
-            Debug.LogWarning("Parent does not have a SpriteRenderer component.");
+            Debug.LogError("Inventory not found in the scene.");
         }
     }
 
-    // Set the displayed item on the shelf
+    public void SetIconGrid(IconGrid newIconGrid)
+    {
+        if (newIconGrid != null)
+        {
+            iconGrid = newIconGrid;
+            Debug.Log("DisplayShelf IconGrid updated.");
+        }
+        else
+        {
+            Debug.LogWarning("Received null IconGrid reference for DisplayShelf.");
+        }
+    }
+
+    void Update()
+    {
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            PickupItem();
+        }
+    }
+
     public void SetItem(MaterialType material)
     {
         if (material == null)
@@ -26,16 +51,15 @@ public class DisplayShelf : MonoBehaviour
             return;
         }
 
-        currentMaterial = material; // Store the material
-        SetItemSprite(material); // Set the item's sprite
+        currentMaterial = material;
+        SetItemIcon(material);
     }
 
-    // Helper to set the material sprite
-    private void SetItemSprite(MaterialType material)
+    private void SetItemIcon(MaterialType material)
     {
         if (itemDisplaySpriteRenderer == null)
         {
-            Debug.LogWarning("Parent SpriteRenderer component is not assigned.");
+            Debug.LogWarning("Item display sprite renderer is not assigned.");
             return;
         }
 
@@ -45,35 +69,58 @@ public class DisplayShelf : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Sprite is missing for material: {material.materialName}");
+            Debug.LogWarning($"Icon is missing for material: {material.materialName}");
         }
     }
 
-    // Detect when the player enters the interaction field (trigger)
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // Ensure the interacting object is the player
+        if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            Debug.Log($"{gameObject.name}: Player entered display shelf range.");
-            PlayerInteractionManager.Instance.SetActiveDisplayShelf(this); // Notify the manager
+            Debug.Log("Player entered display shelf range.");
         }
     }
 
-    // Detect when the player exits the interaction field (trigger)
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // Ensure the interacting object is the player
+        if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            Debug.Log($"{gameObject.name}: Player exited display shelf range.");
-            PlayerInteractionManager.Instance.ClearActiveDisplayShelf(this); // Notify the manager
+            Debug.Log("Player exited display shelf range.");
         }
     }
 
-    // Method to check if the player is in range to interact with the shelf
-    public bool IsPlayerInRange()
+    private void PickupItem()
     {
-        return isPlayerInRange;
+        if (currentMaterial != null)
+        {
+            inventory.AddMaterial(currentMaterial, 1); // Add item to the player's inventory
+            ClearItem(); // Remove the item from the display shelf
+        }
+        else
+        {
+            Debug.Log("No item to pick up.");
+        }
+    }
+
+    public bool IsPlayerInRange() => isPlayerInRange;
+
+    public void ClearItem()
+    {
+        currentMaterial = null;
+        itemDisplaySpriteRenderer.sprite = emptySprite; // Clear the shelf display
+    }
+
+    // Get the currently displayed item on the shelf
+    public MaterialType GetItem()
+    {
+        return currentMaterial;
+    }
+
+    // Check if there's an item currently displayed on the shelf
+    public bool HasItem()
+    {
+        return currentMaterial != null;
     }
 }
