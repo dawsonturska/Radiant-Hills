@@ -105,35 +105,20 @@ public class SceneHandler : MonoBehaviour
         // Handle the "Shop" scene differently
         if (scene.name == "Shop")
         {
-            // Ensure DisplayShelf is only required in the Shop scene
-            DisplayShelf displayShelf = FindObjectOfType<DisplayShelf>();
-
-            if (displayShelf != null)
-            {
-                // Assign the displayShelf to IconGrid for Shop-specific behavior
-                iconGrid.displayShelf = displayShelf;
-            }
-            else
-            {
-                Debug.LogError("DisplayShelf reference is missing in the Shop scene.");
-            }
-
-            // Refresh the inventory UI in the Shop scene
+            // Handle any additional behavior specific to the Shop scene here
+            // For example, you can update UI or handle the inventory UI differently
             if (iconGrid != null)
             {
-                iconGrid.UpdateUI(); // Update UI in the Shop scene
+                iconGrid.PopulateGrid(); // Corrected to call PopulateGrid
             }
         }
         else
         {
-            // For non-Shop scenes, ensure the grid is populated without the DisplayShelf
+            // For non-Shop scenes, ensure the grid is populated
             if (iconGrid != null)
             {
-                iconGrid.UpdateUI(); // Update UI for non-Shop scenes
+                iconGrid.PopulateGrid(); // Corrected to call PopulateGrid
             }
-
-            // Remove DisplayShelf functionality in non-Shop scenes
-            iconGrid.displayShelf = null;
         }
 
         // Update Sorting Orders for all relevant objects in the scene

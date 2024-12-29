@@ -19,30 +19,21 @@ public class IconGrid : MonoBehaviour
 
     void Start()
     {
-        if (inventory == null)
-        {
-            inventory = FindObjectOfType<Inventory>();  // Ensure Inventory reference is assigned
-        }
-
+        inventory ??= FindObjectOfType<Inventory>();
         if (SceneManager.GetActiveScene().name == "Shop")
         {
-            if (displayShelf == null)
-            {
-                displayShelf = FindObjectOfType<DisplayShelf>();
-            }
+            displayShelf ??= FindObjectOfType<DisplayShelf>();
         }
 
         PopulateGrid();  // Initially populate the grid
     }
 
-    // This method will be called to update the grid UI, either to refresh or populate it again.
     public void UpdateUI()
     {
         Debug.Log("Updating UI...");
         PopulateGrid();  // Call PopulateGrid to refresh the grid
     }
 
-    // Populate the grid with inventory items
     public void PopulateGrid()
     {
         Debug.Log("Populating grid with " + inventory.materialQuantities.Count + " materials");
@@ -58,6 +49,7 @@ public class IconGrid : MonoBehaviour
             GameObject icon = GetIconFromPool();
             TextMeshProUGUI textMeshProComponent = icon.GetComponentInChildren<TextMeshProUGUI>();
 
+            // Set the quantity text
             if (textMeshProComponent != null)
             {
                 textMeshProComponent.text = quantity.ToString();
@@ -75,12 +67,15 @@ public class IconGrid : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogWarning("Material icon is missing for " + material.materialName);
+                        Debug.LogWarning($"Material icon is missing for {material.materialName}");
                     }
                 }
 
-                int capturedIndex = slotIndex;
-                iconButton.onClick.AddListener(() => OnItemClicked(capturedIndex));
+                // Remove any previously added listeners to avoid duplicates
+                iconButton.onClick.RemoveAllListeners();
+
+                // Capture the material for the click event
+                iconButton.onClick.AddListener(() => OnItemClicked(material));
             }
 
             slotIndex++;
@@ -102,18 +97,16 @@ public class IconGrid : MonoBehaviour
         IsGridPopulated = true;  // Mark the grid as populated
     }
 
-    // Clear all items from the grid
     private void ClearGrid()
     {
         foreach (Transform child in gridContainer)
         {
-            child.gameObject.SetActive(false);
+            child.gameObject.SetActive(false);  // Deactivate instead of destroying to reuse later
         }
 
         IsGridPopulated = false;
     }
 
-    // Get an item icon from the pool or instantiate a new one
     private GameObject GetIconFromPool()
     {
         if (iconPool.Count > 0)
@@ -128,7 +121,6 @@ public class IconGrid : MonoBehaviour
         }
     }
 
-    // Get an empty slot from the pool or instantiate a new one
     private GameObject GetEmptySlotFromPool()
     {
         if (emptySlotPool.Count > 0)
@@ -143,10 +135,29 @@ public class IconGrid : MonoBehaviour
         }
     }
 
-    // Handle item click events
-    private void OnItemClicked(int index)
+    private void OnItemClicked(MaterialType material)
     {
-        // Handle item click logic here
-        Debug.Log("Item clicked at index: " + index);
+        Debug.Log($"Item clicked: {material.materialName}");
+
+        if (displayShelf != null && displayShelf.IsPlayerInRange())
+        {
+            displayShelf.SetItem(material);  // Update the display shelf with the clicked material
+        }
+        else
+        {
+            Debug.LogWarning("Display shelf is not assigned or player is not in range.");
+        }
+    }
+
+    public void ReturnToPool(GameObject icon)
+    {
+        icon.SetActive(false);
+        iconPool.Enqueue(icon);
+    }
+
+    public void ReturnEmptySlotToPool(GameObject emptySlot)
+    {
+        emptySlot.SetActive(false);
+        emptySlotPool.Enqueue(emptySlot);
     }
 }
