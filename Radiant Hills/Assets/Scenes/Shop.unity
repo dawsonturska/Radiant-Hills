@@ -172,9 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d519799a86da0894abb8d4d6b3ec0e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSpriteRenderer: {fileID: 267543643}
-  selectedItem: {fileID: 0}
-  inventory: {fileID: 35475503}
 --- !u!1001 &162339513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -301,11 +298,6 @@ GameObject:
 --- !u!4 &267543641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4492725300504927192, guid: a8cf9fa981a367f4c996575dc01f61a1, type: 3}
-  m_PrefabInstance: {fileID: 8835535645120161157}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &267543643 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 336429443509587900, guid: a8cf9fa981a367f4c996575dc01f61a1, type: 3}
   m_PrefabInstance: {fileID: 8835535645120161157}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &278562686 stripped
@@ -1402,7 +1394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4492725300504927192, guid: a8cf9fa981a367f4c996575dc01f61a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.08
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4492725300504927192, guid: a8cf9fa981a367f4c996575dc01f61a1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1439,6 +1431,14 @@ PrefabInstance:
     - target: {fileID: 4492725300504927192, guid: a8cf9fa981a367f4c996575dc01f61a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271297347732366607, guid: a8cf9fa981a367f4c996575dc01f61a1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1161156
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271297347732366607, guid: a8cf9fa981a367f4c996575dc01f61a1, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1161156
       objectReference: {fileID: 0}
     - target: {fileID: 6271297347732366607, guid: a8cf9fa981a367f4c996575dc01f61a1, type: 3}
       propertyPath: m_IncludeLayers.m_Bits

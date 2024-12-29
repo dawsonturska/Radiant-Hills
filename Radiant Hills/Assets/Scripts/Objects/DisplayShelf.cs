@@ -55,7 +55,8 @@ public class DisplayShelf : MonoBehaviour
         if (other.CompareTag("Player")) // Ensure the interacting object is the player
         {
             isPlayerInRange = true;
-            Debug.Log("Player entered display shelf range.");
+            Debug.Log($"{gameObject.name}: Player entered display shelf range.");
+            PlayerInteractionManager.Instance.SetActiveDisplayShelf(this); // Notify the manager
         }
     }
 
@@ -65,7 +66,8 @@ public class DisplayShelf : MonoBehaviour
         if (other.CompareTag("Player")) // Ensure the interacting object is the player
         {
             isPlayerInRange = false;
-            Debug.Log("Player exited display shelf range.");
+            Debug.Log($"{gameObject.name}: Player exited display shelf range.");
+            PlayerInteractionManager.Instance.ClearActiveDisplayShelf(this); // Notify the manager
         }
     }
 

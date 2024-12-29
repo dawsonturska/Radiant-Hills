@@ -8,6 +8,7 @@ public class SceneHandler : MonoBehaviour
     public IconGrid iconGrid;
     public CameraFollow cameraFollow;
     public Transform player; // Reference to the player
+    private PlayerInteractionManager playerInteractionManager; // Reference to PlayerInteractionManager
 
     private void Awake()
     {
@@ -19,48 +20,14 @@ public class SceneHandler : MonoBehaviour
         else
         {
             Destroy(gameObject); // Prevent duplicate instances
+            return;
         }
 
-        // Make sure the player reference is always assigned
-        if (player == null)
-        {
-            player = FindObjectOfType<Player>().transform; // Find player if not set
-        }
-
-        if (cameraFollow == null)
-        {
-            cameraFollow = FindObjectOfType<CameraFollow>();
-        }
-
-        if (cameraFollow != null)
-        {
-            DontDestroyOnLoad(cameraFollow.gameObject); // Keep the camera follow across scenes
-        }
-        else
-        {
-            Debug.LogError("CameraFollow reference is missing in SceneHandler.");
-        }
-
-        if (iconGrid == null)
-        {
-            iconGrid = FindObjectOfType<IconGrid>(); // Find the IconGrid object in the scene
-        }
-
-        if (player != null)
-        {
-            DontDestroyOnLoad(player.gameObject); // Ensure player is persistent across scenes
-        }
-        else
-        {
-            Debug.LogError("Player reference is missing in SceneHandler.");
-        }
-
-        // Ensure inventory and icon grid references are set up for player
-        if (playerInventory != null && iconGrid != null)
-        {
-            playerInventory.iconGrid = iconGrid; // Assign iconGrid to playerInventory
-            playerInventory.SetPlayer(player); // Ensure inventory knows about the player
-        }
+        // Initialize essential components
+        InitializePlayer();
+        InitializeCameraFollow();
+        InitializeIconGrid();
+        InitializePlayerInteractionManager();
     }
 
     private void OnEnable()
@@ -88,7 +55,7 @@ public class SceneHandler : MonoBehaviour
         // Ensure player reference is set after scene load
         if (player == null)
         {
-            player = FindObjectOfType<Player>().transform; // Find player in the scene if missing
+            player = FindObjectOfType<Player>()?.transform; // Find player in the scene if missing
             if (player == null)
             {
                 Debug.LogError("Player not found in the scene after loading.");
@@ -106,10 +73,9 @@ public class SceneHandler : MonoBehaviour
         if (scene.name == "Shop")
         {
             // Handle any additional behavior specific to the Shop scene here
-            // For example, you can update UI or handle the inventory UI differently
             if (iconGrid != null)
             {
-                iconGrid.PopulateGrid(); // Corrected to call PopulateGrid
+                iconGrid.PopulateGrid();
             }
         }
         else
@@ -117,12 +83,82 @@ public class SceneHandler : MonoBehaviour
             // For non-Shop scenes, ensure the grid is populated
             if (iconGrid != null)
             {
-                iconGrid.PopulateGrid(); // Corrected to call PopulateGrid
+                iconGrid.PopulateGrid();
             }
         }
 
         // Update Sorting Orders for all relevant objects in the scene
         UpdateSortingOrders();
+
+        // Ensure PlayerInteractionManager is linked and functioning in the new scene
+        InitializePlayerInteractionManager();
+    }
+
+    private void InitializePlayer()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>()?.transform; // Find player if not set
+        }
+
+        if (player != null)
+        {
+            DontDestroyOnLoad(player.gameObject); // Ensure player is persistent across scenes
+        }
+        else
+        {
+            Debug.LogError("Player reference is missing in SceneHandler.");
+        }
+    }
+
+    private void InitializeCameraFollow()
+    {
+        if (cameraFollow == null)
+        {
+            cameraFollow = FindObjectOfType<CameraFollow>();
+        }
+
+        if (cameraFollow != null)
+        {
+            DontDestroyOnLoad(cameraFollow.gameObject); // Keep the camera follow across scenes
+        }
+        else
+        {
+            Debug.LogError("CameraFollow reference is missing in SceneHandler.");
+        }
+    }
+
+    private void InitializeIconGrid()
+    {
+        if (iconGrid == null)
+        {
+            iconGrid = FindObjectOfType<IconGrid>(); // Find the IconGrid object in the scene
+        }
+    }
+
+    private void InitializePlayerInteractionManager()
+    {
+        if (playerInteractionManager == null)
+        {
+            playerInteractionManager = FindObjectOfType<PlayerInteractionManager>();
+        }
+
+        if (playerInteractionManager == null)
+        {
+            GameObject managerObject = new GameObject("PlayerInteractionManager");
+            playerInteractionManager = managerObject.AddComponent<PlayerInteractionManager>();
+            DontDestroyOnLoad(managerObject); // Persist the manager across scenes
+        }
+
+        // Ensure the manager is aware of the current player
+        if (player != null)
+        {
+            playerInteractionManager.SetPlayer(player);
+        }
+        else
+        {
+            Debug.LogWarning("Player is not set for PlayerInteractionManager.");
+        }
     }
 
     private void UpdateSortingOrders()

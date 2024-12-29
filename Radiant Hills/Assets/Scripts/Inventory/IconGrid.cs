@@ -139,9 +139,23 @@ public class IconGrid : MonoBehaviour
     {
         Debug.Log($"Item clicked: {material.materialName}");
 
+        // Check if the player is in range of the display shelf and update the shelf
         if (displayShelf != null && displayShelf.IsPlayerInRange())
         {
             displayShelf.SetItem(material);  // Update the display shelf with the clicked material
+
+            // Remove the item from inventory
+            if (inventory.materialQuantities.ContainsKey(material))
+            {
+                inventory.materialQuantities[material]--;  // Decrease the quantity
+                if (inventory.materialQuantities[material] <= 0)
+                {
+                    inventory.materialQuantities.Remove(material);  // If quantity reaches 0, remove the item
+                }
+            }
+
+            // Update the UI after removing the item from the inventory
+            UpdateUI();
         }
         else
         {
