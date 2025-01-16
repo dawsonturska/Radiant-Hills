@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f2c66b4ca3fce484f94121ca6d0f9893, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,8 +108,6 @@ MonoBehaviour:
   minDistance: 0.5
   aggroRange: 20
   aggroDelay: 1
-  damageAmount: 10
-  damageInterval: 2
 --- !u!61 &4511295788237171924
 BoxCollider2D:
   m_ObjectHideFlags: 0
