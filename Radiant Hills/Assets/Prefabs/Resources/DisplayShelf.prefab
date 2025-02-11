@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2207087795947131437}
   - component: {fileID: 2320637195642861908}
-  - component: {fileID: 7303173668674676093}
-  - component: {fileID: 4925851950482420608}
   m_Layer: 0
   m_Name: DisplayShelf
   m_TagString: Untagged
@@ -79,35 +77,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.98803055, y: 0.98803055}
   m_EdgeRadius: 0
---- !u!114 &7303173668674676093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4731035039433125156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a542093ef7fe494586415c8785868eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  slot1: {fileID: 0}
-  inventoryPanel: {fileID: 0}
---- !u!114 &4925851950482420608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4731035039433125156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d519799a86da0894abb8d4d6b3ec0e75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDisplaySpriteRenderer: {fileID: 0}
-  emptySprite: {fileID: 0}
-  inventory: {fileID: 0}

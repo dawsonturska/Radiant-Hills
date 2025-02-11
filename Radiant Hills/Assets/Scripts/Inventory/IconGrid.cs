@@ -142,7 +142,7 @@ public class IconGrid : MonoBehaviour
         // Check if the player is in range of the display shelf and update the shelf
         if (displayShelf != null && displayShelf.IsPlayerInRange())
         {
-            displayShelf.SetItem(material);  // Update the display shelf with the clicked material
+            displayShelf.StoreItemInShelf(material);  // Store the item in the display shelf
 
             // Remove the item from inventory
             if (inventory.materialQuantities.ContainsKey(material))

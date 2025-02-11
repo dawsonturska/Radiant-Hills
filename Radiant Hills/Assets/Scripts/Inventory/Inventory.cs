@@ -117,6 +117,19 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // Remove material from the inventory
+    public void RemoveMaterial(MaterialType materialType, int quantity)
+    {
+        if (materialQuantities.ContainsKey(materialType))
+        {
+            materialQuantities[materialType] -= quantity; // Decrease the material quantity
+            if (materialQuantities[materialType] <= 0)
+            {
+                materialQuantities.Remove(materialType); // Remove material if quantity is zero
+            }
+        }
+    }
+
     // Attempt to pick up an item from the display shelf
     private void TryPickupItemFromShelf()
     {
