@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4492725300504927192}
   - component: {fileID: 336429443509587900}
-  - component: {fileID: 4908388677419907972}
   - component: {fileID: 9119040451685537405}
   m_Layer: 0
   m_Name: Slot
@@ -86,21 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4908388677419907972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8246518280740289361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d519799a86da0894abb8d4d6b3ec0e75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDisplaySpriteRenderer: {fileID: 0}
-  emptySprite: {fileID: 0}
-  inventoryPanel: {fileID: 0}
 --- !u!61 &9119040451685537405
 BoxCollider2D:
   m_ObjectHideFlags: 0

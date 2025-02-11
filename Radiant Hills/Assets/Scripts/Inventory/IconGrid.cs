@@ -10,7 +10,7 @@ public class IconGrid : MonoBehaviour
     public GameObject emptySlotPrefab;
     public Transform gridContainer;
     public Inventory inventory;
-    public DisplayShelf displayShelf;
+    private DisplayShelf activeShelf;
     public int maxSlots = 20;
 
     private Queue<GameObject> iconPool = new Queue<GameObject>();
@@ -20,18 +20,55 @@ public class IconGrid : MonoBehaviour
     void Start()
     {
         inventory ??= FindObjectOfType<Inventory>();
+
         if (SceneManager.GetActiveScene().name == "Shop")
         {
-            displayShelf ??= FindObjectOfType<DisplayShelf>();
+            // Automatically assign active shelf if player is in range of any shelf
+            SetActiveShelfBasedOnPlayerRange();
         }
 
         PopulateGrid();  // Initially populate the grid
     }
 
+    void Update()
+    {
+        // Recheck player range every frame to ensure we always have the correct shelf
+        SetActiveShelfBasedOnPlayerRange();
+    }
+
+    private void SetActiveShelfBasedOnPlayerRange()
+    {
+        // Find the nearest shelf that the player is in range of
+        var shelves = FindObjectsOfType<DisplayShelf>();  // Get all shelves in the scene
+        DisplayShelf closestShelf = null;
+
+        foreach (var shelf in shelves)
+        {
+            if (shelf.IsPlayerInRange()) // Check if player is in range of the shelf
+            {
+                // If a shelf is in range, check if it is closer or if no shelf is set yet
+                if (closestShelf == null || Vector3.Distance(shelf.transform.position, transform.position) < Vector3.Distance(closestShelf.transform.position, transform.position))
+                {
+                    closestShelf = shelf;
+                }
+            }
+        }
+
+        if (closestShelf != null)
+        {
+            activeShelf = closestShelf;
+            Debug.Log($"Active shelf set to Shelf {activeShelf.shelfID}");
+        }
+        else
+        {
+            activeShelf = null;
+        }
+    }
+
     public void UpdateUI()
     {
         Debug.Log("Updating UI...");
-        PopulateGrid();  // Call PopulateGrid to refresh the grid
+        PopulateGrid();  // Refresh the grid
     }
 
     public void PopulateGrid()
@@ -61,20 +98,10 @@ public class IconGrid : MonoBehaviour
                 Image iconImage = icon.GetComponent<Image>();
                 if (iconImage != null)
                 {
-                    if (material.icon != null)
-                    {
-                        iconImage.sprite = material.icon;
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"Material icon is missing for {material.materialName}");
-                    }
+                    iconImage.sprite = material.icon != null ? material.icon : null;
                 }
 
-                // Remove any previously added listeners to avoid duplicates
                 iconButton.onClick.RemoveAllListeners();
-
-                // Capture the material for the click event
                 iconButton.onClick.AddListener(() => OnItemClicked(material));
             }
 
@@ -94,14 +121,14 @@ public class IconGrid : MonoBehaviour
             slotIndex++;
         }
 
-        IsGridPopulated = true;  // Mark the grid as populated
+        IsGridPopulated = true;
     }
 
     private void ClearGrid()
     {
         foreach (Transform child in gridContainer)
         {
-            child.gameObject.SetActive(false);  // Deactivate instead of destroying to reuse later
+            child.gameObject.SetActive(false);
         }
 
         IsGridPopulated = false;
@@ -139,28 +166,34 @@ public class IconGrid : MonoBehaviour
     {
         Debug.Log($"Item clicked: {material.materialName}");
 
-        // Check if the player is in range of the display shelf and update the shelf
-        if (displayShelf != null && displayShelf.IsPlayerInRange())
+        if (activeShelf == null)
         {
-            displayShelf.StoreItemInShelf(material);  // Store the item in the display shelf
+            Debug.LogWarning("No active shelf assigned! Cannot store item.");
+            return;
+        }
 
-            // Remove the item from inventory
-            if (inventory.materialQuantities.ContainsKey(material))
+        if (!activeShelf.IsPlayerInRange())
+        {
+            Debug.LogWarning($"Shelf {activeShelf.shelfID} is not in range. Cannot store item.");
+            return;
+        }
+
+        activeShelf.StoreItemInShelf(material);
+
+        // Remove the item from inventory safely
+        if (inventory.materialQuantities.TryGetValue(material, out int quantity))
+        {
+            if (quantity > 1)
             {
-                inventory.materialQuantities[material]--;  // Decrease the quantity
-                if (inventory.materialQuantities[material] <= 0)
-                {
-                    inventory.materialQuantities.Remove(material);  // If quantity reaches 0, remove the item
-                }
+                inventory.materialQuantities[material]--;
             }
+            else
+            {
+                inventory.materialQuantities.Remove(material);
+            }
+        }
 
-            // Update the UI after removing the item from the inventory
-            UpdateUI();
-        }
-        else
-        {
-            Debug.LogWarning("Display shelf is not assigned or player is not in range.");
-        }
+        UpdateUI();
     }
 
     public void ReturnToPool(GameObject icon)

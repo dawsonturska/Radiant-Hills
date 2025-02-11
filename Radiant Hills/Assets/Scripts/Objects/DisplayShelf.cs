@@ -1,41 +1,73 @@
 using UnityEngine;
-using UnityEngine.UI; // For Unity UI events (like button clicks)
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class DisplayShelf : MonoBehaviour
 {
-    public SpriteRenderer itemDisplaySpriteRenderer; // Sprite that shows the material icon
-    private MaterialType currentMaterial; // Currently stored material
-    public Sprite emptySprite; // Default empty sprite for the shelf
-    private bool isPlayerInRange = false; // Whether the player is within the collider
-    private Transform playerTransform; // Player's transform
-    private Inventory inventory; // Reference to the player's inventory
-    private IconGrid iconGrid; // Reference to the IconGrid (where items are displayed)
+    [Header("Shelf Display Components")]
+    public SpriteRenderer itemDisplaySpriteRenderer;
+    public Sprite emptySprite;
 
-    public GameObject inventoryPanel; // Inventory panel to toggle visibility
-    private BoxCollider2D interactionCollider; // BoxCollider2D for triggering interaction
+    [Header("Inventory & UI")]
+    public GameObject inventoryPanel;
+
+    private MaterialType currentMaterial;
+    private bool isPlayerInRange = false;
+
+    private Inventory inventory;
+    private IconGrid iconGrid;
+    private BoxCollider2D interactionCollider;
+
+    [Header("Unique Shelf Identification")]
+    public int shelfID;
+    private static HashSet<int> usedIDs = new HashSet<int>();
+    private static Dictionary<int, MaterialType> shelfStorage = new Dictionary<int, MaterialType>();
 
     void Start()
     {
-        // Initialize references and colliders
-        Initialize();
+        AssignUniqueID();
+        InitializeComponents();
+        LoadStoredItem();
     }
 
-    // Initialize necessary references and components
-    public void Initialize()
+    private void AssignUniqueID()
     {
-        // Cache the references to the Inventory and IconGrid objects
-        inventory = FindObjectOfType<Inventory>(); // Ensures each shelf has access to the inventory
-        iconGrid = FindObjectOfType<IconGrid>(); // Each shelf gets its own grid
+        if (shelfID == 0)
+        {
+            do
+            {
+                shelfID = Random.Range(1000, 9999);
+            } while (usedIDs.Contains(shelfID));
 
-        // Set up the box collider 2 units below the sprite renderer (adjust size and position as needed)
-        interactionCollider = gameObject.AddComponent<BoxCollider2D>();
-        interactionCollider.size = new Vector2(itemDisplaySpriteRenderer.bounds.size.x, 1); // Adjust size if needed
-        interactionCollider.offset = new Vector2(0, -itemDisplaySpriteRenderer.bounds.extents.y - 1); // Offset by 1 unit below sprite
-        interactionCollider.isTrigger = true; // Set to trigger to avoid collision with player
+            usedIDs.Add(shelfID);
+        }
 
-        playerTransform = Camera.main.transform; // Assuming the camera is attached to the player
+        Debug.Log($"Shelf {shelfID} initialized.");
+    }
 
-        // Make sure the inventory panel is hidden by default
+    private void InitializeComponents()
+    {
+        inventory = FindObjectOfType<Inventory>();
+        iconGrid = FindObjectOfType<IconGrid>();
+
+        if (itemDisplaySpriteRenderer == null)
+        {
+            itemDisplaySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            if (itemDisplaySpriteRenderer == null)
+            {
+                Debug.LogError($"Shelf {shelfID}: No SpriteRenderer found!");
+                return;
+            }
+        }
+
+        // Ensure a trigger collider exists and set up properly
+        interactionCollider = GetComponent<BoxCollider2D>();
+        if (interactionCollider == null)
+        {
+            interactionCollider = gameObject.AddComponent<BoxCollider2D>();
+        }
+        interactionCollider.isTrigger = true;
+
         if (inventoryPanel != null)
         {
             inventoryPanel.SetActive(false);
@@ -44,39 +76,36 @@ public class DisplayShelf : MonoBehaviour
 
     void Update()
     {
-        // Open/close the inventory when player presses 'E' (if within range)
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            // If there is an item on the shelf, allow the player to pick it up
+            Debug.Log($"Shelf {shelfID}: E pressed. Player in range? {isPlayerInRange}");
+
             if (HasItem())
             {
                 PickupItem();
             }
             else
             {
-                ToggleInventory(); // Otherwise, toggle the inventory
+                ToggleInventory();
             }
         }
 
-        // Close the inventory if Escape key is pressed
         if (inventoryPanel.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
             CloseInventory();
         }
     }
 
-    // Toggles the visibility of the inventory panel
     private void ToggleInventory()
     {
         if (inventoryPanel != null)
         {
             bool isOpen = inventoryPanel.activeSelf;
             inventoryPanel.SetActive(!isOpen);
-            Debug.Log(isOpen ? "Inventory Closed." : "Inventory Opened.");
+            Debug.Log($"Shelf {shelfID}: Inventory {(isOpen ? "Closed" : "Opened")}");
         }
     }
 
-    // Closes the inventory panel
     private void CloseInventory()
     {
         if (inventoryPanel != null)
@@ -85,100 +114,115 @@ public class DisplayShelf : MonoBehaviour
         }
     }
 
-    // Handles when the player enters the interaction zone (collider)
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
+            Debug.Log($"Shelf {shelfID}: Player entered range.");
         }
     }
 
-    // Handles when the player leaves the interaction zone (collider)
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            CloseInventory(); // Close inventory when the player exits range
+            CloseInventory();
+            Debug.Log($"Shelf {shelfID}: Player exited range.");
         }
     }
 
-    // Stores an item from the inventory into the shelf
     public void StoreItemInShelf(MaterialType material)
     {
-        if (material == null)
+        // Ensure that we're checking for the correct shelf's range
+        if (!isPlayerInRange)
         {
-            Debug.LogWarning("Trying to store a null material.");
+            Debug.LogWarning($"Shelf {shelfID}: Not in range, cannot store {material.name}.");
             return;
         }
 
-        // Store the item on the shelf
+        if (material == null)
+        {
+            Debug.LogWarning($"Shelf {shelfID}: Attempted to store null material.");
+            return;
+        }
+
+        shelfStorage[shelfID] = material;
         currentMaterial = material;
-        SetItemIcon(material); // Update the icon on the shelf
-        inventory.RemoveMaterial(material, 1); // Remove one item of this material from the inventory
+        SetItemIcon(material);
+        inventory.RemoveMaterial(material, 1);
+
+        Debug.Log($"Shelf {shelfID}: Stored {material.name}.");
     }
 
-    // Updates the shelf's sprite based on the stored material
     private void SetItemIcon(MaterialType material)
     {
         if (itemDisplaySpriteRenderer == null)
         {
-            Debug.LogWarning("Item display sprite renderer is not assigned.");
+            Debug.LogWarning($"Shelf {shelfID}: SpriteRenderer not assigned.");
             return;
         }
 
-        // Set the sprite to the material's icon, or use the empty sprite if no icon is assigned
         itemDisplaySpriteRenderer.sprite = material.icon != null ? material.icon : emptySprite;
     }
 
-    // Clears the item from the shelf and resets the display
     public void ClearItem()
     {
+        if (shelfStorage.ContainsKey(shelfID))
+        {
+            shelfStorage.Remove(shelfID);
+        }
+
         currentMaterial = null;
         itemDisplaySpriteRenderer.sprite = emptySprite;
+        Debug.Log($"Shelf {shelfID}: Cleared.");
     }
 
-    // Returns true if the shelf currently has an item
     public bool HasItem()
     {
-        return currentMaterial != null;
+        return shelfStorage.ContainsKey(shelfID) && shelfStorage[shelfID] != null;
     }
 
-    // Returns whether the player is within range of the shelf for interaction
     public bool IsPlayerInRange()
     {
+        Debug.Log($"Shelf {shelfID}: Checking range. isPlayerInRange = {isPlayerInRange}");
         return isPlayerInRange;
     }
 
-    // Called when an item is clicked in the inventory (stores the selected material on the shelf)
     public void OnItemClicked(MaterialType material)
     {
         if (material != null)
         {
-            StoreItemInShelf(material); // Store the selected material in the shelf
-            CloseInventory(); // Optionally close the inventory after storing
+            StoreItemInShelf(material);
+            CloseInventory();
         }
     }
 
-    // Gets the material stored in the shelf
     public MaterialType GetItem()
     {
-        return currentMaterial;
+        return shelfStorage.ContainsKey(shelfID) ? shelfStorage[shelfID] : null;
     }
 
-    // Pick up the item and add it to the inventory
     private void PickupItem()
     {
-        // If there is a material on the shelf
         if (HasItem())
         {
-            // Add the item to the inventory
-            inventory.AddMaterial(currentMaterial, 1); // Add one of the stored item to inventory
-            Debug.Log("Picked up: " + currentMaterial.name);
+            MaterialType pickedMaterial = shelfStorage[shelfID];
 
-            // Clear the shelf after picking up the item
+            inventory.AddMaterial(pickedMaterial, 1);
+            Debug.Log($"Shelf {shelfID}: Picked up {pickedMaterial.name}.");
+
             ClearItem();
+        }
+    }
+
+    private void LoadStoredItem()
+    {
+        if (shelfStorage.ContainsKey(shelfID))
+        {
+            currentMaterial = shelfStorage[shelfID];
+            SetItemIcon(currentMaterial);
         }
     }
 }

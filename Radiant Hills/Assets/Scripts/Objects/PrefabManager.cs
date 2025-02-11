@@ -11,13 +11,13 @@ public class PrefabManager : MonoBehaviour
         // Check if inventory is not assigned and try to find it in the scene
         if (inventory == null)
         {
-            inventory = FindObjectOfType<Inventory>(); // Find the inventory if not set in Inspector
+            inventory = FindObjectOfType<Inventory>();
         }
 
         // Check if iconGrid is not assigned and try to find it in the scene
         if (iconGrid == null)
         {
-            iconGrid = FindObjectOfType<IconGrid>(); // Find the icon grid if not set in Inspector
+            iconGrid = FindObjectOfType<IconGrid>();
         }
     }
 
@@ -30,16 +30,12 @@ public class PrefabManager : MonoBehaviour
         // Get the DisplayShelf component from the instantiated object
         DisplayShelf shelfScript = shelfInstance.GetComponent<DisplayShelf>();
 
-        // Check if the DisplayShelf script was found and initialize it with inventory and icon grid
-        if (shelfScript != null)
-        {
-            shelfScript.Initialize(); // Initialize the display shelf
-        }
-        else
+        // Ensure the DisplayShelf script was found
+        if (shelfScript == null)
         {
             Debug.LogError("Failed to find DisplayShelf component on the instantiated prefab.");
         }
 
-        return shelfScript; // Return the initialized DisplayShelf instance
+        return shelfScript; // Return the DisplayShelf instance
     }
 }
