@@ -19,9 +19,9 @@ public class DialogueInteract : MonoBehaviour
     [SerializeField] private DialogueObject startDialogueObject;
     [SerializeField] private Sprite noSpeakerSprite;
     [SerializeField] private Sprite speakerSprite;
-    [SerializeField] private AudioSource charaAudioSource;
+    //[SerializeField] private AudioSource charaAudioSource;
     [SerializeField] private List<GameObject> choiceButtons;
-    [SerializeField] private UnityEvent[] eventQueue;
+    //[SerializeField] private UnityEvent[] eventQueue;
 
     bool optionSelected = false;
 
@@ -50,12 +50,12 @@ public class DialogueInteract : MonoBehaviour
             speakerText.text = dialogue.speakerText;
             charSprite.sprite = dialogue.charSprite;
 
-            if (charaAudioSource != null && dialogue.charAudio != null)
-            {
-                charaAudioSource.Stop();
-                charaAudioSource.clip = dialogue.charAudio;
-                charaAudioSource.Play();
-            }
+            //if (charaAudioSource != null && dialogue.charAudio != null)
+            //{
+                //charaAudioSource.Stop();
+                //charaAudioSource.clip = dialogue.charAudio;
+                //charaAudioSource.Play();
+            //}
 
             if (speakerText.text != "")
             {
@@ -103,10 +103,10 @@ public class DialogueInteract : MonoBehaviour
                 }
             }
 
-            if (eventQueue != null && dialogue.useQueuedEvent)
-            {
-                if (dialogue.queuedEvent > -1 || dialogue.queuedEvent <= eventQueue.Length) eventQueue[dialogue.queuedEvent].Invoke();
-            }
+            //if (eventQueue != null && dialogue.useQueuedEvent)
+            //{
+                //if (dialogue.queuedEvent > -1 || dialogue.queuedEvent <= eventQueue.Length) eventQueue[dialogue.queuedEvent].Invoke();
+            //}
         }
         dialogueOptionsContainer.SetActive(false);
         dialogueCanvas.enabled = false;
