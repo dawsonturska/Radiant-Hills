@@ -101,6 +101,12 @@ public class Inventory : MonoBehaviour
     // Add material to the inventory
     public void AddMaterial(MaterialType materialType, int quantity)
     {
+        if (materialType == null)
+        {
+            Debug.LogError("MaterialType is null. Cannot add to inventory.");
+            return;
+        }
+
         if (materialQuantities.ContainsKey(materialType))
         {
             materialQuantities[materialType] += quantity; // Update quantity if material exists
@@ -115,11 +121,19 @@ public class Inventory : MonoBehaviour
         {
             iconGrid.PopulateGrid(); // Calls the PopulateGrid method to update the inventory UI
         }
+
+        Debug.Log($"Added {quantity} of {materialType.materialName} to inventory.");
     }
 
     // Remove material from the inventory
     public void RemoveMaterial(MaterialType materialType, int quantity)
     {
+        if (materialType == null)
+        {
+            Debug.LogError("MaterialType is null. Cannot remove from inventory.");
+            return;
+        }
+
         if (materialQuantities.ContainsKey(materialType))
         {
             materialQuantities[materialType] -= quantity; // Decrease the material quantity
@@ -128,21 +142,58 @@ public class Inventory : MonoBehaviour
                 materialQuantities.Remove(materialType); // Remove material if quantity is zero
             }
         }
+        else
+        {
+            Debug.LogWarning($"Material {materialType.materialName} not found in inventory.");
+        }
+
+        // Refresh the grid after removing material
+        if (iconGrid != null)
+        {
+            iconGrid.PopulateGrid(); // Calls the PopulateGrid method to update the inventory UI
+        }
+
+        Debug.Log($"Removed {quantity} of {materialType.materialName} from inventory.");
+    }
+
+    // Check if the player has enough material in the inventory
+    public bool HasMaterial(MaterialType materialType, int quantity)
+    {
+        if (materialType == null)
+        {
+            Debug.LogError("MaterialType is null. Cannot check material in inventory.");
+            return false;
+        }
+
+        return materialQuantities.ContainsKey(materialType) && materialQuantities[materialType] >= quantity;
     }
 
     // Attempt to pick up an item from the display shelf
     private void TryPickupItemFromShelf()
     {
-        if (displayShelf.HasItem()) // Check if the shelf has an item
+        if (displayShelf != null && displayShelf.HasItem()) // Check if the shelf has an item
         {
             MaterialType material = displayShelf.GetItem(); // Get the item from the shelf
 
-            // Add the item to the inventory
-            AddMaterial(material, 1);
+            if (material == null)
+            {
+                Debug.LogError("MaterialType is null. Could not pick up item from shelf.");
+                return;
+            }
 
-            // Clear the item from the shelf (so it becomes empty)
-            displayShelf.ClearItem();
-            Debug.Log("Picked up item: " + material.materialName);
+            if (HasMaterial(material, 1)) // Ensure player has space
+            {
+                // Add the item to the inventory
+                AddMaterial(material, 1);
+
+                // Clear the item from the shelf (so it becomes empty)
+                displayShelf.ClearItem();
+                Debug.Log($"Picked up item: {material.materialName}");
+            }
+            else
+            {
+                Debug.LogWarning("Not enough space in inventory to pick up this item.");
+            }
         }
         else
         {

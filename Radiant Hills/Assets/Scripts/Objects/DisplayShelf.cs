@@ -148,10 +148,20 @@ public class DisplayShelf : MonoBehaviour
             return;
         }
 
+        // Ensure the player has at least one unit of the material to store
+        if (!inventory.HasMaterial(material, 1))  // Assuming this method checks if there is at least 1 item of the material
+        {
+            Debug.LogWarning($"Shelf {shelfID}: Not enough {material.name} in inventory to store.");
+            return;
+        }
+
+        // Ensure we're only storing one unit of the material
         shelfStorage[shelfID] = material;
         currentMaterial = material;
         SetItemIcon(material);
-        inventory.RemoveMaterial(material, 1);
+
+        // Call RemoveMaterial to remove only 1 unit of the material from the inventory
+        inventory.RemoveMaterial(material, 1);  // Remove 1 unit, even if the player has multiple.
 
         Debug.Log($"Shelf {shelfID}: Stored {material.name}.");
     }
@@ -210,7 +220,7 @@ public class DisplayShelf : MonoBehaviour
         {
             MaterialType pickedMaterial = shelfStorage[shelfID];
 
-            inventory.AddMaterial(pickedMaterial, 1);
+            inventory.AddMaterial(pickedMaterial, 1);  // Add 1 unit back to the inventory
             Debug.Log($"Shelf {shelfID}: Picked up {pickedMaterial.name}.");
 
             ClearItem();

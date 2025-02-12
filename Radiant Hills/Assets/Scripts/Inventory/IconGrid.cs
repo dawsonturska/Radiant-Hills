@@ -23,30 +23,26 @@ public class IconGrid : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Shop")
         {
-            // Automatically assign active shelf if player is in range of any shelf
             SetActiveShelfBasedOnPlayerRange();
         }
 
-        PopulateGrid();  // Initially populate the grid
+        PopulateGrid();
     }
 
     void Update()
     {
-        // Recheck player range every frame to ensure we always have the correct shelf
         SetActiveShelfBasedOnPlayerRange();
     }
 
     private void SetActiveShelfBasedOnPlayerRange()
     {
-        // Find the nearest shelf that the player is in range of
-        var shelves = FindObjectsOfType<DisplayShelf>();  // Get all shelves in the scene
+        var shelves = FindObjectsOfType<DisplayShelf>();
         DisplayShelf closestShelf = null;
 
         foreach (var shelf in shelves)
         {
-            if (shelf.IsPlayerInRange()) // Check if player is in range of the shelf
+            if (shelf.IsPlayerInRange())
             {
-                // If a shelf is in range, check if it is closer or if no shelf is set yet
                 if (closestShelf == null || Vector3.Distance(shelf.transform.position, transform.position) < Vector3.Distance(closestShelf.transform.position, transform.position))
                 {
                     closestShelf = shelf;
@@ -54,28 +50,17 @@ public class IconGrid : MonoBehaviour
             }
         }
 
-        if (closestShelf != null)
-        {
-            activeShelf = closestShelf;
-            Debug.Log($"Active shelf set to Shelf {activeShelf.shelfID}");
-        }
-        else
-        {
-            activeShelf = null;
-        }
+        activeShelf = closestShelf;
     }
 
     public void UpdateUI()
     {
-        Debug.Log("Updating UI...");
-        PopulateGrid();  // Refresh the grid
+        PopulateGrid();
     }
 
     public void PopulateGrid()
     {
-        Debug.Log("Populating grid with " + inventory.materialQuantities.Count + " materials");
-
-        ClearGrid();  // Clear existing grid content
+        ClearGrid();
 
         int slotIndex = 0;
         foreach (var entry in inventory.materialQuantities)
@@ -84,36 +69,31 @@ public class IconGrid : MonoBehaviour
             int quantity = entry.Value;
 
             GameObject icon = GetIconFromPool();
-            TextMeshProUGUI textMeshProComponent = icon.GetComponentInChildren<TextMeshProUGUI>();
+            icon.SetActive(true);
 
-            // Set the quantity text
+            TextMeshProUGUI textMeshProComponent = icon.GetComponentInChildren<TextMeshProUGUI>();
             if (textMeshProComponent != null)
             {
                 textMeshProComponent.text = quantity.ToString();
             }
 
+            Image iconImage = icon.GetComponent<Image>();
+            if (iconImage != null && material.icon != null)
+            {
+                iconImage.sprite = material.icon;
+            }
+
             Button iconButton = icon.GetComponent<Button>();
             if (iconButton != null)
             {
-                Image iconImage = icon.GetComponent<Image>();
-                if (iconImage != null)
-                {
-                    iconImage.sprite = material.icon != null ? material.icon : null;
-                }
-
                 iconButton.onClick.RemoveAllListeners();
                 iconButton.onClick.AddListener(() => OnItemClicked(material));
             }
 
             slotIndex++;
-
-            if (slotIndex >= maxSlots)
-            {
-                break;
-            }
+            if (slotIndex >= maxSlots) break;
         }
 
-        // Fill remaining slots with empty slots if needed
         while (slotIndex < maxSlots)
         {
             GameObject emptySlot = GetEmptySlotFromPool();
@@ -130,7 +110,6 @@ public class IconGrid : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
-
         IsGridPopulated = false;
     }
 
@@ -142,10 +121,7 @@ public class IconGrid : MonoBehaviour
             icon.SetActive(true);
             return icon;
         }
-        else
-        {
-            return Instantiate(itemIconPrefab, gridContainer);
-        }
+        return Instantiate(itemIconPrefab, gridContainer);
     }
 
     private GameObject GetEmptySlotFromPool()
@@ -156,10 +132,7 @@ public class IconGrid : MonoBehaviour
             emptySlot.SetActive(true);
             return emptySlot;
         }
-        else
-        {
-            return Instantiate(emptySlotPrefab, gridContainer);
-        }
+        return Instantiate(emptySlotPrefab, gridContainer);
     }
 
     private void OnItemClicked(MaterialType material)
@@ -179,21 +152,7 @@ public class IconGrid : MonoBehaviour
         }
 
         activeShelf.StoreItemInShelf(material);
-
-        // Remove the item from inventory safely
-        if (inventory.materialQuantities.TryGetValue(material, out int quantity))
-        {
-            if (quantity > 1)
-            {
-                inventory.materialQuantities[material]--;
-            }
-            else
-            {
-                inventory.materialQuantities.Remove(material);
-            }
-        }
-
-        UpdateUI();
+        UpdateUI();  // Reflect inventory changes after storage
     }
 
     public void ReturnToPool(GameObject icon)
