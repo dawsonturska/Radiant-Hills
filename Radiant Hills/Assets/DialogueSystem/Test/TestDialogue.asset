@@ -15,18 +15,15 @@ MonoBehaviour:
   dialogueSegments:
   - dialogueText: Hello world!
     speakerText: Mark
-    charSprite: {fileID: 21300000, guid: ad8f288013b05d245be782493370cda2, type: 3}
-    dialogueDisplayTime: 5
+    charSprite: {fileID: 0}
     dialogueChoices: []
   - dialogueText: This is a test.
     speakerText: Luke
-    charSprite: {fileID: 21300000, guid: c4f6a80e6bf92e0488f1913c90a2fae3, type: 3}
-    dialogueDisplayTime: 1
+    charSprite: {fileID: 0}
     dialogueChoices: []
   - dialogueText: Does this work?
     speakerText: John
-    charSprite: {fileID: 21300000, guid: ad8f288013b05d245be782493370cda2, type: 3}
-    dialogueDisplayTime: 2
+    charSprite: {fileID: 0}
     dialogueChoices:
     - dialogueChoice: Yes
       followOnDialogue: {fileID: 11400000, guid: 421ddb1c23ed0fb46aa4fcc86de2dd3c, type: 2}
