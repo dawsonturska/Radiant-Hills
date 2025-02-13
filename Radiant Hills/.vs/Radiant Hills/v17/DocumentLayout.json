@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\dturska1\\documents\\radiant hills\\radiant hills\\assets\\scripts\\customers\\customerai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\customers\\customerai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\objects\\sortingorderadjuster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\sortingorderadjuster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\enemies\\enemysorting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\enemysorting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\objects\\counter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\counter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\objects\\displayshelf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\displayshelf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\inventory\\materialtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\materialtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,19 +31,15 @@
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\icongrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\objects\\displayshelf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\displayshelf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\inventory\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\dturska1\\documents\\radiant hills\\radiant hills\\assets\\scripts\\enemies\\bosses\\bosshealthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\enemies\\bosses\\bosshealthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\bosses\\bosshealthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\dturska1\\documents\\radiant hills\\radiant hills\\assets\\scripts\\objects\\prefabmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\objects\\prefabmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\prefabmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -41,14 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\fishing\\fishingzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fishing\\fishingzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\enemies\\enemysorting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\enemysorting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\objects\\sortingorderadjuster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\sortingorderadjuster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\player\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -98,24 +106,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BossHealthBar.cs",
-              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
-              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAqwDcAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Counter.cs",
+              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Counter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\Counter.cs",
+              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Counter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Objects\\Counter.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAuwDQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T23:56:11.064Z",
+              "WhenOpened": "2025-02-13T17:29:37.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CustomerAI.cs",
+              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Customers\\CustomerAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Customers\\CustomerAI.cs",
+              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Customers\\CustomerAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Customers\\CustomerAI.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAqwF8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T17:23:56.882Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "PrefabManager.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\PrefabManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\PrefabManager.cs",
@@ -123,12 +143,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Objects\\PrefabManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T18:11:35.942Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-11T18:11:35.942Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "InteractionField.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\InteractionField.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\InteractionField.cs",
@@ -140,20 +159,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "DisplayShelf.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\DisplayShelf.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\DisplayShelf.cs",
               "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\DisplayShelf.cs",
               "RelativeToolTip": "Assets\\Scripts\\Objects\\DisplayShelf.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAkwNsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAALsAAAAAAAAAAAAuwO4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T18:07:47.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-11T18:07:47.006Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "IconGrid.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Inventory\\IconGrid.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\IconGrid.cs",
@@ -161,12 +179,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Inventory\\IconGrid.cs",
               "ViewState": "AgIAAIIAAAAAAAAAAAAiwKkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T21:17:42.152Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T21:17:42.152Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "MaterialType.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Inventory\\MaterialType.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\MaterialType.cs",
@@ -174,24 +191,23 @@
               "RelativeToolTip": "Assets\\Scripts\\Inventory\\MaterialType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T20:19:45.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T20:19:45.523Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
               "Title": "SortingOrderAdjuster.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
               "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
               "RelativeToolTip": "Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAowCAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAowHUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-11T19:44:42.058Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "PlayerPersistence.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerPersistence.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerPersistence.cs",
@@ -203,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "FishingZone.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingZone.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Fishing\\FishingZone.cs",
@@ -215,7 +231,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "EnemySorting.cs",
+              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\EnemySorting.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\EnemySorting.cs",
+              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\EnemySorting.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemies\\EnemySorting.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T22:26:10.773Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BossHealthBar.cs",
+              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
+              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAqwDcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T23:56:11.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Inventory.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Inventory\\Inventory.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\Inventory.cs",
@@ -223,12 +263,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Inventory\\Inventory.cs",
               "ViewState": "AgIAAJgAAAAAAAAAAAAuwMsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T19:33:18.955Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T19:33:18.955Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "SceneHandler.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\SceneHandler.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Rooms\\SceneHandler.cs",
@@ -240,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "FishingManager.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Fishing\\FishingManager.cs",
@@ -252,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "PickupableObject.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\PickupableObject.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\PickupableObject.cs",
@@ -264,19 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "EnemySorting.cs",
-              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\EnemySorting.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\EnemySorting.cs",
-              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\EnemySorting.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\EnemySorting.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAwwCsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T22:26:10.773Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "DisplayInstructions.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Player\\DisplayInstructions.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\DisplayInstructions.cs",
@@ -288,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "BreakableObject.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\BreakableObject.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\BreakableObject.cs",
@@ -300,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "AttackCollision.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Player\\AttackCollision.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\AttackCollision.cs",
@@ -312,7 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "PlayerAttack.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerAttack.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerAttack.cs",
@@ -324,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Enemy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Enemy.cs",
@@ -336,7 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "TestConsole.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Player\\TestConsole.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\TestConsole.cs",
@@ -348,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "CameraFollow.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Player\\CameraFollow.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\CameraFollow.cs",
@@ -360,7 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerMovement.cs",

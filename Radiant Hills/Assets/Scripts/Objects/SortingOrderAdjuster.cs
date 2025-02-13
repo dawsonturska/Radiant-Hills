@@ -1,11 +1,13 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SortingOrderAdjuster : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public GameObject player; // Reference to the player GameObject
-    private bool playerNotFound = true; // To ensure we log only once
+    private List<GameObject> customers = new List<GameObject>(); // List to hold customers
     private Vector3 lastPlayerPosition; // To track player's last position
+    private List<Vector3> lastCustomerPositions = new List<Vector3>(); // To track customers' last positions
 
     void Awake()
     {
@@ -25,6 +27,13 @@ public class SortingOrderAdjuster : MonoBehaviour
                 lastPlayerPosition = player.transform.position; // Initialize last position
             }
         }
+
+        // Find all customers
+        customers.AddRange(GameObject.FindGameObjectsWithTag("Customer"));
+        foreach (var customer in customers)
+        {
+            lastCustomerPositions.Add(customer.transform.position);
+        }
     }
 
     void Start()
@@ -43,6 +52,13 @@ public class SortingOrderAdjuster : MonoBehaviour
                 lastPlayerPosition = player.transform.position; // Initialize last position
             }
         }
+
+        // Find customers in case they're dynamically spawned after Awake
+        customers.AddRange(GameObject.FindGameObjectsWithTag("Customer"));
+        foreach (var customer in customers)
+        {
+            lastCustomerPositions.Add(customer.transform.position);
+        }
     }
 
     void OnEnable()
@@ -56,48 +72,46 @@ public class SortingOrderAdjuster : MonoBehaviour
         {
             Debug.Log("Player found on enable.");
         }
+
+        // Re-check for customers when the object is enabled
+        customers.Clear();
+        customers.AddRange(GameObject.FindGameObjectsWithTag("Customer"));
+        lastCustomerPositions.Clear();
+        foreach (var customer in customers)
+        {
+            lastCustomerPositions.Add(customer.transform.position);
+        }
     }
 
     void Update()
     {
-        // If player reference is missing, we will log and try to find it again
-        if (player == null && playerNotFound)
-        {
-           // Debug.LogWarning("Player reference missing in Update. Attempting to find player...");
-            player = GameObject.FindWithTag("Player"); // Attempt to find again in Update
-            playerNotFound = false; // Disable further logging
-
-            // If player is found, initialize position
-            if (player != null)
-            {
-                lastPlayerPosition = player.transform.position;
-            }
-        }
-
-        // Only update sorting order if player has moved significantly
+        // Update sorting order for the player
         if (player != null && Vector3.Distance(player.transform.position, lastPlayerPosition) > 0.1f)
         {
-            UpdateSortingOrder();
+            UpdateSortingOrder(player.transform.position, lastPlayerPosition);
             lastPlayerPosition = player.transform.position; // Update last position
+        }
+
+        // Update sorting order for each customer
+        for (int i = 0; i < customers.Count; i++)
+        {
+            if (customers[i] != null && Vector3.Distance(customers[i].transform.position, lastCustomerPositions[i]) > 0.1f)
+            {
+                UpdateSortingOrder(customers[i].transform.position, lastCustomerPositions[i]);
+                lastCustomerPositions[i] = customers[i].transform.position; // Update last customer position
+            }
         }
     }
 
-    public void UpdateSortingOrder()
+    public void UpdateSortingOrder(Vector3 characterPosition, Vector3 lastPosition)
     {
-        if (player == null)
+        if (characterPosition.y > transform.position.y)
         {
-            Debug.LogWarning("Player reference is missing in SortingOrderAdjuster.");
-            return;
-        }
-
-        // Compare player's position to object's position
-        if (player.transform.position.y > transform.position.y)
-        {
-            spriteRenderer.sortingOrder = 2; // Sorting Order for when player is above
+            spriteRenderer.sortingOrder = 2; // Sorting Order for when character is above
         }
         else
         {
-            spriteRenderer.sortingOrder = 0; // Sorting Order for when player is below
+            spriteRenderer.sortingOrder = 0; // Sorting Order for when character is below
         }
     }
 }

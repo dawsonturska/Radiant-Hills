@@ -8,6 +8,7 @@ TagManager:
   - ExclamationMark
   - PlayerWeapon
   - Boss
+  - Customer
   layers:
   - Default
   - TransparentFX

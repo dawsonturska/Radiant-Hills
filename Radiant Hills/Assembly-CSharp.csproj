@@ -67,7 +67,6 @@
     <Compile Include="Assets\Scripts\Objects\DisplayShelf.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\DialogueSystem\DialogueInteract.cs" />
-    <Compile Include="Assets\Prefabs\Enemies\Customers\CustomerAI.cs" />
     <Compile Include="Assets\Scripts\Objects\PrefabManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\BossHealthBar.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
@@ -79,6 +78,7 @@
     <Compile Include="Assets\Scripts\Rooms\TeleportationManager.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingManager.cs" />
     <Compile Include="Assets\Scripts\Objects\SortingOrderAdjuster.cs" />
+    <Compile Include="Assets\Scripts\Customers\CustomerAI.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerPersistence.cs" />
     <Compile Include="Assets\DialogueSystem\UIDialogueOption.cs" />
     <Compile Include="Assets\Scripts\Player\CountdownTimer.cs" />
@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\Fishing\FishingZone.cs" />
     <Compile Include="Assets\DialogueSystem\DialogueObject.cs" />
     <Compile Include="Assets\Scripts\Player\TestConsole.cs" />
+    <Compile Include="Assets\Scripts\Objects\Counter.cs" />
     <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Objects\PickupableObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
@@ -105,6 +106,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\Aoiti\Plugins\Pathfinding.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
@@ -461,6 +463,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Pathfinding">
+      <HintPath>Assets\Aoiti\Plugins\Pathfinding.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -959,6 +965,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Burst.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1033,6 +1043,14 @@
     </Reference>
     <Reference Include="Unity.2D.Aseprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Aseprite.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
@@ -1131,6 +1149,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1153,6 +1175,10 @@
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
