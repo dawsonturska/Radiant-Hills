@@ -23,11 +23,45 @@ public class DisplayShelf : MonoBehaviour
     private static HashSet<int> usedIDs = new HashSet<int>();
     private static Dictionary<int, MaterialType> shelfStorage = new Dictionary<int, MaterialType>();
 
+    // Add the reference to SceneHandler for managing data persistence
+    private SceneHandler sceneHandler;
+
     void Start()
     {
+        sceneHandler = SceneHandler.Instance; // Reference the singleton instance of SceneHandler
+        if (sceneHandler == null)
+        {
+            Debug.LogError("SceneHandler instance not found! Ensure SceneHandler is correctly initialized.");
+            return;
+        }
+
         AssignUniqueID();
         InitializeComponents();
+        InitializeReferences();
         LoadStoredItem();
+    }
+
+    // New method to initialize any references needed for the shelf
+    public void InitializeReferences()
+    {
+        if (sceneHandler == null)
+        {
+            Debug.LogError("SceneHandler reference is missing.");
+            return;
+        }
+
+        inventory = sceneHandler.playerInventory; // Get inventory reference from SceneHandler
+        iconGrid = sceneHandler.iconGrid; // Get IconGrid reference
+
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory reference is missing in SceneHandler.");
+        }
+
+        if (iconGrid == null)
+        {
+            Debug.LogError("IconGrid reference is missing in SceneHandler.");
+        }
     }
 
     private void AssignUniqueID()
@@ -47,9 +81,6 @@ public class DisplayShelf : MonoBehaviour
 
     private void InitializeComponents()
     {
-        inventory = FindObjectOfType<Inventory>();
-        iconGrid = FindObjectOfType<IconGrid>();
-
         if (itemDisplaySpriteRenderer == null)
         {
             itemDisplaySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -60,7 +91,6 @@ public class DisplayShelf : MonoBehaviour
             }
         }
 
-        // Ensure a trigger collider exists and set up properly
         interactionCollider = GetComponent<BoxCollider2D>();
         if (interactionCollider == null)
         {
@@ -135,10 +165,9 @@ public class DisplayShelf : MonoBehaviour
 
     public void StoreItemInShelf(MaterialType material)
     {
-        // Ensure that we're checking for the correct shelf's range
         if (!isPlayerInRange)
         {
-            Debug.LogWarning($"Shelf {shelfID}: Not in range, cannot store {material.name}.");
+            Debug.LogWarning($"Shelf {shelfID}: Not in range, cannot store {material?.name ?? "null"}.");
             return;
         }
 
@@ -148,20 +177,17 @@ public class DisplayShelf : MonoBehaviour
             return;
         }
 
-        // Ensure the player has at least one unit of the material to store
-        if (!inventory.HasMaterial(material, 1))  // Assuming this method checks if there is at least 1 item of the material
+        if (!inventory.HasMaterial(material, 1))
         {
             Debug.LogWarning($"Shelf {shelfID}: Not enough {material.name} in inventory to store.");
             return;
         }
 
-        // Ensure we're only storing one unit of the material
         shelfStorage[shelfID] = material;
         currentMaterial = material;
         SetItemIcon(material);
 
-        // Call RemoveMaterial to remove only 1 unit of the material from the inventory
-        inventory.RemoveMaterial(material, 1);  // Remove 1 unit, even if the player has multiple.
+        inventory.RemoveMaterial(material, 1);
 
         Debug.Log($"Shelf {shelfID}: Stored {material.name}.");
     }
@@ -196,7 +222,6 @@ public class DisplayShelf : MonoBehaviour
 
     public bool IsPlayerInRange()
     {
-        Debug.Log($"Shelf {shelfID}: Checking range. isPlayerInRange = {isPlayerInRange}");
         return isPlayerInRange;
     }
 
@@ -220,19 +245,44 @@ public class DisplayShelf : MonoBehaviour
         {
             MaterialType pickedMaterial = shelfStorage[shelfID];
 
-            inventory.AddMaterial(pickedMaterial, 1);  // Add 1 unit back to the inventory
+            inventory.AddMaterial(pickedMaterial, 1);
+
             Debug.Log($"Shelf {shelfID}: Picked up {pickedMaterial.name}.");
 
             ClearItem();
         }
     }
 
-    private void LoadStoredItem()
+    public void LoadStoredItem()
     {
+        // Load the stored item from PlayerPrefs (or any other persistent storage)
         if (shelfStorage.ContainsKey(shelfID))
         {
             currentMaterial = shelfStorage[shelfID];
             SetItemIcon(currentMaterial);
         }
+        else
+        {
+            itemDisplaySpriteRenderer.sprite = emptySprite;
+        }
+    }
+
+    // Save shelf data for persistence (e.g., PlayerPrefs)
+    public void SaveShelfData()
+    {
+        if (currentMaterial != null)
+        {
+            PlayerPrefs.SetString($"Shelf_{shelfID}", currentMaterial.name);
+        }
+        else
+        {
+            PlayerPrefs.SetString($"Shelf_{shelfID}", string.Empty);
+        }
+
+        PlayerPrefs.Save(); // Save changes to PlayerPrefs
+    }
+    public void SetIconGrid(IconGrid iconGrid)
+    {
+        this.iconGrid = iconGrid;
     }
 }

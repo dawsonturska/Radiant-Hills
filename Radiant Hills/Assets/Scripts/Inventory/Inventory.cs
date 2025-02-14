@@ -16,6 +16,9 @@ public class Inventory : MonoBehaviour
 
     private Transform player; // Reference to the player object
 
+    // Predefined list of materials available in the game (used for loading inventory without MaterialDatabase)
+    public List<MaterialType> allMaterials; // Reference to a list of all possible materials
+
     void Awake()
     {
         // Singleton pattern to ensure only one instance of Inventory exists
@@ -199,5 +202,53 @@ public class Inventory : MonoBehaviour
         {
             Debug.Log("No item on the display shelf to pick up.");
         }
+    }
+
+    // Save inventory data to persistent storage (e.g., PlayerPrefs or a file)
+    public void SaveInventory()
+    {
+        int count = 0;
+        foreach (var item in materialQuantities)
+        {
+            PlayerPrefs.SetString($"InventoryItem_{count}_Name", item.Key.materialName);
+            PlayerPrefs.SetInt($"InventoryItem_{count}_Quantity", item.Value);
+            count++;
+        }
+        PlayerPrefs.SetInt("InventoryCount", count); // Store the total number of items in the inventory
+        PlayerPrefs.Save();
+    }
+
+    // Load inventory data from persistent storage (e.g., PlayerPrefs or a file)
+    public void LoadInventory()
+    {
+        int itemCount = PlayerPrefs.GetInt("InventoryCount", 0);
+        for (int i = 0; i < itemCount; i++)
+        {
+            string materialName = PlayerPrefs.GetString($"InventoryItem_{i}_Name", string.Empty);
+            if (!string.IsNullOrEmpty(materialName))
+            {
+                // Find material by name from the predefined list of materials
+                MaterialType material = FindMaterialByName(materialName);
+                int quantity = PlayerPrefs.GetInt($"InventoryItem_{i}_Quantity", 0);
+
+                if (material != null && quantity > 0)
+                {
+                    AddMaterial(material, quantity);
+                }
+            }
+        }
+    }
+
+    // Find material by name from the list of all available materials
+    private MaterialType FindMaterialByName(string name)
+    {
+        foreach (MaterialType material in allMaterials)
+        {
+            if (material.materialName == name)
+            {
+                return material;
+            }
+        }
+        return null;
     }
 }

@@ -19,7 +19,6 @@ public class CustomerAI : MonoBehaviour
     private Vector3 lastPosition;
     private float stuckTimer = 0f;
     private Counter counter;
-
     private MaterialType itemToDeliver; // Store the material type of the item the customer picks up
 
     private enum State { Wandering, MovingToItem, PickingUpItem, MovingToCounter, Waiting }
@@ -34,7 +33,6 @@ public class CustomerAI : MonoBehaviour
 
     void Update()
     {
-        // Check for "P" key press to display counter's stored items
         if (Input.GetKeyDown(KeyCode.P))
         {
             counter.DisplayStoredItems();
@@ -104,7 +102,7 @@ public class CustomerAI : MonoBehaviour
 
     private bool IsPathBlocked(Vector2 direction)
     {
-        return Physics2D.BoxCast(transform.position, Vector2.one * 0.9f, 0, direction, 1f, shelfLayer);
+        return Physics2D.BoxCast(transform.position, Vector2.one * 0.9f, 0, direction, 0.5f, shelfLayer);
     }
 
     private IEnumerator SmoothMove(Vector2 direction)
@@ -162,7 +160,6 @@ public class CustomerAI : MonoBehaviour
     {
         if (targetShelf?.HasItem() == true)
         {
-            // Assuming we have a way to get the material type from the shelf
             itemToDeliver = targetShelf.GetItem(); // Get the material type of the item
             targetShelf.ClearItem();
             hasItem = true;
@@ -172,28 +169,21 @@ public class CustomerAI : MonoBehaviour
 
     private void DeliverItem()
     {
-        // Check if the customer is aligned with the counter
-        if (Mathf.Abs(transform.position.x - counterLocation.position.x) <= alignmentTolerance &&
-            Mathf.Abs(transform.position.y - counterLocation.position.y) <= alignmentTolerance)
+        if (Vector2.Distance(transform.position, counterLocation.position) <= pickupRange)
         {
             if (hasItem && counter != null && itemToDeliver != null)
             {
-                counter.ReceiveItem(itemToDeliver); // Pass the MaterialType object
+                counter.ReceiveItem(itemToDeliver);
             }
             hasItem = false;
-            currentState = State.Waiting; // Move to the waiting state after delivery
-        }
-        else
-        {
-            // If not aligned, move the customer toward the counter
-            currentState = State.MovingToCounter;
+            currentState = State.Waiting;
         }
     }
 
     private IEnumerator WaitAtCounterRoutine()
     {
-        yield return new WaitForSeconds(waitTimeAtCounter); // Wait for the specified time
-        currentState = State.Wandering; // After waiting, return to wandering
+        yield return new WaitForSeconds(waitTimeAtCounter);
+        currentState = State.Wandering;
     }
 
     private void HandleStuckDetection()
@@ -214,4 +204,3 @@ public class CustomerAI : MonoBehaviour
         lastPosition = transform.position;
     }
 }
-

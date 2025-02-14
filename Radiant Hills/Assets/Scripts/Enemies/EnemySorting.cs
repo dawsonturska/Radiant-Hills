@@ -22,6 +22,11 @@ public class EnemySorting : MonoBehaviour
 
     void Update()
     {
+        UpdateSorting(); // Ensure sorting is updated every frame
+    }
+
+    public void UpdateSorting()
+    {
         if (player == null)
         {
             Debug.LogError("Player reference is missing!");
@@ -39,5 +44,10 @@ public class EnemySorting : MonoBehaviour
             // Player is below or at the same Y position, set lower sorting order for enemy
             spriteRenderer.sortingOrder = 0; // Sorting Order for when player is below
         }
+    }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        this.player = newPlayer;
     }
 }
