@@ -8,10 +8,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private Vector2 moveDirection;
 
-    private float lastMoveX = 0f;
-    private float lastMoveY = -1f; // Default to facing down
-    private float movementThreshold = 0.1f; // Prevents small movements from toggling animations
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,21 +30,18 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        if (Mathf.Abs(moveX) > movementThreshold)
+        // Prioritize the most recent input direction
+        if (moveY != 0)
         {
-            moveY = 0;
+            moveDirection = new Vector2(0, moveY); // Vertical input overrides horizontal
         }
-        else if (Mathf.Abs(moveY) > movementThreshold)
+        else if (moveX != 0)
         {
-            moveX = 0;
+            moveDirection = new Vector2(moveX, 0);
         }
-
-        moveDirection = new Vector2(moveX, moveY).normalized;
-
-        if (moveDirection.sqrMagnitude > 0)
+        else
         {
-            lastMoveX = moveX;
-            lastMoveY = moveY;
+            moveDirection = Vector2.zero; // Stop movement when no keys are pressed
         }
     }
 
@@ -59,19 +52,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        bool isMoving = moveDirection.sqrMagnitude > movementThreshold;
+        bool isMoving = moveDirection.sqrMagnitude > 0;
 
-        if (isMoving)
-        {
-            animator.SetFloat("MoveX", moveDirection.x);
-            animator.SetFloat("MoveY", moveDirection.y);
-        }
-        else
-        {
-            animator.SetFloat("MoveX", 0);
-            animator.SetFloat("MoveY", 0);
-        }
-
+        animator.SetFloat("MoveX", moveDirection.x);
+        animator.SetFloat("MoveY", moveDirection.y);
         animator.SetBool("IsMoving", isMoving);
     }
 }
