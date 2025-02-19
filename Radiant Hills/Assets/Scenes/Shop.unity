@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDisplaySpriteRenderer: {fileID: 527273073}
   emptySprite: {fileID: 21300000, guid: a87c6f2ef51291f4e9305baa0a6db24a, type: 3}
-  inventoryPanel: {fileID: 864926998}
+  IconGrid: {fileID: 864926998}
   shelfID: 0
 --- !u!1 &840476700
 GameObject:
@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDisplaySpriteRenderer: {fileID: 913904631}
   emptySprite: {fileID: 21300000, guid: a87c6f2ef51291f4e9305baa0a6db24a, type: 3}
-  inventoryPanel: {fileID: 864926998}
+  IconGrid: {fileID: 864926998}
   shelfID: 0
 --- !u!212 &913904631 stripped
 SpriteRenderer:
@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDisplaySpriteRenderer: {fileID: 1316552553}
   emptySprite: {fileID: 21300000, guid: a87c6f2ef51291f4e9305baa0a6db24a, type: 3}
-  inventoryPanel: {fileID: 864926998}
+  IconGrid: {fileID: 864926998}
   shelfID: 0
 --- !u!1001 &1571085109
 PrefabInstance:
@@ -2359,7 +2359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDisplaySpriteRenderer: {fileID: 1703540901}
   emptySprite: {fileID: 21300000, guid: a87c6f2ef51291f4e9305baa0a6db24a, type: 3}
-  inventoryPanel: {fileID: 864926998}
+  IconGrid: {fileID: 864926998}
   shelfID: 0
 --- !u!212 &1703540901 stripped
 SpriteRenderer:

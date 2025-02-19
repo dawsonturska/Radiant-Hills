@@ -13,17 +13,26 @@ public class SortingOrderAdjuster : MonoBehaviour
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        UpdateReferences();
+        UpdateAllReferences();
     }
 
-    public void UpdateReferences()
+    public void UpdateAllReferences()
+    {
+        UpdatePlayerReference();
+        UpdateCustomerList();
+    }
+
+    public void UpdatePlayerReference()
     {
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
         }
 
-        UpdateCustomerList();
+        if (player == null)
+        {
+            Debug.LogError("SortingOrderAdjuster: Player reference is still null! Make sure a Player is tagged correctly.");
+        }
     }
 
     public void UpdateCustomerList()
@@ -34,7 +43,10 @@ public class SortingOrderAdjuster : MonoBehaviour
 
         foreach (var customer in customers)
         {
-            lastCustomerPositions.Add(customer.transform.position);
+            if (customer != null)
+            {
+                lastCustomerPositions.Add(customer.transform.position);
+            }
         }
     }
 
@@ -59,5 +71,11 @@ public class SortingOrderAdjuster : MonoBehaviour
     public void UpdateSortingOrder(Vector3 characterPosition)
     {
         spriteRenderer.sortingOrder = characterPosition.y > transform.position.y ? 2 : 0;
+    }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        player = newPlayer;
+        UpdatePlayerReference();  // Ensures the new player reference is correctly assigned
     }
 }

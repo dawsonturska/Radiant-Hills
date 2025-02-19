@@ -8,14 +8,13 @@ public class DisplayShelf : MonoBehaviour
     public SpriteRenderer itemDisplaySpriteRenderer;
     public Sprite emptySprite;
 
-    [Header("Inventory & UI")]
-    public GameObject inventoryPanel;
+    [Header("IconGrid (Assign in Inspector)")]
+    public IconGrid iconGrid; // Direct reference set in the Inspector
 
     private MaterialType currentMaterial;
     private bool isPlayerInRange = false;
 
     private Inventory inventory;
-    private IconGrid iconGrid;
     private BoxCollider2D interactionCollider;
 
     [Header("Unique Shelf Identification")]
@@ -23,44 +22,26 @@ public class DisplayShelf : MonoBehaviour
     private static HashSet<int> usedIDs = new HashSet<int>();
     private static Dictionary<int, MaterialType> shelfStorage = new Dictionary<int, MaterialType>();
 
-    // Add the reference to SceneHandler for managing data persistence
-    private SceneHandler sceneHandler;
-
     void Start()
     {
-        sceneHandler = SceneHandler.Instance; // Reference the singleton instance of SceneHandler
-        if (sceneHandler == null)
-        {
-            Debug.LogError("SceneHandler instance not found! Ensure SceneHandler is correctly initialized.");
-            return;
-        }
-
         AssignUniqueID();
         InitializeComponents();
         InitializeReferences();
         LoadStoredItem();
     }
 
-    // New method to initialize any references needed for the shelf
     public void InitializeReferences()
     {
-        if (sceneHandler == null)
-        {
-            Debug.LogError("SceneHandler reference is missing.");
-            return;
-        }
-
-        inventory = sceneHandler.playerInventory; // Get inventory reference from SceneHandler
-        iconGrid = sceneHandler.iconGrid; // Get IconGrid reference
+        inventory = FindObjectOfType<Inventory>(); // Find inventory in scene
 
         if (inventory == null)
         {
-            Debug.LogError("Inventory reference is missing in SceneHandler.");
+            Debug.LogError("Inventory reference is missing in scene.");
         }
 
         if (iconGrid == null)
         {
-            Debug.LogError("IconGrid reference is missing in SceneHandler.");
+            Debug.LogError("IconGrid reference is missing! Assign it in the Inspector.");
         }
     }
 
@@ -97,19 +78,17 @@ public class DisplayShelf : MonoBehaviour
             interactionCollider = gameObject.AddComponent<BoxCollider2D>();
         }
         interactionCollider.isTrigger = true;
-
-        if (inventoryPanel != null)
-        {
-            inventoryPanel.SetActive(false);
-        }
     }
 
     void Update()
     {
+        if (itemDisplaySpriteRenderer == null || iconGrid == null)
+        {
+            return;
+        }
+
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log($"Shelf {shelfID}: E pressed. Player in range? {isPlayerInRange}");
-
             if (HasItem())
             {
                 PickupItem();
@@ -120,7 +99,7 @@ public class DisplayShelf : MonoBehaviour
             }
         }
 
-        if (inventoryPanel.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        if (iconGrid.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
             CloseInventory();
         }
@@ -128,19 +107,19 @@ public class DisplayShelf : MonoBehaviour
 
     private void ToggleInventory()
     {
-        if (inventoryPanel != null)
+        if (iconGrid != null)
         {
-            bool isOpen = inventoryPanel.activeSelf;
-            inventoryPanel.SetActive(!isOpen);
+            bool isOpen = iconGrid.gameObject.activeSelf;
+            iconGrid.gameObject.SetActive(!isOpen);
             Debug.Log($"Shelf {shelfID}: Inventory {(isOpen ? "Closed" : "Opened")}");
         }
     }
 
     private void CloseInventory()
     {
-        if (inventoryPanel != null)
+        if (iconGrid != null)
         {
-            inventoryPanel.SetActive(false);
+            iconGrid.gameObject.SetActive(false);
         }
     }
 
@@ -149,7 +128,6 @@ public class DisplayShelf : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            Debug.Log($"Shelf {shelfID}: Player entered range.");
         }
     }
 
@@ -159,60 +137,32 @@ public class DisplayShelf : MonoBehaviour
         {
             isPlayerInRange = false;
             CloseInventory();
-            Debug.Log($"Shelf {shelfID}: Player exited range.");
         }
     }
 
     public void StoreItemInShelf(MaterialType material)
     {
-        if (!isPlayerInRange)
+        if (!isPlayerInRange || material == null || !inventory.HasMaterial(material, 1))
         {
-            Debug.LogWarning($"Shelf {shelfID}: Not in range, cannot store {material?.name ?? "null"}.");
-            return;
-        }
-
-        if (material == null)
-        {
-            Debug.LogWarning($"Shelf {shelfID}: Attempted to store null material.");
-            return;
-        }
-
-        if (!inventory.HasMaterial(material, 1))
-        {
-            Debug.LogWarning($"Shelf {shelfID}: Not enough {material.name} in inventory to store.");
             return;
         }
 
         shelfStorage[shelfID] = material;
         currentMaterial = material;
         SetItemIcon(material);
-
         inventory.RemoveMaterial(material, 1);
-
-        Debug.Log($"Shelf {shelfID}: Stored {material.name}.");
     }
 
     private void SetItemIcon(MaterialType material)
     {
-        if (itemDisplaySpriteRenderer == null)
-        {
-            Debug.LogWarning($"Shelf {shelfID}: SpriteRenderer not assigned.");
-            return;
-        }
-
         itemDisplaySpriteRenderer.sprite = material.icon != null ? material.icon : emptySprite;
     }
 
     public void ClearItem()
     {
-        if (shelfStorage.ContainsKey(shelfID))
-        {
-            shelfStorage.Remove(shelfID);
-        }
-
+        shelfStorage.Remove(shelfID);
         currentMaterial = null;
         itemDisplaySpriteRenderer.sprite = emptySprite;
-        Debug.Log($"Shelf {shelfID}: Cleared.");
     }
 
     public bool HasItem()
@@ -227,11 +177,8 @@ public class DisplayShelf : MonoBehaviour
 
     public void OnItemClicked(MaterialType material)
     {
-        if (material != null)
-        {
-            StoreItemInShelf(material);
-            CloseInventory();
-        }
+        StoreItemInShelf(material);
+        CloseInventory();
     }
 
     public MaterialType GetItem()
@@ -243,19 +190,13 @@ public class DisplayShelf : MonoBehaviour
     {
         if (HasItem())
         {
-            MaterialType pickedMaterial = shelfStorage[shelfID];
-
-            inventory.AddMaterial(pickedMaterial, 1);
-
-            Debug.Log($"Shelf {shelfID}: Picked up {pickedMaterial.name}.");
-
+            inventory.AddMaterial(shelfStorage[shelfID], 1);
             ClearItem();
         }
     }
 
     public void LoadStoredItem()
     {
-        // Load the stored item from PlayerPrefs (or any other persistent storage)
         if (shelfStorage.ContainsKey(shelfID))
         {
             currentMaterial = shelfStorage[shelfID];
@@ -267,20 +208,12 @@ public class DisplayShelf : MonoBehaviour
         }
     }
 
-    // Save shelf data for persistence (e.g., PlayerPrefs)
-    public void SaveShelfData()
+    private void OnDestroy()
     {
-        if (currentMaterial != null)
-        {
-            PlayerPrefs.SetString($"Shelf_{shelfID}", currentMaterial.name);
-        }
-        else
-        {
-            PlayerPrefs.SetString($"Shelf_{shelfID}", string.Empty);
-        }
-
-        PlayerPrefs.Save(); // Save changes to PlayerPrefs
+        itemDisplaySpriteRenderer = null;
+        iconGrid = null;
     }
+
     public void SetIconGrid(IconGrid iconGrid)
     {
         this.iconGrid = iconGrid;

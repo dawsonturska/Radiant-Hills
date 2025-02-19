@@ -18,7 +18,7 @@ public class SceneHandler : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Keep this object across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -27,17 +27,37 @@ public class SceneHandler : MonoBehaviour
         }
 
         InitializeReferences();
-        SceneManager.sceneLoaded += OnSceneLoaded; // Update references when a new scene is loaded
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void InitializeReferences()
     {
+        Debug.Log("Initializing references...");
+
         InitializePlayer();
         InitializeCameraFollow();
         InitializeIconGrid();
         InitializePlayerInteractionManager();
         InitializeSortingOrderAdjuster();
         InitializeDisplayShelves();
+        InitializeEnemySorting();
+    }
+
+    private void InitializeIconGrid()
+    {
+        if (iconGrid == null)
+        {
+            iconGrid = FindObjectOfType<IconGrid>();
+            if (iconGrid != null)
+            {
+                DontDestroyOnLoad(iconGrid.gameObject);
+                Debug.Log("IconGrid found and set to persist.");
+            }
+            else
+            {
+                Debug.LogError("IconGrid not found! Ensure it is in the scene.");
+            }
+        }
     }
 
     private void InitializePlayer()
@@ -49,7 +69,8 @@ public class SceneHandler : MonoBehaviour
 
         if (player != null)
         {
-            DontDestroyOnLoad(player.gameObject); // Keep the player across scenes
+            DontDestroyOnLoad(player.gameObject);
+            Debug.Log("Player found and set to persist.");
         }
         else
         {
@@ -66,19 +87,12 @@ public class SceneHandler : MonoBehaviour
 
         if (cameraFollow != null)
         {
-            DontDestroyOnLoad(cameraFollow.gameObject); // Keep the camera follow across scenes
+            DontDestroyOnLoad(cameraFollow.gameObject);
+            Debug.Log("CameraFollow found and set to persist.");
         }
         else
         {
-            Debug.LogError("CameraFollow not found! Ensure a CameraFollow object is present.");
-        }
-    }
-
-    private void InitializeIconGrid()
-    {
-        if (iconGrid == null)
-        {
-            iconGrid = FindObjectOfType<IconGrid>();
+            Debug.LogError("CameraFollow not found! Ensure it is in the scene.");
         }
     }
 
@@ -94,6 +108,7 @@ public class SceneHandler : MonoBehaviour
             GameObject managerObject = new GameObject("PlayerInteractionManager");
             playerInteractionManager = managerObject.AddComponent<PlayerInteractionManager>();
             DontDestroyOnLoad(managerObject);
+            Debug.Log("PlayerInteractionManager created and set to persist.");
         }
 
         if (player != null)
@@ -112,12 +127,13 @@ public class SceneHandler : MonoBehaviour
 
         if (sortingOrderAdjuster != null)
         {
-            sortingOrderAdjuster.player = player?.gameObject;
-            sortingOrderAdjuster.UpdateCustomerList(); // Ensure customers update
+            sortingOrderAdjuster.SetPlayer(player?.gameObject);
+            sortingOrderAdjuster.UpdateCustomerList();
+            Debug.Log("SortingOrderAdjuster found and updated.");
         }
         else
         {
-            Debug.LogError("SortingOrderAdjuster not found! Ensure a SortingOrderAdjuster object is present.");
+            Debug.LogError("SortingOrderAdjuster not found! Ensure it is in the scene.");
         }
     }
 
@@ -126,14 +142,15 @@ public class SceneHandler : MonoBehaviour
         displayShelves.Clear();
         displayShelves.AddRange(FindObjectsOfType<DisplayShelf>());
 
+        Debug.Log($"Found {displayShelves.Count} DisplayShelves in the scene.");
+
         foreach (var shelf in displayShelves)
         {
-            if (shelf == null) continue; // Prevent accessing a destroyed shelf
+            if (shelf == null) continue;
 
             shelf.InitializeReferences();
-            shelf.LoadStoredItem(); // Load the shelf data
+            shelf.LoadStoredItem();
 
-            // Assign IconGrid reference if it exists
             if (iconGrid != null)
             {
                 shelf.SetIconGrid(iconGrid);
@@ -141,25 +158,13 @@ public class SceneHandler : MonoBehaviour
         }
     }
 
-    private void InitializeEnemySorting()
-    {
-        var enemySorters = FindObjectsOfType<EnemySorting>();
-        foreach (var sorter in enemySorters)
-        {
-            if (sorter != null)
-            {
-                sorter.UpdateSorting();
-            }
-        }
-    }
-
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (this == null) return; // Ensure SceneHandler isn't destroyed
+        Debug.Log($"Scene '{scene.name}' loaded. Reinitializing references...");
 
-        InitializeReferences(); // Refresh references after scene loads
-        InitializeDisplayShelves(); // Reinitialize display shelves
-        InitializeEnemySorting(); // Update enemy sorting
+        InitializeReferences();
+        InitializeDisplayShelves();
+        InitializeEnemySorting();
 
         if (playerInventory != null)
         {
@@ -168,6 +173,22 @@ public class SceneHandler : MonoBehaviour
         else
         {
             Debug.LogError("Player inventory is not set in SceneHandler.");
+        }
+    }
+
+    private void InitializeEnemySorting()
+    {
+        var enemySorters = FindObjectsOfType<EnemySorting>();
+
+        Debug.Log($"Found {enemySorters.Length} enemy sorters in the scene.");
+
+        foreach (var sorter in enemySorters)
+        {
+            if (sorter != null)
+            {
+                sorter.SetPlayer(player?.gameObject);
+                sorter.UpdateSorting();
+            }
         }
     }
 }
