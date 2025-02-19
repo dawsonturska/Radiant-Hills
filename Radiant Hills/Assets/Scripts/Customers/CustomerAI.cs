@@ -61,6 +61,7 @@ public class CustomerAI : MonoBehaviour
                     break;
                 case State.Waiting:
                     yield return WaitAtCounterRoutine();
+                    ResetToWander(); // Reset to wandering after waiting at the counter
                     break;
             }
             yield return null;
@@ -183,7 +184,6 @@ public class CustomerAI : MonoBehaviour
     private IEnumerator WaitAtCounterRoutine()
     {
         yield return new WaitForSeconds(waitTimeAtCounter);
-        currentState = State.Wandering;
     }
 
     private void HandleStuckDetection()
@@ -202,5 +202,13 @@ public class CustomerAI : MonoBehaviour
             stuckTimer = 0f;
         }
         lastPosition = transform.position;
+    }
+
+    public void ResetToWander()
+    {
+        StopAllCoroutines(); // Stop any current movement
+        currentState = State.Wandering;
+        StartCoroutine(StateMachine()); // Restart the state machine
+        Debug.Log("CustomerAI reset to wandering.");
     }
 }

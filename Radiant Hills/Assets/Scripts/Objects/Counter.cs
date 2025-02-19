@@ -5,7 +5,6 @@ public class Counter : MonoBehaviour
 {
     private Dictionary<MaterialType, int> storedItems = new Dictionary<MaterialType, int>();
 
-    public BoxCollider2D Register; // Interaction area for collecting items (set to trigger)
     public GameObject player; // Reference to the player
     public MaterialType buttonsMaterial; // Reference to the "Buttons" material
 
@@ -13,18 +12,14 @@ public class Counter : MonoBehaviour
 
     private void Start()
     {
+        // Ensure the player is assigned
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
-        }
-
-        if (Register == null)
-        {
-            Debug.LogError("Register collider is not assigned!");
-        }
-        else if (!Register.isTrigger)
-        {
-            Debug.LogWarning("Register BoxCollider2D should be set to 'Is Trigger'!");
+            if (player == null)
+            {
+                Debug.LogError("Player not found! Make sure the player GameObject has the 'Player' tag.");
+            }
         }
 
         if (buttonsMaterial == null)
@@ -42,22 +37,9 @@ public class Counter : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void SetPlayerInTrigger(bool state)
     {
-        if (other.gameObject == player)
-        {
-            Debug.Log("Player entered the counter trigger zone.");
-            playerInTrigger = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject == player)
-        {
-            Debug.Log("Player exited the counter trigger zone.");
-            playerInTrigger = false;
-        }
+        playerInTrigger = state;
     }
 
     public void ReceiveItem(MaterialType material)
@@ -104,7 +86,7 @@ public class Counter : MonoBehaviour
 
             Debug.Log($"Processing {quantity}x {material.materialName}, Price per item: {material.price}");
 
-            int buttonAmount = Mathf.FloorToInt(material.price * quantity); // Convert float price to int
+            int buttonAmount = Mathf.FloorToInt(material.price * quantity);
             totalButtons += buttonAmount;
 
             Debug.Log($"Converted {quantity}x {material.materialName} into {buttonAmount} Buttons.");

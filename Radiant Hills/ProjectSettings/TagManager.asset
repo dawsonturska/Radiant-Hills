@@ -9,6 +9,7 @@ TagManager:
   - PlayerWeapon
   - Boss
   - Customer
+  - CounterTrigger
   layers:
   - Default
   - TransparentFX
