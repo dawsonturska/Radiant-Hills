@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class SortingOrderAdjuster : MonoBehaviour
@@ -13,6 +14,18 @@ public class SortingOrderAdjuster : MonoBehaviour
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to scene load event
+        UpdateAllReferences();
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe when destroyed
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log($"SortingOrderAdjuster: Scene '{scene.name}' loaded. Updating references.");
         UpdateAllReferences();
     }
 
@@ -24,14 +37,15 @@ public class SortingOrderAdjuster : MonoBehaviour
 
     public void UpdatePlayerReference()
     {
-        if (player == null)
-        {
-            player = GameObject.FindWithTag("Player");
-        }
+        player = GameObject.FindWithTag("Player");
 
         if (player == null)
         {
             Debug.LogError("SortingOrderAdjuster: Player reference is still null! Make sure a Player is tagged correctly.");
+        }
+        else
+        {
+            Debug.Log("SortingOrderAdjuster: Player reference updated.");
         }
     }
 
@@ -76,6 +90,6 @@ public class SortingOrderAdjuster : MonoBehaviour
     public void SetPlayer(GameObject newPlayer)
     {
         player = newPlayer;
-        UpdatePlayerReference();  // Ensures the new player reference is correctly assigned
+        UpdateAllReferences(); // Reinitialize everything when player is set
     }
 }

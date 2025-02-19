@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialName: Salmon
   icon: {fileID: 21300000, guid: 8250d5811764c2849a3fed77517b6654, type: 3}
+  price: 4

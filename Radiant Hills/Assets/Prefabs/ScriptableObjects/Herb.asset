@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialName: Herb
   icon: {fileID: 21300000, guid: d57502d2f33353f419b87bb7455ad964, type: 3}
+  price: 1

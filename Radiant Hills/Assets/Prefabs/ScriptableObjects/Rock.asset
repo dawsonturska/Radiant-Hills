@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialName: Rock
   icon: {fileID: 21300000, guid: b9cb25c6bf71fb14c9a7ac1b45dd9945, type: 3}
+  price: 2

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class FishingManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class FishingManager : MonoBehaviour
     private float fishingTimeMin = 3f;
     private float fishingTimeMax = 5f;
     private float catchWindowTime = 3f;
+
     public GameObject exclamationPrefab;
     public GameObject player;
     public FishingZone fishingZone;
@@ -24,10 +26,56 @@ public class FishingManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to scene load event
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe when destroyed
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log($"FishingManager: Scene '{scene.name}' loaded. Updating references.");
+        UpdateReferences();
+    }
+
+    private void UpdateReferences()
+    {
+        UpdatePlayerReference();
+        UpdateFishingZoneReference();
+    }
+
+    private void UpdatePlayerReference()
+    {
+        player = GameObject.FindWithTag("Player");
+
+        if (player == null)
+        {
+            Debug.LogError("FishingManager: Player reference is still null! Make sure a Player is tagged correctly.");
+        }
+        else
+        {
+            Debug.Log("FishingManager: Player reference updated.");
+        }
+    }
+
+    private void UpdateFishingZoneReference()
+    {
+        fishingZone = FindObjectOfType<FishingZone>();
+
+        if (fishingZone == null)
+        {
+            Debug.LogError("FishingManager: No FishingZone found in the scene.");
+        }
+        else
+        {
+            Debug.Log("FishingManager: FishingZone reference updated.");
         }
     }
 
@@ -61,7 +109,6 @@ public class FishingManager : MonoBehaviour
 
     private IEnumerator FishingCycle()
     {
-        // Randomly select a fishing time
         float fishingTime = Random.Range(fishingTimeMin, fishingTimeMax);
         yield return new WaitForSeconds(fishingTime);
 
@@ -70,7 +117,6 @@ public class FishingManager : MonoBehaviour
         ShowExclamationMark();
         isWindowOpen = true;
 
-        // Start the catch window timer
         float catchWindowTimer = 0f;
         while (catchWindowTimer < catchWindowTime)
         {
@@ -80,7 +126,7 @@ public class FishingManager : MonoBehaviour
                 yield break;
             }
 
-            if (Input.GetKeyDown(KeyCode.E)) // Check for key press
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 CatchFish();
                 yield break;
@@ -90,13 +136,11 @@ public class FishingManager : MonoBehaviour
             yield return null;
         }
 
-        // If the player didn't catch the fish, hide the exclamation mark and reset
         HideExclamationMark();
         isWindowOpen = false;
         isFishing = false;
 
         Debug.Log("Fishing failed. Trying again.");
-        // Automatically restart fishing if the fish wasn't caught
         StartFishing();
     }
 
@@ -111,6 +155,8 @@ public class FishingManager : MonoBehaviour
 
     private void HideExclamationMark()
     {
+        if (player == null) return;
+
         foreach (Transform child in player.transform)
         {
             if (child.gameObject.CompareTag("ExclamationMark"))
@@ -125,29 +171,24 @@ public class FishingManager : MonoBehaviour
         isFishCaught = true;
         Debug.Log("Fish caught!");
         AddRandomMaterialToPlayer();
-        HideExclamationMark();  // Ensure the exclamation mark disappears
-        RestartFishingCycle();  // Restart the fishing cycle after catching the fish
+        HideExclamationMark();
+        RestartFishingCycle();
     }
 
     private void AddRandomMaterialToPlayer()
     {
         if (fishingZone != null && fishingZone.materialTypes.Count > 0)
         {
-            // Select a random material
             MaterialType randomMaterial = fishingZone.materialTypes[Random.Range(0, fishingZone.materialTypes.Count)];
-
-            // Add exactly 1 of that material
             int quantityToAdd = 1;
 
             Debug.Log($"Player received: {quantityToAdd} x {randomMaterial.name}");
 
             if (player != null)
             {
-                // Get the player's inventory
                 Inventory playerInventory = player.GetComponent<Inventory>();
                 if (playerInventory != null)
                 {
-                    // Add the material to the player's inventory
                     playerInventory.AddMaterial(randomMaterial, quantityToAdd);
                 }
                 else
@@ -158,13 +199,9 @@ public class FishingManager : MonoBehaviour
         }
     }
 
-    // New function to handle restarting the fishing cycle
     private void RestartFishingCycle()
     {
-        // Stop the current fishing cycle
         StopFishing();
-
-        // Start a new fishing cycle immediately
         StartFishing();
     }
 }
