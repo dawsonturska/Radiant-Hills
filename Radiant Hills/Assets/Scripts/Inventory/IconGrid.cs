@@ -41,7 +41,7 @@ public class IconGrid : MonoBehaviour
 
         foreach (var shelf in shelves)
         {
-            if (shelf.IsPlayerInRange())
+            if (shelf.IsPlayerInRange)
             {
                 if (closestShelf == null || Vector3.Distance(shelf.transform.position, transform.position) < Vector3.Distance(closestShelf.transform.position, transform.position))
                 {
@@ -145,7 +145,7 @@ public class IconGrid : MonoBehaviour
             return;
         }
 
-        if (!activeShelf.IsPlayerInRange())
+        if (!activeShelf.IsPlayerInRange)
         {
             Debug.LogWarning($"Shelf {activeShelf.shelfID} is not in range. Cannot store item.");
             return;

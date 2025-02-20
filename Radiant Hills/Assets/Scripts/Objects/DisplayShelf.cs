@@ -8,12 +8,11 @@ public class DisplayShelf : MonoBehaviour
     public SpriteRenderer itemDisplaySpriteRenderer;
     public Sprite emptySprite;
 
-    [Header("IconGrid (Assign in Inspector)")]
-    public IconGrid iconGrid; // Direct reference set in the Inspector
+    [Header("IconGrid (Assign in Inspector or Automatically)")]
+    public IconGrid iconGrid;
 
     private MaterialType currentMaterial;
     private bool isPlayerInRange = false;
-
     private Inventory inventory;
     private BoxCollider2D interactionCollider;
 
@@ -32,16 +31,20 @@ public class DisplayShelf : MonoBehaviour
 
     public void InitializeReferences()
     {
-        inventory = FindObjectOfType<Inventory>(); // Find inventory in scene
-
+        inventory = FindObjectOfType<Inventory>();
         if (inventory == null)
         {
             Debug.LogError("Inventory reference is missing in scene.");
         }
 
+        // Ensure IconGrid is assigned dynamically if not set in Inspector
         if (iconGrid == null)
         {
-            Debug.LogError("IconGrid reference is missing! Assign it in the Inspector.");
+            iconGrid = FindObjectOfType<IconGrid>();
+            if (iconGrid == null)
+            {
+                Debug.LogError("IconGrid reference is missing! Ensure it is in the scene.");
+            }
         }
     }
 
@@ -56,7 +59,6 @@ public class DisplayShelf : MonoBehaviour
 
             usedIDs.Add(shelfID);
         }
-
         Debug.Log($"Shelf {shelfID} initialized.");
     }
 
@@ -170,11 +172,6 @@ public class DisplayShelf : MonoBehaviour
         return shelfStorage.ContainsKey(shelfID) && shelfStorage[shelfID] != null;
     }
 
-    public bool IsPlayerInRange()
-    {
-        return isPlayerInRange;
-    }
-
     public void OnItemClicked(MaterialType material)
     {
         StoreItemInShelf(material);
@@ -208,14 +205,11 @@ public class DisplayShelf : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public void SetIconGrid(IconGrid newIconGrid)
     {
-        itemDisplaySpriteRenderer = null;
-        iconGrid = null;
+        iconGrid = newIconGrid;
     }
 
-    public void SetIconGrid(IconGrid iconGrid)
-    {
-        this.iconGrid = iconGrid;
-    }
+    // Public property to expose 'isPlayerInRange'
+    public bool IsPlayerInRange => isPlayerInRange;
 }

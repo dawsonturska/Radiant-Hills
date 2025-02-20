@@ -2189,7 +2189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDisplaySpriteRenderer: {fileID: 1316552553}
   emptySprite: {fileID: 21300000, guid: a87c6f2ef51291f4e9305baa0a6db24a, type: 3}
-  iconGrid: {fileID: 0}
+  iconGrid: {fileID: 1061713347}
   shelfID: 0
 --- !u!1001 &1571085109
 PrefabInstance:
