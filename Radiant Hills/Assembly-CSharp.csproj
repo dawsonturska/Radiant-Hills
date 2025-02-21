@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Enemies\Bosses\CentipedeBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\Projectile.cs" />
     <Compile Include="Assets\Scripts\Objects\TestTrigger.cs" />
+    <Compile Include="Assets\Art Assets\Anims\NormalMapSwitcher.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Rooms\PlayerInteractionManager.cs" />
     <Compile Include="Assets\Scripts\Player\AttackCollision.cs" />
@@ -105,6 +106,7 @@
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Art Assets\Anims\SpritewNormal.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
