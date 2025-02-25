@@ -13,13 +13,13 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        lastInputDirection = Vector2.down; // Default direction (e.g., down)
+        lastInputDirection = Vector2.down; // Default direction (e.g., facing downward)
     }
 
     void Update()
     {
         HandleInput();
-        UpdateAnimation(); // Update animation based on input direction
+        UpdateAnimation(); // Ensure animations update as soon as input changes
     }
 
     void FixedUpdate()
@@ -32,19 +32,25 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
+        // Prioritize vertical movement (prevents diagonal movement)
         if (moveY != 0)
         {
             moveDirection = new Vector2(0, moveY);
             lastInputDirection = moveDirection; // Update immediately
+            animator.SetTrigger(moveY > 0 ? "MoveUp" : "MoveDown"); // Trigger transition animation
+            animator.SetTrigger("StartMoving"); // Start movement after transition
         }
         else if (moveX != 0)
         {
             moveDirection = new Vector2(moveX, 0);
             lastInputDirection = moveDirection; // Update immediately
+            animator.SetTrigger(moveX > 0 ? "MoveRight" : "MoveLeft"); // Trigger transition animation
+            animator.SetTrigger("StartMoving"); // Start movement after transition
         }
         else
         {
             moveDirection = Vector2.zero;
+            animator.ResetTrigger("StartMoving");
         }
     }
 
@@ -55,21 +61,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        // Ensure that the correct direction is used based on player input.
+        // Update the movement animation direction immediately
         if (moveDirection.sqrMagnitude > 0)
         {
             animator.SetFloat("MoveX", moveDirection.x);
             animator.SetFloat("MoveY", moveDirection.y);
-        }
-        else
-        {
-            // Use the last input direction when no movement is happening
-            animator.SetFloat("MoveX", lastInputDirection.x);
-            animator.SetFloat("MoveY", lastInputDirection.y);
+            lastInputDirection = moveDirection; // Ensure last direction is updated
         }
 
-        // Set the "IsMoving" flag for animation transitions.
-        bool isMoving = moveDirection.sqrMagnitude > 0;
-        animator.SetBool("IsMoving", isMoving);
+        // Ensure idle animations still face the last direction
+        animator.SetFloat("IdleX", lastInputDirection.x);
+        animator.SetFloat("IdleY", lastInputDirection.y);
+
+        // Update the IsMoving parameter
+        animator.SetBool("IsMoving", moveDirection.sqrMagnitude > 0);
     }
 }
