@@ -336,7 +336,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ...
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1755,7 +1755,7 @@ MonoBehaviour:
   dialogueOptionsContainer: {fileID: 965304960}
   dialogueOptionsParent: {fileID: 1540005692}
   dialogueOptionsButtonPrefab: {fileID: 3170394752563959365, guid: 5591b703c15f7c74f892002ebd959556, type: 3}
-  startDialogueObject: {fileID: 11400000, guid: fbcb5efa7b467474caa47dbe286fffcd, type: 2}
+  startDialogueObject: {fileID: 11400000, guid: 2c4003235de98424187ec40f864c356d, type: 2}
   noSpeakerSprite: {fileID: 21300000, guid: daa3d7331106f18439ab29bccee66c8a, type: 3}
   speakerSprite: {fileID: 21300000, guid: 2323b6a06c435aa46b911794b3045ccd, type: 3}
   choiceButtons:
