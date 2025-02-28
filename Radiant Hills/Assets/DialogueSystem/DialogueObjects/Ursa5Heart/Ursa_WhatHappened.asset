@@ -50,7 +50,7 @@ MonoBehaviour:
     speakerText: 
     charSprite: {fileID: 0}
     dialogueChoices: []
-  - dialogueText: Silly Me. I could never forget you, my sweet little Dipper.
+  - dialogueText: Silly me. I could never forget you, my sweet little Dipper.
     speakerText: 
     charSprite: {fileID: 0}
     dialogueChoices: []
