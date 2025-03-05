@@ -5,16 +5,16 @@ public class Projectile : MonoBehaviour
     public float lifetime = 5f; // Time until the projectile is destroyed
     public float damage = 10f; // Damage dealt by the projectile
     public float moveSpeed = 5f; // Speed of the projectile
-    public float hoverDuration = 1f; // Time before moving towards the player
     public Transform boss; // Reference to the boss (could also be set via Inspector)
     public CentipedeBehavior centipedeBehavior; // Reference to CentipedeBehavior
 
     private Transform player;
-    private bool isLaunched = false; // If the projectile is moving towards the player
+    private bool isLaunched = false; // If the projectile is moving
     private bool isReflected = false; // If the projectile is reflected back to the boss
-    private float hoverTimer = 0f; // Timer for the hover phase
     private Rigidbody2D rb;
     private Collider2D projectileCollider;
+    public TurretLogic turretLogic; // Reference to TurretLogic for the callback
+    private bool isTurretProjectile = false; // Flag to check if the projectile was fired by the turret
 
     void Start()
     {
@@ -54,31 +54,24 @@ public class Projectile : MonoBehaviour
 
         // Schedule destruction after the projectile's lifetime
         Invoke(nameof(DestroyProjectile), lifetime);
+
+        if (turretLogic != null)
+        {
+            // Use the fire direction defined by the turret logic
+            isTurretProjectile = true; // Set the flag to indicate turret launch
+            LaunchProjectile(turretLogic.fireDirection);
+        }
     }
 
     void Update()
     {
-        if (!isLaunched)
-        {
-            // Hover phase before launching towards the player
-            hoverTimer += Time.deltaTime;
-
-            if (hoverTimer >= hoverDuration)
-            {
-                isLaunched = true;
-            }
-        }
-        else if (!isReflected)
-        {
-            // Move towards the player
-            Vector3 directionToPlayer = (player.position - transform.position).normalized;
-            rb.velocity = directionToPlayer * moveSpeed;
-        }
+        // No need for homing logic if fired from the turret
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("PlayerWeapon") && !isReflected)
+        // Only trigger the reflection if not fired by a turret
+        if (!isTurretProjectile && collision.gameObject.CompareTag("PlayerWeapon") && !isReflected)
         {
             ReflectProjectileBackToBoss();
         }
@@ -104,7 +97,7 @@ public class Projectile : MonoBehaviour
                 // Logic for hitting the boss after reflection
                 Debug.Log("Reflected projectile hit the boss!");
 
-                // Apply damage to the boss after reflection
+                // Apply the damage to the boss
                 CentipedeBehavior centipedeBehavior = collision.gameObject.GetComponent<CentipedeBehavior>();
                 if (centipedeBehavior != null)
                 {
@@ -127,6 +120,13 @@ public class Projectile : MonoBehaviour
         {
             DestroyProjectile();
         }
+    }
+
+    private void LaunchProjectile(Vector2 fireDirection)
+    {
+        // Set the projectile's velocity based on the fire direction from the turret
+        rb.velocity = fireDirection * moveSpeed;
+        isLaunched = true; // Mark the projectile as launched
     }
 
     private void ReflectProjectileBackToBoss()
@@ -163,6 +163,12 @@ public class Projectile : MonoBehaviour
 
     private void DestroyProjectile()
     {
+        // Notify the turret that the projectile was destroyed
+        if (turretLogic != null)
+        {
+            turretLogic.OnProjectileDestroyed(gameObject);
+        }
+
         // Notify the boss that the projectile was destroyed
         if (centipedeBehavior != null)
         {
