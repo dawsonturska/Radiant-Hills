@@ -13,6 +13,7 @@ public class TurretLogic : MonoBehaviour
 
     private float fireRateTimer = 0f; // Timer for managing fire rate
     private bool isAggroed = false; // Track if the player is within aggro range
+    private bool hasFiredInitially = false; // Track if the turret has fired initially
     private List<GameObject> activeProjectiles = new List<GameObject>(); // List of active projectiles
     private Collider2D turretCollider; // Reference to the turret's collider
 
@@ -58,6 +59,14 @@ public class TurretLogic : MonoBehaviour
         // Handle projectile firing only if the turret is aggroed
         if (isAggroed)
         {
+            // Fire immediately when aggroed for the first time
+            if (!hasFiredInitially)
+            {
+                FireProjectile();
+                hasFiredInitially = true;
+            }
+
+            // Continue firing at the set fire rate after the initial shot
             HandleProjectileFiring();
         }
     }
@@ -88,7 +97,6 @@ public class TurretLogic : MonoBehaviour
 
         Vector3 spawnPosition = projectileSpawnPoint.position + fireDirection.normalized * spawnOffset;
         GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
-
 
         // Assign references to the projectile
         Projectile projScript = projectile.GetComponent<Projectile>();
