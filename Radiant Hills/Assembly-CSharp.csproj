@@ -63,8 +63,8 @@
     <Compile Include="Assets\Scripts\Objects\Portal.cs" />
     <Compile Include="Assets\Scripts\Player\HealthBarToggle.cs" />
     <Compile Include="Assets\Scripts\Player\DisplayInstructions.cs" />
-    <Compile Include="Assets\Scripts\Inventory\IconGrid.cs" />
     <Compile Include="Assets\Scripts\Rooms\ProjectileLock.cs" />
+    <Compile Include="Assets\Scripts\Inventory\IconGrid.cs" />
     <Compile Include="Assets\Scripts\Objects\DisplayShelf.cs" />
     <Compile Include="Assets\Scripts\Enemies\Turret.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Objects\SortingOrderAdjuster.cs" />
     <Compile Include="Assets\Scripts\Customers\CustomerAI.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerPersistence.cs" />
+    <Compile Include="Assets\Scripts\Rooms\DebugTP.cs" />
     <Compile Include="Assets\DialogueSystem\UIDialogueOption.cs" />
     <Compile Include="Assets\Scripts\Player\CountdownTimer.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\CentipedeBehavior.cs" />

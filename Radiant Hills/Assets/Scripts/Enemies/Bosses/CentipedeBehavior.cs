@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class CentipedeBehavior : MonoBehaviour
 {
@@ -25,15 +25,16 @@ public class CentipedeBehavior : MonoBehaviour
     private float teleportCooldownTimer = 0f; // Timer for managing teleport cooldowns
     private Transform lastTeleportPoint; // Track the last teleport point
 
-    // Reference to the boss's health
-    private BossHealth bossHealth;
+    private BossHealth bossHealth; // Reference to BossHealth script
+    public BossHealthBarUI healthBarUI; // Reference to the health bar UI script
 
-    // Reference to the health bar UI script
-    public BossHealthBarUI healthBarUI;
+    private bool isTeleporting = false; // Flag to check if the teleportation is in progress
+    private bool canTeleport = true; // Flag to prevent teleportation spam
 
     void Start()
     {
         centipedeCollider = GetComponent<Collider2D>();
+        bossHealth = GetComponent<BossHealth>(); // Get the BossHealth component
 
         if (player == null)
         {
@@ -43,13 +44,6 @@ public class CentipedeBehavior : MonoBehaviour
         if (projectilePrefab == null || projectileSpawnPoint == null)
         {
             Debug.LogError("Projectile prefab or spawn point is not assigned!");
-        }
-
-        // Get the BossHealth component
-        bossHealth = GetComponent<BossHealth>();
-        if (bossHealth == null)
-        {
-            Debug.LogError("BossHealth component is missing on this boss!");
         }
 
         // Initial teleport to TeleportPoint1 at the start of the game
@@ -67,6 +61,11 @@ public class CentipedeBehavior : MonoBehaviour
         if (lineRenderer == null)
         {
             Debug.LogError("LineRenderer is not assigned!");
+        }
+
+        if (bossHealth == null)
+        {
+            Debug.LogError("BossHealth script is not assigned!");
         }
     }
 
@@ -93,14 +92,17 @@ public class CentipedeBehavior : MonoBehaviour
             }
         }
 
-        // Handle projectile firing only if the boss is aggroed
-        if (isAggroed)
+        // Handle projectile firing only if the boss is aggroed and not teleporting
+        if (isAggroed && !isTeleporting)
         {
             HandleProjectileFiring();
         }
 
-        // Handle teleportation independently of projectiles
-        HandleTeleportation();
+        // Handle teleportation only if the boss has taken damage
+        if (!canTeleport)
+        {
+            HandleTeleportation();
+        }
 
         // Ensure the Z position is locked to its current value during movement
         LockZPosition();
@@ -142,13 +144,17 @@ public class CentipedeBehavior : MonoBehaviour
 
     private void HandleTeleportation()
     {
-        teleportCooldownTimer += Time.deltaTime;
-
-        // Allow teleportation to occur after the cooldown
-        if (teleportCooldownTimer >= teleportCooldown)
+        // Allow teleportation only if the boss has taken damage (canTeleport is false after damage)
+        if (canTeleport)
         {
-            TeleportToRandomLocation();
-            teleportCooldownTimer = 0f; // Reset teleport cooldown timer
+            teleportCooldownTimer += Time.deltaTime;
+
+            // Allow teleportation after cooldown
+            if (teleportCooldownTimer >= teleportCooldown)
+            {
+                TeleportToRandomLocation();
+                teleportCooldownTimer = 0f; // Reset teleport cooldown timer
+            }
         }
     }
 
@@ -157,6 +163,23 @@ public class CentipedeBehavior : MonoBehaviour
         Vector3 lockedPosition = transform.position;
         lockedPosition.z = 0f; // Lock Z to 0 or keep it fixed as needed
         transform.position = lockedPosition;
+    }
+
+    // Add TakeDamage method here to handle damage to the boss
+    public void TakeDamage(float damageAmount)
+    {
+        if (bossHealth != null)
+        {
+            bossHealth.TakeDamage(damageAmount); // Use BossHealth script to handle damage
+        }
+    }
+
+    private void Die()
+    {
+        // Handle boss death here (e.g., play death animation, disable the object, etc.)
+        Debug.Log("Centipede has been defeated!");
+        // Example: Destroy the boss object
+        Destroy(gameObject);
     }
 
     void FireProjectileAtPlayer()
@@ -212,6 +235,16 @@ public class CentipedeBehavior : MonoBehaviour
 
     private IEnumerator TeleportSequence(Transform newTeleportPoint)
     {
+        // Disable projectile firing during teleportation
+        isTeleporting = true;
+
+        // Only teleport if the new teleport point is provided
+        if (newTeleportPoint == null)
+        {
+            // Trigger a random teleport if no specific teleport point is provided
+            TeleportToRandomLocation();
+        }
+
         // Draw a line between the old and new teleport points
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, transform.position);
@@ -230,11 +263,7 @@ public class CentipedeBehavior : MonoBehaviour
             if (IsPlayerIntersectingLine())
             {
                 // Damage the player
-                PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-                if (playerHealth != null)
-                {
-                    playerHealth.TakeDamage(damageOnTeleport);
-                }
+                TakeDamageOnTeleport();
             }
 
             damageTime += Time.deltaTime;
@@ -247,6 +276,10 @@ public class CentipedeBehavior : MonoBehaviour
 
         // Disable the line renderer after teleportation
         lineRenderer.enabled = false;
+
+        // Allow the centipede to teleport again
+        canTeleport = true;
+        isTeleporting = false;
 
         Debug.Log("Centipede teleported to: " + newTeleportPoint.position);
     }
@@ -263,22 +296,17 @@ public class CentipedeBehavior : MonoBehaviour
         return distanceToLine < 1f; // You can adjust the threshold for how close the player needs to be to the line to take damage
     }
 
+    public void TakeDamageOnTeleport()
+    {
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(damageOnTeleport);
+        }
+    }
+
     public void OnProjectileDestroyed(GameObject projectile)
     {
         activeProjectiles.Remove(projectile); // Remove the destroyed projectile from the active list
-    }
-
-    // Add this method to allow external damage interaction
-    public void TakeDamage(float damage)
-    {
-        if (bossHealth != null)
-        {
-            Debug.Log("Taking damage: " + damage + " Current Health: " + bossHealth.currentHealth);
-            bossHealth.TakeDamage(damage); // Apply damage to the boss's health
-        }
-        else
-        {
-            Debug.LogError("BossHealth is not assigned.");
-        }
     }
 }
