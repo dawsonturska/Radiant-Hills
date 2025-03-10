@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292ad4e8ef60718418012549b192e9ab, type: 3}
   m_Name: Burrower Shells
   m_EditorClassIdentifier: 
-  materialName: Burrow Claws
+  materialName: Burrow Shells
   icon: {fileID: 0}
   price: 10

@@ -25371,6 +25371,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1468793272}
+    - target: {fileID: 4618679536291964959, guid: 009383967b50e2949ad6d405c7a3c459, type: 3}
+      propertyPath: m_Mass
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618679536291964959, guid: 009383967b50e2949ad6d405c7a3c459, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7315074780111410682, guid: 009383967b50e2949ad6d405c7a3c459, type: 3}
       propertyPath: m_Name
       value: Burrower_Kit
