@@ -13,14 +13,14 @@ public class Enemy : MonoBehaviour
     public float aggroRange = 10f; // Distance at which the enemy starts moving towards the player
     public float aggroDelay = 1f; // Delay in seconds after player enters aggro range before enemy starts moving
 
-    private GameObject player; // Reference to the player object
-    private bool isInAggroRange = false; // Flag to track if the player is in aggro range
+    public GameObject player; // Reference to the player object
+    public bool isInAggroRange = false; // Flag to track if the player is in aggro range
     private bool canMove = true; // Flag to track if the enemy can move
 
     // References to player health
-    private PlayerHealth playerHealth;
+    public PlayerHealth playerHealth;
 
-    void Start()
+    public void Start()
     {
         player = GameObject.FindWithTag("Player"); // Find player by tag
         if (player != null)
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Update()
+    public void Update()
     {
         if (player != null)
         {
@@ -58,14 +58,41 @@ public class Enemy : MonoBehaviour
     {
         Vector3 direction = player.transform.position - transform.position;
 
-        if (direction.magnitude > minDistance)
+        // Ensure movement is restricted to one direction (up, down, left, or right)
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            Vector3 moveDirection = direction.normalized * moveSpeed * Time.deltaTime;
-            transform.position += moveDirection;
+            // Prioritize horizontal movement (left/right)
+            if (direction.x > 0)
+            {
+                // Move Right
+                direction = Vector3.right;
+            }
+            else
+            {
+                // Move Left
+                direction = Vector3.left;
+            }
         }
+        else
+        {
+            // Prioritize vertical movement (up/down)
+            if (direction.y > 0)
+            {
+                // Move Up
+                direction = Vector3.up;
+            }
+            else
+            {
+                // Move Down
+                direction = Vector3.down;
+            }
+        }
+
+        // Normalize and move towards the player in only one direction
+        transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         health -= damage;
 
