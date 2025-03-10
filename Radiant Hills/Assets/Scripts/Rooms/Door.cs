@@ -8,13 +8,24 @@ public class Door : MonoBehaviour
     [Tooltip("The offset from the target door's position when teleporting")]
     public Vector2 teleportOffset; // The offset to adjust the player's position after teleportation
 
+    [Tooltip("The lock that needs to be triggered before the door works")]
+    public ProjectileLock lockToTrigger; // The lock to check before teleporting
+
     // Called when the player enters the door collider
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the player (or other object) enters the door trigger area
         if (other.CompareTag("Player"))
         {
-            Teleport(other.gameObject); // Teleport the player
+            // Check if the lock is triggered, if necessary
+            if (lockToTrigger == null || !lockToTrigger.IsLocked()) // Corrected to use IsLocked() here
+            {
+                Teleport(other.gameObject); // Teleport the player if the lock is triggered or not needed
+            }
+            else
+            {
+                Debug.Log("The lock is still active. Can't teleport!");
+            }
         }
     }
 

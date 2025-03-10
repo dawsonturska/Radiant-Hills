@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 9221838525121578867}
   - component: {fileID: 1224025619524489379}
-  - component: {fileID: 8937164378096350858}
   - component: {fileID: 4710017257394412889}
   - component: {fileID: 8228051286768451131}
   - component: {fileID: 7527547620821212973}
+  - component: {fileID: 8695585380830760155}
   m_Layer: 0
-  m_Name: projectile
-  m_TagString: Untagged
+  m_Name: TurretProjectile
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,24 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8937164378096350858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976591214233526629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ba4a2a1cef74144982811ece82bbca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifetime: 10
-  damage: 20
-  moveSpeed: 3
-  boss: {fileID: 1522775753860828977, guid: d27be7cd30461844481f2c9f247ce327, type: 3}
-  centipedeBehavior: {fileID: 0}
-  turretLogic: {fileID: 0}
 --- !u!61 &4710017257394412889
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,7 +176,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.76470596, g: 0.98823535, b: 0.31764707, a: 1}
+  m_Color: {r: 0, g: 0.6711407, b: 1, a: 1}
   m_Intensity: 10
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -228,3 +210,19 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &8695585380830760155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976591214233526629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371a159d1c264e945b332c71eb9666bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 5
+  damage: 10
+  moveSpeed: 5
+  turretLogic: {fileID: 0}

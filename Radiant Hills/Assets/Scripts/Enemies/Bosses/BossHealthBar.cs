@@ -9,6 +9,7 @@ public class BossHealthBarUI : MonoBehaviour
 
     void Start()
     {
+        // Validate that all references are assigned in the Inspector
         if (healthBar == null || healthSlider == null || bossHealth == null)
         {
             Debug.LogError("Missing references! Please assign the health bar, slider, and boss health in the inspector.");
@@ -26,15 +27,7 @@ public class BossHealthBarUI : MonoBehaviour
 
         // Ensure the slider's max value is set to the boss's max health
         healthSlider.maxValue = bossHealth.maxHealth;
-    }
-
-    void Update()
-    {
-        // Continuously update the health bar
-        if (bossHealth != null)
-        {
-            healthSlider.value = bossHealth.GetCurrentHealth();  // Use raw health for slider
-        }
+        healthSlider.value = bossHealth.GetCurrentHealth();  // Initial value
     }
 
     // Show or hide the health bar based on the aggro state
@@ -49,9 +42,9 @@ public class BossHealthBarUI : MonoBehaviour
         healthBar.SetActive(false);  // Hide the health bar
     }
 
+    // Unsubscribe from events to avoid memory leaks
     private void OnDestroy()
     {
-        // Unsubscribe to avoid memory leaks
         if (bossHealth != null)
         {
             bossHealth.OnHealthChanged.RemoveListener(UpdateHealthBar);
@@ -60,11 +53,11 @@ public class BossHealthBarUI : MonoBehaviour
     }
 
     // Update the health bar when health changes
-    public void UpdateHealthBar()
+    public void UpdateHealthBar(float currentHealth)  // This method now accepts a float parameter
     {
-        if (bossHealth != null && healthSlider != null)
+        if (healthSlider != null)
         {
-            healthSlider.value = bossHealth.GetCurrentHealth();  // Update to the current health
+            healthSlider.value = currentHealth;  // Update slider value to the current health
         }
     }
 }

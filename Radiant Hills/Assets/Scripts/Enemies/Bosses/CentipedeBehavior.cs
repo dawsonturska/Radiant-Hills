@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class CentipedeBehavior : MonoBehaviour
@@ -6,15 +7,18 @@ public class CentipedeBehavior : MonoBehaviour
     public Transform player; // Reference to the player's position
     public float aggroRange = 20f; // Aggro range for the boss
     public float fireRate = 1f; // Time between projectile shots
+    public float fireCooldown = 1f; // Cooldown between consecutive fires (can be adjusted)
     public float teleportCooldown = 5f; // Time between teleports
-    public float teleportDistance = 10f; // Distance for teleportation (if desired)
     public GameObject projectilePrefab; // The projectile prefab
     public Transform projectileSpawnPoint; // The point where the projectile will spawn
 
     public List<Transform> teleportPoints; // List of teleport points for the boss to choose from
     public Transform teleportPoint1; // Reference to TeleportPoint1 (for initial teleport)
+    public float damageOnTeleport = 10f; // Damage to player when they intersect the teleport line
+    public LineRenderer lineRenderer; // Reference to LineRenderer for drawing the teleportation line
 
     private float fireRateTimer = 0f; // Timer for managing fire rate
+    private float fireCooldownTimer = 0f; // Cooldown timer for preventing rapid firing
     private bool isAggroed = false; // Track if the player is within aggro range
     private List<GameObject> activeProjectiles = new List<GameObject>(); // List of active projectiles
     private Collider2D centipedeCollider; // Reference to the centipede's collider
@@ -59,6 +63,11 @@ public class CentipedeBehavior : MonoBehaviour
         {
             Debug.LogError("TeleportPoint1 is not assigned!");
         }
+
+        if (lineRenderer == null)
+        {
+            Debug.LogError("LineRenderer is not assigned!");
+        }
     }
 
     void Update()
@@ -84,12 +93,14 @@ public class CentipedeBehavior : MonoBehaviour
             }
         }
 
-        // Handle teleportation and projectile firing only if the boss is aggroed
+        // Handle projectile firing only if the boss is aggroed
         if (isAggroed)
         {
             HandleProjectileFiring();
-            HandleTeleportation();
         }
+
+        // Handle teleportation independently of projectiles
+        HandleTeleportation();
 
         // Ensure the Z position is locked to its current value during movement
         LockZPosition();
@@ -119,18 +130,22 @@ public class CentipedeBehavior : MonoBehaviour
 
     private void HandleProjectileFiring()
     {
-        fireRateTimer += Time.deltaTime;
-        if (fireRateTimer >= fireRate)
+        fireCooldownTimer += Time.deltaTime;
+
+        // Fire projectiles only after the cooldown period has passed
+        if (fireCooldownTimer >= fireRate && fireCooldownTimer >= fireCooldown)
         {
             FireProjectileAtPlayer();
-            fireRateTimer = 0f; // Reset the fire rate timer
+            fireCooldownTimer = 0f; // Reset the cooldown timer
         }
     }
 
     private void HandleTeleportation()
     {
         teleportCooldownTimer += Time.deltaTime;
-        if (teleportCooldownTimer >= teleportCooldown && activeProjectiles.Count >= 3)
+
+        // Allow teleportation to occur after the cooldown
+        if (teleportCooldownTimer >= teleportCooldown)
         {
             TeleportToRandomLocation();
             teleportCooldownTimer = 0f; // Reset teleport cooldown timer
@@ -187,14 +202,65 @@ public class CentipedeBehavior : MonoBehaviour
 
         if (selectedTeleportPoint != null)
         {
-            transform.position = selectedTeleportPoint.position;
-            lastTeleportPoint = selectedTeleportPoint; // Update the last teleport point
-            Debug.Log("Centipede teleported to: " + selectedTeleportPoint.position);
+            StartCoroutine(TeleportSequence(selectedTeleportPoint));
         }
         else
         {
             Debug.LogWarning("Selected teleport point is null!");
         }
+    }
+
+    private IEnumerator TeleportSequence(Transform newTeleportPoint)
+    {
+        // Draw a line between the old and new teleport points
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, newTeleportPoint.position);
+        lineRenderer.enabled = true;
+
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(2f);
+
+        // Check for player collision with the line for 1 second
+        float damageWindowTime = 1f;
+        float damageTime = 0f;
+
+        while (damageTime < damageWindowTime)
+        {
+            if (IsPlayerIntersectingLine())
+            {
+                // Damage the player
+                PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damageOnTeleport);
+                }
+            }
+
+            damageTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Teleport the boss to the new location after 1 second
+        transform.position = newTeleportPoint.position;
+        lastTeleportPoint = newTeleportPoint;
+
+        // Disable the line renderer after teleportation
+        lineRenderer.enabled = false;
+
+        Debug.Log("Centipede teleported to: " + newTeleportPoint.position);
+    }
+
+    private bool IsPlayerIntersectingLine()
+    {
+        // Check if the player is intersecting the line
+        Vector3 lineStart = lineRenderer.GetPosition(0);
+        Vector3 lineEnd = lineRenderer.GetPosition(1);
+
+        // Use a simple distance check to see if the player is close to the line
+        float distanceToLine = Mathf.Abs((lineEnd.y - lineStart.y) * player.position.x - (lineEnd.x - lineStart.x) * player.position.y + lineEnd.x * lineStart.y - lineEnd.y * lineStart.x) / Vector2.Distance(lineStart, lineEnd);
+
+        return distanceToLine < 1f; // You can adjust the threshold for how close the player needs to be to the line to take damage
     }
 
     public void OnProjectileDestroyed(GameObject projectile)
@@ -207,6 +273,7 @@ public class CentipedeBehavior : MonoBehaviour
     {
         if (bossHealth != null)
         {
+            Debug.Log("Taking damage: " + damage + " Current Health: " + bossHealth.currentHealth);
             bossHealth.TakeDamage(damage); // Apply damage to the boss's health
         }
         else

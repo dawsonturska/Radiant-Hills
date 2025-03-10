@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 public class TurretLogic : MonoBehaviour
 {
+    [Header("Targeting & Firing")]
     public Transform player; // Reference to the player's position
+    public Transform focalPoint; // The target point to fire at
     public float aggroRange = 20f; // Aggro range for the turret
     public float fireRate = 1f; // Time between projectile shots
     public GameObject projectilePrefab; // The projectile prefab
     public Transform projectileSpawnPoint; // The point where the projectile will spawn
-    public Vector3 fireDirection = Vector3.right; // Direction in which the turret fires
     public float spawnOffset = 1f; // Offset to prevent self-collision
+    public bool invertDirection = false; // Toggle to invert firing direction
 
     private float fireRateTimer = 0f; // Timer for managing fire rate
     private bool isAggroed = false; // Track if the player is within aggro range
@@ -17,68 +19,60 @@ public class TurretLogic : MonoBehaviour
     private List<GameObject> activeProjectiles = new List<GameObject>(); // List of active projectiles
     private Collider2D turretCollider; // Reference to the turret's collider
 
-
     void Start()
     {
         turretCollider = GetComponent<Collider2D>();
 
+        // Validate required references
         if (player == null)
-        {
-            Debug.LogError("Player reference is not assigned!");
-        }
+            Debug.LogError($"{gameObject.name}: Player reference is not assigned!");
+
+        if (focalPoint == null)
+            Debug.LogError($"{gameObject.name}: Focal point is not assigned!");
 
         if (projectilePrefab == null || projectileSpawnPoint == null)
-        {
-            Debug.LogError("Projectile prefab or spawn point is not assigned!");
-        }
+            Debug.LogError($"{gameObject.name}: Projectile prefab or spawn point is not assigned!");
     }
 
     void Update()
     {
-        if (player == null) return; // Do nothing if the player is missing
+        if (player == null || focalPoint == null) return; // Prevent execution if references are missing
 
         // Check if the player is within aggro range
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer <= aggroRange)
+        bool playerInRange = distanceToPlayer <= aggroRange;
+
+        if (playerInRange && !isAggroed)
         {
-            if (!isAggroed)
-            {
-                isAggroed = true;
-                OnAggroPlayer();
-            }
+            isAggroed = true;
+            OnAggroPlayer();
         }
-        else
+        else if (!playerInRange && isAggroed)
         {
-            if (isAggroed)
-            {
-                isAggroed = false;
-                OnLoseAggro();
-            }
+            isAggroed = false;
+            OnLoseAggro();
         }
 
-        // Handle projectile firing only if the turret is aggroed
+        // Fire projectiles when aggroed
         if (isAggroed)
         {
-            // Fire immediately when aggroed for the first time
             if (!hasFiredInitially)
             {
                 FireProjectile();
                 hasFiredInitially = true;
             }
-
-            // Continue firing at the set fire rate after the initial shot
             HandleProjectileFiring();
         }
     }
 
     private void OnAggroPlayer()
     {
-        Debug.Log("Player entered aggro range. Turret is now alerted!");
+        Debug.Log($"{gameObject.name}: Player entered aggro range!");
     }
 
     private void OnLoseAggro()
     {
-        Debug.Log("Player left aggro range. Turret is no longer alerted.");
+        Debug.Log($"{gameObject.name}: Player left aggro range.");
     }
 
     private void HandleProjectileFiring()
@@ -87,22 +81,32 @@ public class TurretLogic : MonoBehaviour
         if (fireRateTimer >= fireRate)
         {
             FireProjectile();
-            fireRateTimer = 0f; // Reset the fire rate timer
+            fireRateTimer = 0f;
         }
     }
 
     void FireProjectile()
     {
-        if (projectilePrefab == null || projectileSpawnPoint == null) return;
+        if (projectilePrefab == null || projectileSpawnPoint == null || focalPoint == null) return;
 
-        Vector3 spawnPosition = projectileSpawnPoint.position + fireDirection.normalized * spawnOffset;
+        Vector3 direction = (focalPoint.position - projectileSpawnPoint.position).normalized;
+        if (invertDirection)
+        {
+            direction = -direction;
+        }
+
+        Vector3 spawnPosition = projectileSpawnPoint.position + direction * spawnOffset;
         GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
 
         // Assign references to the projectile
-        Projectile projScript = projectile.GetComponent<Projectile>();
+        TurretProjectile projScript = projectile.GetComponent<TurretProjectile>();
         if (projScript != null)
         {
-            projScript.turretLogic = this;
+            projScript.Initialize(this, direction); // Call the Initialize method of TurretProjectile
+        }
+        else
+        {
+            Debug.LogError("Projectile script not found on instantiated projectile.");
         }
 
         activeProjectiles.Add(projectile);

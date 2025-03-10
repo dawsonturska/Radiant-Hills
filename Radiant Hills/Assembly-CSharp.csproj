@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Player\HealthBarToggle.cs" />
     <Compile Include="Assets\Scripts\Player\DisplayInstructions.cs" />
     <Compile Include="Assets\Scripts\Inventory\IconGrid.cs" />
+    <Compile Include="Assets\Scripts\Rooms\ProjectileLock.cs" />
     <Compile Include="Assets\Scripts\Objects\DisplayShelf.cs" />
     <Compile Include="Assets\Scripts\Enemies\Turret.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
@@ -85,9 +86,11 @@
     <Compile Include="Assets\Scripts\Player\CountdownTimer.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\CentipedeBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Rooms\ReflectorController.cs" />
     <Compile Include="Assets\Scripts\Objects\TestTrigger.cs" />
     <Compile Include="Assets\Art Assets\Anims\NormalMapSwitcher.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\Rooms\ProjectileReflector.cs" />
     <Compile Include="Assets\Scripts\Rooms\PlayerInteractionManager.cs" />
     <Compile Include="Assets\Scripts\Player\AttackCollision.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\BossHealth.cs" />
@@ -99,6 +102,7 @@
     <Compile Include="Assets\Scripts\Player\TestConsole.cs" />
     <Compile Include="Assets\Scripts\Objects\Counter.cs" />
     <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Enemies\TurretProjectile.cs" />
     <Compile Include="Assets\Scripts\Objects\PickupableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\Register.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
