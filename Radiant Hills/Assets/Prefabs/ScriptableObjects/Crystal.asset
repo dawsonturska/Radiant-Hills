@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 292ad4e8ef60718418012549b192e9ab, type: 3}
-  m_Name: Burrow Claws
+  m_Name: Crystal
   m_EditorClassIdentifier: 
-  materialName: Burrow Claws
+  materialName: Crystal
   icon: {fileID: 0}
-  price: 10
+  price: 5

@@ -104,7 +104,7 @@ MonoBehaviour:
   fireRate: 2
   projectilePrefab: {fileID: 1976591214233526629, guid: 0b98de93d3298554d88eca6e83964a0b, type: 3}
   projectileSpawnPoint: {fileID: 3397130225740385185}
-  spawnOffset: 1
+  spawnOffset: 1.25
   invertDirection: 0
 --- !u!1 &3731667225327285849
 GameObject:

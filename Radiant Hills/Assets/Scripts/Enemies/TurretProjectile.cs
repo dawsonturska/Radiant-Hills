@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TurretProjectile : MonoBehaviour
@@ -29,16 +30,28 @@ public class TurretProjectile : MonoBehaviour
         Invoke(nameof(DestroyProjectile), lifetime);
     }
 
-    public void Initialize(TurretLogic turret, Vector3 direction)
+    public void Initialize(object turret, Vector3 direction)
     {
-        turretLogic = turret;
-        moveDirection = direction.normalized;
-
-        if (rb != null)
+        if (turret is TurretLogic)
         {
-            rb.velocity = moveDirection * moveSpeed;
-            isLaunched = true;
+            // Initialize for TurretLogic
+            turretLogic = (TurretLogic)turret;
+            // Custom logic for TurretLogic (add more logic if needed)
         }
+        else if (turret is PushTurretLogic)
+        {
+            // Initialize for PushTurretLogic
+            PushTurretLogic pushTurretLogic = (PushTurretLogic)turret;
+            // Custom logic for PushTurretLogic (add more logic if needed)
+        }
+        else
+        {
+            Debug.LogError("Unknown turret type!");
+        }
+
+        // Set the move direction for the projectile
+        moveDirection = direction;
+        isLaunched = true;
     }
 
     void Update()
