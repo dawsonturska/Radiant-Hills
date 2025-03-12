@@ -94,7 +94,6 @@
     <Compile Include="Assets\Scripts\Rooms\ReflectorController.cs" />
     <Compile Include="Assets\Scripts\Objects\TestTrigger.cs" />
     <Compile Include="Assets\Art Assets\Anims\NormalMapSwitcher.cs" />
-    <Compile Include="Assets\Scripts\Player\SceneSwitcher.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Rooms\ProjectileReflector.cs" />
     <Compile Include="Assets\Scripts\Rooms\PlayerInteractionManager.cs" />
@@ -113,7 +112,6 @@
     <Compile Include="Assets\Scripts\Objects\PickupableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\Register.cs" />
     <Compile Include="Assets\Book-Page Curl\scripts\Book.cs" />
-    <Compile Include="Assets\Scripts\Player\TransitionHandler.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Inventory\MaterialType.cs" />
   </ItemGroup>

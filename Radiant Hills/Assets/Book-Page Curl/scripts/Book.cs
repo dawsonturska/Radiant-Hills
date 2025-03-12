@@ -445,16 +445,4 @@ public class Book : MonoBehaviour {
         if (onFinish != null)
             onFinish();
     }
-    public void ResetToFirstPage()
-    {
-        currentPage = 0; // Reset to the first page
-        UpdateSprites();  // Update the sprites to reflect the first page
-        Left.gameObject.SetActive(false);
-        Right.gameObject.SetActive(false);
-        LeftNext.gameObject.SetActive(true);  // Make sure the left page is visible if needed
-        RightNext.gameObject.SetActive(true); // Make sure the right page is visible if needed
-        Shadow.gameObject.SetActive(false);  // Hide shadows if any
-
-        // You can add any transition logic for the initial flip if needed
-    }
 }
