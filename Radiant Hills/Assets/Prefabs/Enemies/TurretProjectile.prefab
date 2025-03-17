@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8228051286768451131}
   - component: {fileID: 7527547620821212973}
   - component: {fileID: 8695585380830760155}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TurretProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243964545
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b707f9fa3cddda242a9580cc73884b71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371a159d1c264e945b332c71eb9666bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 5
+  lifetime: 10
   damage: 10
   moveSpeed: 5
   turretLogic: {fileID: 0}

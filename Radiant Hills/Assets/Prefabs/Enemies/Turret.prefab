@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3397130225740385185}
   - component: {fileID: 2978430151964068848}
   - component: {fileID: 6574152691690913615}
+  - component: {fileID: 6028349552387629734}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -22.7, y: 290.27, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5058853173586364983}
@@ -106,6 +107,28 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 3397130225740385185}
   spawnOffset: 1.25
   invertDirection: 0
+  animator: {fileID: 6028349552387629734}
+--- !u!95 &6028349552387629734
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726596645749796150}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd7187f496ff4e3408eea17931947ea3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3731667225327285849
 GameObject:
   m_ObjectHideFlags: 0

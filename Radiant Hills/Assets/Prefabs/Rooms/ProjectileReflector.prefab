@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focalPoint: {fileID: 5013284447462554273}
   projectilePrefab: {fileID: 1976591214233526629, guid: 0b98de93d3298554d88eca6e83964a0b, type: 3}
-  fireRate: 1
+  fireRate: 0
   spawnOffset: 2
 --- !u!61 &3474736537089939479
 BoxCollider2D:

@@ -4,41 +4,38 @@ using System.Collections.Generic;
 public class TurretLogic : MonoBehaviour
 {
     [Header("Targeting & Firing")]
-    public Transform player; // Reference to the player's position
-    public Transform focalPoint; // The target point to fire at
-    public float aggroRange = 20f; // Aggro range for the turret
-    public float fireRate = 1f; // Time between projectile shots
-    public GameObject projectilePrefab; // The projectile prefab
-    public Transform projectileSpawnPoint; // The point where the projectile will spawn
-    public float spawnOffset = 1f; // Offset to prevent self-collision
-    public bool invertDirection = false; // Toggle to invert firing direction
+    public Transform player;
+    public Transform focalPoint;
+    public float aggroRange = 20f;
+    public float fireRate = 1f;
+    public GameObject projectilePrefab;
+    public Transform projectileSpawnPoint;
+    public float spawnOffset = 1f;
+    public bool invertDirection = false;
 
-    private float fireRateTimer = 0f; // Timer for managing fire rate
-    private bool isAggroed = false; // Track if the player is within aggro range
-    private bool hasFiredInitially = false; // Track if the turret has fired initially
-    private List<GameObject> activeProjectiles = new List<GameObject>(); // List of active projectiles
-    private Collider2D turretCollider; // Reference to the turret's collider
+    [Header("Animation")]
+    public Animator animator;
+
+    private float fireRateTimer = 0f;
+    private bool isAggroed = false;
+    private bool hasFiredInitially = false;
+    private List<GameObject> activeProjectiles = new List<GameObject>();
+    private Collider2D turretCollider;
 
     void Start()
     {
         turretCollider = GetComponent<Collider2D>();
 
-        // Validate required references
-        if (player == null)
-            Debug.LogError($"{gameObject.name}: Player reference is not assigned!");
-
-        if (focalPoint == null)
-            Debug.LogError($"{gameObject.name}: Focal point is not assigned!");
-
-        if (projectilePrefab == null || projectileSpawnPoint == null)
-            Debug.LogError($"{gameObject.name}: Projectile prefab or spawn point is not assigned!");
+        if (player == null) Debug.LogError($"{gameObject.name}: Player reference is not assigned!");
+        if (focalPoint == null) Debug.LogError($"{gameObject.name}: Focal point is not assigned!");
+        if (projectilePrefab == null || projectileSpawnPoint == null) Debug.LogError($"{gameObject.name}: Projectile prefab or spawn point is not assigned!");
+        if (animator == null) Debug.LogError($"{gameObject.name}: Animator reference is not assigned!");
     }
 
     void Update()
     {
-        if (player == null || focalPoint == null) return; // Prevent execution if references are missing
+        if (player == null || focalPoint == null) return;
 
-        // Check if the player is within aggro range
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         bool playerInRange = distanceToPlayer <= aggroRange;
 
@@ -53,7 +50,6 @@ public class TurretLogic : MonoBehaviour
             OnLoseAggro();
         }
 
-        // Fire projectiles when aggroed
         if (isAggroed)
         {
             if (!hasFiredInitially)
@@ -63,6 +59,8 @@ public class TurretLogic : MonoBehaviour
             }
             HandleProjectileFiring();
         }
+
+        UpdateBlendTreeValues();
     }
 
     private void OnAggroPlayer()
@@ -98,11 +96,10 @@ public class TurretLogic : MonoBehaviour
         Vector3 spawnPosition = projectileSpawnPoint.position + direction * spawnOffset;
         GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
 
-        // Assign references to the projectile
         TurretProjectile projScript = projectile.GetComponent<TurretProjectile>();
         if (projScript != null)
         {
-            projScript.Initialize(this, direction); // Call the Initialize method of TurretProjectile
+            projScript.Initialize(this, direction);
         }
         else
         {
@@ -110,6 +107,19 @@ public class TurretLogic : MonoBehaviour
         }
 
         activeProjectiles.Add(projectile);
+        TriggerFireAnimation(direction);
+    }
+
+    private void TriggerFireAnimation(Vector3 direction)
+    {
+        animator.SetTrigger("FireTrigger");
+    }
+
+    private void UpdateBlendTreeValues()
+    {
+        Vector3 direction = (focalPoint.position - transform.position).normalized;
+        animator.SetFloat("DirectionX", direction.x);
+        animator.SetFloat("DirectionY", direction.y);
     }
 
     public void OnProjectileDestroyed(GameObject projectile)
