@@ -11,6 +11,10 @@ TagManager:
   - Customer
   - CounterTrigger
   - Projectile
+  - RenderLayer
+  - Fencefront
+  - Fenceback
+  - Fencesides
   layers:
   - Default
   - TransparentFX
