@@ -5,14 +5,17 @@ public class Portal : MonoBehaviour
 {
     public string targetScene; // Name of the scene to load
     public float holdDuration = 3f; // Time in seconds the player needs to hold the key
+    public Vector3 spawnPosition = Vector3.zero; // Customizable spawn position in the inspector
     private float holdTimer = 0f; // Tracks how long the player has been holding the key
     private bool isPlayerInRange = false; // Tracks if the player is in the portal's range
+    private GameObject player; // Reference to the player
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             isPlayerInRange = true;
+            player = collision.gameObject; // Store reference to player
         }
     }
 
@@ -22,6 +25,7 @@ public class Portal : MonoBehaviour
         {
             isPlayerInRange = false;
             holdTimer = 0f; // Reset the timer when the player leaves the portal
+            player = null; // Clear reference to player
         }
     }
 
@@ -49,11 +53,27 @@ public class Portal : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(targetScene))
         {
+            SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to sceneLoaded event
             SceneManager.LoadScene(targetScene); // Load the target scene
         }
         else
         {
             Debug.LogError("Target scene is not set in the Portal script!");
         }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player"); // Find the player if it's marked as DontDestroyOnLoad
+        }
+
+        if (player != null)
+        {
+            player.transform.position = spawnPosition; // Set player position to the defined spawn position
+        }
+
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to prevent multiple calls
     }
 }

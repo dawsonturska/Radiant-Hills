@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
     private bool canAttack = true; // Flag to track whether the player can attack
 
     // List of scenes where the attack is disabled
-    private readonly string[] attackDisabledScenes = { "Shop", "Scene2", "Scene3" };
+    private readonly string[] attackDisabledScenes = { "Shop", "Town", "Scene3" };
 
     void Start()
     {
