@@ -61,8 +61,14 @@ TagManager:
   - name: Attack
     uniqueID: 1955868001
     locked: 0
+  - name: Tree Background
+    uniqueID: 1532508521
+    locked: 0
   - name: Player
     uniqueID: 3051002751
+    locked: 0
+  - name: Tree Foreground
+    uniqueID: 945405879
     locked: 0
   - name: UI
     uniqueID: 901051545
