@@ -2989,6 +2989,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1730763347444196583, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 174.0264
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730763347444196583, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 252.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730763347444196583, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 351.18988
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730763347444196583, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 1854860442064217403, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
       propertyPath: orthographic size
       value: 7.5
@@ -2997,6 +3013,14 @@ PrefabInstance:
       propertyPath: iconGrid
       value: 
       objectReference: {fileID: 1061713347}
+    - target: {fileID: 2089205388951640073, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089205388951640073, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 027737b1829cd8c42895861a62c73423, type: 3}
     - target: {fileID: 2624948881432882022, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3011,7 +3035,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3738779214722340372, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.86
+      value: 16.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738779214722340372, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.11
       objectReference: {fileID: 0}
     - target: {fileID: 4250574164118323046, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
       propertyPath: m_CollisionDetection
@@ -5974,8 +6002,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.022250056, y: -0.09745002, z: 0}
-    m_Extent: {x: 2.54945, y: 1.35965, z: 0}
+    m_Center: {x: -0.022300005, y: -0.097, z: 0}
+    m_Extent: {x: 2.548, y: 1.3588, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -12878,8 +12906,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.13765001, y: -0.018849999, z: 0}
-    m_Extent: {x: 1.95315, y: 0.88475, z: 0}
+    m_Center: {x: -0.1376, y: -0.018949986, z: 0}
+    m_Extent: {x: 1.9532001, y: 0.88465, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -15021,8 +15049,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.022799969, y: -0.09684998, z: 0}
-    m_Extent: {x: 2.5493, y: 1.3599501, z: 0}
+    m_Center: {x: -0.022850037, y: -0.09675002, z: 0}
+    m_Extent: {x: 2.54915, y: 1.36045, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
