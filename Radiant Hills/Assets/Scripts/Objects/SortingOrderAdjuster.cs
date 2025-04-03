@@ -8,6 +8,8 @@ public class SortingOrderAdjuster : MonoBehaviour
     public GameObject player;
     public List<GameObject> customers = new List<GameObject>();
 
+    public float yOffset = 0f; // Y Offset adjustable in Inspector
+
     private Vector3 lastPlayerPosition;
     private List<Vector3> lastCustomerPositions = new List<Vector3>();
 
@@ -84,7 +86,8 @@ public class SortingOrderAdjuster : MonoBehaviour
 
     public void UpdateSortingOrder(Vector3 characterPosition)
     {
-        spriteRenderer.sortingOrder = characterPosition.y > transform.position.y ? 2 : 0;
+        float adjustedPivotY = transform.position.y + yOffset; // Apply offset to pivot
+        spriteRenderer.sortingOrder = characterPosition.y > adjustedPivotY ? 2 : 0;
     }
 
     public void SetPlayer(GameObject newPlayer)
