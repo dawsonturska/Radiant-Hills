@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CustomerAI : MonoBehaviour
@@ -10,8 +12,8 @@ public class CustomerAI : MonoBehaviour
     public float stuckTimeout = 0.3f;
     public float detectionRange = 10f;
     public float pickupRange = 1f;
-    public float waitTimeAtCounter = 2f; // Time customer will wait at the counter after delivery
-    public float alignmentTolerance = 0.1f; // Tolerance range for the alignment check
+    public float waitTimeAtCounter = 2f;
+    public float alignmentTolerance = 0.1f;
 
     private Vector2 moveDirection;
     private DisplayShelf targetShelf;
@@ -19,7 +21,9 @@ public class CustomerAI : MonoBehaviour
     private Vector3 lastPosition;
     private float stuckTimer = 0f;
     private Counter counter;
-    private MaterialType itemToDeliver; // Store the material type of the item the customer picks up
+    private MaterialType itemToDeliver;
+
+    private Animator animator;
 
     private enum State { Wandering, MovingToItem, PickingUpItem, MovingToCounter, Waiting }
     private State currentState = State.Wandering;
@@ -28,6 +32,7 @@ public class CustomerAI : MonoBehaviour
     {
         lastPosition = transform.position;
         counter = counterLocation.GetComponent<Counter>();
+        animator = GetComponent<Animator>();
         StartCoroutine(StateMachine());
     }
 
@@ -37,6 +42,9 @@ public class CustomerAI : MonoBehaviour
         {
             counter.DisplayStoredItems();
         }
+
+        bool isCurrentlyMoving = Mathf.Abs(animator.GetFloat("MoveX")) > 0.01f || Mathf.Abs(animator.GetFloat("MoveY")) > 0.01f;
+        animator.SetBool("IsMoving", isCurrentlyMoving);
     }
 
     private IEnumerator StateMachine()
@@ -61,7 +69,7 @@ public class CustomerAI : MonoBehaviour
                     break;
                 case State.Waiting:
                     yield return WaitAtCounterRoutine();
-                    ResetToWander(); // Reset to wandering after waiting at the counter
+                    ResetToWander();
                     break;
             }
             yield return null;
@@ -86,6 +94,7 @@ public class CustomerAI : MonoBehaviour
             moveDirection = GetRandomDirection();
             if (!IsPathBlocked(moveDirection))
             {
+                SetAnimatorDirection(moveDirection);
                 yield return SmoothMove(moveDirection);
                 yield break;
             }
@@ -108,11 +117,29 @@ public class CustomerAI : MonoBehaviour
 
     private IEnumerator SmoothMove(Vector2 direction)
     {
-        Vector3 targetPos = (Vector2)transform.position + direction;
+        Vector3 targetPos = new Vector3(Mathf.Round(transform.position.x + direction.x), Mathf.Round(transform.position.y + direction.y), transform.position.z);
+
+        animator.SetFloat("MoveX", direction.x);
+        animator.SetFloat("MoveY", direction.y);
+
         while (Vector2.Distance(transform.position, targetPos) > 0.05f)
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             yield return null;
+        }
+
+        transform.position = targetPos;
+
+        animator.SetFloat("MoveX", 0);
+        animator.SetFloat("MoveY", 0);
+    }
+
+    private void SetAnimatorDirection(Vector2 dir)
+    {
+        if (animator != null)
+        {
+            animator.SetFloat("MoveX", dir.x);
+            animator.SetFloat("MoveY", dir.y);
         }
     }
 
@@ -131,37 +158,22 @@ public class CustomerAI : MonoBehaviour
 
     private IEnumerator MoveToTargetRoutine(Transform target)
     {
-        while (target != null && Vector2.Distance(transform.position, target.position) > pickupRange)
+        List<Vector2> path = FindPath((Vector2)transform.position, (Vector2)target.position);
+
+        foreach (Vector2 step in path)
         {
-            Vector3 direction = GetMovementDirection(target.position);
-            if (IsPathBlocked(direction))
-            {
-                direction = FindValidDirection();
-            }
+            Vector2 direction = step - (Vector2)transform.position;
+            SetAnimatorDirection(direction);
             yield return SmoothMove(direction);
         }
-    }
-
-    private Vector3 GetMovementDirection(Vector3 target)
-    {
-        Vector3 dir = (target - transform.position).normalized;
-        return Mathf.Abs(dir.x) > Mathf.Abs(dir.y) ? new Vector3(Mathf.Sign(dir.x), 0, 0) : new Vector3(0, Mathf.Sign(dir.y), 0);
-    }
-
-    private Vector3 FindValidDirection()
-    {
-        foreach (var dir in new[] { Vector3.up, Vector3.down, Vector3.left, Vector3.right })
-        {
-            if (!IsPathBlocked((Vector2)dir)) return dir;
-        }
-        return Vector3.zero;
     }
 
     private void PickUpItem()
     {
         if (targetShelf?.HasItem() == true)
         {
-            itemToDeliver = targetShelf.GetItem(); // Get the material type of the item
+            animator?.SetTrigger("Ursa_Grab");
+            itemToDeliver = targetShelf.GetItem();
             targetShelf.ClearItem();
             hasItem = true;
             currentState = State.MovingToCounter;
@@ -206,9 +218,55 @@ public class CustomerAI : MonoBehaviour
 
     public void ResetToWander()
     {
-        StopAllCoroutines(); // Stop any current movement
+        StopAllCoroutines();
         currentState = State.Wandering;
-        StartCoroutine(StateMachine()); // Restart the state machine
+        StartCoroutine(StateMachine());
         Debug.Log("CustomerAI reset to wandering.");
+    }
+
+    // ---------- PATHFINDING HELPERS ----------
+
+    private bool IsWalkable(Vector2 pos)
+    {
+        return !Physics2D.OverlapBox(pos, Vector2.one * 0.9f, 0f, shelfLayer);
+    }
+
+    private List<Vector2> FindPath(Vector2 start, Vector2 goal)
+    {
+        Queue<Vector2> frontier = new Queue<Vector2>();
+        Dictionary<Vector2, Vector2> cameFrom = new Dictionary<Vector2, Vector2>();
+        frontier.Enqueue(start);
+        cameFrom[start] = start;
+
+        Vector2[] directions = new[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
+
+        while (frontier.Count > 0)
+        {
+            Vector2 current = frontier.Dequeue();
+
+            if (Vector2.Distance(current, goal) < 0.5f)
+                break;
+
+            foreach (var dir in directions)
+            {
+                Vector2 next = current + dir;
+                if (!cameFrom.ContainsKey(next) && IsWalkable(next))
+                {
+                    frontier.Enqueue(next);
+                    cameFrom[next] = current;
+                }
+            }
+        }
+
+        List<Vector2> path = new List<Vector2>();
+        Vector2 curr = cameFrom.ContainsKey(goal) ? goal : cameFrom.Keys.OrderBy(p => Vector2.Distance(p, goal)).First();
+
+        while (curr != start)
+        {
+            path.Insert(0, curr);
+            curr = cameFrom[curr];
+        }
+
+        return path;
     }
 }
