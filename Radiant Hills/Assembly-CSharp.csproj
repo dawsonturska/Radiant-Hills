@@ -70,7 +70,9 @@
     <Compile Include="Assets\Scripts\Enemies\Turret.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\DialogueSystem\DialogueInteract.cs" />
+    <Compile Include="Assets\Scripts\Main Menu\NewGame.cs" />
     <Compile Include="Assets\Scripts\Objects\PrefabManager.cs" />
+    <Compile Include="Assets\Scripts\Main Menu\MenuController.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\BossHealthBar.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Assets\DialogueSystem\DialogueObject.cs" />
     <Compile Include="Assets\Scripts\Enemies\Burrower.cs" />
     <Compile Include="Assets\Scripts\CloudSpawner.cs" />
+    <Compile Include="Assets\Scripts\Main Menu\ExitGame.cs" />
     <Compile Include="Assets\Scripts\Player\TestConsole.cs" />
     <Compile Include="Assets\Scripts\Objects\Counter.cs" />
     <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />

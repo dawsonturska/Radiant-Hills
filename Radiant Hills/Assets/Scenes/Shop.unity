@@ -1331,6 +1331,7 @@ GameObject:
   - component: {fileID: 840476702}
   - component: {fileID: 840476701}
   - component: {fileID: 840476706}
+  - component: {fileID: 840476707}
   m_Layer: 0
   m_Name: Bear Skywatcher
   m_TagString: Untagged
@@ -1512,6 +1513,27 @@ MonoBehaviour:
   pickupRange: 1
   waitTimeAtCounter: 30
   alignmentTolerance: 0.1
+--- !u!95 &840476707
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840476700}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: df54801f7c9802e44971067a465e3444, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &864926998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1086911918752898113, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
@@ -1637,7 +1659,6 @@ GameObject:
   m_Component:
   - component: {fileID: 954032390}
   - component: {fileID: 954032388}
-  - component: {fileID: 954032387}
   m_Layer: 0
   m_Name: Counter
   m_TagString: Untagged
@@ -1645,21 +1666,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &954032387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954032386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abfe7d8aba8715940be0c2049f0cd001, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 35475501}
-  customers: []
-  yOffset: 0
 --- !u!61 &954032388
 BoxCollider2D:
   m_ObjectHideFlags: 0
