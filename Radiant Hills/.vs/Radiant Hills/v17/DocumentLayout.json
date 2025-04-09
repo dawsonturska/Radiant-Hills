@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\dturska1\\documents\\radiant hills\\radiant hills\\assets\\scripts\\main menu\\newgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\main menu\\newgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\MainMenuController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\MainMenuController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\dturska1\\documents\\radiant hills\\radiant hills\\assets\\scripts\\main menu\\exitgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\main menu\\exitgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\main menu\\exitgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\assets\\scripts\\cloudspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cloudspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerAttack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -149,6 +149,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\TestTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Objects\\TestTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:1:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:1:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -158,11 +166,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "NewGame.cs",
+              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\NewGame.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Main Menu\\NewGame.cs",
+              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\NewGame.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Main Menu\\NewGame.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T01:21:37.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Sprite-Lit-Default.shader",
+              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
+              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
+              "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2025-03-10T16:18:42.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Sprite-Lit-Default.shader",
+              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
+              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
+              "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2025-03-10T16:18:42.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ExitGame.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\ExitGame.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Main Menu\\ExitGame.cs",
@@ -170,19 +217,19 @@
               "RelativeToolTip": "Assets\\Scripts\\Main Menu\\ExitGame.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T01:17:38.121Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T01:17:38.121Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainMenuController.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\MainMenuController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MainMenuController.cs",
               "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\MainMenuController.cs",
               "RelativeToolTip": "Assets\\Scripts\\MainMenuController.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T00:08:26.56Z"
+              "WhenOpened": "2025-04-09T00:08:26.56Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -258,7 +305,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SortingOrderAdjuster.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
@@ -294,7 +341,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CustomerAI.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Customers\\CustomerAI.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Customers\\CustomerAI.cs",
@@ -342,7 +389,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "CloudSpawner.cs",
               "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\CloudSpawner.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CloudSpawner.cs",
@@ -351,18 +398,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T22:23:33.56Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Sprite-Lit-Default.shader",
-              "DocumentMoniker": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
-              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
-              "ToolTip": "C:\\Users\\dturska1\\Documents\\Radiant Hills\\Radiant Hills\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
-              "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
-              "WhenOpened": "2025-03-10T16:18:42.123Z"
             },
             {
               "$type": "Document",
