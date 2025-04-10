@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dc6694afb5b11499d7487005eb6594, type: 3}
+  m_Name: Cutscene2
+  m_EditorClassIdentifier: 
+  dialogueSegments:
+  - dialogueText: I think you deserve to know what happened
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
+  - dialogueText: My son used to live here. I couldn't have asked for a sweeter baby
+      bear.
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
+  - dialogueText: He gathered all sorts of goodies from the meek woods, just like
+      you.
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
+  - dialogueText: I knew it couold be dangerous, but I couldn't have ever been prepared
+      for what happened.
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
+  - dialogueText: When he didn't come back one night, I asked everyone I could to
+      search.
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
+  - dialogueText: After weeks of nothing, people understood what happened.
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
+  - dialogueText: It took me longer to understand. But eventually you don't have
+      a choice anymore.
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
+  - dialogueText: I thought maybe I could forget it all. Leave behind that bad, taking
+      the good with it too.
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
+  - dialogueText: Silly me
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
+  - dialogueText: I could never forget you, my sweet little Dipper.
+    speakerText: 
+    charSprite: {fileID: 0}
+    dialogueChoices: []
