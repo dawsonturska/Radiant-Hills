@@ -18,8 +18,8 @@ public struct DialogueSegment {
     public string speakerText;
     public Sprite charSprite;
     //public Sprite phoneSprite;
-    //public int queuedEvent;
-    //public bool useQueuedEvent;
+    public int queuedEvent;
+    public bool useQueuedEvent;
     //public AudioClip charAudio;
     public List<DialogueChoice> dialogueChoices; 
     }
