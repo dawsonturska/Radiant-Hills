@@ -21,7 +21,7 @@ public class DialogueInteract : MonoBehaviour
     [SerializeField] private Sprite speakerSprite;
     //[SerializeField] private AudioSource charaAudioSource;
     [SerializeField] private List<GameObject> choiceButtons;
-    //[SerializeField] private UnityEvent[] eventQueue;
+    [SerializeField] private UnityEvent[] eventQueue;
 
     // New checkbox option to automatically start dialogue on scene load
     [SerializeField] private bool startDialogueOnSceneLoad = false; // Enable this in the Inspector
@@ -115,10 +115,10 @@ public class DialogueInteract : MonoBehaviour
                 }
             }
 
-            //if (eventQueue != null && dialogue.useQueuedEvent)
-            //{
-            //if (dialogue.queuedEvent > -1 || dialogue.queuedEvent <= eventQueue.Length) eventQueue[dialogue.queuedEvent].Invoke();
-            //}
+            if (eventQueue != null && dialogue.useQueuedEvent)
+            {
+                if (dialogue.queuedEvent > -1 || dialogue.queuedEvent <= eventQueue.Length) eventQueue[dialogue.queuedEvent].Invoke();
+            }
         }
         dialogueOptionsContainer.SetActive(false);
         dialogueCanvas.enabled = false;
