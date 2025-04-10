@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b88eb6b90d77b4d438ec6460256c00b6
+guid: 636babf708d8bc84da3406953f7d0b87
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Chokokutai
+  - Zain
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -9,7 +9,6 @@ public class ExitGame : MonoBehaviour
         Application.Quit();
 
 #if UNITY_EDITOR
-        // This line is only for use inside the Unity Editor
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }

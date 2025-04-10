@@ -83,10 +83,12 @@
     <Compile Include="Assets\Scripts\Enemies\Spitter.cs" />
     <Compile Include="Assets\Scripts\Rooms\TeleportationManager.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingManager.cs" />
+    <Compile Include="Assets\Scripts\Main Menu\SceneLoadTrigger.cs" />
     <Compile Include="Assets\Scripts\Objects\SortingOrderAdjuster.cs" />
     <Compile Include="Assets\Scripts\Customers\CustomerAI.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerPersistence.cs" />
     <Compile Include="Assets\Scripts\Rooms\DebugTP.cs" />
+    <Compile Include="Assets\Scripts\Main Menu\LoadScreen.cs" />
     <Compile Include="Assets\DialogueSystem\UIDialogueOption.cs" />
     <Compile Include="Assets\Scripts\CloudMover.cs" />
     <Compile Include="Assets\Scripts\Player\CountdownTimer.cs" />
