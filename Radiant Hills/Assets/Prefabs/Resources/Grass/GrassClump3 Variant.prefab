@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7363314714512765300
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1450447124412312749, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.676
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450447124412312749, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -281.392
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564673037486072431, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.222
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564673037486072431, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -280.652
+      objectReference: {fileID: 0}
+    - target: {fileID: 2784247525468260337, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_Name
+      value: GrassClump3 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570319748837857203, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.979
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570319748837857203, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -280.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.603
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.791
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693454454620591563, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b813bc33e43b4d47bdb97d26097f302, type: 3}
