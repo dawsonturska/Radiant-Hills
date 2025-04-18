@@ -135,11 +135,24 @@ public class DialogueInteract : MonoBehaviour
             if (eventQueue != null && dialogue.useQueuedEvent)
             {
                 if (dialogue.queuedEvent >= 0 && dialogue.queuedEvent < eventQueue.Length)
-                    eventQueue[dialogue.queuedEvent].Invoke();
+                {
+                    if (eventQueue[dialogue.queuedEvent] != null)
+                    {
+                        eventQueue[dialogue.queuedEvent].Invoke();
+                    }
+                    else
+                    {
+                        Debug.LogError("The event in the queue at index " + dialogue.queuedEvent + " is null.");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Queued event index out of range: " + dialogue.queuedEvent);
+                }
             }
-        }
+            }
 
-        HideDialogueUI();
+            HideDialogueUI();
         optionSelected = false;
     }
 }

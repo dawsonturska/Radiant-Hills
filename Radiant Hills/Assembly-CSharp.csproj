@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Inventory\IconGrid.cs" />
     <Compile Include="Assets\Scripts\Objects\DisplayShelf.cs" />
     <Compile Include="Assets\Scripts\Enemies\Turret.cs" />
+    <Compile Include="Assets\Scripts\Rooms\PlayerTriggerEvent.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\DialogueSystem\DialogueInteract.cs" />
     <Compile Include="Assets\Scripts\Main Menu\NewGame.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Assets\Scripts\Objects\InteractionField.cs" />
     <Compile Include="Assets\Scripts\Objects\BreakableObject.cs" />
     <Compile Include="Assets\Scripts\Rooms\Door.cs" />
-    <Compile Include="Assets\Scripts\Main Menu\GoToShop.cs" />
     <Compile Include="Assets\Scripts\Enemies\Spitter.cs" />
     <Compile Include="Assets\Scripts\Rooms\TeleportationManager.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingManager.cs" />
@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\Rooms\ReflectorController.cs" />
     <Compile Include="Assets\Scripts\Objects\TestTrigger.cs" />
     <Compile Include="Assets\Art Assets\Anims\NormalMapSwitcher.cs" />
+    <Compile Include="Assets\Scripts\Rooms\GoToShop.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Rooms\ProjectileReflector.cs" />
     <Compile Include="Assets\Scripts\Rooms\PlayerInteractionManager.cs" />
