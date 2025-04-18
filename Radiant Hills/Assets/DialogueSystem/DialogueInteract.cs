@@ -22,15 +22,18 @@ public class DialogueInteract : MonoBehaviour
     //[SerializeField] private AudioSource charaAudioSource;
     [SerializeField] private List<GameObject> choiceButtons;
     [SerializeField] private UnityEvent[] eventQueue;
+    [SerializeField] private bool startDialogueOnSceneLoad = false;
 
-    // New checkbox option to automatically start dialogue on scene load
-    [SerializeField] private bool startDialogueOnSceneLoad = false; // Enable this in the Inspector
+    private bool optionSelected = false;
 
-    bool optionSelected = false;
+    // Ensures nothing flashes visible on the first frame
+    private void Awake()
+    {
+        HideDialogueUI();
+    }
 
     private void Start()
     {
-        // Automatically start dialogue if the checkbox is checked
         if (startDialogueOnSceneLoad)
         {
             StartDialogue();
@@ -53,23 +56,35 @@ public class DialogueInteract : MonoBehaviour
         StartDialogue(selectedOption);
     }
 
+    private void HideDialogueUI()
+    {
+        dialogueCanvas.enabled = false;
+        dialogueSpeakerText.gameObject.SetActive(false);
+        dialogueNoSpeakerText.gameObject.SetActive(false);
+        dialogueBox.enabled = false;
+        charSprite.gameObject.SetActive(false);
+        dialogueOptionsContainer.SetActive(false);
+
+        foreach (var button in choiceButtons)
+        {
+            button.SetActive(false);
+        }
+    }
+
     IEnumerator DisplayDialogue(DialogueObject _dialogueObject)
     {
+        HideDialogueUI(); // double safety
         yield return null;
+
         dialogueCanvas.enabled = true;
+        dialogueBox.enabled = true;
+
         foreach (var dialogue in _dialogueObject.dialogueSegments)
         {
             speakerText.text = dialogue.speakerText;
             charSprite.sprite = dialogue.charSprite;
 
-            //if (charaAudioSource != null && dialogue.charAudio != null)
-            //{
-            //charaAudioSource.Stop();
-            //charaAudioSource.clip = dialogue.charAudio;
-            //charaAudioSource.Play();
-            //}
-
-            if (speakerText.text != "")
+            if (!string.IsNullOrEmpty(speakerText.text))
             {
                 dialogueSpeakerText.gameObject.SetActive(true);
                 dialogueNoSpeakerText.gameObject.SetActive(false);
@@ -88,9 +103,10 @@ public class DialogueInteract : MonoBehaviour
 
             if (dialogue.dialogueChoices.Count == 0)
             {
-                while (!Input.GetKeyDown(KeyCode.Space) || !Input.GetMouseButtonDown(0))
+                while (true)
                 {
-                    if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) break;
+                    if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                        break;
                     yield return null;
                 }
 
@@ -109,6 +125,7 @@ public class DialogueInteract : MonoBehaviour
                     i++;
                 }
 
+                optionSelected = false;
                 while (!optionSelected)
                 {
                     yield return null;
@@ -117,16 +134,12 @@ public class DialogueInteract : MonoBehaviour
 
             if (eventQueue != null && dialogue.useQueuedEvent)
             {
-                if (dialogue.queuedEvent > -1 || dialogue.queuedEvent <= eventQueue.Length) eventQueue[dialogue.queuedEvent].Invoke();
+                if (dialogue.queuedEvent >= 0 && dialogue.queuedEvent < eventQueue.Length)
+                    eventQueue[dialogue.queuedEvent].Invoke();
             }
         }
-        dialogueOptionsContainer.SetActive(false);
-        dialogueCanvas.enabled = false;
-        optionSelected = false;
 
-        foreach (var button in choiceButtons)
-        {
-            if (button.gameObject.activeSelf == true) button.gameObject.SetActive(false);
-        }
+        HideDialogueUI();
+        optionSelected = false;
     }
 }

@@ -77,9 +77,11 @@
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Rooms\SceneHandler.cs" />
+    <Compile Include="Assets\Scripts\Objects\SceneWarpDialogue.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractionField.cs" />
     <Compile Include="Assets\Scripts\Objects\BreakableObject.cs" />
     <Compile Include="Assets\Scripts\Rooms\Door.cs" />
+    <Compile Include="Assets\Scripts\Main Menu\GoToShop.cs" />
     <Compile Include="Assets\Scripts\Enemies\Spitter.cs" />
     <Compile Include="Assets\Scripts\Rooms\TeleportationManager.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingManager.cs" />
