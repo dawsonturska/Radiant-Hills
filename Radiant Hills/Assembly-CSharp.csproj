@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Rooms\SceneHandler.cs" />
+    <Compile Include="Assets\Scripts\Rooms\GoToDungeon.cs" />
     <Compile Include="Assets\Scripts\Objects\SceneWarpDialogue.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractionField.cs" />
     <Compile Include="Assets\Scripts\Objects\BreakableObject.cs" />
