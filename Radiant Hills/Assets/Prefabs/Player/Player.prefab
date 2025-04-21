@@ -1039,6 +1039,14 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5758377672356490271, guid: cb6a4a562d3b90f4790502d8e965a5a1, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 3636633277629995910}
+    - target: {fileID: 5758377672356490271, guid: cb6a4a562d3b90f4790502d8e965a5a1, type: 3}
+      propertyPath: extraImage
+      value: 
+      objectReference: {fileID: 3169840079406315724}
     - target: {fileID: 5979831892938471518, guid: cb6a4a562d3b90f4790502d8e965a5a1, type: 3}
       propertyPath: m_Camera
       value: 

@@ -11,6 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        // Set spawn position if defined
+        if (PlayerSpawnPoint.spawnPosition != Vector2.zero)
+        {
+            transform.position = PlayerSpawnPoint.spawnPosition;
+        }
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         lastInputDirection = Vector2.down; // Default direction (e.g., facing downward)

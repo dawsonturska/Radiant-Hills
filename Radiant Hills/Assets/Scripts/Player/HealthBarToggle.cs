@@ -1,39 +1,39 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; // Needed to check the scene name
+using UnityEngine.UI;              // Required if you're using UI.Image
 
 public class HealthBarVisibility : MonoBehaviour
 {
-    public GameObject healthBar;  // Reference to the health bar GameObject
+    public GameObject healthBar;       // Reference to the health bar GameObject
+    public GameObject extraImage;      // Reference to the extra image GameObject
 
     void Start()
     {
         if (healthBar == null)
         {
             Debug.LogError("HealthBar reference not set!");
-            return;
         }
 
-        // Initially hide the health bar in the editor
+        if (extraImage == null)
+        {
+            Debug.LogError("ExtraImage reference not set!");
+        }
+
+        // Initially hide both in the editor
 #if UNITY_EDITOR
-        healthBar.SetActive(false);  // Make health bar invisible in the editor
+        if (healthBar != null) healthBar.SetActive(false);
+        if (extraImage != null) extraImage.SetActive(false);
 #endif
     }
 
     void Update()
     {
-        // Check if the current scene is "Gather"
-        if (SceneManager.GetActiveScene().name == "Gather")
+        bool isGatherScene = SceneManager.GetActiveScene().name == "Gather";
+
+        if (Application.isPlaying)
         {
-            // Toggle the health bar visibility during the Gather scene
-            if (Application.isPlaying)
-            {
-                healthBar.SetActive(true);  // Make health bar visible during gameplay
-            }
-        }
-        else
-        {
-            // Hide the health bar in all other scenes
-            healthBar.SetActive(false);
+            if (healthBar != null) healthBar.SetActive(isGatherScene);
+            if (extraImage != null) extraImage.SetActive(isGatherScene);
         }
     }
 }

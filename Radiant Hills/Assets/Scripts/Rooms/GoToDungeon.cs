@@ -3,23 +3,23 @@ using UnityEngine.SceneManagement;
 
 public class GoToDungeon : MonoBehaviour
 {
-    public string newSceneName = "Gather"; // Replace with desired scene name
+    public string newSceneName = "Gather";         // Scene to load
+    public Vector2 customSpawnPosition = Vector2.zero; // Where the player should appear
 
-    // Existing method to go to the shop
     public void GoDungeon()
     {
         Debug.Log("Going to the Meek Woods now...");
+
+        // Store the desired spawn point
+        PlayerSpawnPoint.spawnPosition = customSpawnPosition;
 
         // Use the SceneLoader to handle the fade + scene load
         SceneLoader.Instance.StartSceneTransition(newSceneName);
     }
 
-    // New method specifically for external calls, can be triggered from Dialogue system
     public void GoToDungeonFromDialogue()
     {
         Debug.Log("Going to the Meek Woods from dialogue system...");
-
-        // Call GoDungeon method when triggered
         GoDungeon();
     }
 }
