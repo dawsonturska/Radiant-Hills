@@ -19,17 +19,19 @@ public class DialogueInteract : MonoBehaviour
     [SerializeField] private DialogueObject startDialogueObject;
     [SerializeField] private Sprite noSpeakerSprite;
     [SerializeField] private Sprite speakerSprite;
-    //[SerializeField] private AudioSource charaAudioSource;
     [SerializeField] private List<GameObject> choiceButtons;
     [SerializeField] private UnityEvent[] eventQueue;
     [SerializeField] private bool startDialogueOnSceneLoad = false;
+    [SerializeField] private Button closeButton;
 
     private bool optionSelected = false;
 
-    // Ensures nothing flashes visible on the first frame
     private void Awake()
     {
         HideDialogueUI();
+
+        if (closeButton != null)
+            closeButton.onClick.AddListener(CloseDialogue);
     }
 
     private void Start()
@@ -56,6 +58,13 @@ public class DialogueInteract : MonoBehaviour
         StartDialogue(selectedOption);
     }
 
+    public void CloseDialogue()
+    {
+        StopAllCoroutines();
+        HideDialogueUI();
+        optionSelected = false;
+    }
+
     private void HideDialogueUI()
     {
         dialogueCanvas.enabled = false;
@@ -69,6 +78,9 @@ public class DialogueInteract : MonoBehaviour
         {
             button.SetActive(false);
         }
+
+        if (closeButton != null)
+            closeButton.gameObject.SetActive(false);
     }
 
     IEnumerator DisplayDialogue(DialogueObject _dialogueObject)
@@ -78,6 +90,9 @@ public class DialogueInteract : MonoBehaviour
 
         dialogueCanvas.enabled = true;
         dialogueBox.enabled = true;
+
+        if (closeButton != null)
+            closeButton.gameObject.SetActive(true);
 
         foreach (var dialogue in _dialogueObject.dialogueSegments)
         {
@@ -150,9 +165,9 @@ public class DialogueInteract : MonoBehaviour
                     Debug.LogError("Queued event index out of range: " + dialogue.queuedEvent);
                 }
             }
-            }
+        }
 
-            HideDialogueUI();
+        HideDialogueUI();
         optionSelected = false;
     }
 }
