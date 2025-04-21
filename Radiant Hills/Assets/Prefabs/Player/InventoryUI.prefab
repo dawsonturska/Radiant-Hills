@@ -484,7 +484,6 @@ MonoBehaviour:
   emptySlotPrefab: {fileID: 3249440901671368265, guid: 16880a9ae62be2a40aea5c576450a311, type: 3}
   gridContainer: {fileID: 5309525183432887021}
   inventory: {fileID: 0}
-  displayShelf: {fileID: 0}
   maxSlots: 20
 --- !u!1 &7478214298563031157
 GameObject:
@@ -537,7 +536,7 @@ Canvas:
   m_GameObject: {fileID: 7478214298563031157}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

@@ -257,8 +257,7 @@
               "RelativeToolTip": "Assets\\DialogueSystem\\DialogueInteract.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAK0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T17:11:10.132Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-10T17:11:10.132Z"
             },
             {
               "$type": "Document",
@@ -318,7 +317,8 @@
               "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.9\\Shaders\\2D\\Sprite-Lit-Default.shader",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
-              "WhenOpened": "2025-03-10T16:18:42.123Z"
+              "WhenOpened": "2025-03-10T16:18:42.123Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -354,7 +354,8 @@
               "RelativeToolTip": "..\\..\\Radiant Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\GoToShop.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T23:42:13.879Z"
+              "WhenOpened": "2025-04-17T23:42:13.879Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
