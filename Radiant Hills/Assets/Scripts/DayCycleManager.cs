@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class DayCycleManager : MonoBehaviour
 {
     public int currentDay = 1;        // Starts at day 1
     public int timeOfDay = 0;         // 0 = morning, 1 = night
+
+    [Header("Lights to Control")]
+    public Light2D[] lightsToControl;   // List of Light2D objects to update
 
     // Optional: Singleton if you want global access
     public static DayCycleManager Instance;
@@ -18,7 +22,14 @@ public class DayCycleManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
+    }
+
+    void Start()
+    {
+        // Apply correct lighting when the scene starts
+        UpdateLighting();
     }
 
     // Call this to move from morning to night, or night to next morning
@@ -34,6 +45,49 @@ public class DayCycleManager : MonoBehaviour
             currentDay++;  // Increment the day
         }
 
+        UpdateLighting();
+
         Debug.Log($"Day {currentDay}, Time of Day: {(timeOfDay == 0 ? "Morning" : "Night")}");
+    }
+
+    public void UpdateLighting()
+    {
+        if (lightsToControl == null || lightsToControl.Length == 0)
+        {
+            Debug.LogWarning("No lights assigned to control.");
+            return;
+        }
+
+        foreach (Light2D light in lightsToControl)
+        {
+            if (light != null)
+            {
+                switch (timeOfDay)
+                {
+                    case 0: // Morning
+                        light.intensity = 0.5f;
+                        light.color = new Color(0xDC / 255f, 0xFF / 255f, 0xFE / 255f); // #DCFFFE
+                        break;
+
+                    case 1: // Night
+                        light.intensity = 0.25f;
+                        light.color = new Color(0x28 / 255f, 0x1B / 255f, 0x55 / 255f); // #281B55
+                        break;
+
+                    default:
+                        Debug.LogWarning("Unhandled timeOfDay value: " + timeOfDay);
+                        break;
+                }
+            }
+        }
+    }
+
+    public void SetTimeOfDay(int newTimeOfDay)
+    {
+        if (newTimeOfDay != timeOfDay)
+        {
+            timeOfDay = newTimeOfDay;
+            UpdateLighting();
+        }
     }
 }

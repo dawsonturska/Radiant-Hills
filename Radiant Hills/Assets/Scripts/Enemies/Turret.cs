@@ -26,15 +26,20 @@ public class TurretLogic : MonoBehaviour
     {
         turretCollider = GetComponent<Collider2D>();
 
-        if (player == null) Debug.LogError($"{gameObject.name}: Player reference is not assigned!");
         if (focalPoint == null) Debug.LogError($"{gameObject.name}: Focal point is not assigned!");
         if (projectilePrefab == null || projectileSpawnPoint == null) Debug.LogError($"{gameObject.name}: Projectile prefab or spawn point is not assigned!");
         if (animator == null) Debug.LogError($"{gameObject.name}: Animator reference is not assigned!");
+
+        UpdatePlayerReference(); // Try to assign player on start
     }
 
     void Update()
     {
-        if (player == null || focalPoint == null) return;
+        if (player == null)
+        {
+            UpdatePlayerReference(); // Reacquire player if missing
+            return;
+        }
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         bool playerInRange = distanceToPlayer <= aggroRange;
@@ -61,6 +66,16 @@ public class TurretLogic : MonoBehaviour
         }
 
         UpdateBlendTreeValues();
+    }
+
+    private void UpdatePlayerReference()
+    {
+        var playerObj = FindObjectOfType<Player>();
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+            Debug.Log($"{gameObject.name}: Player reference re-assigned at runtime.");
+        }
     }
 
     private void OnAggroPlayer()

@@ -55,10 +55,8 @@ public class SceneHandler : MonoBehaviour
 
     private void InitializePlayer()
     {
-        if (player == null)
-        {
-            player = FindObjectOfType<Player>()?.transform;
-        }
+        player = FindObjectOfType<Player>()?.transform;
+
 
         if (player != null)
         {

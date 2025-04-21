@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,21 +12,40 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // Set spawn position if defined
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        lastInputDirection = Vector2.down;
+
+        SetToSpawnPosition();
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SetToSpawnPosition();
+    }
+
+    private void SetToSpawnPosition()
+    {
         if (PlayerSpawnPoint.spawnPosition != Vector2.zero)
         {
             transform.position = PlayerSpawnPoint.spawnPosition;
         }
-
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        lastInputDirection = Vector2.down; // Default direction (e.g., facing downward)
     }
 
     void Update()
     {
         HandleInput();
-        UpdateAnimation(); // Ensure animations update as soon as input changes
+        UpdateAnimation();
     }
 
     void FixedUpdate()
@@ -38,20 +58,19 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        // Prioritize vertical movement (prevents diagonal movement)
         if (moveY != 0)
         {
             moveDirection = new Vector2(0, moveY);
-            lastInputDirection = moveDirection; // Update immediately
-            animator.SetTrigger(moveY > 0 ? "MoveUp" : "MoveDown"); // Trigger transition animation
-            animator.SetTrigger("StartMoving"); // Start movement after transition
+            lastInputDirection = moveDirection;
+            animator.SetTrigger(moveY > 0 ? "MoveUp" : "MoveDown");
+            animator.SetTrigger("StartMoving");
         }
         else if (moveX != 0)
         {
             moveDirection = new Vector2(moveX, 0);
-            lastInputDirection = moveDirection; // Update immediately
-            animator.SetTrigger(moveX > 0 ? "MoveRight" : "MoveLeft"); // Trigger transition animation
-            animator.SetTrigger("StartMoving"); // Start movement after transition
+            lastInputDirection = moveDirection;
+            animator.SetTrigger(moveX > 0 ? "MoveRight" : "MoveLeft");
+            animator.SetTrigger("StartMoving");
         }
         else
         {
@@ -67,19 +86,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        // Update the movement animation direction immediately
         if (moveDirection.sqrMagnitude > 0)
         {
             animator.SetFloat("MoveX", moveDirection.x);
             animator.SetFloat("MoveY", moveDirection.y);
-            lastInputDirection = moveDirection; // Ensure last direction is updated
+            lastInputDirection = moveDirection;
         }
 
-        // Ensure idle animations still face the last direction
         animator.SetFloat("IdleX", lastInputDirection.x);
         animator.SetFloat("IdleY", lastInputDirection.y);
-
-        // Update the IsMoving parameter
         animator.SetBool("IsMoving", moveDirection.sqrMagnitude > 0);
     }
 }
