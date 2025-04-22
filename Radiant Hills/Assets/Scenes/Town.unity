@@ -2061,17 +2061,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -6.0347314, y: 5.04772}
-      - {x: -9.495853, y: -11.293801}
-      - {x: 9.756673, y: -11.248452}
-      - {x: 9.393335, y: -9.534158}
+    - - {x: -6.140982, y: 5.5199447}
+      - {x: -9.743772, y: -11.341022}
+      - {x: 10.248788, y: -11.365623}
+      - {x: 9.885451, y: -9.604458}
       - {x: 5.115141, y: -8.123795}
-      - {x: -1.141743, y: -6.4889064}
-      - {x: -2.934136, y: -4.282795}
-      - {x: -3.331521, y: -2.2722561}
-      - {x: -2.5073447, y: -0.83042276}
-      - {x: -2.8883457, y: 3.2262325}
-      - {x: -2.5380082, y: 5.0526342}
+      - {x: -1.0135233, y: -6.4247994}
+      - {x: -2.8385706, y: -4.2700505}
+      - {x: -3.2359552, y: -2.2722561}
+      - {x: -2.583797, y: -0.67751753}
+      - {x: -2.8883457, y: 3.532043}
+      - {x: -2.431758, y: 5.5012465}
   m_UseDelaunayMesh: 0
 --- !u!4 &108666243 stripped
 Transform:
@@ -8715,6 +8715,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1a6a27a2097ccae48b9e96b40e6e2c2f, type: 3}
+    - target: {fileID: 2917975125496157919, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.4169312
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917975125496157919, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.1273
+      objectReference: {fileID: 0}
     - target: {fileID: 4131518967177227802, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
       propertyPath: targetDoor
       value: 
@@ -8761,7 +8769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7738058178600429467, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -139.99666
+      value: -140.1
       objectReference: {fileID: 0}
     - target: {fileID: 7738058178600429467, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8795,13 +8803,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1533894507223915451, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8226777796432125415, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
     - {fileID: 3397155514205170910, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
     - {fileID: 986989400355571354, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
     - {fileID: 6195776879585263149, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7738058178600429467, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 509234974}
     - targetCorrespondingSourceObject: {fileID: 7738058178600429467, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1586310054}
@@ -9315,6 +9327,90 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4960148722228278963, guid: 61e7b5b7a80c9b745a5920686a62d687, type: 3}
   m_PrefabInstance: {fileID: 2057096583}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &509234973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509234974}
+  - component: {fileID: 509234975}
+  m_Layer: 0
+  m_Name: BeachTile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &509234974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509234973}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06, y: -2.701, z: 0}
+  m_LocalScale: {x: 1.0101855, y: 0.66711366, z: 2.4778883}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 108666243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &509234975
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509234973}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 67e4d0ffd447ae44a966288387f50f53, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 50.702732, y: 27.53}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!4 &510015648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4960148722228278963, guid: 61e7b5b7a80c9b745a5920686a62d687, type: 3}
@@ -27833,8 +27929,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.1013, y: -0.06005001, z: 0}
-    m_Extent: {x: 2.4202, y: 0.68465, z: 0}
+    m_Center: {x: 0.10134995, y: -0.06040001, z: 0}
+    m_Extent: {x: 2.4207501, y: 0.6849, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -32759,8 +32855,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.022350073, y: -0.096950054, z: 0}
-    m_Extent: {x: 2.54865, y: 1.35885, z: 0}
+    m_Center: {x: -0.022050023, y: -0.09705001, z: 0}
+    m_Extent: {x: 2.54875, y: 1.3589499, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
