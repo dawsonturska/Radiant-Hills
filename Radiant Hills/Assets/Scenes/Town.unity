@@ -654,7 +654,7 @@ MonoBehaviour:
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
+  m_NormalMapQuality: 1
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 0
   m_ShadowIntensity: 0.75
@@ -1969,11 +1969,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6026138182219255496, guid: 849af8b06fef45f47ba7cc53aa742016, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 54.112164
+      value: 49.94
       objectReference: {fileID: 0}
     - target: {fileID: 6026138182219255496, guid: 849af8b06fef45f47ba7cc53aa742016, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 53.47621
+      value: 53.88
       objectReference: {fileID: 0}
     - target: {fileID: 6026138182219255496, guid: 849af8b06fef45f47ba7cc53aa742016, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5308,6 +5308,8 @@ GameObject:
   m_Component:
   - component: {fileID: 276961026}
   - component: {fileID: 276961027}
+  - component: {fileID: 276961029}
+  - component: {fileID: 276961028}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -5357,7 +5359,7 @@ MonoBehaviour:
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
+  m_NormalMapQuality: 1
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 0
   m_ShadowIntensity: 0.75
@@ -5380,6 +5382,56 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &276961028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276961025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d893198644b5f434a978c7f4ea395e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetIntensity: 4
+  defaultIntensity: 0.5
+  fadeSpeed: 2
+--- !u!58 &276961029
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276961025}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 18.151545
 --- !u!1001 &277513687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11273,6 +11325,8 @@ GameObject:
   m_Component:
   - component: {fileID: 670662664}
   - component: {fileID: 670662665}
+  - component: {fileID: 670662667}
+  - component: {fileID: 670662666}
   m_Layer: 0
   m_Name: Light (4)
   m_TagString: Untagged
@@ -11345,6 +11399,56 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &670662666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670662663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d893198644b5f434a978c7f4ea395e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetIntensity: 4
+  defaultIntensity: 0.5
+  fadeSpeed: 2
+--- !u!58 &670662667
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670662663}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 17.82045
 --- !u!1001 &675846158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12771,6 +12875,8 @@ GameObject:
   m_Component:
   - component: {fileID: 762566083}
   - component: {fileID: 762566084}
+  - component: {fileID: 762566086}
+  - component: {fileID: 762566085}
   m_Layer: 0
   m_Name: Light (2)
   m_TagString: Untagged
@@ -12843,6 +12949,56 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &762566085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762566082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d893198644b5f434a978c7f4ea395e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetIntensity: 4
+  defaultIntensity: 0.5
+  fadeSpeed: 2
+--- !u!58 &762566086
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762566082}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1001 &762786950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21327,7 +21483,7 @@ MonoBehaviour:
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
+  m_NormalMapQuality: 1
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 0
   m_ShadowIntensity: 0.75
@@ -26974,19 +27130,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049791321673560430, guid: 18ad92e040ed4044d83d7f39d2b67080, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3210142
+      value: 0.50829387
       objectReference: {fileID: 0}
     - target: {fileID: 4049791321673560430, guid: 18ad92e040ed4044d83d7f39d2b67080, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1999681
+      value: 1.9000295
       objectReference: {fileID: 0}
     - target: {fileID: 4049791321673560430, guid: 18ad92e040ed4044d83d7f39d2b67080, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6818
+      value: 1.0795622
       objectReference: {fileID: 0}
     - target: {fileID: 4049791321673560430, guid: 18ad92e040ed4044d83d7f39d2b67080, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.83
+      value: 5.603
       objectReference: {fileID: 0}
     - target: {fileID: 4049791321673560430, guid: 18ad92e040ed4044d83d7f39d2b67080, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27511,7 +27667,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 637f134fd44ecb44f839692463426750, type: 3}
     - target: {fileID: 2917975125496157919, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.77
+      value: -8.21
       objectReference: {fileID: 0}
     - target: {fileID: 3397155514205170910, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
       propertyPath: m_Name
@@ -27539,7 +27695,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6224509909310432593, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.32
+      value: -9.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 6224509909310432593, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 6548122512115469976, guid: 8a6739b6e198d944e9d0d92c62270717, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27929,8 +28089,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.10134995, y: -0.06040001, z: 0}
-    m_Extent: {x: 2.4207501, y: 0.6849, z: 0}
+    m_Center: {x: 0.101150036, y: -0.0598, z: 0}
+    m_Extent: {x: 2.42045, y: 0.6853, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -31734,6 +31894,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1985442111}
   - component: {fileID: 1985442112}
+  - component: {fileID: 1985442114}
+  - component: {fileID: 1985442113}
   m_Layer: 0
   m_Name: Light (1)
   m_TagString: Untagged
@@ -31783,7 +31945,7 @@ MonoBehaviour:
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
+  m_NormalMapQuality: 1
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 0
   m_ShadowIntensity: 0.75
@@ -31806,6 +31968,56 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1985442113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985442110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d893198644b5f434a978c7f4ea395e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetIntensity: 4
+  defaultIntensity: 2.25
+  fadeSpeed: 2
+--- !u!58 &1985442114
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985442110}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 14.683809
 --- !u!4 &1985686557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4960148722228278963, guid: 61e7b5b7a80c9b745a5920686a62d687, type: 3}
@@ -32855,8 +33067,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.022050023, y: -0.09705001, z: 0}
-    m_Extent: {x: 2.54875, y: 1.3589499, z: 0}
+    m_Center: {x: -0.02275002, y: -0.09625, z: 0}
+    m_Extent: {x: 2.5482502, y: 1.35905, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

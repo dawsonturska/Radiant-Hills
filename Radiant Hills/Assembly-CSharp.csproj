@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Objects\BreakableObject.cs" />
     <Compile Include="Assets\Scripts\Rooms\Door.cs" />
     <Compile Include="Assets\Scripts\Enemies\Spitter.cs" />
+    <Compile Include="Assets\Scripts\LightRange.cs" />
     <Compile Include="Assets\Scripts\Rooms\TeleportationManager.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingManager.cs" />
     <Compile Include="Assets\Scripts\Main Menu\SceneLoadTrigger.cs" />
