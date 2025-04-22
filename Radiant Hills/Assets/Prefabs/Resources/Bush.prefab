@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7134807995951385499}
   - component: {fileID: 8917537455032014706}
-  - component: {fileID: 748605598729033303}
   - component: {fileID: 1514702714796285133}
+  - component: {fileID: 2783789323583396452}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -86,8 +86,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &748605598729033303
-BoxCollider2D:
+--- !u!114 &1514702714796285133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353705718253288790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abfe7d8aba8715940be0c2049f0cd001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1654939685692639523, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
+  customers: []
+  yOffset: 0
+--- !u!60 &2783789323583396452
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,7 +133,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.6852735}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,21 +143,64 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.1456227, y: 2.4359896}
-  m_EdgeRadius: 0
---- !u!114 &1514702714796285133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2353705718253288790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abfe7d8aba8715940be0c2049f0cd001, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1654939685692639523, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
-  customers: []
-  yOffset: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.12, y: -2.6299999}
+      - {x: 1.26, y: -2.53}
+      - {x: 1.36, y: -2.44}
+      - {x: 1.4699999, y: -2.31}
+      - {x: 1.54, y: -2.1399999}
+      - {x: 1.55, y: -2.07}
+      - {x: 1.55, y: -1.81}
+      - {x: 1.5, y: -1.61}
+      - {x: 1.4699999, y: -1.54}
+      - {x: 1.3399999, y: -1.3}
+      - {x: 1.22, y: -1.16}
+      - {x: 1.14, y: -1}
+      - {x: 1.01, y: -0.78}
+      - {x: 0.96, y: -0.66999996}
+      - {x: 0.83, y: -0.42}
+      - {x: 0.76, y: -0.32999998}
+      - {x: 0.69, y: -0.17}
+      - {x: 0.65, y: -0.099999994}
+      - {x: 0.47, y: 0.12}
+      - {x: 0.32999998, y: 0.26}
+      - {x: 0.28, y: 0.29999998}
+      - {x: 0.17999999, y: 0.34}
+      - {x: 0.099999994, y: 0.35999998}
+      - {x: 0.08, y: 0.37}
+      - {x: -0.14999999, y: 0.37}
+      - {x: -0.28, y: 0.32999998}
+      - {x: -0.39999998, y: 0.25}
+      - {x: -0.69, y: -0.07}
+      - {x: -0.79999995, y: -0.29999998}
+      - {x: -0.85999995, y: -0.38}
+      - {x: -0.94, y: -0.5}
+      - {x: -1.06, y: -0.71999997}
+      - {x: -1.13, y: -0.84}
+      - {x: -1.28, y: -0.96}
+      - {x: -1.28, y: -1}
+      - {x: -1.37, y: -1.0699999}
+      - {x: -1.35, y: -1.13}
+      - {x: -1.5, y: -1.4}
+      - {x: -1.54, y: -1.5}
+      - {x: -1.5699999, y: -1.5999999}
+      - {x: -1.63, y: -1.77}
+      - {x: -1.63, y: -1.9699999}
+      - {x: -1.5899999, y: -2.08}
+      - {x: -1.56, y: -2.19}
+      - {x: -1.43, y: -2.36}
+      - {x: -1.4, y: -2.35}
+      - {x: -1.27, y: -2.48}
+      - {x: -1.14, y: -2.57}
+      - {x: -0.84, y: -2.71}
+      - {x: -0.71, y: -2.77}
+      - {x: -0.42999998, y: -2.84}
+      - {x: -0.32999998, y: -2.86}
+      - {x: -0.19, y: -2.8799999}
+      - {x: -0.07, y: -2.8899999}
+      - {x: 0.14, y: -2.8899999}
+      - {x: 0.26999998, y: -2.8799999}
+      - {x: 0.53, y: -2.85}
+      - {x: 0.82, y: -2.76}
+  m_UseDelaunayMesh: 0
