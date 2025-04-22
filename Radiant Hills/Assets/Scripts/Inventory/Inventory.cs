@@ -60,6 +60,10 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
+        // Prevent input while the game is paused
+        if (Time.timeScale == 0)
+            return;
+
         // Check for the I key press to toggle inventory visibility
         if (Input.GetKeyDown(KeyCode.I))
         {

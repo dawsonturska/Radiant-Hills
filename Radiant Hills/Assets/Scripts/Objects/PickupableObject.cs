@@ -29,6 +29,8 @@ public class PickupableObject : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0) return; // Ignore input if the game is paused
+
         if (isInRange && Input.GetKeyDown(KeyCode.E))
         {
             PickUp();
