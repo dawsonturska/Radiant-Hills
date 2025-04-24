@@ -16,7 +16,7 @@ MonoBehaviour:
   - dialogueText: Head into the Meek Woods?
     speakerText: 
     charSprite: {fileID: 0}
-    queuedEvent: 0
+    queuedEvent: 1
     useQueuedEvent: 1
     dialogueChoices:
     - dialogueChoice: Yes

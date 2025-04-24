@@ -46,10 +46,9 @@ public class ContextAudioController : MonoBehaviour
 
         // Example conditions; adjust as needed
         bool isInGatherScene = sceneName == "Gather";
-        bool isFightingBoss = BossFightManager.Instance != null && BossFightManager.Instance.IsBossFightActive;
 
-        if (isFightingBoss)
-            return "Boss";
+
+
         if (isInGatherScene)
             return "Gather";
 

@@ -16,26 +16,26 @@ MonoBehaviour:
   - dialogueText: Just bought yourself a shop, huh?
     speakerText: 
     charSprite: {fileID: 0}
-    queuedEvent: 0
-    useQueuedEvent: 0
+    queuedEvent: 1
+    useQueuedEvent: 1
     dialogueChoices: []
   - dialogueText: I'll miss you helping out.
     speakerText: 
     charSprite: {fileID: 0}
-    queuedEvent: 0
-    useQueuedEvent: 0
+    queuedEvent: 1
+    useQueuedEvent: 1
     dialogueChoices: []
   - dialogueText: Getting hard to clean this place, y'know.
     speakerText: 
     charSprite: {fileID: 0}
-    queuedEvent: 0
-    useQueuedEvent: 0
+    queuedEvent: 1
+    useQueuedEvent: 1
     dialogueChoices: []
   - dialogueText: Adventure calls you, I understand.
     speakerText: 
     charSprite: {fileID: 0}
-    queuedEvent: 0
-    useQueuedEvent: 0
+    queuedEvent: 1
+    useQueuedEvent: 1
     dialogueChoices: []
   - dialogueText: Just don't forget about Radiant Hills.
     speakerText: 
