@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -45,5 +46,41 @@ public class PauseMenuController : MonoBehaviour
             canvas.enabled = false;
         }
         Time.timeScale = 1;
+    }
+
+    public void GoToMenu()
+    {
+        Time.timeScale = 1;
+
+        if (SceneLoader.Instance != null)
+        {
+            StartCoroutine(FadeOutDeleteAndLoadMenu());
+        }
+        else
+        {
+            // Fallback if SceneLoader is not available
+            GameObject player = GameObject.FindWithTag("Player");
+            if (player != null)
+            {
+                Destroy(player);
+            }
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
+
+    public System.Collections.IEnumerator FadeOutDeleteAndLoadMenu()
+    {
+        // Fade to black first
+        yield return SceneLoader.Instance.StartCoroutine(SceneLoader.Instance.Fade(1f));
+
+        // Destroy the player
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            Destroy(player);
+        }
+
+        // Load MainMenu with fade-in
+        yield return SceneLoader.Instance.StartCoroutine(SceneLoader.Instance.FadeAndSwitch("MainMenu"));
     }
 }

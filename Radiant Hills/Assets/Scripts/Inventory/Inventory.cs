@@ -176,7 +176,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Attempt to pick up an item from the display shelf
-    private void TryPickupItemFromShelf()
+    public void TryPickupItemFromShelf()
     {
         if (displayShelf != null && displayShelf.HasItem()) // Check if the shelf has an item
         {
@@ -218,20 +218,20 @@ public class Inventory : MonoBehaviour
             PlayerPrefs.SetInt($"InventoryItem_{count}_Quantity", item.Value);
             count++;
         }
-        PlayerPrefs.SetInt("InventoryCount", count); // Store the total number of items in the inventory
+        PlayerPrefs.SetInt("InventoryCount", count); // Store total number of items in the inventory
         PlayerPrefs.Save();
     }
 
-    // Load inventory data from persistent storage (e.g., PlayerPrefs or a file)
     public void LoadInventory()
     {
         int itemCount = PlayerPrefs.GetInt("InventoryCount", 0);
+        materialQuantities.Clear();  // Clear any previously stored data
+
         for (int i = 0; i < itemCount; i++)
         {
             string materialName = PlayerPrefs.GetString($"InventoryItem_{i}_Name", string.Empty);
             if (!string.IsNullOrEmpty(materialName))
             {
-                // Find material by name from the predefined list of materials
                 MaterialType material = FindMaterialByName(materialName);
                 int quantity = PlayerPrefs.GetInt($"InventoryItem_{i}_Quantity", 0);
 
@@ -241,7 +241,11 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+
+        // Repopulate the inventory grid to reflect loaded data
+        iconGrid.PopulateGrid();  // Assuming this is the method that updates the grid visually
     }
+
 
     // Find material by name from the list of all available materials
     private MaterialType FindMaterialByName(string name)
@@ -255,4 +259,6 @@ public class Inventory : MonoBehaviour
         }
         return null;
     }
+
+
 }

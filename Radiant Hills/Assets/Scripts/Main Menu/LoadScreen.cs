@@ -29,7 +29,7 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(FadeAndSwitch(sceneName));
     }
 
-    private IEnumerator FadeAndSwitch(string sceneName)
+    public IEnumerator FadeAndSwitch(string sceneName)
     {
         // Fade to black
         yield return StartCoroutine(Fade(1f));
@@ -53,7 +53,7 @@ public class SceneLoader : MonoBehaviour
         yield return StartCoroutine(Fade(0f));
     }
 
-    private IEnumerator Fade(float targetAlpha)
+    public IEnumerator Fade(float targetAlpha)
     {
         Color color = fadeImage.color;
         float startAlpha = color.a;

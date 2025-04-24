@@ -90,4 +90,18 @@ public class DayCycleManager : MonoBehaviour
             UpdateLighting();
         }
     }
+
+    public void SaveDay()
+    {
+        PlayerPrefs.SetInt("CurrentDay", currentDay);      // Save current day
+        PlayerPrefs.SetInt("TimeOfDay", timeOfDay);        // Save time of day (morning or night)
+        PlayerPrefs.Save();
+    }
+
+    public void LoadDay()
+    {
+        currentDay = PlayerPrefs.GetInt("CurrentDay", 1);  // Default to day 1 if not saved
+        timeOfDay = PlayerPrefs.GetInt("TimeOfDay", 0);    // Default to morning if not saved
+        UpdateLighting(); // Ensure the correct lighting based on time of day
+    }
 }

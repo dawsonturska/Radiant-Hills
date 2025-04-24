@@ -128,8 +128,10 @@
     <Compile Include="Assets\Scripts\Enemies\TurretProjectile.cs" />
     <Compile Include="Assets\Scripts\Objects\PickupableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\Register.cs" />
+    <Compile Include="Assets\Scripts\GameSaveManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Inventory\MaterialType.cs" />
+    <Compile Include="Assets\Scripts\AmbientAudioPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
