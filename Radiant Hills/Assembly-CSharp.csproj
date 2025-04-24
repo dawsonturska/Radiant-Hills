@@ -113,6 +113,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerSpawnPoint.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\BossHealth.cs" />
     <Compile Include="Assets\DialogueSystem\CellPhoneInteract.cs" />
+    <Compile Include="Assets\Scripts\AudioSourceManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySorting.cs" />
     <Compile Include="Assets\Scripts\Player\CameraSmooth.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingZone.cs" />

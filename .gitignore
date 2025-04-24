@@ -45,6 +45,8 @@ MemoryCaptures/
 # Ignore everything from Unity's Cache server
 UnityCache/
 
+FileContentIndex/
+
 # Thumbnails
 .Thumbs/
 Radiant Hills/.vs/Radiant Hills/FileContentIndex/4b3b9f2d-b970-483c-91c7-cb78d8e5a154.vsidx
@@ -94,3 +96,4 @@ Radiant Hills/.vs/Radiant Hills/FileContentIndex/3947c446-ec17-41d8-9808-eaed393
 Radiant Hills/.vs/Radiant Hills/FileContentIndex/f526d34b-5c2e-488f-b5dc-8039a8c93ceb.vsidx
 Radiant Hills/.vs/Radiant Hills/FileContentIndex/b262faf3-edcf-434e-9619-b15b887853ed.vsidx
 Radiant Hills/.vs/Radiant Hills/FileContentIndex/c68eec8b-8684-47a1-be39-632ac3398e11.vsidx
+Radiant Hills/.vs/Radiant Hills/FileContentIndex/51c6ecd5-eaff-4fe7-842b-c67d604a50a8.vsidx

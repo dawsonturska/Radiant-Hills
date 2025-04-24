@@ -30,6 +30,9 @@ public class CentipedeBehavior : MonoBehaviour
 
     private bool isTeleporting = false; // Flag to check if the teleportation is in progress
     private bool canTeleport = true; // Flag to prevent teleportation spam
+    public AudioSource audioSource; // Audio source to play the sound
+    public AudioClip aggroClip; // Aggro sound clip
+
 
     void Start()
     {
@@ -67,6 +70,16 @@ public class CentipedeBehavior : MonoBehaviour
         {
             Debug.LogError("BossHealth script is not assigned!");
         }
+
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource is not assigned!");
+        }
+        if (aggroClip == null)
+        {
+            Debug.LogError("AggroClip is not assigned!");
+        }
+
     }
 
     void Update()
@@ -117,7 +130,16 @@ public class CentipedeBehavior : MonoBehaviour
         {
             healthBarUI.ToggleHealthBar(true);
         }
+
+        // Play aggro sound
+        if (audioSource != null && aggroClip != null)
+        {
+            audioSource.clip = aggroClip;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
     }
+
 
     private void OnLoseAggro()
     {
@@ -178,9 +200,17 @@ public class CentipedeBehavior : MonoBehaviour
     {
         // Handle boss death here (e.g., play death animation, disable the object, etc.)
         Debug.Log("Centipede has been defeated!");
-        // Example: Destroy the boss object
+
+        // Stop the aggro sound
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
+        // Destroy the boss object
         Destroy(gameObject);
     }
+
 
     void FireProjectileAtPlayer()
     {
