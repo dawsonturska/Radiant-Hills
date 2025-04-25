@@ -1,66 +1,83 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameSaveManager : MonoBehaviour
 {
-    public DayCycleManager dayCycleManager; // Reference to the DayCycleManager
-    public Inventory inventory;             // Reference to the Inventory
-    private bool isGridOpen = false;        // Whether the inventory grid is visible
-
-    // Ensure the GameSaveManager is not destroyed when switching scenes
     private void Awake()
     {
-        if (dayCycleManager == null || inventory == null)
-        {
-            Debug.LogError("GameSaveManager is missing references to DayCycleManager or Inventory.");
-        }
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Update()
     {
-        // Check for Numpad 7 (Save Game)
-        if (Input.GetKeyDown(KeyCode.Keypad7))
-        {
-            SaveGame();
-            Debug.Log("Game Saved.");
-        }
-
-        // Check for Numpad 8 (Load Game)
-        if (Input.GetKeyDown(KeyCode.Keypad8))
-        {
-            LoadGame();
-            Debug.Log("Game Loaded.");
-        }
-
-        // Check for Numpad 9 (Advance Day)
-        if (Input.GetKeyDown(KeyCode.Keypad9))
-        {
-            AdvanceDay();
-            Debug.Log("Day Advanced.");
-        }
-
-
+        if (Input.GetKeyDown(KeyCode.Keypad7)) SaveGame();
+        if (Input.GetKeyDown(KeyCode.Keypad8)) LoadGame();
     }
 
-    // Method to save the game state (day and inventory)
     public void SaveGame()
     {
-        dayCycleManager.SaveDay();      // Save the current day and time of day
-        inventory.SaveInventory();      // Save the player's inventory
+        Transform playerTransform = GameObject.FindWithTag("Player")?.transform;
+        if (playerTransform == null) return;
+
+        PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetFloat("PlayerX", playerTransform.position.x);
+        PlayerPrefs.SetFloat("PlayerY", playerTransform.position.y);
+        PlayerPrefs.SetFloat("PlayerZ", playerTransform.position.z);
+
+        GameObject.FindObjectOfType<DayCycleManager>()?.SaveDay();
+        GameObject.FindObjectOfType<Inventory>()?.SaveInventory();
+
         Debug.Log("Game saved.");
     }
 
-    // Method to load the game state (day and inventory)
     public void LoadGame()
     {
-        dayCycleManager.LoadDay();      // Load the saved day and time of day
-        inventory.LoadInventory();      // Load the player's inventory
-        Debug.Log("Game loaded.");
+        string sceneName = PlayerPrefs.GetString("LastScene", SceneManager.GetActiveScene().name);
+        if (SceneManager.GetActiveScene().name != sceneName)
+        {
+            StartCoroutine(LoadSceneAsync(sceneName));
+        }
+        else
+        {
+            StartCoroutine(DelayedRestore());
+        }
     }
 
-    // Method to advance the day
-    public void AdvanceDay()
+    private IEnumerator LoadSceneAsync(string sceneName)
     {
-        dayCycleManager.AdvanceTime();  // Advance the day and update time of day
+        AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneName);
+        while (!asyncOp.isDone) yield return null;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(DelayedRestore());
+    }
+
+    private IEnumerator DelayedRestore()
+    {
+        // Wait until systems are initialized
+        yield return new WaitUntil(() =>
+            GameObject.FindWithTag("Player") != null &&
+            GameObject.FindObjectOfType<Inventory>() != null &&
+            GameObject.FindObjectOfType<DayCycleManager>() != null);
+
+        Transform playerTransform = GameObject.FindWithTag("Player").transform;
+        DayCycleManager dayCycle = GameObject.FindObjectOfType<DayCycleManager>();
+        Inventory inventory = GameObject.FindObjectOfType<Inventory>();
+        IconGrid iconGrid = GameObject.FindObjectOfType<IconGrid>();
+
+        dayCycle.LoadDay();
+        inventory.LoadInventory();
+        iconGrid.PopulateGrid();
+
+        float x = PlayerPrefs.GetFloat("PlayerX", playerTransform.position.x);
+        float y = PlayerPrefs.GetFloat("PlayerY", playerTransform.position.y);
+        float z = PlayerPrefs.GetFloat("PlayerZ", playerTransform.position.z);
+        playerTransform.position = new Vector3(x, y, z);
+
+        Debug.Log("Game state restored. Player position: " + playerTransform.position);
     }
 }
-

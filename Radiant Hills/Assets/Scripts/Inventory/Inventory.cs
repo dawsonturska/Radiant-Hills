@@ -26,21 +26,25 @@ public class Inventory : MonoBehaviour
         {
             Instance = this; // Set this as the instance
             DontDestroyOnLoad(gameObject); // Prevent destruction on scene load
+            Debug.Log("Inventory instance created.");
         }
         else
         {
             Destroy(gameObject); // Destroy duplicate instances
+            Debug.Log("Destroyed duplicate Inventory instance.");
         }
 
         // Ensure IconGrid and DisplayShelf are not destroyed on scene load
         if (iconGrid != null)
         {
             DontDestroyOnLoad(iconGrid.gameObject);
+            Debug.Log("IconGrid will not be destroyed on scene load.");
         }
 
         if (displayShelf != null)
         {
             DontDestroyOnLoad(displayShelf.gameObject);
+            Debug.Log("DisplayShelf will not be destroyed on scene load.");
         }
     }
 
@@ -50,11 +54,13 @@ public class Inventory : MonoBehaviour
         if (panel != null)
         {
             panel.SetActive(false); // Make the inventory panel invisible by default
+            Debug.Log("Inventory panel set to inactive at start.");
         }
 
         if (iconGrid != null)
         {
             iconGrid.gameObject.SetActive(false); // Make the IconGrid invisible by default
+            Debug.Log("IconGrid set to inactive at start.");
         }
     }
 
@@ -68,6 +74,7 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleInventoryVisibility(); // Toggle inventory on/off
+            Debug.Log("Toggled inventory visibility.");
         }
 
         // Check for the E key press to pick up an item from the shelf
@@ -85,11 +92,13 @@ public class Inventory : MonoBehaviour
         if (panel != null)
         {
             panel.SetActive(isGridOpen); // Toggle visibility of the inventory panel
+            Debug.Log($"Inventory panel visibility toggled: {isGridOpen}");
         }
 
         if (iconGrid != null)
         {
             iconGrid.gameObject.SetActive(isGridOpen); // Toggle visibility of the IconGrid
+            Debug.Log($"IconGrid visibility toggled: {isGridOpen}");
         }
     }
 
@@ -103,6 +112,7 @@ public class Inventory : MonoBehaviour
     public void SetPlayer(Transform playerTransform)
     {
         player = playerTransform;
+        Debug.Log("Player reference set.");
     }
 
     // Add material to the inventory
@@ -117,16 +127,19 @@ public class Inventory : MonoBehaviour
         if (materialQuantities.ContainsKey(materialType))
         {
             materialQuantities[materialType] += quantity; // Update quantity if material exists
+            Debug.Log($"Updated {materialType.materialName} quantity to {materialQuantities[materialType]}.");
         }
         else
         {
             materialQuantities[materialType] = quantity; // Add new material to inventory
+            Debug.Log($"Added new material: {materialType.materialName} with quantity {quantity}.");
         }
 
         // Refresh the grid after adding material
         if (iconGrid != null)
         {
             iconGrid.PopulateGrid(); // Calls the PopulateGrid method to update the inventory UI
+            Debug.Log("Inventory grid populated after adding material.");
         }
 
         Debug.Log($"Added {quantity} of {materialType.materialName} to inventory.");
@@ -147,6 +160,7 @@ public class Inventory : MonoBehaviour
             if (materialQuantities[materialType] <= 0)
             {
                 materialQuantities.Remove(materialType); // Remove material if quantity is zero
+                Debug.Log($"Material {materialType.materialName} removed from inventory due to zero quantity.");
             }
         }
         else
@@ -158,6 +172,7 @@ public class Inventory : MonoBehaviour
         if (iconGrid != null)
         {
             iconGrid.PopulateGrid(); // Calls the PopulateGrid method to update the inventory UI
+            Debug.Log("Inventory grid populated after removing material.");
         }
 
         Debug.Log($"Removed {quantity} of {materialType.materialName} from inventory.");
@@ -172,7 +187,9 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
-        return materialQuantities.ContainsKey(materialType) && materialQuantities[materialType] >= quantity;
+        bool hasMaterial = materialQuantities.ContainsKey(materialType) && materialQuantities[materialType] >= quantity;
+        Debug.Log($"Check if inventory has {quantity} of {materialType.materialName}: {hasMaterial}");
+        return hasMaterial;
     }
 
     // Attempt to pick up an item from the display shelf
@@ -195,7 +212,7 @@ public class Inventory : MonoBehaviour
 
                 // Clear the item from the shelf (so it becomes empty)
                 displayShelf.ClearItem();
-                Debug.Log($"Picked up item: {material.materialName}");
+                Debug.Log($"Picked up item: {material.materialName} from shelf.");
             }
             else
             {
@@ -217,15 +234,20 @@ public class Inventory : MonoBehaviour
             PlayerPrefs.SetString($"InventoryItem_{count}_Name", item.Key.materialName);
             PlayerPrefs.SetInt($"InventoryItem_{count}_Quantity", item.Value);
             count++;
+            Debug.Log($"Saving material: {item.Key.materialName} with quantity {item.Value}.");
         }
-        PlayerPrefs.SetInt("InventoryCount", count); // Store total number of items in the inventory
+        PlayerPrefs.SetInt("InventoryCount", count);
         PlayerPrefs.Save();
+
+        Debug.Log($"Saved {count} items to inventory.");
     }
 
     public void LoadInventory()
     {
         int itemCount = PlayerPrefs.GetInt("InventoryCount", 0);
-        materialQuantities.Clear();  // Clear any previously stored data
+        //materialQuantities.Clear();  // Clear any previously stored data
+
+        Debug.Log($"Loading {itemCount} items from inventory.");
 
         for (int i = 0; i < itemCount; i++)
         {
@@ -238,14 +260,22 @@ public class Inventory : MonoBehaviour
                 if (material != null && quantity > 0)
                 {
                     AddMaterial(material, quantity);
+                    Debug.Log($"Loaded {materialName} with quantity {quantity}.");
+                }
+                else
+                {
+                    Debug.LogWarning($"Material '{materialName}' not found or quantity is zero.");
                 }
             }
         }
 
-        // Repopulate the inventory grid to reflect loaded data
-        iconGrid.PopulateGrid();  // Assuming this is the method that updates the grid visually
+        // Ensure the UI is updated after loading data
+        if (iconGrid != null)
+        {
+            iconGrid.PopulateGrid();  // This will refresh the inventory UI
+            Debug.Log("Inventory grid repopulated after loading.");
+        }
     }
-
 
     // Find material by name from the list of all available materials
     private MaterialType FindMaterialByName(string name)
@@ -254,11 +284,11 @@ public class Inventory : MonoBehaviour
         {
             if (material.materialName == name)
             {
+                Debug.Log($"Found material: {name}");
                 return material;
             }
         }
+        Debug.LogWarning($"Material '{name}' not found.");
         return null;
     }
-
-
 }
