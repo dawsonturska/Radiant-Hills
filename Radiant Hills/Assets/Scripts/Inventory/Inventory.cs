@@ -1,294 +1,225 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.IO;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory Instance { get; private set; } // Singleton pattern for Inventory instance
+    public static Inventory Instance { get; private set; }
 
-    public delegate void SlotClickHandler(int slotIndex); // Delegate for slot click events
-    public event SlotClickHandler OnSlotClicked; // Event to subscribe to slot clicks
+    public delegate void SlotClickHandler(int slotIndex);
+    public event SlotClickHandler OnSlotClicked;
 
-    public Dictionary<MaterialType, int> materialQuantities = new Dictionary<MaterialType, int>(); // Dictionary holding material types and their quantities
-    public IconGrid iconGrid; // Reference to the IconGrid (set this in the Inspector)
-    public DisplayShelf displayShelf; // Reference to the DisplayShelf (set this in the Inspector)
-    private GameObject panel; // Reference to the parent panel (where IconGrid is)
-    private bool isGridOpen = false; // Whether the grid is open or closed
+    public Dictionary<MaterialType, int> materialQuantities = new Dictionary<MaterialType, int>();
+    public IconGrid iconGrid;
+    public DisplayShelf displayShelf;
+    private GameObject panel;
+    private bool isGridOpen = false;
+    private Transform player;
 
-    private Transform player; // Reference to the player object
-
-    // Predefined list of materials available in the game (used for loading inventory without MaterialDatabase)
-    public List<MaterialType> allMaterials; // Reference to a list of all possible materials
+    public List<MaterialType> allMaterials;  // Make sure this list is populated with all available materials.
 
     void Awake()
     {
-        // Singleton pattern to ensure only one instance of Inventory exists
         if (Instance == null)
         {
-            Instance = this; // Set this as the instance
-            DontDestroyOnLoad(gameObject); // Prevent destruction on scene load
-            Debug.Log("Inventory instance created.");
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // Destroy duplicate instances
-            Debug.Log("Destroyed duplicate Inventory instance.");
+            Destroy(gameObject);
+            return;
         }
 
-        // Ensure IconGrid and DisplayShelf are not destroyed on scene load
-        if (iconGrid != null)
-        {
-            DontDestroyOnLoad(iconGrid.gameObject);
-            Debug.Log("IconGrid will not be destroyed on scene load.");
-        }
-
-        if (displayShelf != null)
-        {
-            DontDestroyOnLoad(displayShelf.gameObject);
-            Debug.Log("DisplayShelf will not be destroyed on scene load.");
-        }
+        if (iconGrid != null) DontDestroyOnLoad(iconGrid.gameObject);
+        if (displayShelf != null) DontDestroyOnLoad(displayShelf.gameObject);
     }
 
     void Start()
     {
-        // Ensure the panel and IconGrid are inactive at the start
-        if (panel != null)
-        {
-            panel.SetActive(false); // Make the inventory panel invisible by default
-            Debug.Log("Inventory panel set to inactive at start.");
-        }
-
-        if (iconGrid != null)
-        {
-            iconGrid.gameObject.SetActive(false); // Make the IconGrid invisible by default
-            Debug.Log("IconGrid set to inactive at start.");
-        }
+        if (panel != null) panel.SetActive(false);
+        if (iconGrid != null) iconGrid.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        // Prevent input while the game is paused
-        if (Time.timeScale == 0)
-            return;
+        if (Time.timeScale == 0) return;
 
-        // Check for the I key press to toggle inventory visibility
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ToggleInventoryVisibility(); // Toggle inventory on/off
-            Debug.Log("Toggled inventory visibility.");
-        }
-
-        // Check for the E key press to pick up an item from the shelf
-        if (Input.GetKeyDown(KeyCode.E) && displayShelf != null)
-        {
-            TryPickupItemFromShelf(); // Attempt to pick up item from the display shelf
-        }
+        if (Input.GetKeyDown(KeyCode.I)) ToggleInventoryVisibility();
+        if (Input.GetKeyDown(KeyCode.E) && displayShelf != null) TryPickupItemFromShelf();
     }
 
-    // Toggle visibility of the inventory grid
     public void ToggleInventoryVisibility()
     {
-        isGridOpen = !isGridOpen; // Toggle the flag
-
-        if (panel != null)
-        {
-            panel.SetActive(isGridOpen); // Toggle visibility of the inventory panel
-            Debug.Log($"Inventory panel visibility toggled: {isGridOpen}");
-        }
-
-        if (iconGrid != null)
-        {
-            iconGrid.gameObject.SetActive(isGridOpen); // Toggle visibility of the IconGrid
-            Debug.Log($"IconGrid visibility toggled: {isGridOpen}");
-        }
+        isGridOpen = !isGridOpen;
+        if (panel != null) panel.SetActive(isGridOpen);
+        if (iconGrid != null) iconGrid.gameObject.SetActive(isGridOpen);
     }
 
-    // Property to check if the inventory is visible
-    public bool IsInventoryVisible
-    {
-        get { return isGridOpen; }
-    }
+    public bool IsInventoryVisible => isGridOpen;
 
-    // Set the player reference in the inventory
     public void SetPlayer(Transform playerTransform)
     {
         player = playerTransform;
         Debug.Log("Player reference set.");
     }
 
-    // Add material to the inventory
     public void AddMaterial(MaterialType materialType, int quantity)
     {
-        if (materialType == null)
-        {
-            Debug.LogError("MaterialType is null. Cannot add to inventory.");
-            return;
-        }
+        if (materialType == null) return;
 
         if (materialQuantities.ContainsKey(materialType))
-        {
-            materialQuantities[materialType] += quantity; // Update quantity if material exists
-            Debug.Log($"Updated {materialType.materialName} quantity to {materialQuantities[materialType]}.");
-        }
+            materialQuantities[materialType] += quantity;
         else
-        {
-            materialQuantities[materialType] = quantity; // Add new material to inventory
-            Debug.Log($"Added new material: {materialType.materialName} with quantity {quantity}.");
-        }
+            materialQuantities[materialType] = quantity;
 
-        // Refresh the grid after adding material
-        if (iconGrid != null)
-        {
-            iconGrid.PopulateGrid(); // Calls the PopulateGrid method to update the inventory UI
-            Debug.Log("Inventory grid populated after adding material.");
-        }
-
-        Debug.Log($"Added {quantity} of {materialType.materialName} to inventory.");
+        iconGrid?.PopulateGrid();
     }
 
-    // Remove material from the inventory
     public void RemoveMaterial(MaterialType materialType, int quantity)
     {
-        if (materialType == null)
-        {
-            Debug.LogError("MaterialType is null. Cannot remove from inventory.");
-            return;
-        }
+        if (materialType == null) return;
 
         if (materialQuantities.ContainsKey(materialType))
         {
-            materialQuantities[materialType] -= quantity; // Decrease the material quantity
+            materialQuantities[materialType] -= quantity;
             if (materialQuantities[materialType] <= 0)
-            {
-                materialQuantities.Remove(materialType); // Remove material if quantity is zero
-                Debug.Log($"Material {materialType.materialName} removed from inventory due to zero quantity.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"Material {materialType.materialName} not found in inventory.");
+                materialQuantities.Remove(materialType);
         }
 
-        // Refresh the grid after removing material
-        if (iconGrid != null)
-        {
-            iconGrid.PopulateGrid(); // Calls the PopulateGrid method to update the inventory UI
-            Debug.Log("Inventory grid populated after removing material.");
-        }
-
-        Debug.Log($"Removed {quantity} of {materialType.materialName} from inventory.");
+        iconGrid?.PopulateGrid();
     }
 
-    // Check if the player has enough material in the inventory
     public bool HasMaterial(MaterialType materialType, int quantity)
     {
-        if (materialType == null)
-        {
-            Debug.LogError("MaterialType is null. Cannot check material in inventory.");
-            return false;
-        }
+        if (materialType == null) return false;
 
-        bool hasMaterial = materialQuantities.ContainsKey(materialType) && materialQuantities[materialType] >= quantity;
-        Debug.Log($"Check if inventory has {quantity} of {materialType.materialName}: {hasMaterial}");
-        return hasMaterial;
+        return materialQuantities.ContainsKey(materialType) && materialQuantities[materialType] >= quantity;
     }
 
-    // Attempt to pick up an item from the display shelf
     public void TryPickupItemFromShelf()
     {
-        if (displayShelf != null && displayShelf.HasItem()) // Check if the shelf has an item
+        if (displayShelf != null && displayShelf.HasItem())
         {
-            MaterialType material = displayShelf.GetItem(); // Get the item from the shelf
+            MaterialType material = displayShelf.GetItem();
+            if (material == null) return;
 
-            if (material == null)
-            {
-                Debug.LogError("MaterialType is null. Could not pick up item from shelf.");
-                return;
-            }
-
-            if (HasMaterial(material, 1)) // Ensure player has space
-            {
-                // Add the item to the inventory
-                AddMaterial(material, 1);
-
-                // Clear the item from the shelf (so it becomes empty)
-                displayShelf.ClearItem();
-                Debug.Log($"Picked up item: {material.materialName} from shelf.");
-            }
-            else
-            {
-                Debug.LogWarning("Not enough space in inventory to pick up this item.");
-            }
-        }
-        else
-        {
-            Debug.Log("No item on the display shelf to pick up.");
+            AddMaterial(material, 1);
+            displayShelf.ClearItem();
         }
     }
 
-    // Save inventory data to persistent storage (e.g., PlayerPrefs or a file)
     public void SaveInventory()
     {
-        int count = 0;
+        // Convert inventory to SerializableInventory
+        SerializableInventory serializableInventory = new SerializableInventory();
+
         foreach (var item in materialQuantities)
         {
-            PlayerPrefs.SetString($"InventoryItem_{count}_Name", item.Key.materialName);
-            PlayerPrefs.SetInt($"InventoryItem_{count}_Quantity", item.Value);
-            count++;
-            Debug.Log($"Saving material: {item.Key.materialName} with quantity {item.Value}.");
-        }
-        PlayerPrefs.SetInt("InventoryCount", count);
-        PlayerPrefs.Save();
+            SerializableInventory.InventoryItem inventoryItem = new SerializableInventory.InventoryItem
+            {
+                materialName = item.Key.materialName,
+                quantity = item.Value
+            };
 
-        Debug.Log($"Saved {count} items to inventory.");
+            serializableInventory.items.Add(inventoryItem);
+        }
+
+        // Serialize the inventory to JSON
+        string json = JsonUtility.ToJson(serializableInventory, true);
+
+        // Save JSON to file (or PlayerPrefs, if needed)
+        string path = Application.persistentDataPath + "/inventory.json";
+        File.WriteAllText(path, json);
+
+        Debug.Log("Inventory saved to: " + path); // Log the path for debugging
+
+        // Optionally save the player position
+        if (player != null)
+        {
+            Vector3 pos = player.position;
+            PlayerPrefs.SetFloat("PlayerPosX", pos.x);
+            PlayerPrefs.SetFloat("PlayerPosY", pos.y);
+            PlayerPrefs.SetFloat("PlayerPosZ", pos.z);
+        }
     }
 
     public void LoadInventory()
     {
-        int itemCount = PlayerPrefs.GetInt("InventoryCount", 0);
-        //materialQuantities.Clear();  // Clear any previously stored data
-
-        Debug.Log($"Loading {itemCount} items from inventory.");
-
-        for (int i = 0; i < itemCount; i++)
+        string path = Application.persistentDataPath + "/inventory.json";
+        if (File.Exists(path))
         {
-            string materialName = PlayerPrefs.GetString($"InventoryItem_{i}_Name", string.Empty);
-            if (!string.IsNullOrEmpty(materialName))
-            {
-                MaterialType material = FindMaterialByName(materialName);
-                int quantity = PlayerPrefs.GetInt($"InventoryItem_{i}_Quantity", 0);
+            string json = File.ReadAllText(path);
+            Debug.Log("Loaded inventory JSON: " + json);  // Debug line to check the loaded JSON
+            InventoryData inventoryData = JsonUtility.FromJson<InventoryData>(json);
 
-                if (material != null && quantity > 0)
+            materialQuantities.Clear(); // Clear old inventory data
+            Debug.Log("Loaded " + inventoryData.items.Count + " items."); // Check how many items were loaded
+
+            foreach (var item in inventoryData.items)
+            {
+                MaterialType material = FindMaterialByName(item.materialName);
+                if (material != null)
                 {
-                    AddMaterial(material, quantity);
-                    Debug.Log($"Loaded {materialName} with quantity {quantity}.");
+                    // Add the material to the inventory
+                    AddMaterial(material, item.quantity);
+                    Debug.Log($"Added {material.materialName} with quantity {item.quantity}."); // Debug line to confirm the addition
                 }
                 else
                 {
-                    Debug.LogWarning($"Material '{materialName}' not found or quantity is zero.");
+                    Debug.LogWarning($"Material '{item.materialName}' not found in 'allMaterials'.");
                 }
             }
+
+            // Refresh the inventory UI after loading
+            if (iconGrid != null)
+            {
+                iconGrid.PopulateGrid();  // Repopulate the grid with the updated inventory data
+            }
+            else
+            {
+                Debug.LogWarning("IconGrid is not assigned!");
+            }
+        }
+        else
+        {
+            Debug.LogError("No inventory file found at: " + path);
         }
 
-        // Ensure the UI is updated after loading data
-        if (iconGrid != null)
-        {
-            iconGrid.PopulateGrid();  // This will refresh the inventory UI
-            Debug.Log("Inventory grid repopulated after loading.");
-        }
+        // Ensure the icon grid is populated after loading
+        iconGrid?.PopulateGrid();  // Refresh the UI (this is redundant, remove if the first call works)
     }
 
-    // Find material by name from the list of all available materials
     private MaterialType FindMaterialByName(string name)
     {
+        if (allMaterials == null || allMaterials.Count == 0)
+        {
+            Debug.LogError("AllMaterials list is empty or not assigned!");
+            return null;
+        }
+
         foreach (MaterialType material in allMaterials)
         {
             if (material.materialName == name)
             {
-                Debug.Log($"Found material: {name}");
                 return material;
             }
         }
-        Debug.LogWarning($"Material '{name}' not found.");
+
+        Debug.LogWarning($"Material with name '{name}' not found.");
         return null;
     }
+}
+
+[System.Serializable]
+public class SerializableInventory
+{
+    [System.Serializable]
+    public class InventoryItem
+    {
+        public string materialName;
+        public int quantity;
+    }
+
+    public List<InventoryItem> items = new List<InventoryItem>();
 }

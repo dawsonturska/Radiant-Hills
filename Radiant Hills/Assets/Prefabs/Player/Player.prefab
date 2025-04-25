@@ -345,9 +345,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412ccd6951aba5744b7a742b1cc7b6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGrid: {fileID: 0}
+  iconGrid: {fileID: 8717834620258986101}
   displayShelf: {fileID: 0}
-  allMaterials: []
+  allMaterials:
+  - {fileID: 11400000, guid: a300918bde02c924ebfba478c9109045, type: 2}
+  - {fileID: 11400000, guid: 5beafe9891ba25b429e4c9bb38545a30, type: 2}
+  - {fileID: 11400000, guid: 3d5611e5acf46254dab7dd6bce47d89d, type: 2}
+  - {fileID: 11400000, guid: 9313b31ce9ea3894f97643ceb27b5f0b, type: 2}
+  - {fileID: 11400000, guid: 3bd58655582109c479724520251ac55e, type: 2}
+  - {fileID: 11400000, guid: f6df20923ba7f494ba3dbbc1890f55a8, type: 2}
+  - {fileID: 11400000, guid: af4423af402bf1d42a5a4e63768c3618, type: 2}
 --- !u!114 &4751363051230322618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,3 +1178,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8751856169703571791, guid: cb6a4a562d3b90f4790502d8e965a5a1, type: 3}
   m_PrefabInstance: {fileID: 5885027263898938890}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8717834620258986101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2976924949619197567, guid: cb6a4a562d3b90f4790502d8e965a5a1, type: 3}
+  m_PrefabInstance: {fileID: 5885027263898938890}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7693d2cae1c87be46af247ca9e3d9530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

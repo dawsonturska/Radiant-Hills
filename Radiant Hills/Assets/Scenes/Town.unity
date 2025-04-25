@@ -6567,10 +6567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489738ff8e8795d4f86aa28849213520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayCycleManager: {fileID: 1527542354}
-  inventory: {fileID: 35475503}
-  playerTransform: {fileID: 348818125}
-  iconGrid: {fileID: 1061713347}
 --- !u!1001 &286332680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7640,10 +7636,6 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 7.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1973314853929811343, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
-      propertyPath: iconGrid
-      value: 
-      objectReference: {fileID: 1061713347}
     - target: {fileID: 2158138070332329095, guid: 24af32529d6f1664fa62c7788a2049a3, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -16358,8 +16350,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.04640007, y: -0.15359998, z: 0}
-    m_Extent: {x: 2.5114, y: 1.4273, z: 0}
+    m_Center: {x: 0.046249986, y: -0.15420002, z: 0}
+    m_Extent: {x: 2.51235, y: 1.4277999, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -35683,8 +35675,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.10135007, y: -0.060249984, z: 0}
-    m_Extent: {x: 2.42085, y: 0.68505, z: 0}
+    m_Center: {x: 0.10099995, y: -0.06009999, z: 0}
+    m_Extent: {x: 2.4204001, y: 0.6852, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -42074,8 +42066,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.022050023, y: -0.096350014, z: 0}
-    m_Extent: {x: 2.5490499, y: 1.3598499, z: 0}
+    m_Center: {x: -0.022099972, y: -0.09670001, z: 0}
+    m_Extent: {x: 2.549, y: 1.3589001, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
