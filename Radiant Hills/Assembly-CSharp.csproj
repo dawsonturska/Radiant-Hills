@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Rooms\PlayerTriggerEvent.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\DialogueSystem\DialogueInteract.cs" />
+    <Compile Include="Assets\Scripts\DayTracker.cs" />
     <Compile Include="Assets\Scripts\Main Menu\NewGame.cs" />
     <Compile Include="Assets\Scripts\DayCycleManager.cs" />
     <Compile Include="Assets\Scripts\Objects\PrefabManager.cs" />
