@@ -14,9 +14,11 @@ public class TMPDayDisplay : MonoBehaviour
             string time = isMorning ? "Morning" : "Night";
             dayText.text = $"Day {day}, {time}";
 
-            // Update color1 of vertical gradient (bottomLeft for TMP)
-            VertexGradient gradient = dayText.colorGradient;
-            gradient.bottomLeft = isMorning ? HexToColor("FFE5A0") : HexToColor("A0AAFF");
+            // Set vertical gradient (top one color, bottom another)
+            Color topColor = isMorning ? HexToColor("FFE5A0") : HexToColor("A0AAFF"); // lighter at top
+            Color bottomColor = isMorning ? HexToColor("FFD580") : HexToColor("8088FF"); // darker at bottom
+
+            VertexGradient gradient = new VertexGradient(topColor, topColor, bottomColor, bottomColor);
             dayText.colorGradient = gradient;
         }
     }

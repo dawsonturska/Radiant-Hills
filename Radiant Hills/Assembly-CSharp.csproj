@@ -83,8 +83,8 @@
     <Compile Include="Assets\Scripts\Inventory\InventoryItem.cs" />
     <Compile Include="Assets\Scripts\Player\PauseMenuController.cs" />
     <Compile Include="Assets\Scripts\Rooms\SceneHandler.cs" />
+    <Compile Include="Assets\Scripts\RandomEventTrigger.cs" />
     <Compile Include="Assets\Scripts\Rooms\GoToDungeon.cs" />
-    <Compile Include="Assets\Scripts\Objects\SceneWarpDialogue.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractionField.cs" />
     <Compile Include="Assets\Scripts\Objects\BreakableObject.cs" />
     <Compile Include="Assets\Scripts\Rooms\Door.cs" />
@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Customers\CustomerAI.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerPersistence.cs" />
     <Compile Include="Assets\Scripts\Rooms\DebugTP.cs" />
+    <Compile Include="Assets\Scripts\Objects\InteractionDialogue.cs" />
     <Compile Include="Assets\Scripts\Main Menu\LoadScreen.cs" />
     <Compile Include="Assets\DialogueSystem\UIDialogueOption.cs" />
     <Compile Include="Assets\Scripts\CloudMover.cs" />
