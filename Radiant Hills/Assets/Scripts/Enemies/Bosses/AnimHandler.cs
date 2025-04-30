@@ -7,6 +7,9 @@ public class CentipedeAnimationManager : MonoBehaviour
 
     // Animation parameters
     private static readonly int IsAggroed = Animator.StringToHash("IsAggroed");
+    private static readonly int MoveX = Animator.StringToHash("MoveX");
+    private static readonly int MoveY = Animator.StringToHash("MoveY");
+    private static readonly int IsFiring = Animator.StringToHash("IsFiring");
 
     void Start()
     {
@@ -30,9 +33,16 @@ public class CentipedeAnimationManager : MonoBehaviour
         // Check if the centipede is aggroed and update the animator
         if (centipedeBehavior != null)
         {
+            // Update aggro state
             animator.SetBool(IsAggroed, centipedeBehavior.IsAggroed());
+
+            // Update firing state
+            animator.SetBool(IsFiring, centipedeBehavior.IsAggroed() && centipedeBehavior.CanFire());
+
+            // Calculate movement direction
+            Vector2 direction = centipedeBehavior.GetDirectionToPlayer();
+            animator.SetFloat(MoveX, direction.x);
+            animator.SetFloat(MoveY, direction.y);
         }
-
-
     }
 }

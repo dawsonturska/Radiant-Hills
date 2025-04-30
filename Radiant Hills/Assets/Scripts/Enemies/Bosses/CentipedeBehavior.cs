@@ -335,7 +335,11 @@ public class CentipedeBehavior : MonoBehaviour
 
         // Ensure it ends at the final position
         burrowEffect.transform.position = end;
+
+        // Deactivate the burrow effect once the animation is complete
+        burrowEffect.SetActive(false);
     }
+
 
     private bool IsPlayerIntersectingLine()
     {
@@ -363,5 +367,18 @@ public class CentipedeBehavior : MonoBehaviour
     public bool IsAggroed()
     {
         return isAggroed;
+    }
+
+    public bool CanFire()
+    {
+        // Return true if the boss is currently firing a projectile
+        return fireCooldownTimer <= fireRate;
+    }
+
+    public Vector2 GetDirectionToPlayer()
+    {
+        // Calculate direction vector toward player
+        Vector2 direction = (player.position - transform.position).normalized;
+        return direction;
     }
 }
