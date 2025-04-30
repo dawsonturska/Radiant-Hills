@@ -33,6 +33,7 @@ public class CentipedeBehavior : MonoBehaviour
     public AudioSource audioSource; // Audio source to play the sound
     public AudioClip aggroClip; // Aggro sound clip
 
+    private bool hasDamagedPlayerDuringTeleport = false; // Flag to check if damage has been dealt during teleportation
 
     void Start()
     {
@@ -140,7 +141,6 @@ public class CentipedeBehavior : MonoBehaviour
         }
     }
 
-
     private void OnLoseAggro()
     {
         Debug.Log("Player left aggro range. Centipede is no longer alerted.");
@@ -198,19 +198,30 @@ public class CentipedeBehavior : MonoBehaviour
 
     private void Die()
     {
-        // Handle boss death here (e.g., play death animation, disable the object, etc.)
         Debug.Log("Centipede has been defeated!");
 
-        // Stop the aggro sound
-        if (audioSource != null && audioSource.isPlaying)
+        // Stop aggro sound if it's playing
+        if (audioSource != null)
         {
-            audioSource.Stop();
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
         }
 
-        // Destroy the boss object
-        Destroy(gameObject);
+        // Optional: Play death animation or effects before destroying
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetTrigger("Die"); // Assumes there's a "Die" trigger
+                                        // Optionally delay destroy to allow animation to play
+            Destroy(gameObject, 2f); // Delay destroy by 2 seconds
+        }
+        else
+        {
+            Destroy(gameObject); // No animation, destroy immediately
+        }
     }
-
 
     void FireProjectileAtPlayer()
     {
@@ -263,10 +274,14 @@ public class CentipedeBehavior : MonoBehaviour
         }
     }
 
+    public GameObject burrowEffectPrefab; // Prefab for the burrow animation effect
+    public float burrowEffectDelay = 0.3f; // Delay between each burrow animation
+
     private IEnumerator TeleportSequence(Transform newTeleportPoint)
     {
         // Disable projectile firing during teleportation
         isTeleporting = true;
+        hasDamagedPlayerDuringTeleport = false; // Reset the damage flag
 
         // Only teleport if the new teleport point is provided
         if (newTeleportPoint == null)
@@ -275,43 +290,51 @@ public class CentipedeBehavior : MonoBehaviour
             TeleportToRandomLocation();
         }
 
-        // Draw a line between the old and new teleport points
-        lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, newTeleportPoint.position);
-        lineRenderer.enabled = true;
+        // Spawn burrow effects between old and new teleport points
+        Vector3 startPoint = transform.position;
+        Vector3 endPoint = newTeleportPoint.position;
 
-        // Wait for 2 seconds
-        yield return new WaitForSeconds(2f);
-
-        // Check for player collision with the line for 1 second
-        float damageWindowTime = 1f;
-        float damageTime = 0f;
-
-        while (damageTime < damageWindowTime)
+        // Spawn 4 burrow animations with a delay between each
+        for (int i = 0; i < 4; i++)
         {
-            if (IsPlayerIntersectingLine())
-            {
-                // Damage the player
-                TakeDamageOnTeleport();
-            }
-
-            damageTime += Time.deltaTime;
-            yield return null;
+            GameObject burrowEffect = Instantiate(burrowEffectPrefab, startPoint, Quaternion.identity);
+            StartCoroutine(MoveBurrowEffect(burrowEffect, startPoint, endPoint, i * burrowEffectDelay));
+            yield return new WaitForSeconds(burrowEffectDelay); // Add delay between each burrow
         }
 
-        // Teleport the boss to the new location after 1 second
-        transform.position = newTeleportPoint.position;
-        lastTeleportPoint = newTeleportPoint;
+        // Wait for the final burrow to complete before teleporting
+        yield return new WaitForSeconds(burrowEffectDelay * 4); // Wait for all burrow effects to finish
 
-        // Disable the line renderer after teleportation
-        lineRenderer.enabled = false;
+        // Teleport the boss to the new location after the burrow effects
+        transform.position = endPoint;
+        lastTeleportPoint = newTeleportPoint;
 
         // Allow the centipede to teleport again
         canTeleport = true;
         isTeleporting = false;
 
         Debug.Log("Centipede teleported to: " + newTeleportPoint.position);
+    }
+
+    private IEnumerator MoveBurrowEffect(GameObject burrowEffect, Vector3 start, Vector3 end, float delay)
+    {
+        // Wait for the delay before starting the animation
+        yield return new WaitForSeconds(delay);
+
+        float duration = 1f; // Adjust this to control the speed of the burrow effect
+        float elapsedTime = 0f;
+
+        // Move the burrow effect from start to end over the duration
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            burrowEffect.transform.position = Vector3.Lerp(start, end, t);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure it ends at the final position
+        burrowEffect.transform.position = end;
     }
 
     private bool IsPlayerIntersectingLine()
@@ -321,22 +344,24 @@ public class CentipedeBehavior : MonoBehaviour
         Vector3 lineEnd = lineRenderer.GetPosition(1);
 
         // Use a simple distance check to see if the player is close to the line
-        float distanceToLine = Mathf.Abs((lineEnd.y - lineStart.y) * player.position.x - (lineEnd.x - lineStart.x) * player.position.y + lineEnd.x * lineStart.y - lineEnd.y * lineStart.x) / Vector2.Distance(lineStart, lineEnd);
+        float distanceToLine = Mathf.Abs((lineEnd.y - lineStart.y) * player.position.x - (lineEnd.x - lineStart.x) * player.position.y + lineEnd.x * lineStart.y - lineEnd.y * lineStart.x) / Mathf.Sqrt(Mathf.Pow(lineEnd.y - lineStart.y, 2) + Mathf.Pow(lineEnd.x - lineStart.x, 2));
 
-        return distanceToLine < 1f; // You can adjust the threshold for how close the player needs to be to the line to take damage
+        return distanceToLine <= 0.5f; // Adjust threshold for how close the player needs to be
     }
 
-    public void TakeDamageOnTeleport()
+    private void TakeDamageOnTeleport()
     {
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.TakeDamage(damageOnTeleport);
-        }
+        // Deal damage to the player here
+        Debug.Log("Player damaged by teleportation!");
+        player.GetComponent<PlayerHealth>().TakeDamage(damageOnTeleport);
     }
-
     public void OnProjectileDestroyed(GameObject projectile)
     {
         activeProjectiles.Remove(projectile); // Remove the destroyed projectile from the active list
+    }
+
+    public bool IsAggroed()
+    {
+        return isAggroed;
     }
 }
