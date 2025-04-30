@@ -44,3 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ddaf6ba9fc20a14b913bafe71e53bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
+  iconGrid: {fileID: 0}
+  cameraFollow: {fileID: 0}
+  player: {fileID: 0}
+  defaultSpawnPosition: {x: -19, y: 0}
+  sceneSpawnPoints:
+  - sceneName: Gather
+    spawnPosition: {x: -31, y: 280}
+    fromScene: Town
+  - sceneName: Town
+    spawnPosition: {x: 46.5, y: 86.81}
+    fromScene: Gather
+  - sceneName: Town
+    spawnPosition: {x: -27, y: -8.16}
+    fromScene: Shop
+  - sceneName: Shop
+    spawnPosition: {x: 4.52, y: 3.77}
+    fromScene: Town

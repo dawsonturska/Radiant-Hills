@@ -77,34 +77,12 @@ public class GameSaveManager : MonoBehaviour
 
     private IEnumerator DelayedRestore()
     {
-        // Wait until core systems are initialized
         yield return new WaitUntil(() =>
             GameObject.FindWithTag("Player") != null &&
             GameObject.FindObjectOfType<Inventory>() != null &&
             GameObject.FindObjectOfType<DayCycleManager>() != null);
 
-        Transform playerTransform = GameObject.FindWithTag("Player")?.transform;
-        if (playerTransform == null)
-        {
-            Debug.LogWarning("Restore failed: Player not found.");
-            yield break;
-        }
-
-        DayCycleManager dayCycle = GameObject.FindObjectOfType<DayCycleManager>();
-        Inventory inventory = GameObject.FindObjectOfType<Inventory>();
-        IconGrid iconGrid = GameObject.FindObjectOfType<IconGrid>();
-
-        // Restore the day cycle, inventory, and grid
-        dayCycle?.LoadDay();
-        inventory?.LoadInventory();  // Make sure this loads correctly
-        iconGrid?.PopulateGrid();
-
-        // Restore player position
-        float x = PlayerPrefs.GetFloat("PlayerX", playerTransform.position.x);
-        float y = PlayerPrefs.GetFloat("PlayerY", playerTransform.position.y);
-        float z = PlayerPrefs.GetFloat("PlayerZ", playerTransform.position.z);
-        playerTransform.position = new Vector3(x, y, z);
-
-        Debug.Log("Game state restored. Player position: " + playerTransform.position);
+        // Restore the player's position based on saved data, handled by SceneHandler
+        Debug.Log($"Game state restored.");
     }
 }
