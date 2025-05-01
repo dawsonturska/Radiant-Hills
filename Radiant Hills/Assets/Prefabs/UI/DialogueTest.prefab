@@ -310,6 +310,7 @@ RectTransform:
   - {fileID: 1515008129806834803}
   - {fileID: 5035204602841471676}
   - {fileID: 2711288338501172437}
+  - {fileID: 7420591351803422046}
   m_Father: {fileID: 1979514184182470433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -668,6 +669,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2747471393411521860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7420591351803422046}
+  - component: {fileID: 1891614213272833643}
+  - component: {fileID: 7860214794957185436}
+  m_Layer: 0
+  m_Name: CharSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7420591351803422046
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747471393411521860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4741606002282945332}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1891614213272833643
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747471393411521860}
+  m_CullTransparentMesh: 1
+--- !u!114 &7860214794957185436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747471393411521860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3051483021279485504
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,19 +794,33 @@ MonoBehaviour:
   dialogueSpeakerText: {fileID: 7528178247585805269}
   speakerText: {fileID: 6961967472441186189}
   dialogueBox: {fileID: 7914620091666809462, guid: d5c5f5228ae7fa745bbaba0d468613c0, type: 3}
-  charSprite: {fileID: 292954793951643808}
+  charSprite: {fileID: 7860214794957185436}
   dialogueOptionsContainer: {fileID: 1690011663005425067}
   dialogueOptionsParent: {fileID: 4301162555313110378}
   dialogueOptionsButtonPrefab: {fileID: 3170394752563959365, guid: 5591b703c15f7c74f892002ebd959556, type: 3}
-  startDialogueObject: {fileID: 11400000, guid: bfaf79e6ecab0e74b8ae99541f5a43b2, type: 2}
+  startDialogueObject: {fileID: 11400000, guid: 3c18ede2885d6f3468ff6acdfef7f278, type: 2}
   noSpeakerSprite: {fileID: 21300000, guid: 24f419784aa361b43874b971b3b29a37, type: 3}
   speakerSprite: {fileID: 21300000, guid: 24f419784aa361b43874b971b3b29a37, type: 3}
   choiceButtons:
   - {fileID: 7468479243131641591}
   - {fileID: 1989231483467720302}
-  eventQueue: []
-  startDialogueOnSceneLoad: 1
-  closeButton: {fileID: 0}
+  eventQueue:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GoToTown, Assembly-CSharp
+        m_MethodName: GoTown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  startDialogueOnSceneLoad: 0
+  closeButton: {fileID: 6402168166852368957}
 --- !u!1 &5221778247887939702
 GameObject:
   m_ObjectHideFlags: 0

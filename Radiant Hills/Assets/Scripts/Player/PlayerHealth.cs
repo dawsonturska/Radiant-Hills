@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;  // Needed for UnityEvent
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth = 100f;  // Max health of the player
-    public float currentHealth;     // Current health of the player
-    public Slider healthBar;        // Reference to the health bar UI slider
+    public float maxHealth = 100f;          // Max health of the player
+    public float currentHealth;             // Current health of the player
+    public Slider healthBar;                // Reference to the health bar UI slider
+
+    [Header("Events")]
+    public UnityEvent OnPlayerDied;         // Event to fire when the player dies
 
     void Start()
     {
@@ -16,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
         if (healthBar != null)
         {
             healthBar.maxValue = maxHealth;
-            healthBar.value = currentHealth;  // Set the health bar's value to current health
+            healthBar.value = currentHealth;
         }
     }
 
@@ -24,27 +28,25 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-
-        // Ensure health doesn't go below 0
         currentHealth = Mathf.Max(currentHealth, 0f);
 
-        // Update the health bar
         if (healthBar != null)
         {
             healthBar.value = currentHealth;
         }
 
-        // Check if the player is dead (optional)
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    // Method for when the player dies (optional)
+    // Method for when the player dies
     void Die()
     {
         Debug.Log("Player has died!");
-        // You can add death logic here, like triggering an animation or restarting the game
+
+        // Fire death event
+        OnPlayerDied?.Invoke();
     }
 }

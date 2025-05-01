@@ -3,9 +3,13 @@ using UnityEngine.UI;
 
 public class BossHealthBarUI : MonoBehaviour
 {
-    public GameObject healthBar;     // The health bar GameObject (e.g., a Slider)
-    public Slider healthSlider;      // The Slider component for the health bar
-    public BossHealth bossHealth;    // Reference to the BossHealth script
+    public GameObject healthBar;         // The health bar GameObject (e.g., a Slider)
+    public Slider healthSlider;          // The Slider component for the health bar
+    public BossHealth bossHealth;        // Reference to the BossHealth script
+
+    [Header("Optional UI Elements")]
+    public SpriteRenderer extraImage;             // An extra graphic/image for the health bar (e.g., frame or glow)
+    public bool showExtraImage = true;   // Toggle to show or hide the extra image
 
     void Start()
     {
@@ -19,6 +23,12 @@ public class BossHealthBarUI : MonoBehaviour
         // Initially hide the health bar
         healthBar.SetActive(false);
 
+        // Set the visibility of the extra image
+        if (extraImage != null)
+        {
+            extraImage.enabled = showExtraImage;
+        }
+
         // Subscribe to the OnHealthChanged event
         bossHealth.OnHealthChanged.AddListener(UpdateHealthBar);
 
@@ -30,19 +40,27 @@ public class BossHealthBarUI : MonoBehaviour
         healthSlider.value = bossHealth.GetCurrentHealth();  // Initial value
     }
 
-    // Show or hide the health bar based on the aggro state
     public void ToggleHealthBar(bool show)
     {
         healthBar.SetActive(show);
+
+        // Optionally also toggle the extra image
+        if (extraImage != null)
+        {
+            extraImage.enabled = show && showExtraImage;
+        }
     }
 
-    // Hide the health bar when the boss dies
     private void HideHealthBar()
     {
-        healthBar.SetActive(false);  // Hide the health bar
+        healthBar.SetActive(false);
+
+        if (extraImage != null)
+        {
+            extraImage.enabled = false;
+        }
     }
 
-    // Unsubscribe from events to avoid memory leaks
     private void OnDestroy()
     {
         if (bossHealth != null)
@@ -52,12 +70,11 @@ public class BossHealthBarUI : MonoBehaviour
         }
     }
 
-    // Update the health bar when health changes
-    public void UpdateHealthBar(float currentHealth)  // This method now accepts a float parameter
+    public void UpdateHealthBar(float currentHealth)
     {
         if (healthSlider != null)
         {
-            healthSlider.value = currentHealth;  // Update slider value to the current health
+            healthSlider.value = currentHealth;
         }
     }
 }

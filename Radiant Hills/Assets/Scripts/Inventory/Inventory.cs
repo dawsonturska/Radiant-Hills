@@ -209,7 +209,29 @@ public class Inventory : MonoBehaviour
         Debug.LogWarning($"Material with name '{name}' not found.");
         return null;
     }
+    public void ClearInventory()
+    {
+        materialQuantities.Clear();
+
+        // Refresh the UI
+        if (iconGrid != null)
+        {
+            iconGrid.PopulateGrid();
+        }
+
+        // Optionally clear the saved file
+        string path = Application.persistentDataPath + "/inventory.json";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            Debug.Log("Inventory file deleted.");
+        }
+
+        Debug.Log("Inventory has been cleared.");
+    }
 }
+
+
 
 [System.Serializable]
 public class SerializableInventory
