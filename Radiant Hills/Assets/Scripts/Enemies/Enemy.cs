@@ -20,6 +20,10 @@ public class Enemy : MonoBehaviour
     // References to player health
     public PlayerHealth playerHealth;
 
+    // Animator reference
+    private Animator animator;
+
+    // Start is called before the first frame update
     public void Start()
     {
         player = GameObject.FindWithTag("Player"); // Find player by tag
@@ -27,8 +31,12 @@ public class Enemy : MonoBehaviour
         {
             playerHealth = player.GetComponent<PlayerHealth>(); // Get the PlayerHealth component
         }
+
+        // Get the Animator component
+        animator = GetComponent<Animator>();
     }
 
+    // Update is called once per frame
     public void Update()
     {
         if (player != null)
@@ -58,37 +66,38 @@ public class Enemy : MonoBehaviour
     {
         Vector3 direction = player.transform.position - transform.position;
 
-        // Ensure movement is restricted to one direction (up, down, left, or right)
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        // Normalize the direction to make movement smooth
+        direction.Normalize();
+
+        // Check if the enemy is moving (i.e., magnitude > 0.1f)
+        bool isMoving = direction.magnitude > 0.1f;
+        animator.SetBool("IsMoving", isMoving);
+
+        // If moving, set direction for animation
+        if (isMoving)
         {
-            // Prioritize horizontal movement (left/right)
-            if (direction.x > 0)
+            // Prioritize horizontal or vertical movement
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
-                // Move Right
-                direction = Vector3.right;
+                // Prioritize horizontal movement (left/right)
+                animator.SetFloat("MoveX", direction.x); // 1 for right, -1 for left
+                animator.SetFloat("MoveY", 0);           // No vertical movement
             }
             else
             {
-                // Move Left
-                direction = Vector3.left;
+                // Prioritize vertical movement (up/down)
+                animator.SetFloat("MoveX", 0);           // No horizontal movement
+                animator.SetFloat("MoveY", direction.y); // 1 for up, -1 for down
             }
         }
         else
         {
-            // Prioritize vertical movement (up/down)
-            if (direction.y > 0)
-            {
-                // Move Up
-                direction = Vector3.up;
-            }
-            else
-            {
-                // Move Down
-                direction = Vector3.down;
-            }
+            // If not moving, ensure MoveX and MoveY are reset to avoid incorrect animation
+            animator.SetFloat("MoveX", 0);
+            animator.SetFloat("MoveY", 0);
         }
 
-        // Normalize and move towards the player in only one direction
+        // Move towards the player (based on the calculated direction)
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
