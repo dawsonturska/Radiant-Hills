@@ -33,6 +33,7 @@ public class CentipedeBehavior : MonoBehaviour
     public AudioSource audioSource; // Audio source to play the sound
     public AudioClip aggroClip; // Aggro sound clip
 
+
     private bool hasDamagedPlayerDuringTeleport = false; // Flag to check if damage has been dealt during teleportation
 
     void Start()
@@ -283,6 +284,13 @@ public class CentipedeBehavior : MonoBehaviour
         isTeleporting = true;
         hasDamagedPlayerDuringTeleport = false; // Reset the damage flag
 
+        // Make the boss invisible during teleportation
+        Renderer bossRenderer = GetComponent<Renderer>();
+        if (bossRenderer != null)
+        {
+            bossRenderer.enabled = false; // Hide the boss sprite
+        }
+
         // Only teleport if the new teleport point is provided
         if (newTeleportPoint == null)
         {
@@ -290,11 +298,10 @@ public class CentipedeBehavior : MonoBehaviour
             TeleportToRandomLocation();
         }
 
-        // Spawn burrow effects between old and new teleport points
+        // Spawn 4 burrow animations with a delay between each
         Vector3 startPoint = transform.position;
         Vector3 endPoint = newTeleportPoint.position;
 
-        // Spawn 4 burrow animations with a delay between each
         for (int i = 0; i < 4; i++)
         {
             GameObject burrowEffect = Instantiate(burrowEffectPrefab, startPoint, Quaternion.identity);
@@ -312,6 +319,12 @@ public class CentipedeBehavior : MonoBehaviour
         // Allow the centipede to teleport again
         canTeleport = true;
         isTeleporting = false;
+
+        // Make the boss visible again after teleportation
+        if (bossRenderer != null)
+        {
+            bossRenderer.enabled = true; // Show the boss sprite
+        }
 
         Debug.Log("Centipede teleported to: " + newTeleportPoint.position);
     }
@@ -336,10 +349,9 @@ public class CentipedeBehavior : MonoBehaviour
         // Ensure it ends at the final position
         burrowEffect.transform.position = end;
 
-        // Deactivate the burrow effect once the animation is complete
-        burrowEffect.SetActive(false);
+        // Deactivate burrow effect after animation completes
+        burrowEffect.SetActive(false); // Deactivate burrow effect once the movement is done
     }
-
 
     private bool IsPlayerIntersectingLine()
     {
@@ -380,5 +392,14 @@ public class CentipedeBehavior : MonoBehaviour
         // Calculate direction vector toward player
         Vector2 direction = (player.position - transform.position).normalized;
         return direction;
+    }
+
+    public void StopAggroAudio()
+    {
+        // If the audio source is playing the aggro sound, stop it
+        if (audioSource.isPlaying && audioSource.clip == aggroClip)
+        {
+            audioSource.Stop();
+        }
     }
 }

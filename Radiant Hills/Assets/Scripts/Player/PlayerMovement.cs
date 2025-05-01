@@ -4,18 +4,29 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private AudioClip movementClip;
 
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 moveDirection;
     private Vector2 lastInputDirection;
+    private AudioSource audioSource;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        lastInputDirection = Vector2.down;
+        audioSource = GetComponent<AudioSource>();
 
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = movementClip;
+        audioSource.loop = true;
+
+        lastInputDirection = Vector2.down;
         SetToSpawnPosition();
     }
 
@@ -77,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = Vector2.zero;
             animator.ResetTrigger("StartMoving");
         }
+
+        HandleMovementAudio();
     }
 
     private void MovePlayer()
@@ -96,5 +109,23 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("IdleX", lastInputDirection.x);
         animator.SetFloat("IdleY", lastInputDirection.y);
         animator.SetBool("IsMoving", moveDirection.sqrMagnitude > 0);
+    }
+
+    private void HandleMovementAudio()
+    {
+        if (moveDirection.sqrMagnitude > 0)
+        {
+            if (!audioSource.isPlaying && movementClip != null)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
     }
 }
