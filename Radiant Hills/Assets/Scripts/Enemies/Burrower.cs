@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-
 public class Burrower : Enemy
 {
+    private Animator animator;
+
     public float burrowCooldown = 3f; // Cooldown time between each burrow
     private float burrowCooldownTimer = 0f; // Timer to manage burrow cooldown
     private bool isBurrowing = false; // Flag to check if the Burrower is currently burrowing
@@ -31,6 +32,7 @@ public class Burrower : Enemy
     new void Start()
     {
         base.Start();
+        animator = GetComponent<Animator>();
 
         // Initialize LineRenderer
         lineRenderer = gameObject.GetComponent<LineRenderer>();
@@ -51,6 +53,19 @@ public class Burrower : Enemy
     new void Update()
     {
         base.Update();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Vector2 velocity = rb.velocity;
+        bool isMoving = velocity.magnitude > 0.1f;
+
+        animator.SetBool("IsMoving", isMoving);
+
+        if (isMoving)
+        {
+            // Calculate direction towards the player or target during normal movement
+            Vector2 dir = velocity.normalized;
+            animator.SetFloat("MoveX", dir.x);
+            animator.SetFloat("MoveY", dir.y);
+        }
 
         if (isInAggroRange && !isBurrowing)
         {
@@ -81,6 +96,15 @@ public class Burrower : Enemy
                 isKnockedBack = false;
             }
         }
+
+        // Update direction constantly if the AI is not burrowing
+        if (!isBurrowing)
+        {
+            // Calculate direction toward the player
+            Vector3 playerDirection = (player.transform.position - transform.position).normalized;
+            animator.SetFloat("MoveX", playerDirection.x);
+            animator.SetFloat("MoveY", playerDirection.y);
+        }
     }
 
     // Coroutine to handle the burrowing behavior
@@ -88,10 +112,7 @@ public class Burrower : Enemy
     {
         isBurrowing = true;
 
-        // Store the current position before burrowing
         Vector3 oldPosition = transform.position;
-
-        // Find a random point inside the burrow zone, but constrained by maxBurrowDistance
         Vector3 burrowTarget = GetRandomBurrowPoint(oldPosition);
 
         if (Vector3.Distance(oldPosition, burrowTarget) <= maxBurrowDistance)
@@ -99,19 +120,43 @@ public class Burrower : Enemy
             if (burrowTarget != Vector3.zero && IsPathClear(burrowTarget))
             {
                 Debug.Log("Burrower burrowing to: " + burrowTarget);
+
+                // START retreat animation
+                animator.SetTrigger("Retreat");
+                yield return new WaitForSeconds(0.5f); // Allow retreat animation to play
+
                 DrawBurrowTrail(oldPosition, burrowTarget);
 
                 float timeToMove = 0.5f;
                 float elapsedTime = 0f;
 
+                // Calculate direction
+                Vector3 burrowDirection = (burrowTarget - oldPosition).normalized;
+                animator.SetFloat("MoveX", burrowDirection.x);
+                animator.SetFloat("MoveY", burrowDirection.y);
+                animator.SetBool("IsMoving", true);
+
+                // Smoother movement toward target
                 while (elapsedTime < timeToMove)
                 {
-                    transform.position = Vector3.Lerp(oldPosition, burrowTarget, elapsedTime / timeToMove);
+                    transform.position = Vector3.Slerp(oldPosition, burrowTarget, elapsedTime / timeToMove);
                     elapsedTime += Time.deltaTime;
+
+                    // Update animator direction each frame during burrow
+                    animator.SetFloat("MoveX", burrowDirection.x);
+                    animator.SetFloat("MoveY", burrowDirection.y);
+
                     yield return null;
                 }
 
+                animator.SetBool("IsMoving", false);
+
                 transform.position = burrowTarget;
+
+                // END teleport - PLAY popup animation
+                animator.SetTrigger("Popup");
+                yield return new WaitForSeconds(0.5f); // Wait for popup animation to finish
+
                 Debug.Log("Burrower moved to burrow position: " + burrowTarget);
             }
             else
@@ -126,6 +171,7 @@ public class Burrower : Enemy
 
         isBurrowing = false;
     }
+
 
     // Function to get a random point inside the burrow zone, considering maxBurrowDistance
     private Vector3 GetRandomBurrowPoint(Vector3 currentPosition)
@@ -199,6 +245,15 @@ public class Burrower : Enemy
         if (lineRenderer != null)
         {
             lineRenderer.positionCount = 0;
+        }
+    }
+
+    private void SetDirection(Vector2 direction)
+    {
+        if (direction.sqrMagnitude > 0.01f)
+        {
+            animator.SetFloat("MoveX", direction.normalized.x);
+            animator.SetFloat("MoveY", direction.normalized.y);
         }
     }
 }
