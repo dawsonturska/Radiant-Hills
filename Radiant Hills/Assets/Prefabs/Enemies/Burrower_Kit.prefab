@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1879580505429554425}
   - component: {fileID: 7402268675678532732}
   - component: {fileID: 8581188288700003375}
+  - component: {fileID: 9068001138208305343}
   m_Layer: 0
   m_Name: Burrower
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243964545
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -138,13 +139,14 @@ MonoBehaviour:
   player: {fileID: 0}
   isInAggroRange: 0
   playerHealth: {fileID: 0}
+  animator: {fileID: 0}
   burrowCooldown: 3
   burrowZone: {fileID: 6303853934313629481}
   damageDelay: 1
   damageAmount: 10
   damageCooldown: 3
   burrowDelay: 1
-  knockbackForce: 5
+  knockbackForce: 1
   knockbackDuration: 0.5
   maxBurrowDistance: 5
 --- !u!61 &7402268675678532732
@@ -232,7 +234,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243964545
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -296,6 +298,27 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!95 &9068001138208305343
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690578274097808660}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3758601374e915c429629ae30263dfac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7315074780111410682
 GameObject:
   m_ObjectHideFlags: 0

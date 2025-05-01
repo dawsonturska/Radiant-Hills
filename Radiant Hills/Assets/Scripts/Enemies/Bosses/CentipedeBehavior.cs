@@ -41,9 +41,21 @@ public class CentipedeBehavior : MonoBehaviour
         centipedeCollider = GetComponent<Collider2D>();
         bossHealth = GetComponent<BossHealth>(); // Get the BossHealth component
 
+        FindPlayerReference();
+
+        // If player reference is null, try to find the player in the scene by tag
         if (player == null)
         {
-            Debug.LogError("Player reference is not assigned!");
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+            if (player == null)
+            {
+                Debug.LogError("Player reference is still not assigned and couldn't be found in the scene!");
+            }
+            else
+            {
+                Debug.Log("Player found in the scene dynamically.");
+            }
         }
 
         if (projectilePrefab == null || projectileSpawnPoint == null)
@@ -81,7 +93,20 @@ public class CentipedeBehavior : MonoBehaviour
         {
             Debug.LogError("AggroClip is not assigned!");
         }
+    }
 
+
+    private void FindPlayerReference()
+    {
+        GameObject foundPlayer = GameObject.FindGameObjectWithTag("Player");
+        if (foundPlayer != null)
+        {
+            player = foundPlayer.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Boss could not find the player on scene load.");
+        }
     }
 
     void Update()
@@ -389,9 +414,14 @@ public class CentipedeBehavior : MonoBehaviour
 
     public Vector2 GetDirectionToPlayer()
     {
-        // Calculate direction vector toward player
-        Vector2 direction = (player.position - transform.position).normalized;
-        return direction;
+        if (player != null)
+        {
+            // Calculate and return normalized direction vector toward player
+            return ((Vector2)(player.position - transform.position)).normalized;
+        }
+
+        // Fallback: return zero vector if player is missing
+        return Vector2.zero;
     }
 
     public void StopAggroAudio()

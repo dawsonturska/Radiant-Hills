@@ -16,6 +16,10 @@ public class TurretLogic : MonoBehaviour
     [Header("Animation")]
     public Animator animator;
 
+    [Header("Audio")]
+    public AudioClip fireSound; // Sound for firing a projectile
+    private AudioSource audioSource;
+
     private float fireRateTimer = 0f;
     private bool isAggroed = false;
     private bool hasFiredInitially = false;
@@ -29,6 +33,10 @@ public class TurretLogic : MonoBehaviour
         if (focalPoint == null) Debug.LogError($"{gameObject.name}: Focal point is not assigned!");
         if (projectilePrefab == null || projectileSpawnPoint == null) Debug.LogError($"{gameObject.name}: Projectile prefab or spawn point is not assigned!");
         if (animator == null) Debug.LogError($"{gameObject.name}: Animator reference is not assigned!");
+        if (fireSound == null) Debug.LogError($"{gameObject.name}: Fire sound not assigned!");
+
+        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
+        if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>(); // Add an AudioSource if not found
 
         UpdatePlayerReference(); // Try to assign player on start
     }
@@ -123,6 +131,9 @@ public class TurretLogic : MonoBehaviour
 
         activeProjectiles.Add(projectile);
         TriggerFireAnimation(direction);
+
+        // Play the fire sound when a projectile is fired
+        PlayFireSound();
     }
 
     private void TriggerFireAnimation(Vector3 direction)
@@ -142,6 +153,14 @@ public class TurretLogic : MonoBehaviour
         if (activeProjectiles.Contains(projectile))
         {
             activeProjectiles.Remove(projectile);
+        }
+    }
+
+    private void PlayFireSound()
+    {
+        if (audioSource != null && fireSound != null)
+        {
+            audioSource.PlayOneShot(fireSound);
         }
     }
 }

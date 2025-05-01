@@ -50,6 +50,7 @@ MonoBehaviour:
   materialType: {fileID: 11400000, guid: 9313b31ce9ea3894f97643ceb27b5f0b, type: 2}
   materialYield: 1
   indicatorPrefab: {fileID: 947240036822175078, guid: 91aa3476ddad7e54f9df8af1ecd2b847, type: 3}
+  pickupSound: {fileID: 8300000, guid: 16891b4675689c84e9d088e2242ed16a, type: 3}
 --- !u!212 &6266871006739742230
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +90,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243964545
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 24f50118c998da74ba9a8c1bb91a2717, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -161,3 +162,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   customers: []
+  yOffset: 0

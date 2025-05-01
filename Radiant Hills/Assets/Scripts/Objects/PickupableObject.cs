@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class PickupableObject : MonoBehaviour
 {
     public MaterialType materialType;
@@ -8,6 +7,16 @@ public class PickupableObject : MonoBehaviour
     public GameObject indicatorPrefab;
     private GameObject activeIndicator;
     private bool isInRange = false;
+
+    [Header("Audio")]
+    public AudioClip pickupSound; // Sound for picking up the item
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
+        if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>(); // Add an AudioSource if not found
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,6 +55,10 @@ public class PickupableObject : MonoBehaviour
         {
             inventory.AddMaterial(materialType, materialYield);
             Debug.Log($"Picked up {materialYield} x {materialType.materialName}");
+
+            // Play the pickup sound
+            PlayPickupSound();
+
             Destroy(gameObject);
         }
     }
@@ -64,6 +77,14 @@ public class PickupableObject : MonoBehaviour
         if (activeIndicator != null)
         {
             Destroy(activeIndicator);
+        }
+    }
+
+    private void PlayPickupSound()
+    {
+        if (audioSource != null && pickupSound != null)
+        {
+            audioSource.PlayOneShot(pickupSound); // Play the pickup sound
         }
     }
 }
