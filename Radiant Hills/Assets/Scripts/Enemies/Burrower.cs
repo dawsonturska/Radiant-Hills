@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Burrower : Enemy
 {
-    private Animator animator;
-
     public float burrowCooldown = 3f;
     private float burrowCooldownTimer = 0f;
     private bool isBurrowing = false;
@@ -19,22 +17,18 @@ public class Burrower : Enemy
 
     public float burrowDelay = 1f;
 
-    // Knockback variables
     public float knockbackForce = 5f;
     public float knockbackDuration = 0.5f;
     private bool isKnockedBack = false;
     private Vector2 knockbackDirection;
 
-    // Burrow distance limit
     public float maxBurrowDistance = 10f;
 
-    // Start is called before the first frame update
     new void Start()
     {
         base.Start();
-        animator = GetComponent<Animator>();
 
-        lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>();
         if (lineRenderer == null)
         {
             lineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -48,8 +42,6 @@ public class Burrower : Enemy
         lineRenderer.positionCount = 0;
     }
 
-    // Update is called once per frame
-    // Update is called once per frame
     new void Update()
     {
         base.Update();
@@ -102,7 +94,6 @@ public class Burrower : Enemy
         }
     }
 
-
     private IEnumerator BurrowToRandomPoint()
     {
         isBurrowing = true;
@@ -116,11 +107,9 @@ public class Burrower : Enemy
             {
                 Debug.Log("Burrower burrowing to: " + burrowTarget);
 
-                // Trigger retreat animation before burrowing
                 animator.SetTrigger("Retreat");
-                yield return new WaitForSeconds(0.5f); // Allow retreat animation to play
+                yield return new WaitForSeconds(0.5f);
 
-                // Draw the burrow trail
                 DrawBurrowTrail(oldPosition, burrowTarget);
 
                 float timeToMove = 0.5f;
@@ -131,13 +120,11 @@ public class Burrower : Enemy
                 animator.SetFloat("MoveY", burrowDirection.y);
                 animator.SetBool("IsMoving", true);
 
-                // Move the Burrower during burrowing
                 while (elapsedTime < timeToMove)
                 {
                     transform.position = Vector3.Lerp(oldPosition, burrowTarget, elapsedTime / timeToMove);
                     elapsedTime += Time.deltaTime;
 
-                    // Update direction each frame
                     animator.SetFloat("MoveX", burrowDirection.x);
                     animator.SetFloat("MoveY", burrowDirection.y);
 
@@ -145,13 +132,10 @@ public class Burrower : Enemy
                 }
 
                 animator.SetBool("IsMoving", false);
-
-                // Final teleportation to the burrow target
                 transform.position = burrowTarget;
 
-                // Play the popup animation after burrow
                 animator.SetTrigger("Popup");
-                yield return new WaitForSeconds(0.5f); // Wait for popup animation to finish
+                yield return new WaitForSeconds(0.5f);
 
                 Debug.Log("Burrower moved to burrow position: " + burrowTarget);
             }
