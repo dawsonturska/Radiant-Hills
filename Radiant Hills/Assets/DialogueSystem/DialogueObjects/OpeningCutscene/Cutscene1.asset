@@ -13,32 +13,50 @@ MonoBehaviour:
   m_Name: Cutscene1
   m_EditorClassIdentifier: 
   dialogueSegments:
+  - dialogueText: Hey there, little one.
+    speakerText: Tobias
+    charSprite: {fileID: 0}
+    queuedEvent: 1
+    useQueuedEvent: 1
+    dialogueChoices: []
   - dialogueText: Just bought yourself a shop, huh?
-    speakerText: 
+    speakerText: Tobias
     charSprite: {fileID: 0}
     queuedEvent: 1
     useQueuedEvent: 1
     dialogueChoices: []
   - dialogueText: I'll miss you helping out.
-    speakerText: 
+    speakerText: Tobias
     charSprite: {fileID: 0}
     queuedEvent: 1
     useQueuedEvent: 1
     dialogueChoices: []
   - dialogueText: Getting hard to clean this place, y'know.
-    speakerText: 
+    speakerText: Tobias
     charSprite: {fileID: 0}
     queuedEvent: 1
     useQueuedEvent: 1
     dialogueChoices: []
   - dialogueText: Adventure calls you, I understand.
-    speakerText: 
+    speakerText: Tobias
     charSprite: {fileID: 0}
     queuedEvent: 1
     useQueuedEvent: 1
     dialogueChoices: []
   - dialogueText: Just don't forget about Radiant Hills.
-    speakerText: 
+    speakerText: Tobias
+    charSprite: {fileID: 0}
+    queuedEvent: 1
+    useQueuedEvent: 1
+    dialogueChoices: []
+  - dialogueText: Go see if you can take care of the Centipede.
+    speakerText: Tobias
+    charSprite: {fileID: 0}
+    queuedEvent: 1
+    useQueuedEvent: 1
+    dialogueChoices: []
+  - dialogueText: I'm sure Ursa would appreciate it...
+    speakerText: Tobias
     charSprite: {fileID: 0}
     queuedEvent: 0
     useQueuedEvent: 1

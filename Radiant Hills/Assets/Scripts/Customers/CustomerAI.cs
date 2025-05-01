@@ -117,8 +117,7 @@ public class CustomerAI : MonoBehaviour
         Vector3 targetPos = (Vector2)transform.position + direction;
 
         // Set movement direction and enable movement animation
-        animator.SetFloat("MoveX", direction.x);
-        animator.SetFloat("MoveY", direction.y);
+        SetAnimatorDirection(direction);
         animator.SetBool("IsMoving", true);
 
         while (Vector2.Distance(transform.position, targetPos) > 0.05f)
@@ -129,15 +128,18 @@ public class CustomerAI : MonoBehaviour
 
         // Snap to final position and stop movement animation
         transform.position = targetPos;
-        animator.SetBool("isMoving", false);
+        animator.SetBool("IsMoving", false);
     }
 
     private void SetAnimatorDirection(Vector2 dir)
     {
         if (animator != null)
         {
-            animator.SetFloat("MoveX", dir.x);
-            animator.SetFloat("MoveY", dir.y);
+            if (!Mathf.Approximately(animator.GetFloat("MoveX"), dir.x))
+                animator.SetFloat("MoveX", dir.x);
+
+            if (!Mathf.Approximately(animator.GetFloat("MoveY"), dir.y))
+                animator.SetFloat("MoveY", dir.y);
         }
     }
 

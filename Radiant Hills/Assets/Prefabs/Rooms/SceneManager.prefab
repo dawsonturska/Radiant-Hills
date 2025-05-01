@@ -62,3 +62,6 @@ MonoBehaviour:
   - sceneName: Shop
     spawnPosition: {x: 4.52, y: 3.77}
     fromScene: Town
+  - sceneName: Town
+    spawnPosition: {x: 46.5, y: 86.81}
+    fromScene: Cutscene 2

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dc6694afb5b11499d7487005eb6594, type: 3}
+  m_Name: Tobias_Tutorial
+  m_EditorClassIdentifier: 
+  dialogueSegments:
+  - dialogueText: Hello, little one.
+    speakerText: 
+    charSprite: {fileID: 0}
+    queuedEvent: 3
+    useQueuedEvent: 1
+    dialogueChoices: []
+  - dialogueText: To the northeast is the entrance to the Woods.
+    speakerText: 
+    charSprite: {fileID: 0}
+    queuedEvent: 3
+    useQueuedEvent: 1
+    dialogueChoices: []
+  - dialogueText: You'll need to gather things to sell things, after all.
+    speakerText: 
+    charSprite: {fileID: 0}
+    queuedEvent: 3
+    useQueuedEvent: 1
+    dialogueChoices: []
+  - dialogueText: Southwest of us is your home.
+    speakerText: 
+    charSprite: {fileID: 0}
+    queuedEvent: 3
+    useQueuedEvent: 1
+    dialogueChoices: []
+  - dialogueText: You can also run your shop from behind the counter.
+    speakerText: 
+    charSprite: {fileID: 0}
+    queuedEvent: 3
+    useQueuedEvent: 1
+    dialogueChoices: []
+  - dialogueText: Just head inside first!
+    speakerText: 
+    charSprite: {fileID: 0}
+    queuedEvent: 3
+    useQueuedEvent: 1
+    dialogueChoices: []

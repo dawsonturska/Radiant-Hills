@@ -212,4 +212,35 @@ public class DisplayShelf : MonoBehaviour
 
     // Public property to expose 'isPlayerInRange'
     public bool IsPlayerInRange => isPlayerInRange;
+
+    private GameObject reservedBy = null;
+
+    // Call this when an AI wants to reserve the shelf item
+    public bool TryReserve(GameObject reserver)
+    {
+        if (reservedBy == null)
+        {
+            reservedBy = reserver;
+            Debug.Log($"Shelf {shelfID}: Reserved by {reserver.name}");
+            return true;
+        }
+        return false;
+    }
+
+    // Call this to release the reservation (e.g., after pickup or cancel)
+    public void ReleaseReservation(GameObject reserver)
+    {
+        if (reservedBy == reserver)
+        {
+            reservedBy = null;
+            Debug.Log($"Shelf {shelfID}: Reservation released by {reserver.name}");
+        }
+    }
+
+    // Call this to check if shelf is reserved
+    public bool IsReserved => reservedBy != null;
+
+    // Optionally, expose who has it reserved
+    public GameObject GetReserver() => reservedBy;
+
 }

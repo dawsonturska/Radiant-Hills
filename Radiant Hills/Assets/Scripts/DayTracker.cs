@@ -1,12 +1,48 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TMPDayDisplay : MonoBehaviour
 {
     public TextMeshProUGUI dayText; // Assign in Inspector
 
+    private void OnEnable()
+    {
+        // Subscribe to scene load events
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // Also check if the scene loaded is not Cutscene 2 right away when this object is enabled
+        CheckSceneAndToggleVisibility();
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe from scene load events
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Perform visibility check on every scene load
+        CheckSceneAndToggleVisibility();
+    }
+
+    private void CheckSceneAndToggleVisibility()
+    {
+        // If we are in Cutscene 2, disable the TMPDayDisplay
+        if (SceneManager.GetActiveScene().name == "Cutscene 2")
+        {
+            dayText.gameObject.SetActive(false);
+        }
+        else
+        {
+            dayText.gameObject.SetActive(true);
+        }
+    }
+
     private void Update()
     {
+        // Proceed if DayCycleManager is present and the dayText is assigned
         if (DayCycleManager.Instance != null && dayText != null)
         {
             int day = DayCycleManager.Instance.currentDay;

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Crystal
   m_EditorClassIdentifier: 
   materialName: Crystal
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3587d20d60cc76540be77cca882f0a15, type: 3}
   price: 5
