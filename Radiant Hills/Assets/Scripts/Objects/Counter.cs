@@ -16,13 +16,22 @@ public class Counter : MonoBehaviour
 
     private void Start()
     {
-        FindPlayerReference();
+        // Ensure the player is assigned
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+            if (player == null)
+            {
+                Debug.LogError("Player not found! Make sure the player GameObject has the 'Player' tag.");
+            }
+        }
 
         if (buttonsMaterial == null)
         {
             Debug.LogError("Buttons material is not assigned! Assign it in the Inspector.");
         }
 
+        // Ensure audioSource is assigned
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
@@ -37,16 +46,13 @@ public class Counter : MonoBehaviour
             Debug.LogError("Button Added Audio Clip is not assigned! Assign it in the Inspector.");
         }
     }
+
     private void Update()
     {
         if (playerInTrigger && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Player pressed E inside the counter trigger zone.");
             CollectItems();
-        }
-        if (player == null)
-        {
-            FindPlayerReference(); // Keep looking until player is found
         }
     }
 
@@ -148,24 +154,6 @@ public class Counter : MonoBehaviour
             itemList = itemList.TrimEnd(',', ' ');
 
             Debug.Log("Counter contains: " + itemList);
-        }
-    }
-
-    private void OnEnable()
-    {
-        FindPlayerReference();
-    }
-
-    private void FindPlayerReference()
-    {
-        if (player == null)
-        {
-            GameObject found = GameObject.FindWithTag("Player");
-            if (found != null)
-            {
-                player = found;
-                Debug.Log("Player reference updated dynamically.");
-            }
         }
     }
 }
