@@ -55,408 +55,110 @@
     <UnityVersion>2022.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Camera\LightingCameras.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SuperTilemapEditor\Components\TilemapRoom2D.cs" />
     <Compile Include="Assets\Scripts\Objects\Portal.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\Advanced Triangulator\TriangulationSets.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Sorting\SortDepthList.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\DayLightCollider\DayLightCollider2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\LightingOcclusionShape.cs" />
     <Compile Include="Assets\Scripts\Player\HealthBarToggle.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Misc\LightingMonobehavior.cs" />
-    <Compile Include="Assets\Scripts\CutsceneManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Algorithm\PerpendicularIntersection.cs" />
     <Compile Include="Assets\Scripts\Player\DisplayInstructions.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Material\LightingMaterial.cs" />
     <Compile Include="Assets\Scripts\Enemies\PushableTurret.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightSprite2D\LightSpriteShape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Objects\LightSprite.cs" />
     <Compile Include="Assets\Scripts\Rooms\ProjectileLock.cs" />
     <Compile Include="Assets\Scripts\Inventory\IconGrid.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightRoom2D\LightingRoomShape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Algorithm\LegacyGPU.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SuperTilemapEditor\Tilemap2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightCollider2D\LightColliderShape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Universal\Objects\GLExtended.cs" />
     <Compile Include="Assets\Scripts\Objects\DisplayShelf.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\UI\UITextScale.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Lightmap\LightTexture2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Day\Shadow\SpriteRendererShadow.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Event Handling\Object.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Camera\CameraLightmap.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Lightmap\LightRoom2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Event Handling\LightCollision2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemap2D\LightTilemapTransform.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\Profile.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Graphics\Max2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Misc\MeshBrush.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\GUI\LightEventListenerCountGUI.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\LightSettings.cs" />
     <Compile Include="Assets\Scripts\Enemies\Turret.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Demos - Intermediate\1 - Demo Dungeon\Scripts\SortingOrderByY.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Buffers\LightBuffer.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Occlusion\LightOcclusion2D.cs" />
     <Compile Include="Assets\Scripts\Rooms\PlayerTriggerEvent.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Sorting\SortObject.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Effects\LightFlicker.cs" />
     <Compile Include="Assets\DialogueSystem\DialogueInteract.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Material\Extended\BumpMask.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Material\Extended\Mask.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Demos - Scriptable\Demo 1 - Light Sprite\LightSpriteSample.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Extensions\Shape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Objects\LightSource.cs" />
     <Compile Include="Assets\Scripts\DayTracker.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Algorithm\SpriteProjection.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\Presets\EventPresets.cs" />
     <Compile Include="Assets\Scripts\Main Menu\NewGame.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Extensions\TilemapCollider.cs" />
     <Compile Include="Assets\Scripts\DayCycleManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Algorithm\SoftDefault.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Extensions\UnityTilemap.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\LayerSetting.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemap2D\TilemapProperties.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Objects\Particle.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Objects\ParticleRenderer.cs" />
     <Compile Include="Assets\Scripts\Objects\PrefabManager.cs" />
     <Compile Include="Assets\Scripts\Main Menu\MenuController.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\Advanced Triangulator\TriangulationUtility.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\Lighting2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Misc\LightTexture.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemapOcclusion\OcclusionTileset.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\Misc\TimerHelper.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Demos - Intermediate\5 - Race\Scripts\FollowRacer.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Day\Pass.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\LightingSettings.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Misc\LightingRender2D.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\BossHealthBar.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Graphics\SmartMaterial.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\Advanced Triangulator\PolygonUtility.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Misc\LightingPosition.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Universal\Base.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Extensions\Tile.cs" />
     <Compile Include="Assets\Scripts\Rooms\GoToTown.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Demos - Intermediate\5 - Race\Scripts\RacerOtherController.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Lightmap\LightTilemapRoom2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightOcclusion2D\OcclusionMesh.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Misc\SpriteTransform.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SpriteExtension\PhysicsShape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Day\Shadow\Shadow.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\DefaultTriagulator\UnityDefaultTriangulator.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Manager\LightingMeshRenderer.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\LightShapes\Extensions\MeshRendererShape.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\SoftShadowEngine.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryItem.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Material\Extended\Lights.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SuperTilemapEditor\Rendering\Light\Mask\SpriteRenderer2D.cs" />
     <Compile Include="Assets\Scripts\Player\PauseMenuController.cs" />
     <Compile Include="Assets\Scripts\Rooms\SceneHandler.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Day\Sorting\SortDepth.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Event Handling\LightCollider.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Misc\GizmosHelper.cs" />
     <Compile Include="Assets\Scripts\RandomEventTrigger.cs" />
     <Compile Include="Assets\Scripts\Rooms\GoToDungeon.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\DoublePair2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\NoSort.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractionField.cs" />
     <Compile Include="Assets\Scripts\Objects\BreakableObject.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Camera\CameraSettings.cs" />
     <Compile Include="Assets\Scripts\Rooms\Door.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Event Handling\LightEventListenerCount.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Sorting\SortPass.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2\Polygon2\Polygon2.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Algorithm\SoftDistance.cs" />
     <Compile Include="Assets\Scripts\Enemies\Spitter.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Manager\OnRenderMode.cs" />
     <Compile Include="Assets\Scripts\LightRange.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Lightmap\LightSprite2D.cs" />
     <Compile Include="Assets\Scripts\Rooms\TeleportationManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Mask\Tile.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Effects\LightCycle.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Algorithm\SoftShadowSorter.cs" />
     <Compile Include="Assets\Scripts\Main Menu\SceneLoadTrigger.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Algorithm\Fast.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SuperTilemapEditor\Rendering\Light\Shadow\Collider.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SuperTilemapEditor\Rendering\Night\Room.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Effects\LightBlink.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Sorting\SortList.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Pass.cs" />
     <Compile Include="Assets\Scripts\Objects\SortingOrderAdjuster.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\LightShapes\Extensions\CompositeCollider2DShape.cs" />
     <Compile Include="Assets\Scripts\Customers\CustomerAI.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerPersistence.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Misc\MeshObject.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Objects\TilemapRoom.cs" />
     <Compile Include="Assets\Scripts\Rooms\DebugTP.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\NoSort.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SceneView\SceneView.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractionDialogue.cs" />
     <Compile Include="Assets\Scripts\Main Menu\LoadScreen.cs" />
     <Compile Include="Assets\DialogueSystem\UIDialogueOption.cs" />
     <Compile Include="Assets\Scripts\CloudMover.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemapRoom2D\LightingTilemapRoomTransform.cs" />
     <Compile Include="Assets\Scripts\Player\CountdownTimer.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\GUI\LightEventListenerGUI.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\Advanced Triangulator\TriangulationAlgorithm.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemap2D\Types\Rectangle.cs" />
     <Compile Include="Assets\Scripts\GlobalLightController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Bosses\AnimHandler.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\CentipedeBehavior.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Polygon\Polygon2DListCollider2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Camera\LightmapMaterials.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\Projectile.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Buffers\LightMainBuffer2D.cs" />
     <Compile Include="Assets\Scripts\Rooms\ReflectorController.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemap2D\LightTile.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Universal\Objects\Texture.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Polygon\Polygon2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Polygon\Polygon2DListCollider3D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\ProjectSettings.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Sprite Mesh\SpriteMeshObject.cs" />
-    <Compile Include="Assets\Scripts\ButtonHover.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Vector2DList.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Demos - Intermediate\5 - Race\Scripts\RacerController.cs" />
     <Compile Include="Assets\Scripts\Objects\TestTrigger.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Sprite Mesh\Tiled\SpriteTiledMesh.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\LightCollider\LightTilemapCollider2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\MaterialSystem.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\ShadowEngine.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Day\Sorted.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SpriteExtension\PhysicsShapeManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Pair2D.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Demos - Intermediate\6 - Event Handling\Scripts\BasicEvents.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2\Polygon2\Polygon2Collider3D.cs" />
     <Compile Include="Assets\Art Assets\Anims\NormalMapSwitcher.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Event Handling\LightEventListener.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Graphics\Max2DMesh.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Occlusion\LightTilemapOcclusion2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Vector2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Material\Lighting2DMaterials.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Math2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\Advanced Triangulator\TriangulationWrapper.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2\Polygon2\Polygon2ListCollider2D.cs" />
     <Compile Include="Assets\Scripts\Rooms\GoToShop.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Day\Main.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\Advanced Triangulator\TriangulationAlgorithmUtility.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\VirtualSpriteRenderer.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemap2D\Types\Hexagon.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SuperTilemapEditor\Rendering\Light\Mask\Grid.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Rooms\ProjectileReflector.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Day\Masks\SpriteRenderer2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\UI\UICanvasScale.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Lightmap\Light2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemap2D\Types\Base.cs" />
     <Compile Include="Assets\Scripts\Rooms\PlayerInteractionManager.cs" />
     <Compile Include="Assets\Scripts\Player\AttackCollision.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2\Polygon2\Polygon2Helper.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Objects\TextureRenderer.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Lightmap\LightParticleSystem2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2\Polygon2\Polygon2Collider2D.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawnPoint.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\Light2D\LightFreeForm.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\DayLightCollider2D\DayLightColliderShape.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\BossHealth.cs" />
     <Compile Include="Assets\DialogueSystem\CellPhoneInteract.cs" />
     <Compile Include="Assets\Scripts\AudioSourceManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySorting.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Mask\SkinnedMesh.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Components\Mesh2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\LightShapes\Extensions\SkinnedMeshRendererShape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Polygon\Polygon2DCollider3D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Main.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemap2D\Types\Isometric.cs" />
     <Compile Include="Assets\Scripts\Player\CameraSmooth.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Scriptable\LightSprite2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Objects\Room.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingZone.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\DayLights.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Event Handling\Base.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Scripts\DemoFollowMouse.cs" />
     <Compile Include="Assets\DialogueSystem\DialogueObject.cs" />
     <Compile Include="Assets\Scripts\Enemies\Burrower.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightCollider2D\LayerManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Event Handling\LightTilemap.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Universal\Objects\Sprite.cs" />
     <Compile Include="Assets\Scripts\CloudSpawner.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Depth\Main.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2\Vector2Extension.cs" />
     <Compile Include="Assets\Scripts\Main Menu\ExitGame.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Export Demo\GUIFPS.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Chunks\Tilemap\TilemapChunk.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Depth\Pass.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Mask\SpriteRenderer2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Event Handling\CollisionEvent.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\Advanced Triangulator\DTSweepUtility.cs" />
     <Compile Include="Assets\Scripts\Player\TestConsole.cs" />
     <Compile Include="Assets\Scripts\Objects\Counter.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Depth\Shadow\Shadow.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\DayLightCollider\DayLightTilemapCollider2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\MeshRendererManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\Presets\LightPresets.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Camera\LightmapShaders.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\Misc\DestroyTimer.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2\Polygon2\Polygon2ListCollider3D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightOcclusion2D\LightingOcclussion.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Manager.cs" />
     <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Mathd.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightTilemap2D\TilemapEvents.cs" />
     <Compile Include="Assets\Scripts\Enemies\TurretProjectile.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\Camera\CameraTransform.cs" />
     <Compile Include="Assets\Scripts\Objects\PickupableObject.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Polygon\Polygon2DCollider2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Mask\Mesh.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Buffers\LightMainBuffer.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Demos - Intermediate\1 - Demo Dungeon\Scripts\DungeonPlayerController.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\LightShapes\LightShape.cs" />
     <Compile Include="Assets\Scripts\Objects\Register.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Sorted.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Export Demo\MainDemoManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\Advanced Triangulator\DelaunayTriangle.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\LightCollider2D\LightColliderTransform.cs" />
     <Compile Include="Assets\Scripts\GameSaveManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Day\NoSort.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Demos - Intermediate\5 - Race\Scripts\RacerRoad.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\LightShapes\Extensions\Collider3DShape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Day\Sorting\SortDepthList.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\LightCollider\LightCollider2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Algorithm\Soft.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Main.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Sprite Mesh\Simple\SpriteMesh.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Depth\Rendering.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Pass.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\LightShapes\Extensions\Collider2DShape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Mask\UnityTilemap.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\Presets\LightmapPresets.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Buffers\LightBuffer2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Sorting\SortDepth.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\LightShapes\Extensions\SpriteShape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Components\Manager\LightingManager2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Lightmap\Sorted.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Graphics\MaterialManager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SuperTilemapEditor\Components\TilemapCollider2D.cs" />
     <Compile Include="Assets\Scripts\Inventory\MaterialType.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\DayLightCollider2D\DayLightColliderTransfom.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Settings\Enums.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Triangulation\PolygonTriangulator2D.cs" />
-    <Compile Include="Assets\FunkyCode\SmartUtilities2D\Scripts\Utilities\2D\Polygon\Polygon2DHelper.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Depth\Shadow\SpriteRendererShadow.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Components\Light2D\LightTransform.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Debug\LightingDebug.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\ShadowEngine\Algorithm\LegacyCPU.cs" />
     <Compile Include="Assets\Scripts\AmbientAudioPlayer.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Buffers\Manager.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\LightShapes\Extensions\SpritePhysicsShape.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Material\Extended\Room.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\SuperTilemapEditor\Rendering\Light\Shadow\Grid.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Rendering\Light\Mask\Shape.cs" />
-    <Compile Include="Assets\FunkyCode\Demos - SmartLighting2D\Scripts\DemoLightColorChange.cs" />
-    <Compile Include="Assets\FunkyCode\SmartLighting2D\Scripts\Material\Extended\Shadow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Misc\MultiplyLog.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\LightShadow\SoftDistance.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Bump Mask\ObjectToLight.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\UI\FogOfWar.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Spine\LitSpine.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\DayDepth\Depth_Pass1.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\FogOfWar.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\LightShadow\SoftDefault.shader" />
     <None Include="Assets\Art Assets\Anims\SpritewNormal.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Light\SpriteLightOcclusion.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Additive.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Room\RoomMask.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Bump\Bumped_Pass4.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\LightShadow\SoftShadow.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Bump\Bumped_Pass2.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Room\RoomMultiply.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\DayShadow\SoftShadow.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\SL2D_ShaderPassLibrary.cginc" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\LightShadow\LegacyGPU.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Misc\MultiplyDarkness.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Translucency\BlurHorizontal.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Fast\SpriteLit_Pass1.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\LightShadow\SpriteProjection.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Misc\SpriteInvert.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Misc\Emissive.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Mask\DayMask.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Bump\Bumped_Pass3.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\MeshMode\MeshModeAdditive.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Misc\MultiplyLimited.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Translucency\BlurVertical.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\MeshMode\MeshModeAlpha.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Bump\BumpPass.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Text Mesh Pro\TMP_Bitmap.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\AlphaColor.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Misc\GreyScale.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Fast\SpriteLit_Pass1&amp;2.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Light\FreeFormLight.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\LightShadow\LegacyCPU.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Bump Mask\DayBump.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Light\PointLight.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\MultiplyHDR.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Fast\SpriteLit_Pass4.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Misc\LitMask.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\AlphaBlended.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Setup\AllInOne.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Light\FreeFormFalloff.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shader Graph\SL2D_ShaderGraphAPI.hlsl" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Misc\LitMax.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\SL2D_ShaderFast.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Fast\SpriteLit_Pass3.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Light\SpriteLight.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Light\PointOcclusion.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Bump Mask\PixelToLight.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Bump\Bumped_Pass1.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Mask\Mask.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\LitDefault.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\LitPass.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Fast\SpriteLit_Pass2.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Changelog.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\SL2D_ShaderLibrary.cginc" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\LightShadow\AlphaShadow.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Unlit\Texture.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Depth\DayShadows.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Light\FreeFormOcclusion.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\LightSprite\Light.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\DayShadow\SpriteShadow.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\LightShadow\Fast.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Multiply.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\DayDepth\DepthPass.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\LitShaders\Sprites\Day\DayBump.shader" />
-    <None Include="Assets\FunkyCode\SmartLighting2D\Resources\Shaders\Internal\Mask\MaskTranslucency.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1435,12 +1137,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.005">
@@ -1533,30 +1235,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Febucci.TextAnimator.Runtime.csproj">
-      <Project>{6DDFD1C0-8F11-1074-A31C-10525DFC87A1}</Project>
-      <Name>Febucci.TextAnimator.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Febucci.Attributes.Editor.csproj">
-      <Project>{061FB8DA-E3F9-3DC9-863D-EDBDCEE2ADF1}</Project>
-      <Name>Febucci.Attributes.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Febucci.TextAnimator.Demo.Runtime.csproj">
-      <Project>{6AEE365A-EC3A-2DAD-79AB-3F4CAE98C896}</Project>
-      <Name>Febucci.TextAnimator.Demo.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Febucci.TextAnimator.Editor.csproj">
-      <Project>{CED084C0-63FF-0937-A6DA-BF6AC9C660EB}</Project>
-      <Name>Febucci.TextAnimator.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Febucci.Attributes.Runtime.csproj">
-      <Project>{C676F393-7259-4696-17E1-E130F775004A}</Project>
-      <Name>Febucci.Attributes.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Febucci.TextAnimator.TMP.Runtime.csproj">
-      <Project>{B86ED2D2-62AD-9539-212A-79971EB905E2}</Project>
-      <Name>Febucci.TextAnimator.TMP.Runtime</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
