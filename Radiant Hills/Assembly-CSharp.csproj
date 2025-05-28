@@ -55,12 +55,14 @@
     <UnityVersion>2022.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Objects\Portal.cs" />
     <Compile Include="Assets\Scripts\Player\HealthBarToggle.cs" />
+    <Compile Include="Assets\Scripts\CutsceneManager.cs" />
     <Compile Include="Assets\Scripts\Player\DisplayInstructions.cs" />
     <Compile Include="Assets\Scripts\Enemies\PushableTurret.cs" />
     <Compile Include="Assets\Scripts\Rooms\ProjectileLock.cs" />
@@ -102,9 +104,11 @@
     <Compile Include="Assets\Scripts\CloudMover.cs" />
     <Compile Include="Assets\Scripts\Player\CountdownTimer.cs" />
     <Compile Include="Assets\Scripts\GlobalLightController.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Bosses\AnimHandler.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\CentipedeBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\Projectile.cs" />
     <Compile Include="Assets\Scripts\Rooms\ReflectorController.cs" />
+    <Compile Include="Assets\Scripts\ButtonHover.cs" />
     <Compile Include="Assets\Scripts\Objects\TestTrigger.cs" />
     <Compile Include="Assets\Art Assets\Anims\NormalMapSwitcher.cs" />
     <Compile Include="Assets\Scripts\Rooms\GoToShop.cs" />

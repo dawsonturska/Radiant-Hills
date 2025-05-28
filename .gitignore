@@ -4,6 +4,7 @@ UserSettings/
 # User-specific settings
 .idea/
 .vscode/
+.vs/
 
 # Build results
 [Dd]ebug/
