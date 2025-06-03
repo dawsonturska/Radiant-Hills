@@ -7,7 +7,7 @@ public class CustomerAI : MonoBehaviour
 {
     public float moveSpeed = 2f;
     public float moveStepDuration = 0.5f;
-    public Transform counterLocation;
+    public Transform registerLocation;
     public LayerMask shelfLayer;
     public float stuckTimeout = 0.3f;
     public float detectionRange = 10f;
@@ -20,7 +20,7 @@ public class CustomerAI : MonoBehaviour
     private bool hasItem = false;
     private Vector3 lastPosition;
     private float stuckTimer = 0f;
-    private Counter counter;
+    private Register register;
     private MaterialType itemToDeliver;
 
     private Animator animator;
@@ -31,7 +31,7 @@ public class CustomerAI : MonoBehaviour
     void Start()
     {
         lastPosition = transform.position;
-        counter = counterLocation.GetComponent<Counter>();
+        register = registerLocation.GetComponent<Register>();
         animator = GetComponent<Animator>();
         StartCoroutine(StateMachine());
     }
@@ -40,7 +40,7 @@ public class CustomerAI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            counter.DisplayStoredItems();
+            register.DisplayStoredItems();
         }
     }
 
@@ -61,7 +61,7 @@ public class CustomerAI : MonoBehaviour
                     PickUpItem();
                     break;
                 case State.MovingToCounter:
-                    yield return MoveToTargetRoutine(counterLocation);
+                    yield return MoveToTargetRoutine(registerLocation);
                     DeliverItem();
                     break;
                 case State.Waiting:
@@ -199,11 +199,11 @@ public class CustomerAI : MonoBehaviour
 
     private void DeliverItem()
     {
-        if (Vector2.Distance(transform.position, counterLocation.position) <= pickupRange)
+        if (Vector2.Distance(transform.position, registerLocation.position) <= pickupRange)
         {
-            if (hasItem && counter != null && itemToDeliver != null)
+            if (hasItem && register != null && itemToDeliver != null)
             {
-                counter.ReceiveItem(itemToDeliver);
+                register.ReceiveItem(itemToDeliver);
             }
             hasItem = false;
             currentState = State.Waiting;

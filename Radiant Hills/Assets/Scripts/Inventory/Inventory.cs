@@ -1,24 +1,33 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.InputSystem;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, IInteractable
 {
     public static Inventory Instance { get; private set; }
+
+    [Tooltip("Centralized database of materials")]
+    public MaterialDatabase materialDatabase;
+
+    [Tooltip("Inventory items consist of Material and quantity, keyed by MaterialType")]
+    public Dictionary<MaterialType, int> materialQuantities = new Dictionary<MaterialType, int>();
+
+    [Tooltip("Reference to IconGrid UI element")]
+    public IconGrid iconGrid;
+
+    [Tooltip("Currently targeted DisplayShelf")]
+    public DisplayShelf displayShelf;
 
     public delegate void SlotClickHandler(int slotIndex);
     public event SlotClickHandler OnSlotClicked;
 
-    public Dictionary<MaterialType, int> materialQuantities = new Dictionary<MaterialType, int>();
-    public IconGrid iconGrid;
-    public DisplayShelf displayShelf;
     private GameObject panel;
     private bool isGridOpen = false;
+
     private Transform player;
 
-    public List<MaterialType> allMaterials;  // Make sure this list is populated with all available materials.
-
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -35,20 +44,28 @@ public class Inventory : MonoBehaviour
         if (displayShelf != null) DontDestroyOnLoad(displayShelf.gameObject);
     }
 
-    void Start()
+    private void Start()
     {
         if (panel != null) panel.SetActive(false);
         if (iconGrid != null) iconGrid.gameObject.SetActive(false);
     }
 
-    void Update()
+    // If shelf has item, add to inventory
+    private void TryPickupItemFromShelf()
     {
-        if (Time.timeScale == 0) return;
+        if (displayShelf != null && displayShelf.HasItem())
+        {
+            MaterialType material = displayShelf.GetItem();
+            if (material == null) return;
 
-        if (Input.GetKeyDown(KeyCode.I)) ToggleInventoryVisibility();
-        if (Input.GetKeyDown(KeyCode.E) && displayShelf != null) TryPickupItemFromShelf();
+            AddMaterial(material, 1);
+            displayShelf.ClearItem();
+        }
     }
 
+    /// <summary>
+    /// Toggle whether inventory is visible
+    /// </summary>
     public void ToggleInventoryVisibility()
     {
         isGridOpen = !isGridOpen;
@@ -64,6 +81,10 @@ public class Inventory : MonoBehaviour
         Debug.Log("Player reference set.");
     }
 
+    #region MANAGE MATERIALS IN INVENTORY
+    /// <summary>
+    /// Add quantity of MaterialType to inventory
+    /// </summary>
     public void AddMaterial(MaterialType materialType, int quantity)
     {
         if (materialType == null) return;
@@ -76,6 +97,9 @@ public class Inventory : MonoBehaviour
         iconGrid?.PopulateGrid();
     }
 
+    /// <summary>
+    /// Remove quantity of MaterialType from inventory
+    /// </summary>
     public void RemoveMaterial(MaterialType materialType, int quantity)
     {
         if (materialType == null) return;
@@ -90,25 +114,22 @@ public class Inventory : MonoBehaviour
         iconGrid?.PopulateGrid();
     }
 
+    /// <summary>
+    /// Returns true if inventory contains MaterialType more than given quantity
+    /// </summary>
     public bool HasMaterial(MaterialType materialType, int quantity)
     {
         if (materialType == null) return false;
 
         return materialQuantities.ContainsKey(materialType) && materialQuantities[materialType] >= quantity;
     }
+    #endregion
 
-    public void TryPickupItemFromShelf()
-    {
-        if (displayShelf != null && displayShelf.HasItem())
-        {
-            MaterialType material = displayShelf.GetItem();
-            if (material == null) return;
+    #region INVENTORY DATA MANAGERS
 
-            AddMaterial(material, 1);
-            displayShelf.ClearItem();
-        }
-    }
-
+    /// <summary>
+    /// Save Inventory as JSON
+    /// </summary>
     public void SaveInventory()
     {
         // Convert inventory to SerializableInventory
@@ -116,7 +137,7 @@ public class Inventory : MonoBehaviour
 
         foreach (var item in materialQuantities)
         {
-            SerializableInventory.InventoryItem inventoryItem = new SerializableInventory.InventoryItem
+            InventoryItem inventoryItem = new InventoryItem
             {
                 materialName = item.Key.materialName,
                 quantity = item.Value
@@ -134,6 +155,7 @@ public class Inventory : MonoBehaviour
 
         Debug.Log("Inventory saved to: " + path); // Log the path for debugging
 
+        // WHY IS INVENTORY SAVING PLAYER POSIION??
         // Optionally save the player position
         if (player != null)
         {
@@ -144,6 +166,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Load Inventory from JSON
+    /// </summary>
     public void LoadInventory()
     {
         string path = Application.persistentDataPath + "/inventory.json";
@@ -158,7 +183,7 @@ public class Inventory : MonoBehaviour
 
             foreach (var item in inventoryData.items)
             {
-                MaterialType material = FindMaterialByName(item.materialName);
+                MaterialType material = materialDatabase.FindMaterialByName(item.materialName);
                 if (material != null)
                 {
                     // Add the material to the inventory
@@ -190,25 +215,9 @@ public class Inventory : MonoBehaviour
         iconGrid?.PopulateGrid();  // Refresh the UI (this is redundant, remove if the first call works)
     }
 
-    private MaterialType FindMaterialByName(string name)
-    {
-        if (allMaterials == null || allMaterials.Count == 0)
-        {
-            Debug.LogError("AllMaterials list is empty or not assigned!");
-            return null;
-        }
-
-        foreach (MaterialType material in allMaterials)
-        {
-            if (material.materialName == name)
-            {
-                return material;
-            }
-        }
-
-        Debug.LogWarning($"Material with name '{name}' not found.");
-        return null;
-    }
+    /// <summary>
+    /// Clear all items from inventory and clear inventory JSON
+    /// </summary>
     public void ClearInventory()
     {
         materialQuantities.Clear();
@@ -229,19 +238,21 @@ public class Inventory : MonoBehaviour
 
         Debug.Log("Inventory has been cleared.");
     }
-}
+    #endregion
 
-
-
-[System.Serializable]
-public class SerializableInventory
-{
-    [System.Serializable]
-    public class InventoryItem
+    /// <summary>
+    /// Handler for "Inventory" action
+    /// </summary>
+    public void HandleToggleInventory(InputAction.CallbackContext context)
     {
-        public string materialName;
-        public int quantity;
+        ToggleInventoryVisibility();
     }
 
-    public List<InventoryItem> items = new List<InventoryItem>();
+    /// <summary>
+    /// Handler for "Interact" action
+    /// </summary>
+    public void Interact(PlayerInputHandler handler)
+    {
+        TryPickupItemFromShelf();
+    }
 }

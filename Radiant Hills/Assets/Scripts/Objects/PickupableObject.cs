@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PickupableObject : MonoBehaviour
+public class PickupableObject : MonoBehaviour, IInteractable
 {
     public MaterialType materialType;
     public int materialYield = 1;
@@ -24,6 +24,11 @@ public class PickupableObject : MonoBehaviour
         {
             isInRange = true;
             ShowIndicator();
+            var playerHandler = collision.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
+            {
+                playerHandler.SetCurrentInteractable(this);
+            }
         }
     }
 
@@ -33,33 +38,30 @@ public class PickupableObject : MonoBehaviour
         {
             isInRange = false;
             HideIndicator();
+            var playerHandler = collision.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
+            {
+                playerHandler.ClearInteractable(this);
+            }
         }
     }
 
-    private void Update()
+    private void PickUp(GameObject player)
     {
-        if (Time.timeScale == 0) return; // Ignore input if the game is paused
-
-        if (isInRange && Input.GetKeyDown(KeyCode.E))
+        if (isInRange)
         {
-            PickUp();
-        }
-    }
+            Inventory inventory = player.GetComponent<Inventory>();
 
-    private void PickUp()
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        Inventory inventory = player.GetComponent<Inventory>();
+            if (inventory != null && materialType != null)
+            {
+                inventory.AddMaterial(materialType, materialYield);
+                Debug.Log($"Picked up {materialYield} x {materialType.materialName}");
 
-        if (inventory != null && materialType != null)
-        {
-            inventory.AddMaterial(materialType, materialYield);
-            Debug.Log($"Picked up {materialYield} x {materialType.materialName}");
+                // Play the pickup sound
+                PlayPickupSound();
 
-            // Play the pickup sound
-            PlayPickupSound();
-
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -86,5 +88,13 @@ public class PickupableObject : MonoBehaviour
         {
             audioSource.PlayOneShot(pickupSound); // Play the pickup sound
         }
+    }
+
+    /// <summary>
+    /// Handler for "Interact" actions
+    /// </summary>
+    public void Interact(PlayerInputHandler handler)
+    {
+        PickUp(handler.gameObject);
     }
 }

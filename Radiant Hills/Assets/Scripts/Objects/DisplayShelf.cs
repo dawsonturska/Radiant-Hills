@@ -107,6 +107,8 @@ public class DisplayShelf : MonoBehaviour
         }
     }
 
+
+    // Why are their different inventory toggles here??
     private void ToggleInventory()
     {
         if (iconGrid != null)

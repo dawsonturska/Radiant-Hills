@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Tooltip("Move speed for player")]
     [SerializeField] private float moveSpeed = 5f;
+
     [SerializeField] private AudioClip movementClip;
 
     private Rigidbody2D rb;
@@ -12,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 lastInputDirection;
     private AudioSource audioSource;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -25,19 +28,26 @@ public class PlayerMovement : MonoBehaviour
 
         audioSource.clip = movementClip;
         audioSource.loop = true;
-
+    }
+    private void Start()
+    {
         lastInputDirection = Vector2.down;
         SetToSpawnPosition();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void FixedUpdate()
+    {
+        MovePlayer();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -51,45 +61,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = PlayerSpawnPoint.spawnPosition;
         }
-    }
-
-    void Update()
-    {
-        HandleInput();
-        UpdateAnimation();
-    }
-
-    void FixedUpdate()
-    {
-        MovePlayer();
-    }
-
-    private void HandleInput()
-    {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-
-        if (moveY != 0)
-        {
-            moveDirection = new Vector2(0, moveY);
-            lastInputDirection = moveDirection;
-            animator.SetTrigger(moveY > 0 ? "MoveUp" : "MoveDown");
-            animator.SetTrigger("StartMoving");
-        }
-        else if (moveX != 0)
-        {
-            moveDirection = new Vector2(moveX, 0);
-            lastInputDirection = moveDirection;
-            animator.SetTrigger(moveX > 0 ? "MoveRight" : "MoveLeft");
-            animator.SetTrigger("StartMoving");
-        }
-        else
-        {
-            moveDirection = Vector2.zero;
-            animator.ResetTrigger("StartMoving");
-        }
-
-        HandleMovementAudio();
     }
 
     private void MovePlayer()
@@ -128,4 +99,39 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Handle player movement given context.performed and context.canceled
+    /// </summary>
+    /// <param name="context"></param>
+    public void HandleMovement(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            moveDirection = context.ReadValue<Vector2>();
+        }
+        else if (context.canceled)
+        {
+            moveDirection = Vector2.zero;
+        }
+
+        // Update Animator parameters
+        UpdateAnimation();
+
+        if (moveDirection != Vector2.zero)
+        {
+            lastInputDirection = moveDirection.normalized;
+        }
+
+        HandleMovementAudio();
+
+        // if we want to add diagonal animations, just add more sprites in the blend tree for these values:
+        // (1, 1), (-1, 1), (1, -1), (-1, -1)
+    }
+
+    /// <summary>
+    /// Return moveDirection so other objects can reference it
+    /// </summary>
+    /// <returns></returns>
+    public Vector2 GetMoveDirection() { return moveDirection; }
 }
