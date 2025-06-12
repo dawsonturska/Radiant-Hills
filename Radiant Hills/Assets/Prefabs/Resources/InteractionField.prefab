@@ -90,5 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a542093ef7fe494586415c8785868eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupPrefab: {fileID: 947240036822175078, guid: 91aa3476ddad7e54f9df8af1ecd2b847, type: 3}
-  popupOffset: {x: 0, y: 3}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  slot1: {fileID: 0}
+  inventoryPanel: {fileID: 0}

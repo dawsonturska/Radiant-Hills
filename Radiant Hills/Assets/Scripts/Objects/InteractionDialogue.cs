@@ -1,22 +1,23 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SceneWarpDialogue : MonoBehaviour
+public class SceneWarpDialogue : MonoBehaviour, IInteractable
 {
-    [Tooltip("Event that will be called when the E key is pressed while the player is in range.")]
+    [Tooltip("Event that will be called when \"Interact\" is pressed while the player is in range.")]
     public UnityEvent onInteract;
-
-    public GameObject indicatorPrefab;
-
-    private GameObject activeIndicator;
     private bool isInRange = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            isInRange = true;
-            ShowIndicator();
+            var playerHandler = collision.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
+            {
+                playerHandler.SetCurrentInteractable(this);
+                isInRange = true;
+                IndicatorManager.Instance.ShowIndicator("Interact", this.transform);
+            }
         }
     }
 
@@ -24,8 +25,13 @@ public class SceneWarpDialogue : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            isInRange = false;
-            HideIndicator();
+            var playerHandler = collision.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
+            {
+                playerHandler.ClearInteractable(this);
+                isInRange = false;
+                IndicatorManager.Instance.HideIndicator("Interact", this.transform);
+            }
         }
     }
 
@@ -37,20 +43,11 @@ public class SceneWarpDialogue : MonoBehaviour
         }
     }
 
-    private void ShowIndicator()
+    /// <summary>
+    /// Handler for "Interact" action
+    /// </summary>
+    public void Interact(PlayerInputHandler handler)
     {
-        if (indicatorPrefab != null && activeIndicator == null)
-        {
-            activeIndicator = Instantiate(indicatorPrefab, transform.position + Vector3.up, Quaternion.identity);
-            activeIndicator.transform.SetParent(transform);
-        }
-    }
-
-    private void HideIndicator()
-    {
-        if (activeIndicator != null)
-        {
-            Destroy(activeIndicator);
-        }
+        if (isInRange) onInteract?.Invoke();
     }
 }

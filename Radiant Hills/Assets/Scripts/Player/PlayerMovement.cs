@@ -100,6 +100,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private Vector2 SnapToEightDirections(Vector2 input)
+    {
+        if (input == Vector2.zero) return Vector2.zero;
+
+        // convert Vector2 to angle (degrees)
+        float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg;
+        // clamp angle in correct range
+        angle = (angle + 360f) % 360f;
+        // snap to nearest 45 degrees
+        float snapAngle = Mathf.Round(angle / 45f) * 45f;
+        // convert degrees back to radians
+        float rad = snapAngle * Mathf.Deg2Rad;
+        // build Vector2 from radians
+        return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
+    }
+
     /// <summary>
     /// Handle player movement given context.performed and context.canceled
     /// </summary>
@@ -108,7 +124,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            moveDirection = context.ReadValue<Vector2>();
+            // 8-Directional Movement
+            moveDirection = SnapToEightDirections(context.ReadValue<Vector2>());
+            // Full Analog Movement
+            // moveDirection = context.ReadValue<Vector2>();
         }
         else if (context.canceled)
         {

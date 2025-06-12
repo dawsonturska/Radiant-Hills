@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Portal : MonoBehaviour
+public class Portal : MonoBehaviour, IInteractable
 {
     public string targetScene; // Name of the scene to load
     public float holdDuration = 3f; // Time in seconds the player needs to hold the key
@@ -14,8 +14,13 @@ public class Portal : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            isPlayerInRange = true;
-            player = collision.gameObject; // Store reference to player
+            var playerHandler = collision.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
+            {
+                playerHandler.SetCurrentInteractable(this);
+                isPlayerInRange = true;
+                player = collision.gameObject; // Store reference to player
+            }
         }
     }
 
@@ -23,28 +28,13 @@ public class Portal : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            isPlayerInRange = false;
-            holdTimer = 0f; // Reset the timer when the player leaves the portal
-            player = null; // Clear reference to player
-        }
-    }
-
-    private void Update()
-    {
-        if (isPlayerInRange)
-        {
-            if (Input.GetKey(KeyCode.E))
+            var playerHandler = collision.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
             {
-                holdTimer += Time.deltaTime; // Increment the timer
-
-                if (holdTimer >= holdDuration)
-                {
-                    TeleportPlayer();
-                }
-            }
-            else
-            {
-                holdTimer = 0f; // Reset the timer if the key is released
+                playerHandler.ClearInteractable(this);
+                isPlayerInRange = false;
+                holdTimer = 0f; // Reset the timer when the player leaves the portal
+                player = null; // Clear reference to player
             }
         }
     }
@@ -75,5 +65,25 @@ public class Portal : MonoBehaviour
         }
 
         SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to prevent multiple calls
+    }
+
+    /// <summary>
+    /// Handler for "Interact" action
+    /// </summary>
+    public void Interact(PlayerInputHandler handler)
+    {
+        if (isPlayerInRange)
+        {
+            holdTimer += Time.deltaTime; // Increment the timer
+
+            if (holdTimer >= holdDuration)
+            {
+                TeleportPlayer();
+            }
+            else
+            {
+                holdTimer = 0f; // Reset the timer if the key is released
+            }
+        }
     }
 }

@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+/// <summary>
+/// Controller for fishing. Only one instance needs to be
+/// </summary>
 public class FishingManager : MonoBehaviour
 {
     public static FishingManager Instance;
@@ -13,9 +16,8 @@ public class FishingManager : MonoBehaviour
     private float fishingTimeMax = 5f;
     private float catchWindowTime = 3f;
 
-    public GameObject exclamationPrefab;
     public GameObject player;
-    public FishingZone fishingZone;
+    private FishingZone fishingZone;
 
     private Coroutine fishingCoroutine;
 
@@ -102,7 +104,7 @@ public class FishingManager : MonoBehaviour
                 fishingCoroutine = null;
             }
 
-            HideExclamationMark();
+            IndicatorManager.Instance.HideIndicator("Exclamation", player.transform);
             Debug.Log("Fishing stopped.");
         }
     }
@@ -114,7 +116,7 @@ public class FishingManager : MonoBehaviour
 
         if (!isFishing) yield break;
 
-        ShowExclamationMark();
+        IndicatorManager.Instance.ShowIndicator("Exclamation", player.transform);
         isWindowOpen = true;
 
         float catchWindowTimer = 0f;
@@ -122,57 +124,22 @@ public class FishingManager : MonoBehaviour
         {
             if (!isFishing)
             {
-                HideExclamationMark();
+                IndicatorManager.Instance.HideIndicator("Exclamation", player.transform);
                 yield break;
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                CatchFish();
-                yield break;
-            }
+            if (!isWindowOpen) yield break;
 
             catchWindowTimer += Time.deltaTime;
             yield return null;
         }
 
-        HideExclamationMark();
+        IndicatorManager.Instance.HideIndicator("Exclamation", player.transform);
         isWindowOpen = false;
         isFishing = false;
 
         Debug.Log("Fishing failed. Trying again.");
         StartFishing();
-    }
-
-    private void ShowExclamationMark()
-    {
-        if (exclamationPrefab != null && player != null)
-        {
-            GameObject exclamation = Instantiate(exclamationPrefab, player.transform.position + Vector3.up, Quaternion.identity);
-            exclamation.transform.SetParent(player.transform);
-        }
-    }
-
-    private void HideExclamationMark()
-    {
-        if (player == null) return;
-
-        foreach (Transform child in player.transform)
-        {
-            if (child.gameObject.CompareTag("ExclamationMark"))
-            {
-                Destroy(child.gameObject);
-            }
-        }
-    }
-
-    private void CatchFish()
-    {
-        isFishCaught = true;
-        Debug.Log("Fish caught!");
-        AddRandomMaterialToPlayer();
-        HideExclamationMark();
-        RestartFishingCycle();
     }
 
     private void AddRandomMaterialToPlayer()
@@ -203,5 +170,23 @@ public class FishingManager : MonoBehaviour
     {
         StopFishing();
         StartFishing();
+    }
+
+    public void SetFishingZone(FishingZone zone) { fishingZone = zone; }
+
+    /// <summary>
+    /// Catch fish if window is open. Called from FishingZone.
+    /// </summary>
+    public void TryCatchFish()
+    {
+        if (isWindowOpen)
+        {
+            isFishCaught = true;
+            Debug.Log("Fish caught!");
+            AddRandomMaterialToPlayer();
+            IndicatorManager.Instance.HideIndicator("Exclamation", player.transform);
+            RestartFishingCycle();
+            isWindowOpen = false;
+        }
     }
 }

@@ -3,172 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\maxno\\unity projects\\radiant-hills\\radiant hills\\assets\\scripts\\objects\\register_1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\register_1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\maxno\\unity projects\\radiant-hills\\radiant hills\\assets\\scripts\\gui\\indicator\\indicatorgui_interact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\indicator\\indicatorgui_interact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Objects\\Register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\gui\\indicator\\indicatorgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\indicator\\indicatorgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\TestTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Objects\\TestTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\gui\\indicator\\indicatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\indicator\\indicatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\inventory\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\maxno\\unity projects\\radiant-hills\\radiant hills\\assets\\scripts\\interface\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interface\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\objects\\interactiondialogue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\interactiondialogue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\objects\\pickupableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\pickupableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\fishing\\fishingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fishing\\fishingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\fishing\\fishingzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fishing\\fishingzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\DisplayShelf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Objects\\DisplayShelf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerAttack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Player\\PlayerAttack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\maxno\\unity projects\\radiant-hills\\radiant hills\\assets\\scripts\\player\\playerinputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\interface\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interface\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\player\\playerinputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerinputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\audiosourcemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\audiosourcemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\dialoguesystem\\dialogueinteract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\dialoguesystem\\dialogueinteract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\lightrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lightrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\daylights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\daylights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\Turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Spitter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\Spitter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\player\\playerspawnpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerspawnpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\player\\healthbartoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\healthbartoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\rooms\\gotoshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rooms\\gotoshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\rooms\\playertriggerevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rooms\\playertriggerevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\rooms\\door.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rooms\\door.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\main menu\\newgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\main menu\\newgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\main menu\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\main menu\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\main menu\\exitgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\main menu\\exitgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\customers\\customerai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\customers\\customerai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\cloudspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cloudspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Portal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Objects\\Portal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\Bosses\\BossHealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\ReflectorController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Rooms\\ReflectorController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\ProjectileReflector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Rooms\\ProjectileReflector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\TurretProjectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\TurretProjectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\DebugTP.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Rooms\\DebugTP.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\Enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Burrower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\Burrower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\PushableTurret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\PushableTurret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\Projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\Bosses\\Projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Art Assets\\Anims\\NormalMapSwitcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Art Assets\\Anims\\NormalMapSwitcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Art Assets\\Anims\\SpritewNormal.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Art Assets\\Anims\\SpritewNormal.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Fishing\\FishingManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\PlayerInteractionManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Rooms\\PlayerInteractionManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\EnemySorting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Enemies\\EnemySorting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\DisplayShelf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Objects\\DisplayShelf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\inventory\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -178,521 +66,177 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Interactable.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Interface\\Interactable.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Interface\\Interactable.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Interface\\Interactable.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Interface\\Interactable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T18:48:51.442Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Inventory.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Inventory\\Inventory.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\Inventory.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Inventory\\Inventory.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Inventory\\Inventory.cs",
-              "ViewState": "AgIAAMQAAAAAAAAAAAAqwN0AAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T22:15:22.141Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PickupableObject.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\PickupableObject.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\PickupableObject.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\PickupableObject.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Objects\\PickupableObject.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAowGEAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T23:44:24.563Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PlayerAttack.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerAttack.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerAttack.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerAttack.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerAttack.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAYwJQAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T17:44:46.932Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PlayerMovement.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerMovement.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerMovement.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerMovement.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerMovement.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAwwGcAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T02:23:10.863Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Register_1.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Register_1.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\Register_1.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Register_1.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Objects\\Register_1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA2AAAAAAAAAA==",
+              "Title": "IndicatorGUI_Interact.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI_Interact.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI_Interact.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI_Interact.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI_Interact.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T01:34:21.718Z",
+              "WhenOpened": "2025-06-12T00:56:46.106Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Register.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Register.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\Register.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Register.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Objects\\Register.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Title": "IndicatorGUI.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T02:24:47.862Z",
+              "WhenOpened": "2025-06-12T00:46:59.462Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TestTrigger.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\TestTrigger.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\TestTrigger.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\TestTrigger.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Objects\\TestTrigger.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
+              "Title": "IndicatorManager.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GUI\\Indicator\\IndicatorManager.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GUI\\Indicator\\IndicatorManager.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwB8AAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T02:18:01.515Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T00:46:55.492Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PlayerInputHandler.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerInputHandler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerInputHandler.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerInputHandler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerInputHandler.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAgwAEAAAASAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "InteractionDialogue.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\InteractionDialogue.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\InteractionDialogue.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\InteractionDialogue.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Objects\\InteractionDialogue.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T14:35:50.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T00:46:09.678Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AudioSourceManager.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\AudioSourceManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\AudioSourceManager.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\AudioSourceManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\AudioSourceManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "PickupableObject.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\PickupableObject.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\PickupableObject.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\PickupableObject.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Objects\\PickupableObject.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAkwAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T16:56:34.849Z"
+              "WhenOpened": "2025-06-11T06:12:01.488Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DayLights.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\DayLights.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\DayLights.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\DayLights.cs",
-              "RelativeToolTip": "Assets\\Scripts\\DayLights.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T17:09:41.747Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "LightRange.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\LightRange.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\LightRange.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\LightRange.cs",
-              "RelativeToolTip": "Assets\\Scripts\\LightRange.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T16:08:30.339Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "MenuController.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\MenuController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Main Menu\\MenuController.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\MenuController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Main Menu\\MenuController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAA5wF8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T16:04:59.363Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "NewGame.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\NewGame.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Main Menu\\NewGame.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\NewGame.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Main Menu\\NewGame.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T01:21:37.566Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "PlayerSpawnPoint.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerSpawnPoint.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerSpawnPoint.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerSpawnPoint.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerSpawnPoint.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T16:24:38.221Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Spitter.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Spitter.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Spitter.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Spitter.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Spitter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T17:26:53.032Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Turret.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Turret.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Turret.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Turret.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Turret.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAYwJMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T17:44:05.291Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "PlayerTriggerEvent.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\PlayerTriggerEvent.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Rooms\\PlayerTriggerEvent.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\PlayerTriggerEvent.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Rooms\\PlayerTriggerEvent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T00:05:49.043Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "GoToShop.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\GoToShop.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Rooms\\GoToShop.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\GoToShop.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Rooms\\GoToShop.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T00:11:20.013Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "HealthBarToggle.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\HealthBarToggle.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\HealthBarToggle.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\HealthBarToggle.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\HealthBarToggle.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T15:32:45.843Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "ExitGame.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\ExitGame.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Main Menu\\ExitGame.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Main Menu\\ExitGame.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Main Menu\\ExitGame.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALLSURBVDhP7ZNdSFNhGMf/73vO2ea209zmNPEiQzhbUlGwJKJ54\u002BiD8CLwKlIhIW/DSXkjOLoyiEUQRHdGJIFdaCYNvSjvHOeitmU5rSzMPHOrs7bUfbzndHVEA6\u002Biu35XDzz/58cD7/sA//lbOKNIKkl725U2t3BSEIWAIDrOOsRDFw\u002BJLZ0tpvmx\u002BU0AUFXVaT9vd64dWTOlo\u002Blif3\u002B/J\u002BPP7Ntq3cL61HoJAKghrBQrvaRCZE3Q5ApfkRmYTDkq8\u002BAjRoaBRUy6SWYcixQKhZqiVnyhQZNZhfUaGQIA8S/xwelP05ffKG8kM29Gs6cZNsEGpjOUWGmy\u002B3B3FwOL3I3dPTf7Zbbuc\u002B6zYubN8WP7jwWWvi9Zfmz\u002BSFFKH6WupW5SAIh9i534qH6UNF3DmYNnCkfrjt4\u002BXnc8LLmkcK21dtThcJQ1XUvUi/U5j80DQkiuiq\u002BK\u002B9y\u002BsmgSQUBWCcgHY0t0jHZMXHpySQ9Ph5V8Pv9QVVXXdnMH2Z/ZiVuvbulSRHqWLqTrs7ns156nPbo34h0yMhQAFrOLMHNmOKucMVEUu6qrq7/vFOm6TvP5fG3mV8ayUdoAAMv9ufu1SkHhiqwIHbq9\u002BXaza1vIUx485SFQYadnG\u002BMB7szdCYy9G0NZK58eeT0S7RzvrJFXZTCdXWUci8AQNogN2KxsIp6O/\u002BkCANhsthx03GiX2uOtB1rBES7R5G66PnBqIOd1e0FAJjWm3QMAHgCCB4N4u/4Wi9lFKfQ8NBRsDMJusSOzkYGSV1KU0scAprNqtiahJLwc5VLR7uhERs14pj5MiRzhXi70LcRgfJu55bnB6FL0cjKdlFxWF3xuH6yCFWWtjCIrTvYF\u002Btr/WHpPiFHMLMyEltXl0Pj7cazkV8BRDk3OJjTua5wZvjDctXtsb7YvxaJZHqAMPykTP3T4GWN\u002BohN/iStd2z3yn3/Nb0PjNWfDy7QfAAAAAElFTkSuQmCC",
-              "WhenOpened": "2025-04-09T01:17:38.121Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Door.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\Door.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Rooms\\Door.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\Door.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Rooms\\Door.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAowDUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T14:48:57.608Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ReflectorController.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\ReflectorController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Rooms\\ReflectorController.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\ReflectorController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Rooms\\ReflectorController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAYwFgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T14:16:21.939Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "ProjectileReflector.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\ProjectileReflector.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Rooms\\ProjectileReflector.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\ProjectileReflector.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Rooms\\ProjectileReflector.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAwFIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T14:02:52.591Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "TurretProjectile.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\TurretProjectile.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\TurretProjectile.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\TurretProjectile.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\TurretProjectile.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAYwF8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T13:41:44.87Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "SortingOrderAdjuster.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Objects\\SortingOrderAdjuster.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAcwD4AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T21:58:46.425Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "BossHealthBar.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Bosses\\BossHealthBar.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAwD8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T15:08:21.92Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "DebugTP.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\DebugTP.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Rooms\\DebugTP.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\DebugTP.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Rooms\\DebugTP.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T15:59:48.122Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "CustomerAI.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Customers\\CustomerAI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Customers\\CustomerAI.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Customers\\CustomerAI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Customers\\CustomerAI.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAcwHkAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T21:32:28.636Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "BossHealth.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealth.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Bosses\\BossHealth.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\BossHealth.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Bosses\\BossHealth.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAIwEMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T15:08:11.899Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Portal.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Portal.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\Portal.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\Portal.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Objects\\Portal.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T17:34:12.007Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "CloudSpawner.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\CloudSpawner.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CloudSpawner.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\CloudSpawner.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CloudSpawner.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T22:23:33.56Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Enemy.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Enemy.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Enemy.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Enemy.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Enemy.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAABQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T17:21:24.203Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Burrower.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Burrower.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Burrower.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Burrower.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Burrower.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T17:26:31.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "PushableTurret.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\PushableTurret.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\PushableTurret.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\PushableTurret.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\PushableTurret.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAYwKEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T19:10:55.304Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "Projectile.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\Projectile.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Bosses\\Projectile.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\Bosses\\Projectile.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Bosses\\Projectile.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAYwJoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T18:01:31.262Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "NormalMapSwitcher.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Art Assets\\Anims\\NormalMapSwitcher.cs",
-              "RelativeDocumentMoniker": "Assets\\Art Assets\\Anims\\NormalMapSwitcher.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Art Assets\\Anims\\NormalMapSwitcher.cs",
-              "RelativeToolTip": "Assets\\Art Assets\\Anims\\NormalMapSwitcher.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T21:59:31.776Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "SpritewNormal.shader",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Art Assets\\Anims\\SpritewNormal.shader",
-              "RelativeDocumentMoniker": "Assets\\Art Assets\\Anims\\SpritewNormal.shader",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Art Assets\\Anims\\SpritewNormal.shader",
-              "RelativeToolTip": "Assets\\Art Assets\\Anims\\SpritewNormal.shader",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-20T21:57:11.413Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 5,
               "Title": "FishingManager.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Fishing\\FishingManager.cs",
               "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Fishing\\FishingManager.cs",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAuwM8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T01:30:55.276Z"
+              "WhenOpened": "2025-06-11T05:47:55.945Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "PlayerInteractionManager.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\PlayerInteractionManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Rooms\\PlayerInteractionManager.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Rooms\\PlayerInteractionManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Rooms\\PlayerInteractionManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "FishingZone.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingZone.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Fishing\\FishingZone.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingZone.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Fishing\\FishingZone.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwBsAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T01:02:04.819Z"
+              "WhenOpened": "2025-06-11T05:42:53.714Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "EnemySorting.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\EnemySorting.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\EnemySorting.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Enemies\\EnemySorting.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\EnemySorting.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAgwDMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "Interactable.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Interface\\Interactable.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interface\\Interactable.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Interface\\Interactable.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interface\\Interactable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T00:07:24.949Z"
+              "WhenOpened": "2025-06-03T23:00:28.166Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 8,
+              "Title": "PlayerAttack.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerAttack.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerAttack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerAttack.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAgwJAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T17:44:46.932Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PlayerInputHandler.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerInputHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerInputHandler.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerInputHandler.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerInputHandler.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAuwJMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T14:35:50.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DialogueInteract.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\DialogueSystem\\DialogueInteract.cs",
+              "RelativeDocumentMoniker": "Assets\\DialogueSystem\\DialogueInteract.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\DialogueSystem\\DialogueInteract.cs",
+              "RelativeToolTip": "Assets\\DialogueSystem\\DialogueInteract.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAADwv4kAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T23:02:49.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "DisplayShelf.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\DisplayShelf.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\DisplayShelf.cs",
               "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\DisplayShelf.cs",
               "RelativeToolTip": "Assets\\Scripts\\Objects\\DisplayShelf.cs",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAAIwNcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-13T22:05:29.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAuwHAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T02:23:10.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Inventory.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Inventory\\Inventory.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\Inventory.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Inventory\\Inventory.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\Inventory.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAA6wAEBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T22:15:22.141Z"
             }
           ]
         }

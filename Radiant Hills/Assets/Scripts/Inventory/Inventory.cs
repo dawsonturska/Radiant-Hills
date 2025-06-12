@@ -1,6 +1,7 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour, IInteractable
@@ -71,6 +72,12 @@ public class Inventory : MonoBehaviour, IInteractable
         isGridOpen = !isGridOpen;
         if (panel != null) panel.SetActive(isGridOpen);
         if (iconGrid != null) iconGrid.gameObject.SetActive(isGridOpen);
+        Debug.Log($"Inventory {(isGridOpen ? "Closed" : "Opened")}");
+    }
+
+    public void CloseInventory()
+    {
+        if (IsInventoryVisible) ToggleInventoryVisibility();
     }
 
     public bool IsInventoryVisible => isGridOpen;

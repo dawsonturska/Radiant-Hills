@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class DisplayShelf : MonoBehaviour
+public class DisplayShelf : MonoBehaviour, IInteractable
 {
     [Header("Shelf Display Components")]
     public SpriteRenderer itemDisplaySpriteRenderer;
@@ -48,20 +48,6 @@ public class DisplayShelf : MonoBehaviour
         }
     }
 
-    private void AssignUniqueID()
-    {
-        if (shelfID == 0)
-        {
-            do
-            {
-                shelfID = Random.Range(1000, 9999);
-            } while (usedIDs.Contains(shelfID));
-
-            usedIDs.Add(shelfID);
-        }
-        Debug.Log($"Shelf {shelfID} initialized.");
-    }
-
     private void InitializeComponents()
     {
         if (itemDisplaySpriteRenderer == null)
@@ -82,56 +68,31 @@ public class DisplayShelf : MonoBehaviour
         interactionCollider.isTrigger = true;
     }
 
-    void Update()
+    private void AssignUniqueID()
     {
-        if (itemDisplaySpriteRenderer == null || iconGrid == null)
+        if (shelfID == 0)
         {
-            return;
-        }
-
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
-        {
-            if (HasItem())
+            do
             {
-                PickupItem();
-            }
-            else
-            {
-                ToggleInventory();
-            }
-        }
+                shelfID = Random.Range(1000, 9999);
+            } while (usedIDs.Contains(shelfID));
 
-        if (iconGrid.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Escape))
-        {
-            CloseInventory();
+            usedIDs.Add(shelfID);
         }
-    }
-
-
-    // Why are their different inventory toggles here??
-    private void ToggleInventory()
-    {
-        if (iconGrid != null)
-        {
-            bool isOpen = iconGrid.gameObject.activeSelf;
-            iconGrid.gameObject.SetActive(!isOpen);
-            Debug.Log($"Shelf {shelfID}: Inventory {(isOpen ? "Closed" : "Opened")}");
-        }
-    }
-
-    private void CloseInventory()
-    {
-        if (iconGrid != null)
-        {
-            iconGrid.gameObject.SetActive(false);
-        }
+        Debug.Log($"Shelf {shelfID} initialized.");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerInRange = true;
+            var playerHandler = other.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
+            {
+                // this object is Interactable, so handle that
+                playerHandler.SetCurrentInteractable(this);
+                isPlayerInRange = true;
+            }
         }
     }
 
@@ -139,8 +100,14 @@ public class DisplayShelf : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerInRange = false;
-            CloseInventory();
+            var playerHandler = other.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
+            {
+                // this object is Interactable, so handle that
+                playerHandler.ClearInteractable(this);
+                isPlayerInRange = false;
+                inventory.CloseInventory();
+            }
         }
     }
 
@@ -177,7 +144,7 @@ public class DisplayShelf : MonoBehaviour
     public void OnItemClicked(MaterialType material)
     {
         StoreItemInShelf(material);
-        CloseInventory();
+        inventory.CloseInventory();
     }
 
     public MaterialType GetItem()
@@ -245,4 +212,31 @@ public class DisplayShelf : MonoBehaviour
     // Optionally, expose who has it reserved
     public GameObject GetReserver() => reservedBy;
 
+    /// <summary>
+    /// Handler for "Interact" action
+    /// </summary>
+    public void Interact(PlayerInputHandler handler)
+    {
+        if (itemDisplaySpriteRenderer == null || iconGrid == null)
+        {
+            return;
+        }
+
+        if (isPlayerInRange)
+        {
+            if (HasItem())
+            {
+                PickupItem();
+            }
+            else
+            {
+                inventory.ToggleInventoryVisibility();
+            }
+        }
+
+        if (iconGrid.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            inventory.CloseInventory();
+        }
+    }
 }

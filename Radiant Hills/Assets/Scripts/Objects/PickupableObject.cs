@@ -4,8 +4,6 @@ public class PickupableObject : MonoBehaviour, IInteractable
 {
     public MaterialType materialType;
     public int materialYield = 1;
-    public GameObject indicatorPrefab;
-    private GameObject activeIndicator;
     private bool isInRange = false;
 
     [Header("Audio")]
@@ -23,7 +21,11 @@ public class PickupableObject : MonoBehaviour, IInteractable
         if (collision.CompareTag("Player"))
         {
             isInRange = true;
-            ShowIndicator();
+
+            // show interaction indicator
+            IndicatorManager.Instance.ShowIndicator("Interact", this.transform);
+
+            // set as current interactable
             var playerHandler = collision.GetComponent<PlayerInputHandler>();
             if (playerHandler != null)
             {
@@ -37,7 +39,11 @@ public class PickupableObject : MonoBehaviour, IInteractable
         if (collision.CompareTag("Player"))
         {
             isInRange = false;
-            HideIndicator();
+
+            // hide interaction indicator
+            IndicatorManager.Instance.HideIndicator("Interact", this.transform);
+
+            // clear interactable
             var playerHandler = collision.GetComponent<PlayerInputHandler>();
             if (playerHandler != null)
             {
@@ -62,23 +68,6 @@ public class PickupableObject : MonoBehaviour, IInteractable
 
                 Destroy(gameObject);
             }
-        }
-    }
-
-    private void ShowIndicator()
-    {
-        if (indicatorPrefab != null && activeIndicator == null)
-        {
-            activeIndicator = Instantiate(indicatorPrefab, transform.position + Vector3.up, Quaternion.identity);
-            activeIndicator.transform.SetParent(transform);
-        }
-    }
-
-    private void HideIndicator()
-    {
-        if (activeIndicator != null)
-        {
-            Destroy(activeIndicator);
         }
     }
 

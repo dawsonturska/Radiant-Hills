@@ -110,6 +110,7 @@
     <Compile Include="Assets\Scripts\Enemies\Bosses\CentipedeBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\Projectile.cs" />
     <Compile Include="Assets\Scripts\Rooms\ReflectorController.cs" />
+    <Compile Include="Assets\Scripts\GUI\Indicator\IndicatorManager.cs" />
     <Compile Include="Assets\Scripts\Inventory\MaterialDatabase.cs" />
     <Compile Include="Assets\Scripts\ButtonHover.cs" />
     <Compile Include="Assets\Scripts\Objects\TestTrigger.cs" />
@@ -120,13 +121,13 @@
     <Compile Include="Assets\Scripts\Rooms\PlayerInteractionManager.cs" />
     <Compile Include="Assets\Scripts\Player\AttackCollision.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawnPoint.cs" />
+    <Compile Include="Assets\Scripts\GUI\Indicator\IndicatorGUI.cs" />
     <Compile Include="Assets\Scripts\Enemies\Bosses\BossHealth.cs" />
     <Compile Include="Assets\DialogueSystem\CellPhoneInteract.cs" />
     <Compile Include="Assets\Scripts\AudioSourceManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySorting.cs" />
     <Compile Include="Assets\Scripts\Player\CameraSmooth.cs" />
     <Compile Include="Assets\Scripts\Fishing\FishingZone.cs" />
-    <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\DayLights.cs" />
     <Compile Include="Assets\DialogueSystem\DialogueObject.cs" />
     <Compile Include="Assets\Scripts\Enemies\Burrower.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Assets\Scripts\Objects\Register.cs" />
     <Compile Include="Assets\Scripts\Interface\Interactable.cs" />
     <Compile Include="Assets\Scripts\GameSaveManager.cs" />
+    <Compile Include="Assets\Scripts\GUI\Indicator\IndicatorGUI_Interact.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Inventory\MaterialType.cs" />
     <Compile Include="Assets\Scripts\AmbientAudioPlayer.cs" />

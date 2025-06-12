@@ -1,25 +1,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishingZone : MonoBehaviour
+public class FishingZone : MonoBehaviour, IInteractable
 {
-    public KeyCode interactKey = KeyCode.E; // Key to press for interaction
-    public GameObject indicatorPrefab; // The prefab to display when the player enters the fishing zone
-
     // Define a list of materials to be caught
     public List<MaterialType> materialTypes; // Define this list in the inspector for available items to catch
 
     private bool isPlayerInZone = false; // Track if the player is inside the zone
-    private GameObject activeIndicator; // Reference to the active indicator instance
+
+
+    /// PRIVATE METHODS ///
 
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the player enters the zone
         if (other.CompareTag("Player"))
         {
-            isPlayerInZone = true;
-            ShowIndicator();
-            Debug.Log("Player entered the fishing zone.");
+            var playerHandler = other.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
+            {
+                // hide interaction indicator
+                IndicatorManager.Instance.ShowIndicator("Interact", this.transform);
+
+                // set current interactable
+                playerHandler.SetCurrentInteractable(this);
+
+                isPlayerInZone = true;
+                FishingManager.Instance.SetFishingZone(this);
+                Debug.Log("Player entered the fishing zone.");
+            }
         }
     }
 
@@ -28,44 +37,45 @@ public class FishingZone : MonoBehaviour
         // Check if the player exits the zone
         if (other.CompareTag("Player"))
         {
-            isPlayerInZone = false;
-            HideIndicator();
-            Debug.Log("Player exited the fishing zone.");
-
-            // Stop fishing if the player is currently fishing
-            if (FishingManager.Instance.IsFishing)
+            var playerHandler = other.GetComponent<PlayerInputHandler>();
+            if (playerHandler != null)
             {
-                FishingManager.Instance.StopFishing();
-                Debug.Log("Player stopped fishing because they exited the fishing zone.");
+                // clear interactable
+                playerHandler.ClearInteractable(this);
+                isPlayerInZone = false;
+                Debug.Log("Player exited the fishing zone.");
+
+                // Stop fishing if the player is currently fishing
+                if (FishingManager.Instance.IsFishing)
+                {
+                    FishingManager.Instance.StopFishing();
+                    Debug.Log("Player stopped fishing because they exited the fishing zone.");
+                }
+                FishingManager.Instance.SetFishingZone(null);
             }
         }
     }
 
-    void Update()
-    {
-        // Only allow interaction if the player is in the zone, not fishing, and presses the interaction key
-        if (isPlayerInZone && !FishingManager.Instance.IsFishing && Input.GetKeyDown(interactKey))
-        {
-            Debug.Log("Player pressed E to start fishing.");
-            FishingManager.Instance.StartFishing();
-            HideIndicator(); // Hide the indicator when the fishing starts
-        }
-    }
+    /// PUBLIC METHODS ///
 
-    private void ShowIndicator()
+    /// <summary>
+    /// Handler for "Interact" action
+    /// </summary>
+    public void Interact(PlayerInputHandler handler)
     {
-        if (indicatorPrefab != null && activeIndicator == null) // Ensure no duplicate indicators
-        {
-            activeIndicator = Instantiate(indicatorPrefab, transform.position + Vector3.up, Quaternion.identity);
-            activeIndicator.transform.SetParent(transform); // Make the indicator a child of the fishing zone
-        }
-    }
-
-    private void HideIndicator()
-    {
-        if (activeIndicator != null)
-        {
-            Destroy(activeIndicator);
+        // Only allow interaction if the player is in the zone and not already fishing
+        if (isPlayerInZone) {
+            if (!FishingManager.Instance.IsFishing)
+            {
+                Debug.Log("Player pressed \"Interact\" to start fishing.");
+                FishingManager.Instance.StartFishing();
+                IndicatorManager.Instance.HideIndicator("Interact", this.transform);
+            } else
+            {
+                Debug.Log("Player pressed \"Interact\" to try to catch fish.");
+                FishingManager.Instance.TryCatchFish();
+            }
+            
         }
     }
 }
