@@ -17,11 +17,14 @@ public class FishingManager : MonoBehaviour
     private float catchWindowTime = 3f;
 
     public GameObject player;
-    private FishingZone fishingZone;
 
+    private FishingZone fishingZone;
     private Coroutine fishingCoroutine;
 
     public bool IsFishing => isFishing;
+
+
+    /// PRIVATE METHODS ///
 
     void Awake()
     {
@@ -78,34 +81,6 @@ public class FishingManager : MonoBehaviour
         else
         {
             Debug.Log("FishingManager: FishingZone reference updated.");
-        }
-    }
-
-    public void StartFishing()
-    {
-        if (!isFishing)
-        {
-            isFishing = true;
-            fishingCoroutine = StartCoroutine(FishingCycle());
-            Debug.Log("Fishing started.");
-        }
-    }
-
-    public void StopFishing()
-    {
-        if (isFishing)
-        {
-            isFishing = false;
-            isWindowOpen = false;
-
-            if (fishingCoroutine != null)
-            {
-                StopCoroutine(fishingCoroutine);
-                fishingCoroutine = null;
-            }
-
-            IndicatorManager.Instance.HideIndicator("Exclamation", player.transform);
-            Debug.Log("Fishing stopped.");
         }
     }
 
@@ -172,6 +147,46 @@ public class FishingManager : MonoBehaviour
         StartFishing();
     }
 
+
+    /// PUBLIC METHODS ///
+
+    /// <summary>
+    /// Initialize fishing cycle if not currently fishing
+    /// </summary>
+    public void StartFishing()
+    {
+        if (!isFishing)
+        {
+            isFishing = true;
+            fishingCoroutine = StartCoroutine(FishingCycle());
+            Debug.Log("Fishing started.");
+        }
+    }
+
+    /// <summary>
+    /// Stop fishing cycle if fishing
+    /// </summary>
+    public void StopFishing()
+    {
+        if (isFishing)
+        {
+            isFishing = false;
+            isWindowOpen = false;
+
+            if (fishingCoroutine != null)
+            {
+                StopCoroutine(fishingCoroutine);
+                fishingCoroutine = null;
+            }
+
+            IndicatorManager.Instance.HideIndicator("Exclamation", player.transform);
+            Debug.Log("Fishing stopped.");
+        }
+    }
+
+    /// <summary>
+    /// Set current fishing zone that manager is handling
+    /// </summary>
     public void SetFishingZone(FishingZone zone) { fishingZone = zone; }
 
     /// <summary>

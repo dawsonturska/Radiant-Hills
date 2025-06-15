@@ -32,7 +32,10 @@ public class IconGrid : MonoBehaviour
 
     void Update()
     {
-        SetActiveShelfBasedOnPlayerRange();
+        if (SceneManager.GetActiveScene().name == "Shop")
+        {
+            SetActiveShelfBasedOnPlayerRange();
+        }
     }
 
     private void SetActiveShelfBasedOnPlayerRange()

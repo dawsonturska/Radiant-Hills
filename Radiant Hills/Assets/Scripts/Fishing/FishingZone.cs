@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class FishingZone : MonoBehaviour, IInteractable
 {
-    // Define a list of materials to be caught
-    public List<MaterialType> materialTypes; // Define this list in the inspector for available items to catch
+    [Tooltip("List of available materials to catch")]
+    public List<MaterialType> materialTypes;
 
     private bool isPlayerInZone = false; // Track if the player is inside the zone
 
@@ -19,7 +19,7 @@ public class FishingZone : MonoBehaviour, IInteractable
             var playerHandler = other.GetComponent<PlayerInputHandler>();
             if (playerHandler != null)
             {
-                // hide interaction indicator
+                // show interaction indicator
                 IndicatorManager.Instance.ShowIndicator("Interact", this.transform);
 
                 // set current interactable
@@ -45,6 +45,9 @@ public class FishingZone : MonoBehaviour, IInteractable
                 isPlayerInZone = false;
                 Debug.Log("Player exited the fishing zone.");
 
+                // hide interaction indicator
+                IndicatorManager.Instance.HideIndicator("Interact", this.transform);
+
                 // Stop fishing if the player is currently fishing
                 if (FishingManager.Instance.IsFishing)
                 {
@@ -55,6 +58,7 @@ public class FishingZone : MonoBehaviour, IInteractable
             }
         }
     }
+
 
     /// PUBLIC METHODS ///
 
@@ -75,7 +79,6 @@ public class FishingZone : MonoBehaviour, IInteractable
                 Debug.Log("Player pressed \"Interact\" to try to catch fish.");
                 FishingManager.Instance.TryCatchFish();
             }
-            
         }
     }
 }

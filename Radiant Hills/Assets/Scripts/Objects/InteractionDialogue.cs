@@ -5,6 +5,7 @@ public class SceneWarpDialogue : MonoBehaviour, IInteractable
 {
     [Tooltip("Event that will be called when \"Interact\" is pressed while the player is in range.")]
     public UnityEvent onInteract;
+
     private bool isInRange = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,14 +33,6 @@ public class SceneWarpDialogue : MonoBehaviour, IInteractable
                 isInRange = false;
                 IndicatorManager.Instance.HideIndicator("Interact", this.transform);
             }
-        }
-    }
-
-    private void Update()
-    {
-        if (isInRange && Input.GetKeyDown(KeyCode.E))
-        {
-            onInteract?.Invoke();
         }
     }
 

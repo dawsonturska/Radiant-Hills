@@ -1,51 +1,54 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
+    // Static bool that all objects can reference to know whether game is paused
     public static bool IsPaused { get; private set; } = false;
 
-    private Canvas canvas;
+    [Tooltip("First button to select when opening pause menu")]
+    [SerializeField] private GameObject firstSelectedPauseMenuButton;
+
+    // Action triggered when game unpaused
+    public event Action OnUnpause;
+
+    private Canvas pauseMenuCanvas;
 
     void Awake()
     {
-        canvas = GetComponent<Canvas>();
-        if (canvas != null)
+        pauseMenuCanvas = GetComponent<Canvas>();
+        if (pauseMenuCanvas != null)
         {
-            canvas.enabled = false;
+            pauseMenuCanvas.enabled = false;
         }
 
         IsPaused = false;
     }
 
-    void Update()
+    public void Pause(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        IsPaused = true;
+        if (pauseMenuCanvas != null)
         {
-            TogglePauseMenu();
+            pauseMenuCanvas.enabled = true;
+            EventSystemSelectHelper.SetSelectedGameObject(firstSelectedPauseMenuButton);
         }
-    }
-
-    void TogglePauseMenu()
-    {
-        IsPaused = !IsPaused;
-
-        if (canvas != null)
-        {
-            canvas.enabled = IsPaused;
-        }
-
-        Time.timeScale = IsPaused ? 0 : 1;
+        Time.timeScale = 0;
     }
 
     public void Unpause()
     {
         IsPaused = false;
-        if (canvas != null)
+        if (pauseMenuCanvas != null)
         {
-            canvas.enabled = false;
+            pauseMenuCanvas.enabled = false;
+            EventSystemSelectHelper.SetSelectedGameObject(null);
         }
         Time.timeScale = 1;
+        OnUnpause?.Invoke();
     }
 
     public void GoToMenu()

@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\maxno\\unity projects\\radiant-hills\\radiant hills\\assets\\scripts\\gui\\indicator\\indicatorgui_interact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\indicator\\indicatorgui_interact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|c:\\users\\maxno\\unity projects\\radiant-hills\\radiant hills\\assets\\scripts\\ui\\main menu\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\main menu\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\gui\\indicator\\indicatorgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\indicator\\indicatorgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\player\\pausemenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\pausemenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\gui\\indicator\\indicatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\indicator\\indicatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\objects\\interactiondialogue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\interactiondialogue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\objects\\pickupableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\pickupableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\dialoguesystem\\dialogueinteract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\dialoguesystem\\dialogueinteract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\fishing\\fishingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fishing\\fishingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\fishing\\fishingzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fishing\\fishingzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\objects\\interactiondialogue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\interactiondialogue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\gui\\indicator\\indicatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\indicator\\indicatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\player\\playerinputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerinputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\objects\\pickupableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\pickupableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\DisplayShelf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,14 +51,6 @@
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\player\\playerinputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerinputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\dialoguesystem\\dialogueinteract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\dialoguesystem\\dialogueinteract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\assets\\scripts\\inventory\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F4F4D33-D46C-7ED9-6FD7-245252DF725D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -71,56 +67,92 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IndicatorGUI_Interact.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI_Interact.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI_Interact.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI_Interact.cs",
-              "RelativeToolTip": "Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI_Interact.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAtAAAAAAAAAA==",
+              "Title": "MenuController.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\UI\\Main Menu\\MenuController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Main Menu\\MenuController.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\UI\\Main Menu\\MenuController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\Main Menu\\MenuController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA8wCIAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T00:56:46.106Z",
+              "WhenOpened": "2025-06-14T22:53:29.671Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IndicatorGUI.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\GUI\\Indicator\\IndicatorGUI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Title": "PauseMenuController.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PauseMenuController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PauseMenuController.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PauseMenuController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PauseMenuController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T00:46:59.462Z",
+              "WhenOpened": "2025-06-14T22:26:37.142Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
+              "Title": "PlayerInputHandler.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerInputHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerInputHandler.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerInputHandler.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerInputHandler.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAhwIoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T14:35:50.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "IndicatorManager.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GUI\\Indicator\\IndicatorManager.cs",
               "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\GUI\\Indicator\\IndicatorManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\GUI\\Indicator\\IndicatorManager.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwB8AAABfAAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAgwE4AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-12T00:46:55.492Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "InteractionDialogue.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\InteractionDialogue.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\InteractionDialogue.cs",
               "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\InteractionDialogue.cs",
               "RelativeToolTip": "Assets\\Scripts\\Objects\\InteractionDialogue.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-12T00:46:09.678Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
+              "Title": "FishingManager.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Fishing\\FishingManager.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Fishing\\FishingManager.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAA0wM4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T05:47:55.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DialogueInteract.cs",
+              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\DialogueSystem\\DialogueInteract.cs",
+              "RelativeDocumentMoniker": "Assets\\DialogueSystem\\DialogueInteract.cs",
+              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\DialogueSystem\\DialogueInteract.cs",
+              "RelativeToolTip": "Assets\\DialogueSystem\\DialogueInteract.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAKYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T23:02:49.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "PickupableObject.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\PickupableObject.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\PickupableObject.cs",
@@ -132,31 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FishingManager.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Fishing\\FishingManager.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Fishing\\FishingManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T05:47:55.945Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FishingZone.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingZone.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Fishing\\FishingZone.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Fishing\\FishingZone.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Fishing\\FishingZone.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwBsAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T05:42:53.714Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Interactable.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Interface\\Interactable.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Interface\\Interactable.cs",
@@ -168,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "PlayerAttack.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerAttack.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerAttack.cs",
@@ -180,31 +188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PlayerInputHandler.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerInputHandler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerInputHandler.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerInputHandler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerInputHandler.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAuwJMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T14:35:50.874Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DialogueInteract.cs",
-              "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\DialogueSystem\\DialogueInteract.cs",
-              "RelativeDocumentMoniker": "Assets\\DialogueSystem\\DialogueInteract.cs",
-              "ToolTip": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\DialogueSystem\\DialogueInteract.cs",
-              "RelativeToolTip": "Assets\\DialogueSystem\\DialogueInteract.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAADwv4kAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T23:02:49.066Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "DisplayShelf.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Objects\\DisplayShelf.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\DisplayShelf.cs",
@@ -216,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Player\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerMovement.cs",
@@ -228,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "Inventory.cs",
               "DocumentMoniker": "C:\\Users\\maxno\\Unity Projects\\Radiant-Hills\\Radiant Hills\\Assets\\Scripts\\Inventory\\Inventory.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\Inventory.cs",
